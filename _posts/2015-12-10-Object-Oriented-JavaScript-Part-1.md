@@ -7,7 +7,7 @@ Since I'm a C# developer, I'm trying to use my existing knowledge in C# to learn
 
 As you know in C# we have something called [Object and collection initializer](https://msdn.microsoft.com/en-us/library/bb384062.aspx). For example we can use object initializer to create name and value pairs for different properties of the object, in this case `cat` object:
 
-{% highlight cs %}
+{% highlight csharp %}
 var car = new Car()
 { 
     Name = "Chevrolet Corvette", 
@@ -22,7 +22,7 @@ var car = new Car()
 As you can see we used object initializer for those embedded objects too.
 Although object initializers can be used for anonymous types. So here's the same example which we build with anonymous object:
 
-{% highlight cs %}
+{% highlight csharp %}
 var car = new { 
     Name = "Chevrolet Corvette", 
     Color = "Red", 
