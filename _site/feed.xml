@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Sirwan - A blog about programming</title>
-    <description>Sirwan - A blog about programming.</description>
+    <title>Sirwan Afifi</title>
+    <description>Stories from a web developer.</description>
     <link>http://sirwan.info/</link>
     <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Dec 2015 23:07:25 +0330</pubDate>
-    <lastBuildDate>Thu, 10 Dec 2015 23:07:25 +0330</lastBuildDate>
+    <pubDate>Thu, 10 Dec 2015 23:24:09 +0330</pubDate>
+    <lastBuildDate>Thu, 10 Dec 2015 23:24:09 +0330</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
