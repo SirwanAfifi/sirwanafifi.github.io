@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<div class="home">
+
+
+    {% for post in site.posts %}
+     <article>
+        <h1><a class="post-link title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            {{ post.date | date: "%B %-d, %Y" }}
+          </span>
+        </div>
+        {{ post.content }}
+     </article>
+    {% endfor %}
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
+<!-- Pagination links -->
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a href="/page{{paginator.next_page}}" class="older">Older</a>
+  {% else %}
+    <span class="next">Older</span>
+  {% endif %}
+  {% if paginator.previous_page %}
+    {% if paginator.page == 2 %}
+      <a href="/" class="newer">Newer</a>
+    {% else %}
+      <a href="/page{{paginator.previous_page}}" class="newer">Newer</a>
+    {% endif %}
+  {% else %}
+    <span class="previous">Newer</span>
+  {% endif %}
+</div>

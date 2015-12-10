@@ -1,0 +1,33 @@
+# Site settings
+title: Sirwan - A blog about programming
+email: sir1afifi@gmail.com
+description: Sirwan - A blog about programming.
+url: "http://sirwan.info" # the base hostname & protocol for your site
+twitter_username: SirwanAfifi
+
+# Build settings
+markdown: kramdown
+permalink: /:title
+
+#Default settings
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      author: Sirwan Afifi
+      layout: "post"
+      category: programming
+      comments: true
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "pages" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "page"
+
+
+
+
+

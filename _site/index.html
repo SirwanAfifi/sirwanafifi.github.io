@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <header class="masthead">
+      <div class="masthead-inner">
+      <div class="profilepic">
+        <img src="/public/avatar.png" alt="Profile Picture">
+      
+      </div>
+        <h2>Sirwan - A blog about programming</h2>
+        <p class="lead">Sirwan - A blog about programming.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="#">archives</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+          <p>&copy; 2015. Sirwan - A blog about programming All rights reserved.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="home">
+
+
+    
+     <article>
+        <h1><a class="post-link title" href="/Object-Oriented-JavaScript-Part-1">Object Oriented JavaScript Part 1</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            December 10, 2015
+          </span>
+        </div>
+        <p>Recently I’ve started to improve my JavaScript skill, So I decided to keep notes about new things I learn from now on.
+Since I’m a C# developer, I’m trying to use my existing knowledge in C# to learn JavaScript.</p>
+
+<p>As you know in C# we have something called <a href="https://msdn.microsoft.com/en-us/library/bb384062.aspx">Object and collection initializer</a>. For example we can use object initializer to create name and value pairs for different properties of the object, in this case <code class="highlighter-rouge">cat</code> object:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
+<span class="p">{</span> 
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
+    <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
+    <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CarManufacturer</span><span class="p">()</span> 
+    <span class="p">{</span> 
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet"</span><span class="p">,</span> 
+        <span class="n">Country</span> <span class="p">=</span> <span class="s">"USA"</span> 
+    <span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<p>As you can see we used object initializer for those embedded objects too.
+Although object initializers can be used for anonymous types. So here’s the same example which we build with anonymous object:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
+    <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
+    <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
+    <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
+        <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet"</span><span class="p">,</span> 
+        <span class="n">Country</span> <span class="p">=</span> <span class="s">"USA"</span> 
+    <span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<p>This is very similar the way dynamic objects work in JavaScript. So in JavaScript object creation is going to follow this pattern:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="p">{</span> 
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet Corvette"</span><span class="p">,</span> 
+    <span class="na">color</span><span class="p">:</span> <span class="s2">"Red"</span><span class="p">,</span> 
+    <span class="na">manufacturer</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> 
+        <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet"</span><span class="p">,</span> 
+        <span class="na">nountry</span><span class="p">:</span> <span class="s2">"USA"</span> 
+    <span class="p">},</span>
+    <span class="s2">"towing capacity"</span><span class="p">:</span> <span class="s2">"5,952 lbs"</span> 
+<span class="p">};</span></code></pre></figure>
+
+<p>As you can see we use key/value pairs. Actually it’s a little different from C# for instance we used colons (<code class="highlighter-rouge">:</code>) instead of equals (<code class="highlighter-rouge">=</code>) but generally the syntaxes are similar. In some case you may see the name is embedded in quotes, it’s optional but if you’re using any reserved characters like space, in this case, you need to surround the name with quotes (like <code class="highlighter-rouge">towing capacity</code>).</p>
+
+     </article>
+    
+     <article>
+        <h1><a class="post-link title" href="/First-Blog-Post">My first blog post!</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            November 28, 2015
+          </span>
+        </div>
+        <p>Here’s my first blog post :) In this blog I’m going to share thing that I learn, hope you enjoy reading my blog :)</p>
+
+     </article>
+    
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+</div>
+<!-- Pagination links -->
+<div class="pagination">
+  
+    <span class="next">Older</span>
+  
+  
+    <span class="previous">Newer</span>
+  
+</div>
+    </div>
+
+  </body>
+</html>
