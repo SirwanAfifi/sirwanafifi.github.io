@@ -21,6 +21,9 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
 </head>
 
 
@@ -61,7 +64,7 @@ Since I’m a C# developer, I’m trying to use my existing knowledge in C# to l
 
 <p>As you know in C# we have something called <a href="https://msdn.microsoft.com/en-us/library/bb384062.aspx">Object and collection initializer</a>. For example we can use object initializer to create name and value pairs for different properties of the object, in this case <code class="highlighter-rouge">cat</code> object:</p>
 
-<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
 <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
@@ -75,7 +78,7 @@ Since I’m a C# developer, I’m trying to use my existing knowledge in C# to l
 <p>As you can see we used object initializer for those embedded objects too.
 Although object initializers can be used for anonymous types. So here’s the same example which we build with anonymous object:</p>
 
-<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
     <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
@@ -86,17 +89,68 @@ Although object initializers can be used for anonymous types. So here’s the sa
 
 <p>This is very similar the way dynamic objects work in JavaScript. So in JavaScript object creation is going to follow this pattern:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="k">new</span> <span class="p">{</span> 
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span> 
     <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="na">color</span><span class="p">:</span> <span class="s2">"Red"</span><span class="p">,</span> 
-    <span class="na">manufacturer</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> 
+    <span class="na">manufacturer</span><span class="p">:</span> <span class="p">{</span> 
         <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet"</span><span class="p">,</span> 
-        <span class="na">nountry</span><span class="p">:</span> <span class="s2">"USA"</span> 
+        <span class="na">country</span><span class="p">:</span> <span class="s2">"USA"</span> 
     <span class="p">},</span>
     <span class="s2">"towing capacity"</span><span class="p">:</span> <span class="s2">"5,952 lbs"</span> 
 <span class="p">};</span></code></pre></figure>
 
 <p>As you can see we use key/value pairs. Actually it’s a little different from C# for instance we used colons (<code class="highlighter-rouge">:</code>) instead of equals (<code class="highlighter-rouge">=</code>) but generally the syntaxes are similar. In some case you may see the name is embedded in quotes, it’s optional but if you’re using any reserved characters like space, in this case, you need to surround the name with quotes (like <code class="highlighter-rouge">towing capacity</code>).</p>
+
+<p>These dynamic objects that you have defined with this name value pairs allows you to take these objects you are creating and access each the properties you have defined in that name value pair by the name using a simple dot syntax. For example here in JavaScript you can just access the name using dot name convention:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">car</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span></code></pre></figure>
+
+<p>You can also use a bracket syntax, that’s why objects are sometimes called associative arrays:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">car</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span></code></pre></figure>
+
+<p>This way we can retrieve or set the property values. There are other ways for accessing and retrieving property value that are as follows:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">car</span><span class="p">.</span><span class="nx">color</span>                <span class="o">=</span> <span class="s2">"Dot syntax"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">[</span><span class="s2">"towing capacity"</span><span class="p">]</span>   <span class="o">=</span> <span class="s2">"String with space"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span>                 <span class="o">=</span> <span class="s2">"String value"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">[</span><span class="nx">rand</span><span class="p">]</span>                <span class="o">=</span> <span class="s2">"Random Number"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">[</span><span class="nx">obj</span><span class="p">]</span>                 <span class="o">=</span> <span class="s2">"Object"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">[</span><span class="s2">""</span><span class="p">]</span>                  <span class="o">=</span> <span class="s2">"Even an empty string"</span><span class="p">;</span> </code></pre></figure>
+
+<p>We can also get embedded objects that are the properties of those dynamic objects as well and retrive properties from them:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">manufacturer</span> <span class="o">=</span> <span class="nx">car</span><span class="p">.</span><span class="nx">manufacturer</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">country</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span></code></pre></figure>
+
+<h3 id="malleability">Malleability</h3>
+<p>As you probably know, One of the key features of JavaScript is that the language is <a href="http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html">loosely typed</a> it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# <code class="highlighter-rouge">ExpandoObject</code> gives you this behavior.</p>
+
+<blockquote>
+  <p>ExpandoObject Represents an object whose members can be dynamically added and removed at run time.</p>
+</blockquote>
+
+<p>For example in this code we are creating a new object and marking it as dynamic so that we can add members to this <code class="highlighter-rouge">ExpandoObject</code> as we want:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
+<span class="n">car</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">;</span>
+<span class="n">car</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">;</span></code></pre></figure>
+
+<p>These are being added on-the-fly. It means that these aren’t defining the shape ahead of time. We are just saying we are going to add properties to the <code class="highlighter-rouge">car</code> object. In fact this is pretty much the same way in JavaScript:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet Corvette"</span><span class="p">,</span> 
+    <span class="na">color</span><span class="p">:</span> <span class="s2">"Red"</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>We can still add another property or function on-the-fly:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">car</span><span class="p">.[</span><span class="s2">"towing capacity"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"5,952 lbs"</span><span class="p">;</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
 
   
   <div id="disqus_thread"></div>
