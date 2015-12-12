@@ -5,8 +5,8 @@
     <description>Stories from a web developer.</description>
     <link>http://sirwan.info/</link>
     <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Dec 2015 13:38:34 +0330</pubDate>
-    <lastBuildDate>Sat, 12 Dec 2015 13:38:34 +0330</lastBuildDate>
+    <pubDate>Sat, 12 Dec 2015 22:31:02 +0330</pubDate>
+    <lastBuildDate>Sat, 12 Dec 2015 22:31:02 +0330</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -130,7 +130,7 @@
         <title>Object Oriented JavaScript Part 1</title>
         <description>&lt;p&gt;Recently I’ve started to improve my JavaScript skill, So I decided to keep notes about new things I learn from now on.
 Since I’m a C# developer, I’m trying to use my existing knowledge in C# to learn JavaScript.&lt;/p&gt;
-
+&lt;blockquote&gt;PS: this series of posts are based on JavaScript for C# Developers by Shawn Wildermuth&lt;/blockquote&gt;
 &lt;p&gt;As you know in C# we have something called &lt;a href=&quot;https://msdn.microsoft.com/en-us/library/bb384062.aspx&quot;&gt;Object and collection initializer&lt;/a&gt;. For example we can use object initializer to create name and value pairs for different properties of the object, in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;car&lt;/code&gt; object:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;

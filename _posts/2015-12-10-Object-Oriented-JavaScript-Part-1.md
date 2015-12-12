@@ -5,7 +5,7 @@ tags: JavaScript C#
 ---
 Recently I've started to improve my JavaScript skill, So I decided to keep notes about new things I learn from now on.
 Since I'm a C# developer, I'm trying to use my existing knowledge in C# to learn JavaScript.  
-
+<blockquote>PS: this series of posts are based on JavaScript for C# Developers by Shawn Wildermuth</blockquote>
 As you know in C# we have something called [Object and collection initializer](https://msdn.microsoft.com/en-us/library/bb384062.aspx). For example we can use object initializer to create name and value pairs for different properties of the object, in this case `car` object:
 
 {% highlight csharp %}
