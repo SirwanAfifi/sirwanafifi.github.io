@@ -54,3 +54,59 @@ class Person {
 	}
 }	
 {% endhighlight %}
+So we have essentially recreated the same Person data type but with much better syntax. behind the scene the runtime is doing the exactly what we used to do. But now the syntax is clean and expressive. As you can see there is `constructor` in the class definition. the constructor is one of the class members that we can list in the body of a class, just like the other members it is a function, it is a function that automatically invoked when we say `new` and use the class name as a function call:
+{% highlight js %}
+var person = new Person("Sirwan", "Afifi");
+{% endhighlight %}
+###Getters and Setters
+In a class we can also use getter and setter, they are created using `get` and `set` keyword. get and set allows us to run code on the reading or writing of a property:
+
+{% highlight js %}
+
+// ES6 get and set
+class Person {
+    constructor(firstName, lastName) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+    }
+  
+    get fullName() {
+      var result  = this._firstName + ", " + this._lastName;
+        return result.toUpperCase();
+    }
+  
+    set firstName(newName) {
+        this._firstName = newName; 
+    }
+   set lastName(newName) {
+        this._lastName = newName; 
+    }
+   greet(name) {
+     return `Hello, ${name}. My name is ${this._firstName}`;
+   }
+}    
+let sirwan = new Person('Sirwan', 'Afifi');
+console.log(sirwan.fullName);  // Outputs 'SIRWAN, AFIFI'
+let omid = new Person('Daryoush', 'Zandi');
+omid.firstName = "Omid";
+omid.lastName = "Kamangar";
+console.log(omid.fullName);  // Outputs 'OMID, KAMANGAR'
+
+{% endhighlight %}
+
+
+###Inheritance
+ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an `Employee`, since every employee is a person, maybe we will have the `Employee` inherit from a `Person`. In ES6 we can inheritance is specified using `extends` keyword:
+{% highlight js %}
+class Employee extends Person{
+  // more features
+  getWork() {
+    return `${ this._firstName } is working.`;
+  }
+}
+
+let emp = new Employee('Sirwan', 'Afifi');
+console.log(emp.getWork()); // Outputs 'Sirwan is working.'
+{% endhighlight %}
+
+The only thing is that a lot of features in ES2015 are not supported in the browsers. For example classes are not supported by any browser, now there might be a nightly built of Firefox that supports classes. So instead we have to use a transpiler and there are many transpilers such as [TypeScript](http://www.typescriptlang.org), [Bable](https://babeljs.io) and variety of others. I recommend you to use Bable because it has the best support for all of ES2015 features. 
