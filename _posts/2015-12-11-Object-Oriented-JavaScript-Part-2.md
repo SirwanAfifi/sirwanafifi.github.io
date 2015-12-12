@@ -96,7 +96,7 @@ console.log(omid.fullName);  // Outputs 'OMID, KAMANGAR'
 
 
 ###Inheritance
-ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an `Employee`, since every employee is a person, maybe we will have the `Employee` inherit from a `Person`. In ES6 we can inheritance is specified using `extends` keyword:
+ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an `Employee`, since every employee is a person, maybe we will have the `Employee` inherit from a `Person`. In ES6 inheritance is specified using `extends` keyword:
 {% highlight js %}
 class Employee extends Person{
   // more features

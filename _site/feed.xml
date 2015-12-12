@@ -5,8 +5,8 @@
     <description>Stories from a web developer.</description>
     <link>http://sirwan.info/</link>
     <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 12 Dec 2015 13:34:43 +0330</pubDate>
-    <lastBuildDate>Sat, 12 Dec 2015 13:34:43 +0330</lastBuildDate>
+    <pubDate>Sat, 12 Dec 2015 13:38:34 +0330</pubDate>
+    <lastBuildDate>Sat, 12 Dec 2015 13:38:34 +0330</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -99,7 +99,7 @@
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;omid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Outputs &#39;OMID, KAMANGAR&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;inheritance&quot;&gt;Inheritance&lt;/h3&gt;
-&lt;p&gt;ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt;, since every employee is a person, maybe we will have the &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; inherit from a &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. In ES6 we can inheritance is specified using &lt;code class=&quot;highlighter-rouge&quot;&gt;extends&lt;/code&gt; keyword:&lt;/p&gt;
+&lt;p&gt;ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt;, since every employee is a person, maybe we will have the &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; inherit from a &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. In ES6 inheritance is specified using &lt;code class=&quot;highlighter-rouge&quot;&gt;extends&lt;/code&gt; keyword:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// more features&lt;/span&gt;
