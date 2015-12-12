@@ -91,7 +91,7 @@ var car = {
 {% endhighlight %}
 We can still add another property or function on-the-fly:
 {% highlight js %}
-car.["towing capacity"] = "5,952 lbs";
+car["towing capacity"] = "5,952 lbs";
 car.model = function () {
     var s = this.name;
 };

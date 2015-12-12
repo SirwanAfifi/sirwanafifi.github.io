@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    Object Oriented JavaScript Part 2 &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <header class="masthead">
+      <div class="masthead-inner">
+      <div class="profilepic">
+        <img src="/public/avatar.png" alt="Profile Picture">
+      
+      </div>
+        <h2>Sirwan Afifi</h2>
+        <p class="lead">Stories from a web developer.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="#">archives</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+          <p>&copy; 2015. Sirwan Afifi All rights reserved.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Object Oriented JavaScript Part 2</h1>
+  <span class="post-date">11 Dec 2015</span>
+  <h3 id="classes">Classes</h3>
+<p>In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+    <span class="c1">// Field
+</span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">firstName</span><span class="p">;</span>
+	<span class="c1">// Constructor that takes no arguments.
+</span>    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">firstName</span> <span class="p">=</span> <span class="n">firstName</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">lastName</span> <span class="p">=</span> <span class="n">lastName</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// Method
+</span>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Greet</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="err">$</span><span class="s">"Hello, { name }. My name is { this.firstName }"</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In this case we have a class along with properties, constructor. So a class in C# contains data as well as operation as well as events. It will be useful to create same sort of structure in JavaScript. Prior to ES6 there was no such thing as a class in JavaScript, we could simply do everything with functions, we could create classes by using some of the language semantics to create things that look and feels like classes. But they were not classes in the classical sense. for example we used function to do this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">){</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
+	<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="s2">"Hello, "</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">". My name is "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>So what this function does is use the <code class="highlighter-rouge">this</code> keyword to define new property that represents a person object in this case. And what’s interesting here this is what’s called a constructor syntax. So this function when called will return an object. By doing this, we can create a new person:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
+
+<p>In this case, we can see that it is using the <code class="highlighter-rouge">new</code> keyword. this keyword is used to find a function with a name, after the <code class="highlighter-rouge">new</code>, return an object that contained the shape that is defined in the function. Once we have an instance of that, we can get any of the properties that are specified in the constructor syntax function:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span></code></pre></figure>
+
+<p>ES6 introduces language support for classes with <code class="highlighter-rouge">class</code> keyword. So the ES6 equivalent of the <code class="highlighter-rouge">Person</code> function would be the following:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
+	<span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>	</code></pre></figure>
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/Object-Oriented-JavaScript-Part-1">
+            Object Oriented JavaScript Part 1
+            <small>10 Dec 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/First-Blog-Post">
+            My first blog post!
+            <small>28 Nov 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
