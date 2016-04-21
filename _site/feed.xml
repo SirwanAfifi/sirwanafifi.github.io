@@ -5,9 +5,78 @@
     <description>Stories from a web developer.</description>
     <link>http://sirwan.info/</link>
     <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 12 Feb 2016 15:58:27 +0330</pubDate>
-    <lastBuildDate>Fri, 12 Feb 2016 15:58:27 +0330</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
+    <pubDate>Thu, 21 Apr 2016 15:08:15 +0430</pubDate>
+    <lastBuildDate>Thu, 21 Apr 2016 15:08:15 +0430</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Why AngularJS?</title>
+        <description>&lt;p&gt;I wanted to share a few thoughts about AngularJS&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;AngularJS is a MV* framework for writing manageable, clean, full-featured applications in the browser with JavaScript , It’s also incredibly easy to learn for those who already have HTML and JavaScript experience. Angular’s goal was to create a way for designers to be able to do HTML design using components. One thing that I like about Angular is that, it’s an opinionated MV* framework, It means that it tells you what are the certain ways of doing things, Some poeple might argue that it’s somehow a limitation for a framework such as Angular becuase it solves fewer problems, but I think at least it assures to not having spaghetti code.&lt;/p&gt;
+
+&lt;h3 id=&quot;how-i-got-into-angularjs&quot;&gt;How I got into AngularJS&lt;/h3&gt;
+&lt;p&gt;I have been sitting on the fence for far too long to chose a great JavaScript framework. Finally a couple of years ago I decided to use AngularJS and it caught my attension. It actually made me cursious to learn more about it. I started to use AngularJS for some parts of my application. At the time Angular team were working on the next version of the framework So I stopped using it becuase I heard that the next version is a different framework. Now I have come to conclusion that it’s better to stick with Angular 1.x, then I can switch to Angular 2 in a right time.&lt;/p&gt;
+
+&lt;h3 id=&quot;angularjs-benefites&quot;&gt;AngularJS Benefites&lt;/h3&gt;
+&lt;p&gt;Angular has lots of great features from testability and two-way binding, to more vague concepts. For me the best thing about Angular is that it has a flat learning curve So you can get the most of it. All being said here are the some of my favorite features and benefits of Angular:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Code Reduction: Angular reduces the amount of code that developers write.&lt;/li&gt;
+  &lt;li&gt;Two Way Binding&lt;/li&gt;
+  &lt;li&gt;Beautiful syntax and higher level APIs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example take a look this peice of code written in raw JavaScript:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;btn&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;click&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;clicked!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Whereas with Angular you can simple achieve same goal this way:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;handleClick()&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Click&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Me&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/button&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handleClick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;clicked!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As you can see the Angular code is less complex.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Popularity&lt;/li&gt;
+  &lt;li&gt;Testability&lt;br /&gt;
+Angular was designed with testing in mind. So you can test any components of your application very easy through both &lt;a href=&quot;https://docs.angularjs.org/guide/unit-testing&quot;&gt;unit testing&lt;/a&gt; and &lt;a href=&quot;https://docs.angularjs.org/guide/e2e-testing&quot;&gt;end to end&lt;/a&gt; testing. For unit testing you can use a component called &lt;a href=&quot;https://docs.angularjs.org/api/ngMock&quot;&gt;ngMock&lt;/a&gt; and for e2e testing you can use &lt;a href=&quot;https://github.com/angular/protractor&quot;&gt;Protractor&lt;/a&gt;. It is worthwhile to mention that for both cases you can run your tests using a tool called Karma.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;angularjs-gotchas&quot;&gt;AngularJS gotchas&lt;/h3&gt;
+&lt;p&gt;Although Angular is a great framework but it has some problems that you can run into trouble with it. Here are some of them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SEO&lt;br /&gt;
+For dealing with this issue we can use server side rendering or use a &lt;a href=&quot;https://prerender.io/&quot;&gt;prerenderer&lt;/a&gt;,&lt;/li&gt;
+  &lt;li&gt;Performance&lt;br /&gt;
+One thing that causes performance problem in Angular is having too many bindings. If performance is important you can consider using a differnate rendering engine.&lt;/li&gt;
+  &lt;li&gt;Extranal Events and Digest Cycle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Apr 2016 00:00:00 +0430</pubDate>
+        <link>http://sirwan.info/Why-Angular</link>
+        <guid isPermaLink="true">http://sirwan.info/Why-Angular</guid>
+        
+        <category>Angular.js</category>
+        
+        <category>JavaScript</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>Asynchronous Execution in JavaScript</title>
@@ -145,8 +214,8 @@ Here you see the worker:&lt;/p&gt;
     
       <item>
         <title>Object Oriented JavaScript Part 2</title>
-        <description>&lt;h3 id=&quot;classes&quot;&gt;Classes&lt;/h3&gt;
-&lt;p&gt;In many programming languages a &lt;a href=&quot;https://en.wikipedia.org/wiki/Class_(computer_programming)&quot;&gt;class&lt;/a&gt; is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:&lt;/p&gt;
+        <description>&lt;p&gt;###Classes
+In many programming languages a &lt;a href=&quot;https://en.wikipedia.org/wiki/Class_(computer_programming)&quot;&gt;class&lt;/a&gt; is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -200,8 +269,8 @@ Here you see the worker:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Sirwan&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Afifi&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;getters-and-setters&quot;&gt;Getters and Setters&lt;/h3&gt;
-&lt;p&gt;In a class we can also use getter and setter, they are created using &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt; keyword. get and set allows us to run code on the reading or writing of a property:&lt;/p&gt;
+&lt;p&gt;###Getters and Setters
+In a class we can also use getter and setter, they are created using &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt; keyword. get and set allows us to run code on the reading or writing of a property:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// ES6 get and set&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -232,8 +301,8 @@ Here you see the worker:&lt;/p&gt;
 &lt;span class=&quot;nx&quot;&gt;omid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lastName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Kamangar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;omid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fullName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Outputs &#39;OMID, KAMANGAR&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;inheritance&quot;&gt;Inheritance&lt;/h3&gt;
-&lt;p&gt;ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt;, since every employee is a person, maybe we will have the &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; inherit from a &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. In ES6 inheritance is specified using &lt;code class=&quot;highlighter-rouge&quot;&gt;extends&lt;/code&gt; keyword:&lt;/p&gt;
+&lt;p&gt;###Inheritance
+ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt;, since every employee is a person, maybe we will have the &lt;code class=&quot;highlighter-rouge&quot;&gt;Employee&lt;/code&gt; inherit from a &lt;code class=&quot;highlighter-rouge&quot;&gt;Person&lt;/code&gt;. In ES6 inheritance is specified using &lt;code class=&quot;highlighter-rouge&quot;&gt;extends&lt;/code&gt; keyword:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// more features&lt;/span&gt;
@@ -326,8 +395,8 @@ Although object initializers can be used for anonymous types. So here’s the sa
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;manufacturer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;country&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;manufacturer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;malleability&quot;&gt;Malleability&lt;/h3&gt;
-&lt;p&gt;As you probably know, One of the key features of JavaScript is that the language is &lt;a href=&quot;http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html&quot;&gt;loosely typed&lt;/a&gt; it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# &lt;code class=&quot;highlighter-rouge&quot;&gt;ExpandoObject&lt;/code&gt; gives you this behavior.&lt;/p&gt;
+&lt;p&gt;###Malleability
+As you probably know, One of the key features of JavaScript is that the language is &lt;a href=&quot;http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html&quot;&gt;loosely typed&lt;/a&gt; it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# &lt;code class=&quot;highlighter-rouge&quot;&gt;ExpandoObject&lt;/code&gt; gives you this behavior.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;ExpandoObject Represents an object whose members can be dynamically added and removed at run time.&lt;/p&gt;

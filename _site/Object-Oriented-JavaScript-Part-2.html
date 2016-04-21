@@ -58,8 +58,8 @@
       <div class="post">
   <h1>Object Oriented JavaScript Part 2</h1>
   <span class="post-date">11 Dec 2015</span>
-  <h3 id="classes">Classes</h3>
-<p>In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
+  <p>###Classes
+In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
 <span class="p">{</span>
@@ -113,8 +113,8 @@
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
 
-<h3 id="getters-and-setters">Getters and Setters</h3>
-<p>In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
+<p>###Getters and Setters
+In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// ES6 get and set</span>
 <span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
@@ -145,8 +145,8 @@
 <span class="nx">omid</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s2">"Kamangar"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">omid</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'OMID, KAMANGAR'</span></code></pre></figure>
 
-<h3 id="inheritance">Inheritance</h3>
-<p>ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
+<p>###Inheritance
+ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Employee</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
   <span class="c1">// more features</span>
@@ -187,6 +187,15 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <h3>
+          <a href="/Why-Angular">
+            Why AngularJS?
+            <small>17 Apr 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/Asynchronous-Execution-in-JavaScript">
             Asynchronous Execution in JavaScript
             <small>12 Feb 2016</small>
@@ -199,15 +208,6 @@ s.setAttribute('data-timestamp', +new Date());
           <a href="/Object-Oriented-JavaScript-Part-1">
             Object Oriented JavaScript Part 1
             <small>10 Dec 2015</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/First-Blog-Post">
-            My first blog post!
-            <small>28 Nov 2015</small>
           </a>
         </h3>
       </li>

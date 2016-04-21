@@ -60,6 +60,72 @@
 
     
      <article>
+        <h1><a class="post-link title" href="/Why-Angular">Why AngularJS?</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            <i class="fa fa-calendar"></i> April 17, 2016 
+            <i class="fa fa-tags"></i> Angular.js JavaScript
+          </span>
+        </div>
+        <p>I wanted to share a few thoughts about AngularJS</p>
+
+<h3 id="introduction">Introduction</h3>
+<p>AngularJS is a MV* framework for writing manageable, clean, full-featured applications in the browser with JavaScript , It’s also incredibly easy to learn for those who already have HTML and JavaScript experience. Angular’s goal was to create a way for designers to be able to do HTML design using components. One thing that I like about Angular is that, it’s an opinionated MV* framework, It means that it tells you what are the certain ways of doing things, Some poeple might argue that it’s somehow a limitation for a framework such as Angular becuase it solves fewer problems, but I think at least it assures to not having spaghetti code.</p>
+
+<h3 id="how-i-got-into-angularjs">How I got into AngularJS</h3>
+<p>I have been sitting on the fence for far too long to chose a great JavaScript framework. Finally a couple of years ago I decided to use AngularJS and it caught my attension. It actually made me cursious to learn more about it. I started to use AngularJS for some parts of my application. At the time Angular team were working on the next version of the framework So I stopped using it becuase I heard that the next version is a different framework. Now I have come to conclusion that it’s better to stick with Angular 1.x, then I can switch to Angular 2 in a right time.</p>
+
+<h3 id="angularjs-benefites">AngularJS Benefites</h3>
+<p>Angular has lots of great features from testability and two-way binding, to more vague concepts. For me the best thing about Angular is that it has a flat learning curve So you can get the most of it. All being said here are the some of my favorite features and benefits of Angular:</p>
+
+<ul>
+  <li>Code Reduction: Angular reduces the amount of code that developers write.</li>
+  <li>Two Way Binding</li>
+  <li>Beautiful syntax and higher level APIs</li>
+</ul>
+
+<p>For example take a look this peice of code written in raw JavaScript:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'btn'</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'clicked!'</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Whereas with Angular you can simple achieve same goal this way:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">button</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"btn"</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">click</span><span class="o">=</span><span class="s2">"handleClick()"</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">Me</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>
+<span class="nx">$scope</span><span class="p">.</span><span class="nx">handleClick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'clicked!'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see the Angular code is less complex.</p>
+
+<ul>
+  <li>Popularity</li>
+  <li>Testability<br />
+Angular was designed with testing in mind. So you can test any components of your application very easy through both <a href="https://docs.angularjs.org/guide/unit-testing">unit testing</a> and <a href="https://docs.angularjs.org/guide/e2e-testing">end to end</a> testing. For unit testing you can use a component called <a href="https://docs.angularjs.org/api/ngMock">ngMock</a> and for e2e testing you can use <a href="https://github.com/angular/protractor">Protractor</a>. It is worthwhile to mention that for both cases you can run your tests using a tool called Karma.</li>
+</ul>
+
+<h3 id="angularjs-gotchas">AngularJS gotchas</h3>
+<p>Although Angular is a great framework but it has some problems that you can run into trouble with it. Here are some of them:</p>
+
+<ul>
+  <li>SEO<br />
+For dealing with this issue we can use server side rendering or use a <a href="https://prerender.io/">prerenderer</a>,</li>
+  <li>Performance<br />
+One thing that causes performance problem in Angular is having too many bindings. If performance is important you can consider using a differnate rendering engine.</li>
+  <li>Extranal Events and Digest Cycle</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.</p>
+
+     </article>
+     <hr>
+    
+     <article>
         <h1><a class="post-link title" href="/Asynchronous-Execution-in-JavaScript">Asynchronous Execution in JavaScript</a></h1>
 
         <div class="post-meta">
@@ -199,8 +265,8 @@ Here you see the worker:</p>
             <i class="fa fa-tags"></i> JavaScript C#
           </span>
         </div>
-        <h3 id="classes">Classes</h3>
-<p>In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
+        <p>###Classes
+In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
 <span class="p">{</span>
@@ -254,8 +320,8 @@ Here you see the worker:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
 
-<h3 id="getters-and-setters">Getters and Setters</h3>
-<p>In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
+<p>###Getters and Setters
+In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// ES6 get and set</span>
 <span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
@@ -286,8 +352,8 @@ Here you see the worker:</p>
 <span class="nx">omid</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s2">"Kamangar"</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">omid</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'OMID, KAMANGAR'</span></code></pre></figure>
 
-<h3 id="inheritance">Inheritance</h3>
-<p>ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
+<p>###Inheritance
+ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Employee</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
   <span class="c1">// more features</span>
@@ -377,8 +443,8 @@ Although object initializers can be used for anonymous types. So here’s the sa
 <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">country</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span></code></pre></figure>
 
-<h3 id="malleability">Malleability</h3>
-<p>As you probably know, One of the key features of JavaScript is that the language is <a href="http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html">loosely typed</a> it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# <code class="highlighter-rouge">ExpandoObject</code> gives you this behavior.</p>
+<p>###Malleability
+As you probably know, One of the key features of JavaScript is that the language is <a href="http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html">loosely typed</a> it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# <code class="highlighter-rouge">ExpandoObject</code> gives you this behavior.</p>
 
 <blockquote>
   <p>ExpandoObject Represents an object whose members can be dynamically added and removed at run time.</p>
