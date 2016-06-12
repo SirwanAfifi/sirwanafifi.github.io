@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why AngularJS? 
+title: Why AngularJS?
 tags: Angular.js JavaScript
 ---
 
@@ -8,10 +8,10 @@ tags: Angular.js JavaScript
 I wanted to share a few thoughts about AngularJS
 
 ### Introduction
-AngularJS is a MV* framework for writing manageable, clean, full-featured applications in the browser with JavaScript , It's also incredibly easy to learn for those who already have HTML and JavaScript experience. Angular's goal was to create a way for designers to be able to do HTML design using components. One thing that I like about Angular is that, it's an opinionated MV* framework, It means that it tells you what are the certain ways of doing things, Some poeple might argue that it's somehow a limitation for a framework such as Angular becuase it solves fewer problems, but I think at least it assures to not having spaghetti code.
+AngularJS is a MV* framework for writing manageable, clean, full-featured applications in the browser with JavaScript , It's also incredibly easy to learn for those who already have HTML and JavaScript experience. Angular's goal was to create a way for designers to be able to do HTML design using components. One thing that I like about Angular is that, it's an opinionated MV* framework, It means that it tells you what are the certain ways of doing things, Some people might argue that it's somehow a limitation for a framework such as Angular because it solves fewer problems, but I think at least it assures to not having spaghetti code.
 
 ### How I got into AngularJS
-I have been sitting on the fence for far too long to chose a great JavaScript framework. Finally a couple of years ago I decided to use AngularJS and it caught my attention. It actually made me cursious to learn more about it. I started to use AngularJS for some parts of my application. At the time Angular team were working on the next version of the framework So I stopped using it becuase I heard that the next version is a different framework. Now I have come to conclusion that it's better to stick with Angular 1.x, then I can switch to Angular 2 in a right time.
+I have been sitting on the fence for far too long to chose a great JavaScript framework. Finally a couple of years ago I decided to use AngularJS and it caught my attention. It actually made me cursious to learn more about it. I started to use AngularJS for some parts of my application. At the time Angular team were working on the next version of the framework So I stopped using it because I heard that the next version is a different framework. Now I have come to conclusion that it's better to stick with Angular 1.x, then I can switch to Angular 2 in a right time.
 
 ### AngularJS Benefites
 Angular has lots of great features from testability and two-way binding, to more vague concepts. For me the best thing about Angular is that it has a flat learning curve So you can get the most of it. All being said here are the some of my favorite features and benefits of Angular:
@@ -20,7 +20,7 @@ Angular has lots of great features from testability and two-way binding, to more
 - Two Way Binding
 - Beautiful syntax and higher level APIs
 
-For example take a look this peice of code written in raw JavaScript:
+For example take a look this piece of code written in raw JavaScript:
 
 {% highlight js %}
 document.getElementById('btn')
@@ -51,8 +51,8 @@ Although Angular is a great framework but it has some problems that you can run 
 - SEO  
   For dealing with this issue we can use server side rendering or use a [prerenderer](https://prerender.io/),
 - Performance  
-  One thing that causes performance problem in Angular is having too many bindings. If performance is important you can consider using a differnate rendering engine.
-- Extranal Events and Digest Cycle
+  One thing that causes performance problem in Angular is having too many bindings. If performance is important you can consider using a different rendering engine.
+- External Events and Digest Cycle
 
 ### Conclusion
 Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.
