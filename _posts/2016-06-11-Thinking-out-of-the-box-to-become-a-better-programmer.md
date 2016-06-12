@@ -15,5 +15,5 @@ On the other hand, thinking isn't the only thing for being an expert in programm
 
 This is very helpful because when you ran into a problem you should first think about it in a new or a different prespective, For example you can put yourself in end user's place and try to figure it out. Once you understand it, you can start coding the feature. By doing so you can help yourself and believe me it works like a charm and you don't need to post off-topic questions every single day on Stackoverflow anymore, Instead when you run into a serious problem, you can post your question and get extra votes :) 
 
-So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new way.
+So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new ways.
 
