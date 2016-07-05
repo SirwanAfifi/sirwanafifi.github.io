@@ -62,7 +62,7 @@
 Since I’m a C# developer, I’m trying to use my existing knowledge in C# to learn JavaScript.<br />
 As you know in C# we have something called <a href="https://msdn.microsoft.com/en-us/library/bb384062.aspx">Object and collection initializer</a>. For example we can use object initializer to create name and value pairs for different properties of the object, in this case <code class="highlighter-rouge">car</code> object:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
 <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
@@ -76,7 +76,7 @@ As you know in C# we have something called <a href="https://msdn.microsoft.com/e
 <p>As you can see we used object initializer for those embedded objects too.
 Although object initializers can be used for anonymous types. So here’s the same example which we build with anonymous object:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
     <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
@@ -131,7 +131,7 @@ As you probably know, One of the key features of JavaScript is that the language
 
 <p>For example in this code we are creating a new object and marking it as dynamic so that we can add members to this <code class="highlighter-rouge">ExpandoObject</code> as we want:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
 <span class="n">car</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">;</span>
 <span class="n">car</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">;</span></code></pre></figure>
 
@@ -184,6 +184,15 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <h3>
+          <a href="/Delegates">
+            Delegates in C#
+            <small>02 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/Thinking-out-of-the-box-to-become-a-better-programmer">
             Thinking out of the box to become a better programmer
             <small>11 Jun 2016</small>
@@ -196,15 +205,6 @@ s.setAttribute('data-timestamp', +new Date());
           <a href="/Why-Angular">
             Why AngularJS?
             <small>17 Apr 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/Asynchronous-Execution-in-JavaScript">
-            Asynchronous Execution in JavaScript
-            <small>12 Feb 2016</small>
           </a>
         </h3>
       </li>

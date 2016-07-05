@@ -60,6 +60,105 @@
 
     
      <article>
+        <h1><a class="post-link title" href="/Delegates">Delegates in C#</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            <i class="fa fa-calendar"></i> July 2, 2016 
+            <i class="fa fa-tags"></i> C#
+          </span>
+        </div>
+        <p>Lately I have been studying some topics in C# in order to improve myself. I think <a href="https://msdn.microsoft.com/en-us/library/ms173171.aspx">Delegate</a> is of one those topics that is a little bit difficualt for beginners. So in this post I am going to make it a little bit clear for you.</p>
+
+<h3 id="what-are-delegates">What are Delegates?</h3>
+<p>Delegate was introduced in C# 1, You can think of delegate simply being a placeholder for functions that will be called in some point.
+Assume that you want to declare a variable that references a method. In this case the varibale encapsulates some executable codes, and you can invoke the variable just like an actual method. For doing so we need to create a delegate type.</p>
+
+<h3 id="defining-a-delegate">Defining a Delegate</h3>
+<p>Delegates are created using <code class="highlighter-rouge">delegate</code> keyword along with the function signature:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">delegate</span> <span class="kt">int</span> <span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see we are defining a delegate called <code class="highlighter-rouge">Sum</code> that is compatible with any method with an <code class="highlighter-rouge">int</code> return type with two parameters. Actually we defined a type that we can use to create variables and point those variables to methods that have the same signature and same return type. 
+The type defenition for a delegate describes the method that we want to call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can assign a method to the delegate variable. This assignment creates a delegate instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Sum</span> <span class="n">s</span> <span class="p">=</span> <span class="n">Add</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can invoke the delegate instance in the same way as a method:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">s</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">);</span></code></pre></figure>
+
+<h3 id="delegate-advantages">Delegate advantages</h3>
+
+<ul>
+  <li>Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.</li>
+  <li>Can be used to define callback functions.</li>
+  <li>Can be dynamically switched at runtime.</li>
+</ul>
+
+<h3 id="real-world-example">Real World example</h3>
+<p>Suppose that you want to implement something like a <a href="https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx">Repeater</a> control in your ASP.NET MVC application, If you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Helpers</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">delegate</span> <span class="n">HelperResult</span> <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">input</span><span class="p">);</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">HelperResult</span> <span class="n">Repeater</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">html</span><span class="p">,</span>
+	  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">HelperResult</span><span class="p">(</span><span class="n">writer</span> <span class="p">=&gt;</span>
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+			<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="kt">var</span> <span class="n">func</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">itemTemplate</span> <span class="p">:</span> <span class="n">alternatingitemTemplate</span><span class="p">;</span>
+				<span class="nf">func</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="nf">WriteTo</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span>
+				<span class="n">i</span><span class="p">++;</span>
+			<span class="p">}</span>
+		<span class="p">});</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can use we emulated the <code class="highlighter-rouge">ItemTemplate</code> and <code class="highlighter-rouge">AlternatingItemTemplate</code> using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback. <br />
+The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example can be replaced with <code class="highlighter-rouge">Func</code> delegate:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+<span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span></code></pre></figure>
+
+<p>Now we can use our helper inside any view:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Id<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    @Html.Repeater(Model, @<span class="nt">&lt;tr&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>, 
+	@<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"alert-info"</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>)
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>If you run the application you can see the result:</p>
+
+<p><img src="/public/img/repeater.jpg" width="500" /></p>
+
+<p>You can see the sample code <a href="https://github.com/SirwanAfifi/using_delegates">in the GitHub repository</a>.</p>
+
+
+     </article>
+     <hr>
+    
+     <article>
         <h1><a class="post-link title" href="/Thinking-out-of-the-box-to-become-a-better-programmer">Thinking out of the box to become a better programmer</a></h1>
 
         <div class="post-meta">
@@ -80,7 +179,7 @@
 
 <p>This is very helpful because when you ran into a problem you should first think about it in a new or a different prespective, For example you can put yourself in end user’s place and try to figure it out. Once you understand it, you can start coding the feature. By doing so you can help yourself and believe me it works like a charm and you don’t need to post off-topic questions every single day on Stackoverflow anymore, Instead when you run into a serious problem, you can post your question and get extra votes :)</p>
 
-<p>So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new way.</p>
+<p>So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new ways.</p>
 
 
      </article>
@@ -211,7 +310,7 @@ One thing that causes performance problem in Angular is having too many bindings
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">JsonResult</span> <span class="nf">Date</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="n">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">50000</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">50000</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="nf">Json</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">JsonRequestBehavior</span><span class="p">.</span><span class="n">AllowGet</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
@@ -410,7 +509,7 @@ ES6 also gives us an easy syntax to specify and inheritance for relationship. Wh
 Since I’m a C# developer, I’m trying to use my existing knowledge in C# to learn JavaScript.<br />
 As you know in C# we have something called <a href="https://msdn.microsoft.com/en-us/library/bb384062.aspx">Object and collection initializer</a>. For example we can use object initializer to create name and value pairs for different properties of the object, in this case <code class="highlighter-rouge">car</code> object:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
 <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
@@ -424,7 +523,7 @@ As you know in C# we have something called <a href="https://msdn.microsoft.com/e
 <p>As you can see we used object initializer for those embedded objects too.
 Although object initializers can be used for anonymous types. So here’s the same example which we build with anonymous object:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
     <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
     <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
     <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
@@ -479,7 +578,7 @@ As you probably know, One of the key features of JavaScript is that the language
 
 <p>For example in this code we are creating a new object and marking it as dynamic so that we can add members to this <code class="highlighter-rouge">ExpandoObject</code> as we want:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
 <span class="n">car</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">;</span>
 <span class="n">car</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">;</span></code></pre></figure>
 
