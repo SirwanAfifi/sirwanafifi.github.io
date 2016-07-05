@@ -3,11 +3,10 @@ layout: post
 title: Delegates in C#
 tags: C# ASP.NET MVC
 ---
-Lately I have been studying some topics in C# in order to improve myself. I think [Delegate](https://msdn.microsoft.com/en-us/library/ms173171.aspx) is of one those topics that is a little bit difficult for beginners. So in this post I am going to make it a little bit clear for you.
+Lately I have been studying some topics in C# in order to improve myself. I think [Delegate](https://msdn.microsoft.com/en-us/library/ms173171.aspx) is one of those topics which is kinda difficult for beginners to initiate with. So, in order to make it clear how it works, I'm going to make some explanations in this post.
 
 ### What are Delegates?
-Delegate was introduced in C# 1, You can think of delegate simply being a placeholder for functions that will be called at some point in time.
-Assume that you want to declare a variable that references a method. In this case the varibale encapsulates some executable code, and you can invoke the variable just like an actual method. For doing so we need to create a delegate type.  
+Delegate was introduced in C# 1. Think of it as a simply being a placeholder for functions that'll be called at some point in time. Assume you want to declare a variable that is a reference to a specific method. In this case, the variable encapsulates some executable code and you can invoke the variable just like an actual method. In doing so, we need to create a delegate
 
 ### Defining a Delegate
 Delegates are created using `delegate` keyword along with the function signature:
