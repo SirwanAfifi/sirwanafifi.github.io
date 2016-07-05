@@ -1,13 +1,13 @@
 ---
 layout: post
 title: Delegates in C#
-tags: C#
+tags: C# ASP.NET MVC
 ---
-Lately I have been studying some topics in C# in order to improve myself. I think [Delegate](https://msdn.microsoft.com/en-us/library/ms173171.aspx) is of one those topics that is a little bit difficualt for beginners. So in this post I am going to make it a little bit clear for you.
+Lately I have been studying some topics in C# in order to improve myself. I think [Delegate](https://msdn.microsoft.com/en-us/library/ms173171.aspx) is of one those topics that is a little bit difficult for beginners. So in this post I am going to make it a little bit clear for you.
 
 ### What are Delegates?
-Delegate was introduced in C# 1, You can think of delegate simply being a placeholder for functions that will be called in some point.
-Assume that you want to declare a variable that references a method. In this case the varibale encapsulates some executable codes, and you can invoke the variable just like an actual method. For doing so we need to create a delegate type.  
+Delegate was introduced in C# 1, You can think of delegate simply being a placeholder for functions that will be called at some point in time.
+Assume that you want to declare a variable that references a method. In this case the varibale encapsulates some executable code, and you can invoke the variable just like an actual method. For doing so we need to create a delegate type.  
 
 ### Defining a Delegate
 Delegates are created using `delegate` keyword along with the function signature:
@@ -28,14 +28,14 @@ Now we can invoke the delegate instance in the same way as a method:
 int result = s(5, 6);
 {% endhighlight %}
 
-### Delegate advantages
+### Advantages of Delegate
 
 - Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.
 - Can be used to define callback functions.
 - Can be dynamically switched at runtime.  
 
 ### Real World example
-Suppose that you want to implement something like a [Repeater](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx) control in your ASP.NET MVC application, If you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup. 
+Suppose that you want to implement something like a [Repeater](https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx) control in your ASP.NET MVC application, As you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup. 
 {% highlight csharp %}
 public static class Helpers
 {
@@ -59,7 +59,7 @@ public static class Helpers
 	}
 }
 {% endhighlight %}
-As you can use we emulated the `ItemTemplate` and `AlternatingItemTemplate` using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback.   
+As you can see we emulated the `ItemTemplate` and `AlternatingItemTemplate` using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback.   
 The `ItemTemplate` delegate in our example can be replaced with `Func` delegate:  
 {% highlight csharp %}
 Func<T, HelperResult> itemTemplate,
@@ -88,7 +88,7 @@ If you run the application you can see the result:
 <img src="/public/img/repeater.jpg" width="500">  
 
 
-You can see the sample code [in the GitHub repository](https://github.com/SirwanAfifi/using_delegates).
+You can check out the [GitHub repository](https://github.com/SirwanAfifi/using_delegates) for this post.
 
 
 
