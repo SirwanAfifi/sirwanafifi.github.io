@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    Explicit Interface Implementation &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <header class="masthead">
+      <div class="masthead-inner">
+      <div class="profilepic">
+        <a href="http://sirwan.info"><img src="/public/avatar.png" alt="Profile Picture"></a>
+      </div>
+        <h2>Sirwan Afifi</h2>
+        <p class="lead">Stories from a web developer.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="#">archives</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+          <p>&copy; 2015. Sirwan Afifi All rights reserved.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Explicit Interface Implementation</h1>
+  <span class="post-date">12 Aug 2016</span>
+  <p>Let’s imagine that you have a class with two methods:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now when we want to create an instance of this class and call one of those methods, it executes as expected:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false
+</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"Buy"</span></code></pre></figure>
+
+<p>Now suppose that we have an interface called <code class="highlighter-rouge">IVendingMachine</code> that has two methods:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">interface</span> <span class="n">IVendingMachine</span> 
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nf">Buy</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>We want our class to implements this interface:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Our class satisfied the interface because it has the methods with the same names. So Visual Studio doesn’t give you a compiler error. Now let’s imagine that we
+also want to add interface’s methods to this class, So, in this case, we must explicitly prefix the methods with <code class="highlighter-rouge">IVendingMachine.</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">300</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">string</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"IVendingMachine Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Note that Visual Studio can help you to implement interface explicitly by pressing <code class="highlighter-rouge">Ctrl + .</code> on the name of the interface and select <code class="highlighter-rouge">Implement interface explicitly</code>:</p>
+
+<p><img src="/public/img/explicit_interface_implementation.jpg" width="800" />
+Now, what happens when we call the <code class="highlighter-rouge">InsertCoin</code> and <code class="highlighter-rouge">Buy</code> methods? In this case, we should consider two different situations when we create the object:</p>
+
+<ul>
+  <li>Concrete Type</li>
+  <li>Interface Variable</li>
+</ul>
+
+<p>If we want the methods of <code class="highlighter-rouge">VendingMachine</code> we should create the object with concrete type:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false
+</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"Buy"</span></code></pre></figure>
+
+<p>If we want the methods of <code class="highlighter-rouge">IVendingMachine</code> we should create the object with interface variable:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IVendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// true
+</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"IVendingMachine Buy"</span></code></pre></figure>
+
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/Delegates">
+            Delegates in C#
+            <small>02 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Thinking-out-of-the-box-to-become-a-better-programmer">
+            Thinking out of the box to become a better programmer
+            <small>11 Jun 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Why-Angular">
+            Why AngularJS?
+            <small>17 Apr 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
