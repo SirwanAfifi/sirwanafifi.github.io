@@ -60,6 +60,97 @@
 
     
      <article>
+        <h1><a class="post-link title" href="/Designing-Fluent-Interfaces-in-C">Designining Fluent Interfaces in C#</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            <i class="fa fa-calendar"></i> October 26, 2016 
+            <i class="fa fa-tags"></i> C#, Design Patterns
+          </span>
+        </div>
+        <p>The concept of <a href="martinfowler.com/bliki/FluentInterface.html">Fluent Interface</a> was coined by Martin Fowler to create various objects and wire them up together. This pattern is often used for object configuration and setup. For example in ASP.NET Core applications we have following code for configuring the server:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">aspnetcoreapp</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebHostBuilder</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+                <span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+            <span class="n">host</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see we can chain methods together easily and the intention is to produce an API that is readable and flows. This pattern is heavily used in programming, Here’s an example of using this approach in jQuery:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#result'</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'yellow'</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'This is the result'</span><span class="p">);</span></code></pre></figure>
+
+<p>For C#, there is LINQ:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">person</span> <span class="p">=</span> <span class="n">PersonDataSource</span>
+	<span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Age</span> <span class="p">&gt;</span> <span class="m">20</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span>
+		<span class="n">Name</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+		<span class="n">LastName</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">LastName</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>You might ask how to implement this pattern, well, it is very simple you just need to return <code class="highlighter-rouge">this</code> during method call. The <code class="highlighter-rouge">Calculator</code> defined below contains three methods. These methods are returing <code class="highlighter-rouge">Calculator</code> object using <code class="highlighter-rouge">this</code> keyword, which allow to chain the methods:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Calculator</span> 
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">Initial</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+	<span class="k">public</span> <span class="nf">ChainableCalculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">intial</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">+</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">/</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">-</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now we can use the class this way:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Calculator</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Divide</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Substract</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">calc</span><span class="p">.</span><span class="n">Initial</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see this approach makes our code concise and more easier to read.</p>
+
+     </article>
+     <hr>
+    
+     <article>
         <h1><a class="post-link title" href="/Explicit-Interface-Implementation">Explicit Interface Implementation</a></h1>
 
         <div class="post-meta">
