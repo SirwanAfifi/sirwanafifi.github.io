@@ -48,24 +48,24 @@ You might ask how to implement this pattern, well, it is very simple you just ne
 public class Calculator 
 {
 	public int Initial { get; private set; }
-	public ChainableCalculator(int intial)
+	public Calculator(int intial)
 	{
 		Initial = intial;
 	}
 
-	public ChainableCalculator Add(int x)
+	public Calculator Add(int x)
 	{
 		Initial = Initial + x;
 		return this;
 	}
 
-	public ChainableCalculator Divide(int x)
+	public Calculator Divide(int x)
 	{
 		Initial = Initial / x;
 		return this;
 	}
 
-	public ChainableCalculator Substract(int x)
+	public Calculator Substract(int x)
 	{
 		Initial = Initial - x;
 		return this;
