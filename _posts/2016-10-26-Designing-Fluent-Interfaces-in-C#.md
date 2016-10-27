@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Designining Fluent Interfaces in C#
+title: Designing Fluent Interfaces in C#
 tags: C#, Design Patterns
 ---
 
