@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
-    Designining Fluent Interfaces in C# &middot; 
+    Designing Fluent Interfaces in C# &middot; 
     
   </title>
 
@@ -56,7 +56,7 @@
 
     <div class="content container">
       <div class="post">
-  <h1>Designining Fluent Interfaces in C#</h1>
+  <h1>Designing Fluent Interfaces in C#</h1>
   <span class="post-date">26 Oct 2016</span>
   <p>The concept of <a href="martinfowler.com/bliki/FluentInterface.html">Fluent Interface</a> was coined by Martin Fowler to create various objects and wire them up together. This pattern is often used for object configuration and setup. For example in ASP.NET Core applications we have following code for configuring the server:</p>
 
@@ -102,24 +102,24 @@
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Calculator</span> 
 <span class="p">{</span>
 	<span class="k">public</span> <span class="kt">int</span> <span class="n">Initial</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-	<span class="k">public</span> <span class="nf">ChainableCalculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
+	<span class="k">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">intial</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">+</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">/</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">-</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
@@ -164,6 +164,15 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <h3>
+          <a href="/Getting-to-know-Singletone-Pattern">
+            Getting to know Singleton pattern in C#
+            <small>08 Nov 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/Explicit-Interface-Implementation">
             Explicit Interface Implementation
             <small>12 Aug 2016</small>
@@ -176,15 +185,6 @@ s.setAttribute('data-timestamp', +new Date());
           <a href="/Delegates">
             Delegates in C#
             <small>02 Jul 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/Thinking-out-of-the-box-to-become-a-better-programmer">
-            Thinking out of the box to become a better programmer
-            <small>11 Jun 2016</small>
           </a>
         </h3>
       </li>

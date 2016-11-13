@@ -60,7 +60,102 @@
 
     
      <article>
-        <h1><a class="post-link title" href="/Designing-Fluent-Interfaces-in-C">Designining Fluent Interfaces in C#</a></h1>
+        <h1><a class="post-link title" href="/Getting-to-know-Singletone-Pattern">Getting to know Singleton pattern in C#</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            <i class="fa fa-calendar"></i> November 8, 2016 
+            <i class="fa fa-tags"></i> C#, Design Patterns
+          </span>
+        </div>
+        <p>This pattern helps us to ensure a class has only one instance. The term comes from the <a href="https://en.wikipedia.org/wiki/Singleton_(mathematics)">mathematical concept of a singleton</a>:</p>
+
+<blockquote>
+  <p>In mathematics, a singleton, also known as a unit set,[1] is a set with exactly one element. For example, the set {0} is a singleton.</p>
+</blockquote>
+
+<p>Eventually we must have a class that only gives us a single instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sigleInstance</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span></code></pre></figure>
+
+<p>As you can see the only way to access the instance is by calling a public static method called <code class="highlighter-rouge">GetInstance()</code>, the single object instance under consideration is created only for the first time it is requested. suppose the following class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now I want to make this class singleton, So the first step is to ensure that no one can instantiate our class for doing so we must make the constrauctor <code class="highlighter-rouge">private</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now whenever you want to create a new instance of <code class="highlighter-rouge">MySingletonClass</code> using <code class="highlighter-rouge">new</code> keyword, Visual Studio gives you this error:</p>
+
+<p><img src="/public/img/singleton_error.jpg" width="500" /></p>
+
+<p>But we can still instantiate it from within the class. So next step is to create a new variable of type <code class="highlighter-rouge">MySingletonClass</code> inside the class, this class is going to be the only instance of the class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="n">_instance</span><span class="p">;</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So we are getting close to implementing the pattern. Now we need a way to get access the single instance. So we need a method like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">_instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This method instantiates <code class="highlighter-rouge">MySingletonClass</code> if an instance doesn’t already exist, otherwise it return the existing instance. To demonstrate the object lifetime we can print value of <code class="highlighter-rouge">GetHashCode()</code> fo these objects:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">mySingleInstance</span>   <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_2</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_3</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_4</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj1: {mySingleInstance.GetHashCode()}"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj2: {mySingleInstance_2.GetHashCode()} "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj3: {mySingleInstance_3.GetHashCode()} "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj4: {mySingleInstance_4.GetHashCode()} "</span><span class="p">);</span></code></pre></figure>
+
+<p><img src="/public/img/singleton_GetHashCode.jpg" />
+As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;</span> <span class="n">_instance</span> <span class="p">=</span> 
+		<span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">());</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="n">_instance</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span> </code></pre></figure>
+
+
+     </article>
+     <hr>
+    
+     <article>
+        <h1><a class="post-link title" href="/Designing-Fluent-Interfaces-in-C">Designing Fluent Interfaces in C#</a></h1>
 
         <div class="post-meta">
           <span class="date">
@@ -112,24 +207,24 @@
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Calculator</span> 
 <span class="p">{</span>
 	<span class="k">public</span> <span class="kt">int</span> <span class="n">Initial</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-	<span class="k">public</span> <span class="nf">ChainableCalculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
+	<span class="k">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">intial</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">+</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">/</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
 	<span class="p">}</span>
 
-	<span class="k">public</span> <span class="n">ChainableCalculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
 	<span class="p">{</span>
 		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">-</span> <span class="n">x</span><span class="p">;</span>
 		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>

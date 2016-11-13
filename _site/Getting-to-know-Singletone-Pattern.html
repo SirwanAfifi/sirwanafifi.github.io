@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    Getting to know Singleton pattern in C# &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <header class="masthead">
+      <div class="masthead-inner">
+      <div class="profilepic">
+        <a href="http://sirwan.info"><img src="/public/avatar.png" alt="Profile Picture"></a>
+      </div>
+        <h2>Sirwan Afifi</h2>
+        <p class="lead">Stories from a web developer.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="#">archives</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+          <p>&copy; 2015. Sirwan Afifi All rights reserved.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Getting to know Singleton pattern in C#</h1>
+  <span class="post-date">08 Nov 2016</span>
+  <p>This pattern helps us to ensure a class has only one instance. The term comes from the <a href="https://en.wikipedia.org/wiki/Singleton_(mathematics)">mathematical concept of a singleton</a>:</p>
+
+<blockquote>
+  <p>In mathematics, a singleton, also known as a unit set,[1] is a set with exactly one element. For example, the set {0} is a singleton.</p>
+</blockquote>
+
+<p>Eventually we must have a class that only gives us a single instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sigleInstance</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span></code></pre></figure>
+
+<p>As you can see the only way to access the instance is by calling a public static method called <code class="highlighter-rouge">GetInstance()</code>, the single object instance under consideration is created only for the first time it is requested. suppose the following class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now I want to make this class singleton, So the first step is to ensure that no one can instantiate our class for doing so we must make the constrauctor <code class="highlighter-rouge">private</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now whenever you want to create a new instance of <code class="highlighter-rouge">MySingletonClass</code> using <code class="highlighter-rouge">new</code> keyword, Visual Studio gives you this error:</p>
+
+<p><img src="/public/img/singleton_error.jpg" width="500" /></p>
+
+<p>But we can still instantiate it from within the class. So next step is to create a new variable of type <code class="highlighter-rouge">MySingletonClass</code> inside the class, this class is going to be the only instance of the class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="n">_instance</span><span class="p">;</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So we are getting close to implementing the pattern. Now we need a way to get access the single instance. So we need a method like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">_instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This method instantiates <code class="highlighter-rouge">MySingletonClass</code> if an instance doesn’t already exist, otherwise it return the existing instance. To demonstrate the object lifetime we can print value of <code class="highlighter-rouge">GetHashCode()</code> fo these objects:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">mySingleInstance</span>   <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_2</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_3</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_4</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj1: {mySingleInstance.GetHashCode()}"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj2: {mySingleInstance_2.GetHashCode()} "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj3: {mySingleInstance_3.GetHashCode()} "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj4: {mySingleInstance_4.GetHashCode()} "</span><span class="p">);</span></code></pre></figure>
+
+<p><img src="/public/img/singleton_GetHashCode.jpg" />
+As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;</span> <span class="n">_instance</span> <span class="p">=</span> 
+		<span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">());</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="n">_instance</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span> </code></pre></figure>
+
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/Designing-Fluent-Interfaces-in-C">
+            Designing Fluent Interfaces in C#
+            <small>26 Oct 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Explicit-Interface-Implementation">
+            Explicit Interface Implementation
+            <small>12 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Delegates">
+            Delegates in C#
+            <small>02 Jul 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
