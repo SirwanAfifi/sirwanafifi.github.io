@@ -71,7 +71,7 @@ Console.WriteLine($"obj4: {mySingleInstance_4.GetHashCode()} ");
 {% endhighlight %}
 
 <img src="/public/img/singleton_GetHashCode.jpg">
-As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it's not [thread-safe](http://csharpindepth.com/Articles/General/Singleton.aspx). One of the solution is by using .NET 4's `Lazy<T>` type:
+As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it's not [thread-safe](http://csharpindepth.com/Articles/General/Singleton.aspx); it means that if seperate threads of execution access the `_instance` at the same time, more that one instance of the `MySingletonClass` object may be created. One of the solution is by using .NET 4's `Lazy<T>` type:
 {% highlight csharp %}
 public class MySingletonClass
 {

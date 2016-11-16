@@ -82,4 +82,4 @@ var calc = new Calculator(5)
 System.Console.WriteLine(calc.Initial);
 {% endhighlight %}
 
-As you can see this approach makes our code concise and more easier to read.
+As you can see this approach makes our code concise and easier to read.
