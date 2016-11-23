@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    Environments in ASP.NET Core &middot; 
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+  <body class="theme-base-0d">
+
+    <header class="masthead">
+      <div class="masthead-inner">
+      <div class="profilepic">
+        <a href="http://sirwan.info"><img src="/public/avatar.png" alt="Profile Picture"></a>
+      </div>
+        <h2>Sirwan Afifi</h2>
+        <p class="lead">Stories from a web developer.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            <li>
+              <a href="/about">about</a>
+            </li>
+            <li>
+              <a href="#">archives</a>
+            </li>
+            <li>
+              <a href="#">contact</a>
+            </li>
+          </ul>
+          <p>&copy; 2015. Sirwan Afifi All rights reserved.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="post">
+  <h1>Environments in ASP.NET Core</h1>
+  <span class="post-date">23 Nov 2016</span>
+  <p>In ASP.NET Core we can have different hosting environments, this is supported by an environment variable called <code class="highlighter-rouge">ASPNETCORE_ENVIRONMENT</code>. You can see this value is already set to <code class="highlighter-rouge">Development</code>:</p>
+
+<p><img src="/public/img/environment.jpg" width="600" /></p>
+
+<p>This value is active as long as you run your application inside Visual Studio, So when you deploy your application you must change this value. Actually, this value comes from a file called <code class="highlighter-rouge">launchSettings.json</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">{</span>
+  <span class="s">"iisSettings"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"windowsAuthentication"</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+    <span class="s">"anonymousAuthentication"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+    <span class="s">"iisExpress"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"applicationUrl"</span><span class="p">:</span> <span class="s">"http://localhost:13880/"</span><span class="p">,</span>
+      <span class="s">"sslPort"</span><span class="p">:</span> <span class="m">0</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s">"profiles"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"IIS Express"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"commandName"</span><span class="p">:</span> <span class="s">"IISExpress"</span><span class="p">,</span>
+      <span class="s">"launchBrowser"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+      <span class="s">"environmentVariables"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"ASPNETCORE_ENVIRONMENT"</span><span class="p">:</span> <span class="s">"Development"</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">"ProjectName"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"commandName"</span><span class="p">:</span> <span class="s">"Project"</span><span class="p">,</span>
+      <span class="s">"launchBrowser"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
+      <span class="s">"launchUrl"</span><span class="p">:</span> <span class="s">"http://localhost:5000"</span><span class="p">,</span>
+      <span class="s">"environmentVariables"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">"ASPNETCORE_ENVIRONMENT"</span><span class="p">:</span> <span class="s">"Development"</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You can determine what the environment is by using <code class="highlighter-rouge">IHostingEnvironment</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> 
+	<span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">loggerFactory</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="n">app</span><span class="p">.</span><span class="nf">UseExceptionHandler</span><span class="p">(</span><span class="k">new</span> <span class="n">ExceptionHandlerOptions</span>
+		<span class="p">{</span>
+			<span class="n">ExceptionHandler</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">WriteAsync</span><span class="p">(</span><span class="s">"Opps!"</span><span class="p">)</span>
+		<span class="p">});</span>
+	<span class="p">}</span>
+
+	<span class="c1">// other configurations
+</span><span class="p">}</span></code></pre></figure>
+
+<p>This object also has a method called <code class="highlighter-rouge">IsEnvironment</code> for using custom environment:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsEnvironment</span><span class="p">(</span><span class="s">"envName"</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">// some config
+</span><span class="p">}</span></code></pre></figure>
+
+<p>One interesting thing is that the Startup class itself supports different environments, it means that for each environment you can have both <code class="highlighter-rouge">Configure</code> and <code class="highlighter-rouge">ConfigureServices</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureDevelopment</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesDevelopment</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureStaging</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesStaging</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureProduction</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
+<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesProduction</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span></code></pre></figure>
+
+<p>Now you might ask how we can set this environment variable, well there are several ways that you can use, this great <a href="http://andrewlock.net/how-to-set-the-hosting-environment-in-asp-net-core/">post</a> explains them in details.</p>
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/Getting-to-know-Singletone-Pattern">
+            Getting to know Singleton pattern in C#
+            <small>08 Nov 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Designing-Fluent-Interfaces-in-C">
+            Designing Fluent Interfaces in C#
+            <small>26 Oct 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/Explicit-Interface-Implementation">
+            Explicit Interface Implementation
+            <small>12 Aug 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

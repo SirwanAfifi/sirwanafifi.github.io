@@ -125,7 +125,7 @@
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj4: {mySingleInstance_4.GetHashCode()} "</span><span class="p">);</span></code></pre></figure>
 
 <p><img src="/public/img/singleton_GetHashCode.jpg" />
-As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
+As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>; it means that if seperate threads of execution access the <code class="highlighter-rouge">_instance</code> at the same time, more that one instance of the <code class="highlighter-rouge">MySingletonClass</code> object may be created. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
 <span class="p">{</span>
@@ -168,6 +168,15 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <h3>
+          <a href="/Environments-in-ASP.NET-Core">
+            Environments in ASP.NET Core
+            <small>23 Nov 2016</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/Designing-Fluent-Interfaces-in-C">
             Designing Fluent Interfaces in C#
             <small>26 Oct 2016</small>
@@ -180,15 +189,6 @@ s.setAttribute('data-timestamp', +new Date());
           <a href="/Explicit-Interface-Implementation">
             Explicit Interface Implementation
             <small>12 Aug 2016</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/Delegates">
-            Delegates in C#
-            <small>02 Jul 2016</small>
           </a>
         </h3>
       </li>
