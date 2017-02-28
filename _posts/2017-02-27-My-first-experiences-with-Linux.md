@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux
+title: My first experiences with Linux
 tags: Linux, Windows
 ---
 Running Window 98 on my PC was my first experience with Windows. in fact, for the last 11 years or so, Windows has been the dominant operating system that I've been using. So, up until now, I have been an avid fan of Windows.  
