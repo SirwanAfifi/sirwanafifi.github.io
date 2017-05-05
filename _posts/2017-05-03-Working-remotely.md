@@ -16,7 +16,7 @@ At first, I couldn't deal with an accurate estimation, after a while I figured o
 ### Documentation
 A key point to have a good documentation is that, it needs to be updated after the requirement is changed. In our case, there are too many changes in requirements, this makes new team members confused. In my opinion, there must be a section called changelog in the documentation so that it will be really easy to know what was the previous changes at first place. you might say it's better to use `git log` but I think sometimes you don't need to go through several file changes in git history in order to understand a small change. Another good thing for new members is having mockups. I have been always a big fan of this type development, because as you know a picture worth a thousand words.
 
-Working in different time zones
+### Working in different time zones
 In my point of view working in different time zones makes remote working a little bit difficult, suppose you are given a task, now you have some questions and no one is online, so in this case, you have to leave your messages on Slack or Jira in order to get your questions answered. this is really big deal for small teams.
 
 ### Collaboration
