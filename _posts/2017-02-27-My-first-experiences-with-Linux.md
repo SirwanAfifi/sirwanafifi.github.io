@@ -14,7 +14,7 @@ Windows just works fine for the most part. But, as a developer, I have always fe
 Two weeks ago, I decided to give Linux a try, So I chose Ubuntu because it's user-friendly and its community is huge. Actually, my goal was to do some experiments with new version of .NET called .NET Core. The experience was great. First, I created a very simple console application on Windows and deployed it as a [SCD (Self-Contained Deployment)](https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/deploying/#self-contained-deployments-scd):
 
 
-<img src="/public/img/publish.jpg">
+<img width="800" src="/public/img/publish.jpg">
 
 
 Then, I copied the publish folder on my USB stick and finally, I could run my .NET Core application without installing the .NET runtime on the target machine: 

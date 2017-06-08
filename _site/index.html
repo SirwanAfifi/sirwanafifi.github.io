@@ -32,7 +32,7 @@
     <header class="masthead">
       <div class="masthead-inner">
       <div class="profilepic">
-        <a href="http://sirwan.info"><img src="/public/avatar.png" alt="Profile Picture"></a>
+        <a href="http://localhost:4000"><img src="/public/avatar.png" alt="Profile Picture"></a>
       </div>
         <h2>Sirwan Afifi</h2>
         <p class="lead">Stories from a web developer.</p>
@@ -60,7 +60,89 @@
 
     
      <article>
-        <h1><a class="post-link title" href="/agile">Working remotely</a></h1>
+        <h1><a class="post-link title" href="/SQL-Server-on-Linux-in-Docker-on-a-Mac">SQL Server on Linux in Docker on a Mac</a></h1>
+
+        <div class="post-meta">
+          <span class="date">
+            <i class="fa fa-calendar"></i> June 4, 2017 
+            <i class="fa fa-tags"></i> Docker, ASP.NET Core
+          </span>
+        </div>
+        <p>Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on <a href="http://sirwan.info/My-first-experiences-with-Linux">different platforms</a> while working with these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS from now on.</p>
+
+<p>Fortunately working with projects is not a pain in the neck anymore, with help of <a href="https://www.docker.com/what-docker">Docker</a> you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.</p>
+
+<p>The first challenge I faced when using macOS was connecting and using SQL Server. Thanks to Docker and SQL Server for Linux. It’s an instance of SQL Server as a docker container and it’s super-fast so that it runs in seconds.</p>
+
+<center><img src="/public/img/docker.png" /></center>
+
+<hr />
+
+<h2 id="installing-docker-for-mac">Installing Docker for Mac</h2>
+<p>In order to get Docker to work you will need to install Docker for Mac, you can follow <a href="https://docs.docker.com/docker-for-mac">these steps</a> to install it. Once Docker installation is done, it will automatically be started:
+<br /></p>
+<center><img width="400" src="/public/img/docker-running.png" /></center>
+
+<p>You can also run <code class="highlighter-rouge">docker --version</code> to verify that Docker is working as expected.</p>
+
+<hr />
+
+<h2 id="pulling-and-running-docker-image">Pulling and running Docker image</h2>
+<p>Next, you can install and run SQL <a href="https://hub.docker.com/r/microsoft/mssql-server-linux">Server on Linux docker image</a> using following command:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">docker run -e <span class="s1">'ACCEPT_EULA=Y'</span> -e <span class="s1">'SA_PASSWORD=Passowrd’ -p 1433:1433 -d microsoft/mssql-server-linux</span></code></pre></figure>
+
+<p>This command will install and run the SQL Server image. Now SQL Server is running locally in Docker container:</p>
+<center><img width="800" src="/public/img/sql-server-is-running.png" /></center>
+<p>You can use its connection string in your ASP.NET Core application:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MvcMovieContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptionsBuilder</span> <span class="n">optionsBuilder</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">optionsBuilder</span><span class="p">.</span><span class="nf">UseSqlServer</span><span class="p">(</span><span class="s">@"Data Source=localhost;Initial Catalog=MovieDB;User ID=sa;Password=StrongPassword"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Movie</span><span class="p">&gt;</span> <span class="n">Movies</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now if we run migration, the <code class="highlighter-rouge">MovieDB</code> database will be created in the running docker container:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">dotnet ef database update</code></pre></figure>
+
+<h2 id="connecting-and-quering-the-databse">Connecting and quering the databse</h2>
+<p>There are several ways to connect and query a database running in Docker container, one way is using a command line tool called <code class="highlighter-rouge">sqlcmd</code>:</p>
+<center><img width="800" src="/public/img/sqlcmd.png" /></center>
+
+<p>Personally I use <code class="highlighter-rouge">mssql</code> extension for Visual Studio Code. becuase it’s really easy to use so you don’t have to write your queries in command line mode. If you have not already installed this extension, all you need to do is press <code class="highlighter-rouge">⌘ + P</code> and type <code class="highlighter-rouge">ext install mssql</code> then press enter to install it.</p>
+
+<p>In order to connect and query your database you need to first write your SQL queries into a <code class="highlighter-rouge">SQL</code> file in VS Code then press <code class="highlighter-rouge">⌘ + Shift + P</code> then choose <code class="highlighter-rouge">Create Connection Profile</code>, follow the prompts to specify the connection properties for the new connection profile. At the end you should have following settings:</p>
+
+<figure class="highlight"><pre><code class="language-jsonnet" data-lang="jsonnet"><span class="p">{</span>
+    <span class="s">"mssql.connections"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"authenticationType"</span><span class="p">:</span> <span class="s">"SqlLogin"</span><span class="p">,</span>
+            <span class="s">"server"</span><span class="p">:</span> <span class="s">"localhost"</span><span class="p">,</span>
+            <span class="s">"database"</span><span class="p">:</span> <span class="s">"MovieDB"</span><span class="p">,</span>
+            <span class="s">"user"</span><span class="p">:</span> <span class="s">"SA"</span><span class="p">,</span>
+            <span class="s">"password"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+            <span class="s">"savePassword"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s">"profileName"</span><span class="p">:</span> <span class="s">"MovieDB"</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see <code class="highlighter-rouge">mssql.connections</code> takes an array, it means that you can define as many connection profiles as you want. Once you defined your profile, you can use it to execute your queries then the result will be shown as a seperate window:</p>
+<center><img width="800" src="/public/img/query_result_mssql.png" /></center>
+
+<p>As you can see working with SQL Server on macOS is really straightforward. Something like this was not possible in .NET before but nowadays but nowadays you can develope .NET applications on OS of your choice. that’s why I’m more excited about .NET than ever.</p>
+
+
+     </article>
+     <hr>
+    
+     <article>
+        <h1><a class="post-link title" href="/Working-remotely">Working remotely</a></h1>
 
         <div class="post-meta">
           <span class="date">
@@ -72,37 +154,23 @@
 
 <p>For some, this might not seem a big deal. But for me, it’s a pretty big one. So I thought it would be great to share my experiences so far.</p>
 
-<h3 id="new-technology-new-tools">New technology. new tools</h3>
-<p>For this project we are using .NET core and ASP.NET MVC core on top of it. The main benifit of using cutting edge techologies is that you always have keep updated yourself, you might argue working with new and shinny things is overwhelming because the product is not mature enough to work with. But I beilve that’s also another great benefit becuase when you encounter a bug you easily open an GitHub issue and report it. So I think it’s best of both world.</p>
+<h3 id="new-technology-new-tools">New technology, new tools</h3>
+<p>For this project we are using .NET core and ASP.NET MVC core on top of it. The main benefit of using cutting edge technologies is that you always keep yourself updated, but you might argue that working with new and shiny things is overwhelming because the product is not mature enough to work with. But I believe that’s also another great benefit because when you encounter a bug you easily open a GitHub issue and report it. So I think it’s best of both worlds.</p>
 
 <h3 id="estimation">Estimation</h3>
-<p>At first, I couldn’t deal with an accurate estimation, after some time I figured out the problem was the task itself, not me, if a task is a big one then estimation most likely will be accurate, so the solution to have an accurate estimation is to break the task into smaller ones.</p>
+<p>At first, I couldn’t deal with an accurate estimation, after a while I figured out that the problem was the task itself, not me, if a task is a big one then estimation most likely will be accurate, so the solution of having an accurate estimation is to break the task into smaller ones.</p>
 
 <h3 id="documentation">Documentation</h3>
-<p>A key point to have a good documentation is that, it needs to be updated after the requirement is changed, In our case there are too many changes in requirements, this makes new team members confused. In my opinion, there must be a section called changelog in the documentation so that it will be really easy to know what was the previous changes at first place. you might say it’s better to use <code class="highlighter-rouge">git log</code> but I think sometimes you don’t need to go through several file changes in git history in order to understand a small change. Another good thing for new members is having mockups, I have been always a big fan of this type development, because as you know a picture worth a thousand words.</p>
+<p>A key point to have a good documentation is that, it needs to be updated after the requirement is changed. In our case, there are too many changes in requirements, this makes new team members confused. In my opinion, there must be a section called changelog in the documentation so that it will be really easy to know what was the previous changes at first place. you might say it’s better to use <code class="highlighter-rouge">git log</code> but I think sometimes you don’t need to go through several file changes in git history in order to understand a small change. Another good thing for new members is having mockups. I have been always a big fan of this type development, because as you know a picture worth a thousand words.</p>
 
 <h3 id="working-in-different-time-zones">Working in different time zones</h3>
-<p>In my point of view working in different time zones makes remote working a little bit difficult, suppose you are given a task, now you have some questions and no one is online, so in this case, you have to leave your messages on Slack or Jira in order to get your questions answered. this is really big deal for small teams.</p>
+<p>From my point of view working in different time zones makes remote working a little bit difficult, suppose you are given a task, now you have some questions and no one is online, so in this case, you have to leave your messages on Slack or Jira in order to get your questions answered. this is really big deal for small teams.</p>
 
 <h3 id="collaboration">Collaboration</h3>
-<p>Another key point in agile development is collaboration. Working in a team is not just about delivering your product as soon as possible in some sprints. the best part of an agile team is having daily/weekly standup with other members. By other members I mean Mobile developers, Backend developers, Database developers,… I think the standup shouldn’t be held separately. As a web developer, I need to know what’s going on in other parts of the application, because I think it gives developers a really good big picture.</p>
+<p>Another key point in agile development is collaboration. Working in a team is not just about delivering your product as soon as possible in some sprints. the best part of an agile team is having daily/weekly standup with other members. By other members I mean Mobile developers, Backend developers, Database developers, … I think the standup shouldn’t be held separately. As a web developer, I need to know what’s going on in other parts of the application, because I think it gives developers a really good big picture.</p>
 
 <h3 id="conclusion">Conclusion</h3>
-<p>All in all, it has been a great journey for me so far. because working remotely not only improves your technical ability but benefits from a cultural perspective.</p>
-
-     </article>
-     <hr>
-    
-     <article>
-        <h1><a class="post-link title" href="/Arguments-vs-Rest-parameters">arguments parameter vs rest parameters</a></h1>
-
-        <div class="post-meta">
-          <span class="date">
-            <i class="fa fa-calendar"></i> March 21, 2017 
-            <i class="fa fa-tags"></i> JavaScript
-          </span>
-        </div>
-        <p>JavaScript has something called arguments</p>
+<p>All in all, it has been a great journey for me so far. because working remotely not only improves your technical ability but gives you a cultural perspective.</p>
 
      </article>
      <hr>
@@ -126,7 +194,7 @@
 
 <p>Two weeks ago, I decided to give Linux a try, So I chose Ubuntu because it’s user-friendly and its community is huge. Actually, my goal was to do some experiments with new version of .NET called .NET Core. The experience was great. First, I created a very simple console application on Windows and deployed it as a <a href="https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/deploying/#self-contained-deployments-scd">SCD (Self-Contained Deployment)</a>:</p>
 
-<p><img src="/public/img/publish.jpg" /></p>
+<p><img width="800" src="/public/img/publish.jpg" /></p>
 
 <p>Then, I copied the publish folder on my USB stick and finally, I could run my .NET Core application without installing the .NET runtime on the target machine:</p>
 
