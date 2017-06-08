@@ -3,11 +3,11 @@ layout: post
 title: SQL Server on Linux in Docker on a Mac
 tags: Docker, ASP.NET Core
 ---
-Over the last few months, I have been working on a couple of ASP.NET Core projects, it's been great experience so far becuase I can easily work on [different platforms](http://sirwan.info/My-first-experiences-with-Linux) while working with these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS from now on.
+Over the last few months, I have been working on a couple of ASP.NET Core projects, it's been great experience so far becuase I can easily work on [different platforms](http://sirwan.info/My-first-experiences-with-Linux) while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.
 
 Fortunately working with projects is not a pain in the neck anymore, with help of [Docker](https://www.docker.com/what-docker) you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.  
 
-The first challenge I faced when using macOS was connecting and using SQL Server. Thanks to Docker and SQL Server for Linux. It's an instance of SQL Server as a docker container and it's super-fast so that it runs in seconds.
+The first challenge I faced when using macOS was connecting to and using SQL Server. Thanks to Docker and SQL Server for Linux. It's an instance of SQL Server as a docker container and it's super-fast so that it runs in seconds.
 
 <center><img src="/public/img/docker.png"></center>
 
@@ -52,7 +52,7 @@ There are several ways to connect and query a database running in Docker contain
 
 Personally I use `mssql` extension for Visual Studio Code. becuase it's really easy to use so you don't have to write your queries in command line mode. If you have not already installed this extension, all you need to do is press `⌘ + P` and type `ext install mssql` then press enter to install it.
 
-In order to connect and query your database you need to first write your SQL queries into a `SQL` file in VS Code then press `⌘ + Shift + P` then choose `Create Connection Profile`, follow the prompts to specify the connection properties for the new connection profile. At the end you should have following settings:
+In order to connect and query your database first, you need to write your SQL queries into a `SQL` file in VS Code then press `⌘ + Shift + P` then choose `Create Connection Profile`, follow the prompts to specify the connection properties for the new connection profile. At the end you should have following settings:
 {% highlight jsonnet %}
 {
     "mssql.connections": [
@@ -71,5 +71,5 @@ In order to connect and query your database you need to first write your SQL que
 As you can see `mssql.connections` takes an array, it means that you can define as many connection profiles as you want. Once you defined your profile, you can use it to execute your queries then the result will be shown as a seperate window:
 <center><img width="800" src="/public/img/query_result_mssql.png"></center>
 
-As you can see working with SQL Server on macOS is really straightforward. Something like this was not possible in .NET before but nowadays but nowadays you can develope .NET applications on OS of your choice. that's why I’m more excited about .NET than ever.
+As you can see working with SQL Server on macOS is really straightforward. Something like this was not possible in .NET before but nowadays you can develope .NET applications on OS of your choice. that's why I’m more excited about .NET more than ever.
 
