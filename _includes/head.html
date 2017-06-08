@@ -11,7 +11,7 @@
   <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
   <meta content="{{ site.url }}/about/" property="article:author"> {% endif %} {% if page.image %}
   <meta content="http://sirwan.info/public/img/{{ page.image }}" property="og:image"> {% else %}
-  <meta content="http://sirwan.info/public/touch-icon-144-precomposed.png" property="og:image"> {% endif %} {% if page.categories %} {% for category in page.categories limit:1 %}
+  <meta content="http://sirwan.info/public/avatar.png" property="og:image"> {% endif %} {% if page.categories %} {% for category in page.categories limit:1 %}
   <meta content="{{ category }}" property="article:section"> {% endfor %} {% endif %} {% if page.tags %} {% for tag in page.tags %}
   <meta content="{{ tag }}" property="article:tag"> {% endfor %} {% endif %}
   <link rel="canonical" href="http://sirwan.info{{ page.url | replace:'index.html','' }}" />
