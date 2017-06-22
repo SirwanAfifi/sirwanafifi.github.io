@@ -3,15 +3,17 @@
   <channel>
     <title>Sirwan Afifi</title>
     <description>Stories from a web developer.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 08 Jun 2017 17:57:58 +0430</pubDate>
-    <lastBuildDate>Thu, 08 Jun 2017 17:57:58 +0430</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <link>http://sirwan.info/</link>
+    <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 22 Jun 2017 11:22:25 +0430</pubDate>
+    <lastBuildDate>Thu, 22 Jun 2017 11:22:25 +0430</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>SQL Server on Linux in Docker on a Mac</title>
-        <description>&lt;p&gt;Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on &lt;a href=&quot;http://sirwan.info/My-first-experiences-with-Linux&quot;&gt;different platforms&lt;/a&gt; while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.&lt;/p&gt;
+        <description>&lt;h1&gt;http://sirwan.info/public/img/&lt;/h1&gt;
+
+&lt;p&gt;Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on &lt;a href=&quot;http://sirwan.info/My-first-experiences-with-Linux&quot;&gt;different platforms&lt;/a&gt; while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.&lt;/p&gt;
 
 &lt;p&gt;Fortunately working with projects is not a pain in the neck anymore, with help of &lt;a href=&quot;https://www.docker.com/what-docker&quot;&gt;Docker&lt;/a&gt; you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.&lt;/p&gt;
 
@@ -33,7 +35,7 @@
 &lt;h2 id=&quot;pulling-and-running-docker-image&quot;&gt;Pulling and running Docker image&lt;/h2&gt;
 &lt;p&gt;Next, you can install and run SQL &lt;a href=&quot;https://hub.docker.com/r/microsoft/mssql-server-linux&quot;&gt;Server on Linux docker image&lt;/a&gt; using following command:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker run -e &lt;span class=&quot;s1&quot;&gt;'ACCEPT_EULA=Y'&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;'SA_PASSWORD=Passowrd’ -p 1433:1433 -d microsoft/mssql-server-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker run -e &lt;span class=&quot;s1&quot;&gt;&#39;ACCEPT_EULA=Y&#39;&lt;/span&gt; -e &lt;span class=&quot;s1&quot;&gt;&#39;SA_PASSWORD=Passowrd’ -p 1433:1433 -d microsoft/mssql-server-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;This command will install and run the SQL Server image. Now SQL Server is running locally in Docker container:&lt;/p&gt;
 &lt;center&gt;&lt;img width=&quot;800&quot; src=&quot;/public/img/sql-server-is-running.png&quot; /&gt;&lt;/center&gt;
@@ -82,8 +84,8 @@
 
 </description>
         <pubDate>Sun, 04 Jun 2017 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/SQL-Server-on-Linux-in-Docker-on-a-Mac</link>
-        <guid isPermaLink="true">http://localhost:4000/SQL-Server-on-Linux-in-Docker-on-a-Mac</guid>
+        <link>http://sirwan.info/SQL-Server-on-Linux-in-Docker-on-a-Mac</link>
+        <guid isPermaLink="true">http://sirwan.info/SQL-Server-on-Linux-in-Docker-on-a-Mac</guid>
         
         <category>Docker,</category>
         
@@ -121,8 +123,8 @@
 &lt;p&gt;All in all, it has been a great journey for me so far. because working remotely not only improves your technical ability but gives you a cultural perspective.&lt;/p&gt;
 </description>
         <pubDate>Wed, 03 May 2017 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/Working-remotely</link>
-        <guid isPermaLink="true">http://localhost:4000/Working-remotely</guid>
+        <link>http://sirwan.info/Working-remotely</link>
+        <guid isPermaLink="true">http://sirwan.info/Working-remotely</guid>
         
         <category>Agile,</category>
         
@@ -165,7 +167,7 @@
 
 &lt;p&gt;Now you want to replace all occurrence of &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;UseSqlite&quot;: false,&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;UseSqlite&quot;: true,&lt;/code&gt; you can do that simply by typing this command:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UseSqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,/&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UseSqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-csharp&quot; data-lang=&quot;csharp&quot;&gt;&lt;span class=&quot;n&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;json&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UseSqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,/&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UseSqlite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;&lt;img src=&quot;/public/img/sed_command.png&quot; /&gt;&lt;/p&gt;
 
@@ -190,8 +192,8 @@
 &lt;p&gt;Happy Coding :))&lt;/p&gt;
 </description>
         <pubDate>Mon, 27 Feb 2017 00:00:00 +0330</pubDate>
-        <link>http://localhost:4000/My-first-experiences-with-Linux</link>
-        <guid isPermaLink="true">http://localhost:4000/My-first-experiences-with-Linux</guid>
+        <link>http://sirwan.info/My-first-experiences-with-Linux</link>
+        <guid isPermaLink="true">http://sirwan.info/My-first-experiences-with-Linux</guid>
         
         <category>Linux,</category>
         
@@ -281,8 +283,8 @@
 &lt;p&gt;Now you might ask how we can set this environment variable, well there are several ways that you can use, this great &lt;a href=&quot;http://andrewlock.net/how-to-set-the-hosting-environment-in-asp-net-core/&quot;&gt;post&lt;/a&gt; explains them in details.&lt;/p&gt;
 </description>
         <pubDate>Wed, 23 Nov 2016 00:00:00 +0330</pubDate>
-        <link>http://localhost:4000/Environments-in-ASP.NET-Core</link>
-        <guid isPermaLink="true">http://localhost:4000/Environments-in-ASP.NET-Core</guid>
+        <link>http://sirwan.info/Environments-in-ASP.NET-Core</link>
+        <guid isPermaLink="true">http://sirwan.info/Environments-in-ASP.NET-Core</guid>
         
         <category>ASP.NET</category>
         
@@ -379,8 +381,8 @@ As you can see all of the objects are the same and share the same instance. The 
 
 </description>
         <pubDate>Tue, 08 Nov 2016 00:00:00 +0330</pubDate>
-        <link>http://localhost:4000/Getting-to-know-Singletone-Pattern</link>
-        <guid isPermaLink="true">http://localhost:4000/Getting-to-know-Singletone-Pattern</guid>
+        <link>http://sirwan.info/Getting-to-know-Singletone-Pattern</link>
+        <guid isPermaLink="true">http://sirwan.info/Getting-to-know-Singletone-Pattern</guid>
         
         <category>C#,</category>
         
@@ -418,11 +420,11 @@ As you can see all of the objects are the same and share the same instance. The 
 
 &lt;p&gt;As you can see we can chain methods together easily and the intention is to produce an API that is readable and flows. This pattern is heavily used in programming, Here’s an example of using this approach in jQuery:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'#result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'background'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'yellow'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;#result&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;background&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;yellow&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'This is the result'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+	&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;This is the result&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;For C#, there is LINQ:&lt;/p&gt;
 
@@ -475,8 +477,8 @@ As you can see all of the objects are the same and share the same instance. The 
 &lt;p&gt;As you can see this approach makes our code concise and easier to read.&lt;/p&gt;
 </description>
         <pubDate>Wed, 26 Oct 2016 00:00:00 +0330</pubDate>
-        <link>http://localhost:4000/Designing-Fluent-Interfaces-in-C</link>
-        <guid isPermaLink="true">http://localhost:4000/Designing-Fluent-Interfaces-in-C</guid>
+        <link>http://sirwan.info/Designing-Fluent-Interfaces-in-C</link>
+        <guid isPermaLink="true">http://sirwan.info/Designing-Fluent-Interfaces-in-C</guid>
         
         <category>C#,</category>
         
@@ -601,8 +603,8 @@ Now, what happens when we call the &lt;code class=&quot;highlighter-rouge&quot;&
 
 </description>
         <pubDate>Fri, 12 Aug 2016 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/Explicit-Interface-Implementation</link>
-        <guid isPermaLink="true">http://localhost:4000/Explicit-Interface-Implementation</guid>
+        <link>http://sirwan.info/Explicit-Interface-Implementation</link>
+        <guid isPermaLink="true">http://sirwan.info/Explicit-Interface-Implementation</guid>
         
         <category>C#</category>
         
@@ -700,8 +702,8 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemTemplate&lt;/code&gt; de
 
 </description>
         <pubDate>Sat, 02 Jul 2016 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/Delegates</link>
-        <guid isPermaLink="true">http://localhost:4000/Delegates</guid>
+        <link>http://sirwan.info/Delegates</link>
+        <guid isPermaLink="true">http://sirwan.info/Delegates</guid>
         
         <category>C#</category>
         
@@ -732,8 +734,8 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemTemplate&lt;/code&gt; de
 
 </description>
         <pubDate>Sat, 11 Jun 2016 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/Thinking-out-of-the-box-to-become-a-better-programmer</link>
-        <guid isPermaLink="true">http://localhost:4000/Thinking-out-of-the-box-to-become-a-better-programmer</guid>
+        <link>http://sirwan.info/Thinking-out-of-the-box-to-become-a-better-programmer</link>
+        <guid isPermaLink="true">http://sirwan.info/Thinking-out-of-the-box-to-become-a-better-programmer</guid>
         
         <category>Uncategorised</category>
         
@@ -763,9 +765,9 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemTemplate&lt;/code&gt; de
 
 &lt;p&gt;For example take a look this piece of code written in raw JavaScript:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'clicked!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;btn&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;click&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;clicked!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Whereas with Angular you can simple achieve same goal this way:&lt;/p&gt;
@@ -773,7 +775,7 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemTemplate&lt;/code&gt; de
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;handleClick()&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Click&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Me&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/button&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
 &lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handleClick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'clicked!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;clicked!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;As you can see the Angular code is less complex.&lt;/p&gt;
@@ -799,8 +801,8 @@ One thing that causes performance problem in Angular is having too many bindings
 &lt;p&gt;Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.&lt;/p&gt;
 </description>
         <pubDate>Sun, 17 Apr 2016 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/Why-Angular</link>
-        <guid isPermaLink="true">http://localhost:4000/Why-Angular</guid>
+        <link>http://sirwan.info/Why-Angular</link>
+        <guid isPermaLink="true">http://sirwan.info/Why-Angular</guid>
         
         <category>Angular.js</category>
         

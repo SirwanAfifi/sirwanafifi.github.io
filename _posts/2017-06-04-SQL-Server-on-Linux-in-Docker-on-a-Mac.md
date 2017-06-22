@@ -3,6 +3,9 @@ layout: post
 title: SQL Server on Linux in Docker on a Mac
 tags: Docker, ASP.NET Core
 ---
+
+<h1>{{site.url}}/public/img/{{ page.image }}</h1>
+
 Over the last few months, I have been working on a couple of ASP.NET Core projects, it's been great experience so far becuase I can easily work on [different platforms](http://sirwan.info/My-first-experiences-with-Linux) while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.
 
 Fortunately working with projects is not a pain in the neck anymore, with help of [Docker](https://www.docker.com/what-docker) you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.  
