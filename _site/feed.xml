@@ -5,15 +5,13 @@
     <description>Stories from a web developer.</description>
     <link>http://sirwan.info/</link>
     <atom:link href="http://sirwan.info/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Jun 2017 11:22:25 +0430</pubDate>
-    <lastBuildDate>Thu, 22 Jun 2017 11:22:25 +0430</lastBuildDate>
+    <pubDate>Thu, 22 Jun 2017 11:23:18 +0430</pubDate>
+    <lastBuildDate>Thu, 22 Jun 2017 11:23:18 +0430</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>SQL Server on Linux in Docker on a Mac</title>
-        <description>&lt;h1&gt;http://sirwan.info/public/img/&lt;/h1&gt;
-
-&lt;p&gt;Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on &lt;a href=&quot;http://sirwan.info/My-first-experiences-with-Linux&quot;&gt;different platforms&lt;/a&gt; while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.&lt;/p&gt;
+        <description>&lt;p&gt;Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on &lt;a href=&quot;http://sirwan.info/My-first-experiences-with-Linux&quot;&gt;different platforms&lt;/a&gt; while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.&lt;/p&gt;
 
 &lt;p&gt;Fortunately working with projects is not a pain in the neck anymore, with help of &lt;a href=&quot;https://www.docker.com/what-docker&quot;&gt;Docker&lt;/a&gt; you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.&lt;/p&gt;
 
