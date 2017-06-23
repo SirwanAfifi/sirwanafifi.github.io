@@ -14,6 +14,8 @@ paginate: 3
 paginate_path: "page/:num"
 category_dir: categories
 
+highlighter: rouge
+
 #Default settings
 defaults:
   -
