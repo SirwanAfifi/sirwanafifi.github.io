@@ -1,13 +1,18 @@
 # Site settings
+author: Sirwan Afifi
 title: Sirwan Afifi
 email: sir1afifi@gmail.com
 description: Stories from a web developer.
 url: "http://sirwan.info" # the base hostname & protocol for your site
 twitter_username: SirwanAfifi
+excerpt_separator: ""   # Workaround for http://blog.slaks.net/2013-08-09/jekyll-tag-was-never-closed/
 
 # Build settings
 markdown: kramdown
-permalink: /:title
+permalink: /archive/:year/:month/:day/:title/
+paginate: 3
+paginate_path: "page/:num"
+category_dir: categories
 
 #Default settings
 defaults:
@@ -29,8 +34,10 @@ defaults:
       
 gems:
   - jekyll-seo-tag
+  - jekyll-paginate
 
-
+feed:
+  path: atom.xml
 
 
 

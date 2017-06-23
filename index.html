@@ -1,41 +1,36 @@
 ---
 layout: default
+title: Home
 ---
 
-<div class="home">
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
 
+    <span class="post-date">{{ post.date | date_to_string }}</span>
 
-    {% for post in site.posts %}
-     <article>
-        <h1><a class="post-link title" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h1>
-
-        <div class="post-meta">
-          <span class="date">
-            <i class="fa fa-calendar"></i> {{ post.date | date: "%B %-d, %Y" }} 
-            <i class="fa fa-tags"></i> {{ post.tags | join: ' ' }}
-          </span>
-        </div>
-        {{ post.content }}
-     </article>
-     <hr>
-    {% endfor %}
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+    {{ post.content }}
+  </div>
+  {% endfor %}
 </div>
-<!-- Pagination links -->
+
+{% if paginator.total_pages > 1 %}
 <div class="pagination">
-  {% if paginator.next_page %}
-    <a href="/page{{paginator.next_page}}" class="older">Older</a>
-  {% else %}
-    <span class="next">Older</span>
-  {% endif %}
   {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a href="/" class="newer">Newer</a>
-    {% else %}
-      <a href="/page{{paginator.previous_page}}" class="newer">Newer</a>
-    {% endif %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
   {% else %}
-    <span class="previous">Newer</span>
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
   {% endif %}
 </div>
+{% endif %}

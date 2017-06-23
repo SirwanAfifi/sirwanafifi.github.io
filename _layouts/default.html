@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body class="theme-base-0d">
+<body class="theme-base-0c">
 
-    <header class="masthead">
-      <div class="masthead-inner">
+  <header class="masthead">
+    <div class="masthead-inner">
       <div class="profilepic">
         <a href="{{ site.url }}"><img src="/public/avatar.png" alt="Profile Picture"></a>
       </div>
-        <h2>{{ site.title }}</h2>
-        <p class="lead">{{ site.description }}</p>
+      <h2>{{ site.title }}</h2>
+      <p class="lead">{{ site.description }}</p>
 
-        <div class="colophon">
-          <ul class="colophon-links">
-            <li>
-              <a href="/about">about</a>
-            </li>
-            <li>
-              <a href="#">archives</a>
-            </li>
-            <li>
-              <a href="#">contact</a>
-            </li>
-          </ul>
-          <p>&copy; 2015. {{ site.title }} All rights reserved.</p>
-        </div>
+      <div class="colophon">
+        <ul class="colophon-links">
+          <li>
+            <a href="/about">about</a>
+          </li>
+          <li>
+            <a href="/archive">archives</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+        </ul>
+        <p>&copy; 2015. {{ site.title }} All rights reserved.</p>
       </div>
-    </header>
-
-    <div class="content container">
-      {{ content }}
     </div>
+  </header>
 
-  </body>
+  <div class="content container">
+    {{ content }}
+  </div>
+  <footer id="footer" class="inner">{% include footer.html %}</footer>
+</body>
+
 </html>

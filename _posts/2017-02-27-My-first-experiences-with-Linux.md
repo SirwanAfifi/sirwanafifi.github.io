@@ -55,7 +55,7 @@ dotnet run
 {% endhighlight %}
 You can also use the editor of your choice for developing .NET Core application, personally I prefer to use [Visual Studio Code](http://code.visualstudio.com/) or VSCode for short. because it has all great features you need:
 
-<img src="/public/img/vscode.png">
+<img src="/public/img/vscode.png" width="800">
 
 
 VSCode is great, But I think using an IDE like Visual Studio gives you the power you need when are developing applications, Unfortunately, there's no official version of Visual Studio for Linux at this time. I hope Microsoft release it for Linux users The only reason that I can't abandon Windows is the lack of Visual Studio So I have to keep using Windows on my main machine.
