@@ -73,6 +73,96 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/archive/2016/10/26/Designing-Fluent-Interfaces-in-C/">
+        Designing Fluent Interfaces in C#
+      </a>
+    </h1>
+
+    <span class="post-date">26 Oct 2016</span>
+
+    <p>The concept of <a href="martinfowler.com/bliki/FluentInterface.html">Fluent Interface</a> was coined by Martin Fowler to create various objects and wire them up together. This pattern is often used for object configuration and setup. For example in ASP.NET Core applications we have following code for configuring the server:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">aspnetcoreapp</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebHostBuilder</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+                <span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+            <span class="n">host</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see we can chain methods together easily and the intention is to produce an API that is readable and flows. This pattern is heavily used in programming, Here’s an example of using this approach in jQuery:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#result'</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'yellow'</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'This is the result'</span><span class="p">);</span></code></pre></figure>
+
+<p>For C#, there is LINQ:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">person</span> <span class="p">=</span> <span class="n">PersonDataSource</span>
+	<span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Age</span> <span class="p">&gt;</span> <span class="m">20</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
+	<span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span>
+		<span class="n">Name</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+		<span class="n">LastName</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">LastName</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>You might ask how to implement this pattern, well, it is very simple you just need to return <code class="highlighter-rouge">this</code> during method call. The <code class="highlighter-rouge">Calculator</code> defined below contains three methods. These methods are returing <code class="highlighter-rouge">Calculator</code> object using <code class="highlighter-rouge">this</code> keyword, which allow to chain the methods:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Calculator</span> 
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">Initial</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+	<span class="k">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">intial</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">+</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">/</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">-</span> <span class="n">x</span><span class="p">;</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now we can use the class this way:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Calculator</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Divide</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">Substract</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+
+<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">calc</span><span class="p">.</span><span class="n">Initial</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see this approach makes our code concise and easier to read.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/archive/2016/08/12/Explicit-Interface-Implementation/">
         Explicit Interface Implementation
       </a>
@@ -284,32 +374,6 @@ The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example 
 <p><img src="/public/img/repeater.jpg" width="500" /></p>
 
 <p>You can check out the <a href="https://github.com/SirwanAfifi/using_delegates">GitHub repository</a> for this post.</p>
-
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2016/06/11/Thinking-out-of-the-box-to-become-a-better-programmer/">
-        Thinking out of the box to become a better programmer
-      </a>
-    </h1>
-
-    <span class="post-date">11 Jun 2016</span>
-
-    <p><img src="/public/img/Thinking_Man.jpg" width="350" />
-<em>Image courtesy of <a href="http://goo.gl/iu68gq">http://goo.gl/iu68gq</a></em></p>
-
-<p>Today I was talking with a friend of mine about thinking, The topic is interesting and I wanted to share it with you because as a programmer we are always thinking and trying to find solutions. Actually it’s a good habit when you want to learn something new, instead of taking action and delve into the details, you should think about that and break it down into several pieces then construct it as a big picture. Once you get familiar to it you can start trying to figure out each individual piece, By doing so you will become great in your field.</p>
-
-<p><img src="/public/img/think-outside-the-box.jpg" width="500" />
-<em>Image courtesy of <a href="http://goo.gl/Xi2Cn4">http://goo.gl/Xi2Cn4</a></em></p>
-
-<p>On the other hand, thinking isn’t the only thing for being an expert in programming. Suppose that you are given a challenging feature to implement in a team you’re working with, you might spend days and days trying to implement this feature and each time you fail and stuck in it then you try to find a solution on the net or asking questions on Stackoverflow. I’m not saying you shouldn’t google about your problem, What I’m saying is that you should understand the problem, This is where a Thinking out of the box’s metaphor comes into play.</p>
-
-<p>This is very helpful because when you ran into a problem you should first think about it in a new or a different prespective, For example you can put yourself in end user’s place and try to figure it out. Once you understand it, you can start coding the feature. By doing so you can help yourself and believe me it works like a charm and you don’t need to post off-topic questions every single day on Stackoverflow anymore, Instead when you run into a serious problem, you can post your question and get extra votes :)</p>
-
-<p>So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new ways.</p>
 
 
   </div>

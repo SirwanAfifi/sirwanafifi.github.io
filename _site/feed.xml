@@ -5,9 +5,48 @@
     <description>Stories from a web developer.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Jun 2017 21:24:46 +0430</pubDate>
-    <lastBuildDate>Fri, 23 Jun 2017 21:24:46 +0430</lastBuildDate>
+    <pubDate>Fri, 06 Oct 2017 14:01:30 +0330</pubDate>
+    <lastBuildDate>Fri, 06 Oct 2017 14:01:30 +0330</lastBuildDate>
     <generator>Jekyll v3.4.3</generator>
+    
+      <item>
+        <title>Running PowerShell on macOS</title>
+        <description>&lt;p&gt;It’s been a while I have been using macOS as my primary operating system, you can read about my expreince &lt;a href=&quot;http://sirwan.info/archive/2017/06/04/SQL-Server-on-Linux-in-Docker-on-a-Mac/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Today I wanted to run a PowerShell script, I searched around and figured out Microsoft has made PowerShell &lt;a href=&quot;https://github.com/PowerShell/PowerShell&quot;&gt;open source&lt;/a&gt; and good news is that, PowerShell is now cross platform! this means that you can also run PowerShell scripts on Linux, macOS.&lt;/p&gt;
+
+&lt;p&gt;Actually to get PowerShell to work all you need to do is installing it using Homebrew:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew cask install powershell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Before preceding, make sure you have already installed &lt;a href=&quot;https://caskroom.github.io/&quot;&gt;Homebrew-Cask&lt;/a&gt; on your machine.&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Homebrew-Cask extends Homebrew and brings its elegance, simplicity, and speed to macOS applications and large binaries alike.
+It only takes 1 line in your shell to reach 3759 Casks maintained by 4856 contributors.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;center&gt;&lt;img width=&quot;900&quot; src=&quot;/public/img/powershell_installation_on_mac.png&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;That’s it, now &lt;code class=&quot;highlighter-rouge&quot;&gt;PowerShell&lt;/code&gt; is installed, so you can use it in your terminal:&lt;/p&gt;
+&lt;center&gt;&lt;img width=&quot;900&quot; src=&quot;/public/img/powershell_foreach.png&quot; /&gt;&lt;/center&gt;
+
+&lt;p&gt;There’s also a great &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell&quot;&gt;VSCode extension&lt;/a&gt; to write, debug PowerShell scripts:&lt;/p&gt;
+&lt;center&gt;&lt;img width=&quot;900&quot; src=&quot;/public/img/powershell_debugging_on_vscode.png&quot; /&gt;&lt;/center&gt;
+</description>
+        <pubDate>Tue, 06 Jun 2017 00:00:00 +0430</pubDate>
+        <link>http://localhost:4000/archive/2017/06/06/Powershell-on-macOS/</link>
+        <guid isPermaLink="true">http://localhost:4000/archive/2017/06/06/Powershell-on-macOS/</guid>
+        
+        <category>Linux,</category>
+        
+        <category>Windows,</category>
+        
+        <category>PowerShell</category>
+        
+        
+        <category>programming</category>
+        
+      </item>
     
       <item>
         <title>SQL Server on Linux in Docker on a Mac</title>
@@ -736,75 +775,6 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;ItemTemplate&lt;/code&gt; de
         <guid isPermaLink="true">http://localhost:4000/archive/2016/06/11/Thinking-out-of-the-box-to-become-a-better-programmer/</guid>
         
         <category>Uncategorised</category>
-        
-        
-        <category>programming</category>
-        
-      </item>
-    
-      <item>
-        <title>Why AngularJS?</title>
-        <description>&lt;p&gt;I wanted to share a few thoughts about AngularJS&lt;/p&gt;
-
-&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;AngularJS is a MV* framework for writing manageable, clean, full-featured applications in the browser with JavaScript , It’s also incredibly easy to learn for those who already have HTML and JavaScript experience. Angular’s goal was to create a way for designers to be able to do HTML design using components. One thing that I like about Angular is that, it’s an opinionated MV* framework, It means that it tells you what are the certain ways of doing things, Some people might argue that it’s somehow a limitation for a framework such as Angular because it solves fewer problems, but I think at least it assures to not having spaghetti code.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-i-got-into-angularjs&quot;&gt;How I got into AngularJS&lt;/h3&gt;
-&lt;p&gt;I have been sitting on the fence for far too long to chose a great JavaScript framework. Finally a couple of years ago I decided to use AngularJS and it caught my attention. It actually made me cursious to learn more about it. I started to use AngularJS for some parts of my application. At the time Angular team were working on the next version of the framework So I stopped using it because I heard that the next version is a different framework. Now I have come to conclusion that it’s better to stick with Angular 1.x, then I can switch to Angular 2 in a right time.&lt;/p&gt;
-
-&lt;h3 id=&quot;angularjs-benefites&quot;&gt;AngularJS Benefites&lt;/h3&gt;
-&lt;p&gt;Angular has lots of great features from testability and two-way binding, to more vague concepts. For me the best thing about Angular is that it has a flat learning curve So you can get the most of it. All being said here are the some of my favorite features and benefits of Angular:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Code Reduction: Angular reduces the amount of code that developers write.&lt;/li&gt;
-  &lt;li&gt;Two Way Binding&lt;/li&gt;
-  &lt;li&gt;Beautiful syntax and higher level APIs&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For example take a look this piece of code written in raw JavaScript:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'btn'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'clicked!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Whereas with Angular you can simple achieve same goal this way:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;btn&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ng&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;handleClick()&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Click&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Me&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/button&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;handleClick&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'clicked!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;As you can see the Angular code is less complex.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Popularity&lt;/li&gt;
-  &lt;li&gt;Testability&lt;br /&gt;
-Angular was designed with testing in mind. So you can test any components of your application easily through both &lt;a href=&quot;https://docs.angularjs.org/guide/unit-testing&quot;&gt;unit testing&lt;/a&gt; and &lt;a href=&quot;https://docs.angularjs.org/guide/e2e-testing&quot;&gt;end to end&lt;/a&gt; testing. For unit testing you can use a component called &lt;a href=&quot;https://docs.angularjs.org/api/ngMock&quot;&gt;ngMock&lt;/a&gt; and for e2e testing you can use &lt;a href=&quot;https://github.com/angular/protractor&quot;&gt;Protractor&lt;/a&gt;. It is worthwhile to mention that for both cases you can run your tests using a tool called Karma.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;angularjs-gotchas&quot;&gt;AngularJS gotchas&lt;/h3&gt;
-&lt;p&gt;Although Angular is a great framework but it has some problems that you can run into trouble with it. Here are some of them:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;SEO&lt;br /&gt;
-For dealing with this issue we can use server side rendering or use a &lt;a href=&quot;https://prerender.io/&quot;&gt;prerenderer&lt;/a&gt;,&lt;/li&gt;
-  &lt;li&gt;Performance&lt;br /&gt;
-One thing that causes performance problem in Angular is having too many bindings. If performance is important you can consider using a different rendering engine.&lt;/li&gt;
-  &lt;li&gt;External Events and Digest Cycle&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
-&lt;p&gt;Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.&lt;/p&gt;
-</description>
-        <pubDate>Sun, 17 Apr 2016 00:00:00 +0430</pubDate>
-        <link>http://localhost:4000/archive/2016/04/17/Why-Angular/</link>
-        <guid isPermaLink="true">http://localhost:4000/archive/2016/04/17/Why-Angular/</guid>
-        
-        <category>Angular.js</category>
-        
-        <category>JavaScript</category>
         
         
         <category>programming</category>

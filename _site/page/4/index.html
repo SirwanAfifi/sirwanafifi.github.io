@@ -73,6 +73,32 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/archive/2016/06/11/Thinking-out-of-the-box-to-become-a-better-programmer/">
+        Thinking out of the box to become a better programmer
+      </a>
+    </h1>
+
+    <span class="post-date">11 Jun 2016</span>
+
+    <p><img src="/public/img/Thinking_Man.jpg" width="350" />
+<em>Image courtesy of <a href="http://goo.gl/iu68gq">http://goo.gl/iu68gq</a></em></p>
+
+<p>Today I was talking with a friend of mine about thinking, The topic is interesting and I wanted to share it with you because as a programmer we are always thinking and trying to find solutions. Actually it’s a good habit when you want to learn something new, instead of taking action and delve into the details, you should think about that and break it down into several pieces then construct it as a big picture. Once you get familiar to it you can start trying to figure out each individual piece, By doing so you will become great in your field.</p>
+
+<p><img src="/public/img/think-outside-the-box.jpg" width="500" />
+<em>Image courtesy of <a href="http://goo.gl/Xi2Cn4">http://goo.gl/Xi2Cn4</a></em></p>
+
+<p>On the other hand, thinking isn’t the only thing for being an expert in programming. Suppose that you are given a challenging feature to implement in a team you’re working with, you might spend days and days trying to implement this feature and each time you fail and stuck in it then you try to find a solution on the net or asking questions on Stackoverflow. I’m not saying you shouldn’t google about your problem, What I’m saying is that you should understand the problem, This is where a Thinking out of the box’s metaphor comes into play.</p>
+
+<p>This is very helpful because when you ran into a problem you should first think about it in a new or a different prespective, For example you can put yourself in end user’s place and try to figure it out. Once you understand it, you can start coding the feature. By doing so you can help yourself and believe me it works like a charm and you don’t need to post off-topic questions every single day on Stackoverflow anymore, Instead when you run into a serious problem, you can post your question and get extra votes :)</p>
+
+<p>So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new ways.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/archive/2016/04/17/Why-Angular/">
         Why AngularJS?
       </a>
@@ -263,119 +289,6 @@ Here you see the worker:</p>
 <p>Inside the fetch content we used typical AJAX call because in Web Workers you can not use a third-party library it means that there’s no access to non-thread safe components, So you have to use a native <code class="highlighter-rouge">XMLHttpRequest</code> in your worker. Now if you run the code you will see that now that’s pretty fast even quite a bit faster than before.</p>
 
 <p>You can see the sample code <a href="https://github.com/SirwanAfifi/asynchronous-execution-in-js">in the GitHub repository</a></p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/">
-        Object Oriented JavaScript Part 2
-      </a>
-    </h1>
-
-    <span class="post-date">11 Dec 2015</span>
-
-    <p>###Classes
-In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
-<span class="p">{</span>
-    <span class="c1">// Field
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">firstName</span><span class="p">;</span>
-	<span class="c1">// Constructor that takes no arguments.
-</span>    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">firstName</span> <span class="p">=</span> <span class="n">firstName</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">lastName</span> <span class="p">=</span> <span class="n">lastName</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="c1">// Method
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Greet</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="err">$</span><span class="s">"Hello, { name }. My name is { this.firstName }"</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>In this case we have a class along with properties, constructor. So a class in C# contains data as well as operation as well as events. It will be useful to create same sort of structure in JavaScript. Prior to ES6 there was no such thing as a class in JavaScript, we could simply do everything with functions, we could create classes by using some of the language semantics to create things that look and feels like classes. But they were not classes in the classical sense. for example we used function to do this:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">){</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="s2">"Hello, "</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">". My name is "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>So what this function does is use the <code class="highlighter-rouge">this</code> keyword to define new property that represents a person object in this case. And what’s interesting here this is what’s called a constructor syntax. So this function when called will return an object. By doing this, we can create a new person:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
-
-<p>In this case, we can see that it is using the <code class="highlighter-rouge">new</code> keyword. this keyword is used to find a function with a name, after the <code class="highlighter-rouge">new</code>, return an object that contained the shape that is defined in the function. Once we have an instance of that, we can get any of the properties that are specified in the constructor syntax function:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span></code></pre></figure>
-
-<p>ES6 introduces language support for classes with <code class="highlighter-rouge">class</code> keyword. So the ES6 equivalent of the <code class="highlighter-rouge">Person</code> function would be the following:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span>	</code></pre></figure>
-
-<p>So we have essentially recreated the same Person data type but with much better syntax. behind the scene the runtime is doing the exactly what we used to do. But now the syntax is clean and expressive. As you can see there is <code class="highlighter-rouge">constructor</code> in the class definition. the constructor is one of the class members that we can list in the body of a class, just like the other members it is a function, it is a function that automatically invoked when we say <code class="highlighter-rouge">new</code> and use the class name as a function call:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
-
-<p>###Getters and Setters
-In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// ES6 get and set</span>
-<span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
-    <span class="p">}</span>
-  
-    <span class="nx">get</span> <span class="nx">fullName</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">result</span>  <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
-    <span class="p">}</span>
-  
-    <span class="nx">set</span> <span class="nx">firstName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
-    <span class="p">}</span>
-   <span class="nx">set</span> <span class="nx">lastName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
-    <span class="p">}</span>
-   <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span>    
-<span class="kd">let</span> <span class="nx">sirwan</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'Sirwan'</span><span class="p">,</span> <span class="s1">'Afifi'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sirwan</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'SIRWAN, AFIFI'</span>
-<span class="kd">let</span> <span class="nx">omid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'Daryoush'</span><span class="p">,</span> <span class="s1">'Zandi'</span><span class="p">);</span>
-<span class="nx">omid</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s2">"Omid"</span><span class="p">;</span>
-<span class="nx">omid</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s2">"Kamangar"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">omid</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'OMID, KAMANGAR'</span></code></pre></figure>
-
-<p>###Inheritance
-ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Employee</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
-  <span class="c1">// more features</span>
-  <span class="nx">getWork</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="p">}</span> <span class="nx">is</span> <span class="nx">working</span><span class="p">.</span><span class="err">`</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">let</span> <span class="nx">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="s1">'Sirwan'</span><span class="p">,</span> <span class="s1">'Afifi'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">emp</span><span class="p">.</span><span class="nx">getWork</span><span class="p">());</span> <span class="c1">// Outputs 'Sirwan is working.'</span></code></pre></figure>
-
-<p>The only thing is that a lot of features in ES2015 are not supported in the browsers. For example classes are not supported by any browser, now there might be a nightly built of Firefox that supports classes. So instead we have to use a transpiler and there are many transpilers such as <a href="http://www.typescriptlang.org">TypeScript</a>, <a href="https://babeljs.io">Bable</a> and variety of others. I recommend you to use Bable because it has the best support for all of ES2015 features.</p>
 
   </div>
   
