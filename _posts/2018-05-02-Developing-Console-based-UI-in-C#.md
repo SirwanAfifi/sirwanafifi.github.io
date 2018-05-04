@@ -182,7 +182,7 @@ namespace TestingGuiCS
 
 You can grab the working sample project from [GitHub](https://github.com/SirwanAfifi/Console-based-UI).
 
-### What about cross platform UIs?
+### What about cross platform UI frameworks?
 Developing cross platform UIs is not officially supported by Microsoft, But there are some open source projects out there for doing so:
 - [Avalonia](https://github.com/AvaloniaUI/Avalonia)
 - [Eto.Forms](https://github.com/picoe/Eto)
