@@ -18,7 +18,7 @@ dotnet new mvc --name aspnet-vue-typescript
 
 Then cd to that directory and then use `code .` to open VSCode. At this point the project structure looks like this:
 
-<img src="/public/img/dotnet-new.gif" alt="Sample app" width="700">
+<img src="/public/img/dotnet-new.png" alt="Sample app" width="700">
 
 To get started with our client side code we need to install some packages, for doing so we need `package.json` file:
 
