@@ -201,4 +201,4 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
 
 This middleware looks for webpack file and automatically executes it for us when we change client side code:
 
-<img src="/public/img/HMR.png" alt="Webpack" width="700">
+<img src="/public/img/reload-webpack.gif" alt="Webpack" width="700">
