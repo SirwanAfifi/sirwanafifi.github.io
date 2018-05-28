@@ -54,7 +54,6 @@ To get started with our client side code we need to install some packages, for d
     "webpack-hot-middleware": "^2.22.2"
   }
 }
-
 {% endhighlight %}
 
 Once you installed this packages using `npm install`, we'll create our `webpack.config.js` file:
