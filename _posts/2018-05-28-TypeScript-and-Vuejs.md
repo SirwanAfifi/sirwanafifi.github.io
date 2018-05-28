@@ -22,7 +22,7 @@ Then cd to that directory and then use `code .` to open VSCode. At this point th
 
 To get started with our client side code we need to install some packages, for doing so we need `package.json` file:
 
-{% highlight javascript %}
+{% highlight js %}
 {
   "name": "aspnet-vue-typescript",
   "version": "1.0.0",
@@ -59,7 +59,7 @@ To get started with our client side code we need to install some packages, for d
 
 Once you installed this packages using `npm install`, we'll create our `webpack.config.js` file:
 
-{% hightlight javascript %}
+{% hightlight js %}
 let webpack = require('webpack');
 let path = require('path');
 
@@ -90,7 +90,7 @@ module.exports = {
 
 As you can see we're telling webpack where the entry point is, so create a new directory inside the project called `ClientApp`, this directory contains all Vue's related files, Inside this directory, create a ts file called `main.ts` this file is going to be our entry point:
 
-{% hightlight javascript %}
+{% hightlight js %}
 import Vue from 'vue';
 import MyComponent from './components/MyComponent.vue';
 
@@ -112,7 +112,7 @@ const v = new Vue({
 
 Next, we have specified the output which is `bundle.js` file, this file doesn't yet exist, it's going to be created by webpack. Then we have specified TypeScript loader for webpack. Next thing left to do is adding `tsconfig.json` file to the project:
 
-{% hightlight javascript %}
+{% hightlight js %}
 {
     "compilerOptions": {
         "sourceMap": true,
@@ -135,6 +135,7 @@ Next, we have specified the output which is `bundle.js` file, this file doesn't 
     ]
 }
 {% endhightlight %}
+
 At this point if you run `npx webpack` you'll see the bundle file:
 
 <img src="/public/img/npx-webpack.png" alt="Webpack" width="700">
