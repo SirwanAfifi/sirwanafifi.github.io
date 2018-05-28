@@ -10,7 +10,7 @@ image: /public/img/vue.png
 You might be wondering why do we need to worry about yet another framework when we already know there are things like Angular, React, ... the answer is simplicity. I have used Angular in some of my previous projects by Angular I mean the first version of it (AngularJS 1.x) but these days I feel like Angular team is going to force developers to migrate to Angular (2, 3, 4, 5, 6, ...). I really like Vue.js, it's really a great one because I think Vue.js is Declarative, Easy to Maintain and Powerful.
 Also, the integration between Vue and TypeScript is really good. Just like other frameworks Vue also has CLI which helps you to scaffold your project quickly. In this blog post, I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application.
 
-#### Project Setup
+### Project Setup
 The easiest way to get started is by using dotnet cli tool to create a project:
 {% highlight bash %}
 dotnet new mvc --name aspnet-vue-typescript
