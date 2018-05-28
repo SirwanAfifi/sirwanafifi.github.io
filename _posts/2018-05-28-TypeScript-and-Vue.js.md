@@ -22,7 +22,7 @@ Then cd to that directory and then use `code .` to open VSCode. At this point th
 
 To get started with our client side code we need to install some packages, for doing so we need `package.json` file:
 
-{% highlight js %}
+{% highlight json %}
 {
   "name": "aspnet-vue-typescript",
   "version": "1.0.0",
@@ -58,7 +58,7 @@ To get started with our client side code we need to install some packages, for d
 
 Once you installed this packages using `npm install`, we'll create our `webpack.config.js` file:
 
-{% hightlight js %}
+{% highlight js %}
 let webpack = require('webpack');
 let path = require('path');
 
@@ -85,11 +85,11 @@ module.exports = {
         }
     }
 };
-{% endhightlight %}
+{% endhighlight %}
 
 As you can see we're telling webpack where the entry point is, so create a new directory inside the project called `ClientApp`, this directory contains all Vue's related files, Inside this directory, create a ts file called `main.ts` this file is going to be our entry point:
 
-{% hightlight js %}
+{% highlight js %}
 import Vue from 'vue';
 import MyComponent from './components/MyComponent.vue';
 
@@ -107,11 +107,11 @@ const v = new Vue({
         MyComponent
     }
 });
-{% endhightlight %}
+{% endhighlight %}
 
 Next, we have specified the output which is `bundle.js` file, this file doesn't yet exist, it's going to be created by webpack. Then we have specified TypeScript loader for webpack. Next thing left to do is adding `tsconfig.json` file to the project:
 
-{% hightlight js %}
+{% highlight js %}
 {
     "compilerOptions": {
         "sourceMap": true,
@@ -133,7 +133,7 @@ Next, we have specified the output which is `bundle.js` file, this file doesn't 
         "wwwroot"
     ]
 }
-{% endhightlight %}
+{% endhighlight %}
 
 At this point if you run `npx webpack` you'll see the bundle file:
 
@@ -141,13 +141,13 @@ At this point if you run `npx webpack` you'll see the bundle file:
 
 Now we can add a script reference inside `Views/Shared/_Layout.cshtml` to `bundle.js` file:
 
-{% hightlight html %}
+{% highlight html %}
 <script src="~/js/bundle.js" asp-append-version="true"></script>
-{% endhightlight %}
+{% endhighlight %}
 
 Now we can use Vue inside our views:
 
-{% hightlight csharp %}
+{% highlight csharp %}
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -155,7 +155,7 @@ Now we can use Vue inside our views:
 <div class="jumbotron">
   <h1 class="display-4">Hello, {{ name }}</h1>
 </div>
-{% endhightlight %}
+{% endhighlight %}
 
 ### Hot Module Replacement
 Webpack has something called Hot [Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/):
@@ -167,18 +167,18 @@ Tweak styling faster -- almost comparable to changing styles in the browser's de
 
 For adding this functionality we need to install `webpack-hot-middleware` package:
 
-{% hightlight bash %}
+{% highlight bash %}
 npm i -D webpack-hot-middleware
-{% endhightlight %}
+{% endhighlight %}
 
 Then we need to register this component into MVC's HTTP request pipeline in the `Configure` method, for doing this we need to install [Microsoft.AspNetCore.SpaServices](https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices):
 
-{% hightlight csharp %}
+{% highlight csharp %}
 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
 {
     HotModuleReplacement = true
 });
-{% endhightlight %}
+{% endhighlight %}
 
 This middleware looks for webpack file and automatically executes it for us when we change client side code:
 
