@@ -51,7 +51,7 @@ To get started with our client side code we need to install some packages, for d
     "vue-loader": "^15.2.1",
     "vue-template-compiler": "^2.5.16",
     "webpack-cli": "^2.1.4",
-    //"webpack-hot-middleware": "^2.22.2"
+    "webpack-hot-middleware": "^2.22.2"
   }
 }
 {% endhighlight %}
