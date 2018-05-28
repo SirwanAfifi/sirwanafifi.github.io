@@ -22,8 +22,17 @@ Then cd to that directory and then use `code .` to open VSCode. At this point th
 
 To get started with our client side code we need to install some packages, for doing so we need `package.json` file:
 
-{% highlight json %}
-
+{% highlight js %}
+{
+  "name": "aspnet-vue-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sirwan Afifi",
+  "license": "ISC",
   "dependencies": {
     "ts-loader": "^4.3.0",
     "typescript": "^2.8.3",
@@ -42,9 +51,9 @@ To get started with our client side code we need to install some packages, for d
     "vue-loader": "^15.2.1",
     "vue-template-compiler": "^2.5.16",
     "webpack-cli": "^2.1.4",
-    "webpack-hot-middleware": "^2.22.2"
+    //"webpack-hot-middleware": "^2.22.2"
   }
-
+}
 {% endhighlight %}
 
 Once you installed this packages using `npm install`, we'll create our `webpack.config.js` file:
