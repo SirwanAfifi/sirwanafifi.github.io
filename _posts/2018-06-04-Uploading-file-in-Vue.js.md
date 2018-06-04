@@ -237,3 +237,5 @@ private async Task<string> UploadFiles()
 {% endhighlight %}
 
 <img src="/public/img/upload-file-vue.gif" alt="Upload file using Vue.js" width="700">
+
+You can grab the working sample project from [GitHub](https://github.com/SirwanAfifi/vue-experiments).
