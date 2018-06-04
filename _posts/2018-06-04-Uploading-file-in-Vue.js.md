@@ -105,7 +105,7 @@ export default class UploadFileSimpleComponent extends Vue {
 </script>
 {% endhighlight %}
 
-###Showing upload progress
+### Showing upload progress
 Now we want to show upload progress, axios makes this easy all we need to do is add a third argument to the `post` method, this argument is actually an object, inside this object we can configure the request inside this object we have access to an event handler called `onUploadProgress` which we can do the calculation. let's change the `CoffeeService` to this:
 
 {% highlight js %}
