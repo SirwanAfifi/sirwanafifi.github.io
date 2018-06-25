@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Shahriban - My first Hackathon project (Challenges, Lessons learned)
+title: Shahriban - My first Hackathon project (Challenges, Lesson Learned)
 tags: Vue.js, JavaScript, Teamwork, SideProject
 image: /public/img/shahriban_logo.png
 ---
