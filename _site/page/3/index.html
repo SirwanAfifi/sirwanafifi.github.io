@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>Home | Sirwan Afifi</title>
 <meta property="og:title" content="Home" />
 <meta name="author" content="Sirwan Afifi" />
@@ -16,7 +16,7 @@
 <link rel="prev" href="http://localhost:4000/page/2">
 <link rel="next" href="http://localhost:4000/page/4">
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebPage","headline":"Home","author":{"@type":"Person","name":"Sirwan Afifi"},"description":"Stories from a web developer.","url":"http://localhost:4000/page/3/"}</script>
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"WebPage","url":"http://localhost:4000/page/3/","publisher":null,"image":null,"headline":"Home","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="canonical" href="http://sirwan.info/page/3/" />
@@ -41,7 +41,7 @@
 </head>
 
 
-<body class="theme-base-0c">
+<body class="theme-base-0d">
 
   <header class="masthead">
     <div class="masthead-inner">
@@ -63,7 +63,7 @@
             <a href="#">contact</a>
           </li>
         </ul>
-        <p>&copy; 2017. Sirwan Afifi All rights reserved.</p>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
       </div>
     </div>
   </header>
@@ -73,308 +73,180 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2016/10/26/Designing-Fluent-Interfaces-in-C/">
-        Designing Fluent Interfaces in C#
+      <a href="/archive/2017/06/04/SQL-Server-on-Linux-in-Docker-on-a-Mac/">
+        SQL Server on Linux in Docker on a Mac
       </a>
     </h1>
 
-    <span class="post-date">26 Oct 2016</span>
+    <span class="post-date">04 Jun 2017</span>
 
-    <p>The concept of <a href="martinfowler.com/bliki/FluentInterface.html">Fluent Interface</a> was coined by Martin Fowler to create various objects and wire them up together. This pattern is often used for object configuration and setup. For example in ASP.NET Core applications we have following code for configuring the server:</p>
+    <p>Over the last few months, I have been working on a couple of ASP.NET Core projects, it’s been great experience so far becuase I can easily work on <a href="http://sirwan.info/My-first-experiences-with-Linux">different platforms</a> while working on these projects. I recently bought a MacBook Pro and have decided to do .NET projects on macOS since then.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<p>Fortunately working with projects is not a pain in the neck anymore, with help of <a href="https://www.docker.com/what-docker">Docker</a> you can easily setup up a complex development environment in minutes. It actually simplifies the process of building and shipping, running your apps on differente environments.</p>
 
-<span class="k">namespace</span> <span class="nn">aspnetcoreapp</span>
+<p>The first challenge I faced when using macOS was connecting to and using SQL Server. Thanks to Docker and SQL Server for Linux. It’s an instance of SQL Server as a docker container and it’s super-fast so that it runs in seconds.</p>
+
+<center><img src="/public/img/docker.png" /></center>
+
+<hr />
+
+<h2 id="installing-docker-for-mac">Installing Docker for Mac</h2>
+<p>In order to get Docker to work you will need to install Docker for Mac, you can follow <a href="https://docs.docker.com/docker-for-mac">these steps</a> to install it. Once Docker installation is done, it will automatically be started:
+<br /></p>
+<center><img width="400" src="/public/img/docker-running.png" /></center>
+
+<p>You can also run <code class="highlighter-rouge">docker --version</code> to verify that Docker is working as expected.</p>
+
+<hr />
+
+<h2 id="pulling-and-running-docker-image">Pulling and running Docker image</h2>
+<p>Next, you can install and run SQL <a href="https://hub.docker.com/r/microsoft/mssql-server-linux">Server on Linux docker image</a> using following command:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">docker run <span class="nt">-e</span> <span class="s1">'ACCEPT_EULA=Y'</span> <span class="nt">-e</span> <span class="s1">'SA_PASSWORD=Passowrd’ -p 1433:1433 -d microsoft/mssql-server-linux</span></code></pre></figure>
+
+<p>This command will install and run the SQL Server image. Now SQL Server is running locally in Docker container:</p>
+<center><img width="800" src="/public/img/sql-server-is-running.png" /></center>
+<p>You can use its connection string in your ASP.NET Core application:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MvcMovieContext</span> <span class="p">:</span> <span class="n">DbContext</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnConfiguring</span><span class="p">(</span><span class="n">DbContextOptionsBuilder</span> <span class="n">optionsBuilder</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="n">optionsBuilder</span><span class="p">.</span><span class="nf">UseSqlServer</span><span class="p">(</span><span class="s">@"Data Source=localhost;Initial Catalog=MovieDB;User ID=sa;Password=StrongPassword"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Movie</span><span class="p">&gt;</span> <span class="n">Movies</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now if we run migration, the <code class="highlighter-rouge">MovieDB</code> database will be created in the running docker container:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">dotnet ef database update</code></pre></figure>
+
+<h2 id="connecting-and-quering-the-databse">Connecting and quering the databse</h2>
+<p>There are several ways to connect and query a database running in Docker container, one way is using a command line tool called <code class="highlighter-rouge">sqlcmd</code>:</p>
+<center><img width="800" src="/public/img/sqlcmd.png" /></center>
+
+<p>Personally I use <code class="highlighter-rouge">mssql</code> extension for Visual Studio Code. becuase it’s really easy to use so you don’t have to write your queries in command line mode. If you have not already installed this extension, all you need to do is press <code class="highlighter-rouge">⌘ + P</code> and type <code class="highlighter-rouge">ext install mssql</code> then press enter to install it.</p>
+
+<p>In order to connect and query your database first, you need to write your SQL queries into a <code class="highlighter-rouge">SQL</code> file in VS Code then press <code class="highlighter-rouge">⌘ + Shift + P</code> then choose <code class="highlighter-rouge">Create Connection Profile</code>, follow the prompts to specify the connection properties for the new connection profile. At the end you should have following settings:</p>
+
+<figure class="highlight"><pre><code class="language-jsonnet" data-lang="jsonnet"><span class="p">{</span>
+    <span class="s">"mssql.connections"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebHostBuilder</span><span class="p">()</span>
-                <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">()</span>
-                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
-                <span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
-
-            <span class="n">host</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+            <span class="s">"authenticationType"</span><span class="p">:</span> <span class="s">"SqlLogin"</span><span class="p">,</span>
+            <span class="s">"server"</span><span class="p">:</span> <span class="s">"localhost"</span><span class="p">,</span>
+            <span class="s">"database"</span><span class="p">:</span> <span class="s">"MovieDB"</span><span class="p">,</span>
+            <span class="s">"user"</span><span class="p">:</span> <span class="s">"SA"</span><span class="p">,</span>
+            <span class="s">"password"</span><span class="p">:</span> <span class="s">""</span><span class="p">,</span>
+            <span class="s">"savePassword"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s">"profileName"</span><span class="p">:</span> <span class="s">"MovieDB"</span>
         <span class="p">}</span>
-    <span class="p">}</span>
+    <span class="p">],</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>As you can see we can chain methods together easily and the intention is to produce an API that is readable and flows. This pattern is heavily used in programming, Here’s an example of using this approach in jQuery:</p>
+<p>As you can see <code class="highlighter-rouge">mssql.connections</code> takes an array, it means that you can define as many connection profiles as you want. Once you defined your profile, you can use it to execute your queries then the result will be shown as a seperate window:</p>
+<center><img width="800" src="/public/img/query_result_mssql.png" /></center>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#result'</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">css</span><span class="p">(</span><span class="s1">'background'</span><span class="p">,</span> <span class="s1">'yellow'</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">width</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">height</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="s1">'This is the result'</span><span class="p">);</span></code></pre></figure>
-
-<p>For C#, there is LINQ:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">person</span> <span class="p">=</span> <span class="n">PersonDataSource</span>
-	<span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Age</span> <span class="p">&gt;</span> <span class="m">20</span><span class="p">)</span>
-	<span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span>
-	<span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span>
-		<span class="n">Name</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
-		<span class="n">LastName</span> <span class="p">=</span> <span class="n">p</span><span class="p">.</span><span class="n">LastName</span>
-<span class="p">});</span></code></pre></figure>
-
-<p>You might ask how to implement this pattern, well, it is very simple you just need to return <code class="highlighter-rouge">this</code> during method call. The <code class="highlighter-rouge">Calculator</code> defined below contains three methods. These methods are returing <code class="highlighter-rouge">Calculator</code> object using <code class="highlighter-rouge">this</code> keyword, which allow to chain the methods:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Calculator</span> 
-<span class="p">{</span>
-	<span class="k">public</span> <span class="kt">int</span> <span class="n">Initial</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-	<span class="k">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="kt">int</span> <span class="n">intial</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">Initial</span> <span class="p">=</span> <span class="n">intial</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">+</span> <span class="n">x</span><span class="p">;</span>
-		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">/</span> <span class="n">x</span><span class="p">;</span>
-		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-	<span class="p">}</span>
-
-	<span class="k">public</span> <span class="n">Calculator</span> <span class="nf">Substract</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">Initial</span> <span class="p">=</span> <span class="n">Initial</span> <span class="p">-</span> <span class="n">x</span><span class="p">;</span>
-		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Now we can use the class this way:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">calc</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Calculator</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
-			<span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
-			<span class="p">.</span><span class="nf">Divide</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
-			<span class="p">.</span><span class="nf">Substract</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
-
-<span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">calc</span><span class="p">.</span><span class="n">Initial</span><span class="p">);</span></code></pre></figure>
-
-<p>As you can see this approach makes our code concise and easier to read.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2016/08/12/Explicit-Interface-Implementation/">
-        Explicit Interface Implementation
-      </a>
-    </h1>
-
-    <span class="post-date">12 Aug 2016</span>
-
-    <p>Let’s imagine that you have a class with two methods:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Now when we want to create an instance of this class and call one of those methods, it executes as expected:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
-<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false
-</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"Buy"</span></code></pre></figure>
-
-<p>Now suppose that we have an interface called <code class="highlighter-rouge">IVendingMachine</code> that has two methods:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">interface</span> <span class="n">IVendingMachine</span> 
-<span class="p">{</span>
-    <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">);</span>
-    <span class="kt">string</span> <span class="nf">Buy</span><span class="p">();</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>We want our class to implements this interface:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Our class satisfied the interface because it has the methods with the same names. So Visual Studio doesn’t give you a compiler error. Now let’s imagine that we
-also want to add interface’s methods to this class, So, in this case, we must explicitly prefix the methods with <code class="highlighter-rouge">IVendingMachine.</code>:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kt">bool</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">300</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kt">string</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">"IVendingMachine Buy"</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Note that Visual Studio can help you to implement interface explicitly by pressing <code class="highlighter-rouge">Ctrl + .</code> on the name of the interface and select <code class="highlighter-rouge">Implement interface explicitly</code>:</p>
-
-<p><img src="/public/img/explicit_interface_implementation.jpg" width="800" />
-Now, what happens when we call the <code class="highlighter-rouge">InsertCoin</code> and <code class="highlighter-rouge">Buy</code> methods? In this case, we should consider two different situations when we create the object:</p>
-
-<ul>
-  <li>Concrete Type</li>
-  <li>Interface Variable</li>
-</ul>
-
-<p>If we want the methods of <code class="highlighter-rouge">VendingMachine</code> we should create the object with concrete type:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
-<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false
-</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"Buy"</span></code></pre></figure>
-
-<p>If we want the methods of <code class="highlighter-rouge">IVendingMachine</code> we should create the object with interface variable:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IVendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
-<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// true
-</span><span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="p">//</span> <span class="s">"IVendingMachine Buy"</span></code></pre></figure>
+<p>As you can see working with SQL Server on macOS is really straightforward. Something like this was not possible in .NET before but nowadays you can develope .NET applications on OS of your choice. that’s why I’m more excited about .NET more than ever.</p>
 
 
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2016/07/02/Delegates/">
-        Delegates in C#
+      <a href="/archive/2017/05/03/Working-remotely/">
+        Working remotely
       </a>
     </h1>
 
-    <span class="post-date">02 Jul 2016</span>
+    <span class="post-date">03 May 2017</span>
 
-    <p>Lately I have been studying some topics in C# in order to improve myself. I think <a href="https://msdn.microsoft.com/en-us/library/ms173171.aspx">Delegate</a> is one of those topics which is kinda difficult for beginners to initiate with. So, in order to make it clear how it works, I’m going to make some explanations in this post.</p>
+    <p>It has been 8 months and so that I have been working remotely for a startup out there. It’s been my pleasure to work with a team of great and talented members. over the past few months, I have learned a lot both in terms of technical stuff and working as a team member.</p>
 
-<h3 id="what-are-delegates">What are Delegates?</h3>
-<p>Delegate was introduced in C# 1. Think of it as a simply being a placeholder for functions that’ll be called at some point in time. Assume you want to declare a variable that is a reference to a specific method. In this case, the variable encapsulates some executable code and you can invoke the variable just like an actual method. In doing so, we need to create a delegate</p>
+<p>For some, this might not seem a big deal. But for me, it’s a pretty big one. So I thought it would be great to share my experiences so far.</p>
 
-<h3 id="defining-a-delegate">Defining a Delegate</h3>
-<p>Delegates are created using <code class="highlighter-rouge">delegate</code> keyword along with the function signature:</p>
+<h3 id="new-technology-new-tools">New technology, new tools</h3>
+<p>For this project we are using .NET core and ASP.NET MVC core on top of it. The main benefit of using cutting edge technologies is that you always keep yourself updated, but you might argue that working with new and shiny things is overwhelming because the product is not mature enough to work with. But I believe that’s also another great benefit because when you encounter a bug you easily open a GitHub issue and report it. So I think it’s best of both worlds.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">delegate</span> <span class="kt">int</span> <span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span></code></pre></figure>
+<h3 id="estimation">Estimation</h3>
+<p>At first, I couldn’t deal with an accurate estimation, after a while I figured out that the problem was the task itself, not me, if a task is a big one then estimation most likely will be accurate, so the solution of having an accurate estimation is to break the task into smaller ones.</p>
 
-<p>As you can see we are defining a delegate called <code class="highlighter-rouge">Sum</code> that is compatible with any method with an <code class="highlighter-rouge">int</code> return type with two parameters. Actually we defined a type that we can use to create variables and point those variables to methods that have the same signature and same return type. 
-The type defenition for a delegate describes the method that we want to call:</p>
+<h3 id="documentation">Documentation</h3>
+<p>A key point to have a good documentation is that, it needs to be updated after the requirement is changed. In our case, there are too many changes in requirements, this makes new team members confused. In my opinion, there must be a section called changelog in the documentation so that it will be really easy to know what was the previous changes at first place. you might say it’s better to use <code class="highlighter-rouge">git log</code> but I think sometimes you don’t need to go through several file changes in git history in order to understand a small change. Another good thing for new members is having mockups. I have been always a big fan of this type development, because as you know a picture worth a thousand words.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span></code></pre></figure>
+<h3 id="working-in-different-time-zones">Working in different time zones</h3>
+<p>From my point of view working in different time zones makes remote working a little bit difficult, suppose you are given a task, now you have some questions and no one is online, so in this case, you have to leave your messages on Slack or Jira in order to get your questions answered. this is really big deal for small teams.</p>
 
-<p>Now we can assign a method to the delegate variable. This assignment creates a delegate instance:</p>
+<h3 id="collaboration">Collaboration</h3>
+<p>Another key point in agile development is collaboration. Working in a team is not just about delivering your product as soon as possible in some sprints. the best part of an agile team is having daily/weekly standup with other members. By other members I mean Mobile developers, Backend developers, Database developers, … I think the standup shouldn’t be held separately. As a web developer, I need to know what’s going on in other parts of the application, because I think it gives developers a really good big picture.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Sum</span> <span class="n">s</span> <span class="p">=</span> <span class="n">Add</span><span class="p">;</span></code></pre></figure>
+<h3 id="conclusion">Conclusion</h3>
+<p>All in all, it has been a great journey for me so far. because working remotely not only improves your technical ability but gives you a cultural perspective.</p>
 
-<p>Now we can invoke the delegate instance in the same way as a method:</p>
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/archive/2017/02/27/My-first-experiences-with-Linux/">
+        My first experiences with Linux
+      </a>
+    </h1>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">s</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">);</span></code></pre></figure>
+    <span class="post-date">27 Feb 2017</span>
 
-<h3 id="advantages-of-delegate">Advantages of Delegate</h3>
+    <p>Running Window 98 on my PC was my first experience with Windows. in fact, for the last 11 years or so, Windows has been the dominant operating system that I’ve been using. So, up until now, I have been an avid fan of Windows.</p>
 
-<ul>
-  <li>Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.</li>
-  <li>Can be used to define callback functions.</li>
-  <li>Can be dynamically switched at runtime.</li>
-</ul>
+<blockquote>
+  <p>Disclaimer: I’m not going to say that I’m not interested in Windows anymore, I just want to explain my experience with Ubuntu</p>
+</blockquote>
 
-<h3 id="real-world-example">Real World example</h3>
-<p>Suppose that you want to implement something like a <a href="https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx">Repeater</a> control in your ASP.NET MVC application, As you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup.</p>
+<p>Windows just works fine for the most part. But, as a developer, I have always felt something is missing. For solving this problem, Microsoft has tried its best bringing in tools like PowerShell and Bash to Windows. But again, with all these great features and tools, as a developer, you think something is missing.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Helpers</span>
-<span class="p">{</span>
-	<span class="k">public</span> <span class="k">delegate</span> <span class="n">HelperResult</span> <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">input</span><span class="p">);</span>
+<p>Two weeks ago, I decided to give Linux a try, So I chose Ubuntu because it’s user-friendly and its community is huge. Actually, my goal was to do some experiments with new version of .NET called .NET Core. The experience was great. First, I created a very simple console application on Windows and deployed it as a <a href="https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/deploying/#self-contained-deployments-scd">SCD (Self-Contained Deployment)</a>:</p>
 
-	<span class="k">public</span> <span class="k">static</span> <span class="n">HelperResult</span> <span class="n">Repeater</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">html</span><span class="p">,</span>
-	  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">,</span>
-	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
-	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="k">return</span> <span class="k">new</span> <span class="nf">HelperResult</span><span class="p">(</span><span class="n">writer</span> <span class="p">=&gt;</span>
-		<span class="p">{</span>
-			<span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-			<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
-			<span class="p">{</span>
-				<span class="kt">var</span> <span class="n">func</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">itemTemplate</span> <span class="p">:</span> <span class="n">alternatingitemTemplate</span><span class="p">;</span>
-				<span class="nf">func</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="nf">WriteTo</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span>
-				<span class="n">i</span><span class="p">++;</span>
-			<span class="p">}</span>
-		<span class="p">});</span>
-	<span class="p">}</span>
+<p><img width="800" src="/public/img/publish.jpg" /></p>
+
+<p>Then, I copied the publish folder on my USB stick and finally, I could run my .NET Core application without installing the .NET runtime on the target machine:</p>
+
+<p><img src="/public/img/run_app.png" /></p>
+
+<p>As a .NET developer I have been waiting voraciously for such opportunity. So, I think it’s the best time to migrate to Linux.</p>
+
+<p>Actually, I was amazed at the first impression because Linux has everything a developer needs out of the box. Python is already installed on the OS. This is great because there are times you want to write simple scripts, scrap a page or something like that.</p>
+
+<p>Other cool features of Linux are commands like <a href="https://www.gnu.org/software/sed/manual/sed.html">sed</a> and <a href="https://www.gnu.org/software/grep/manual/html_node/index.html">grep</a>. These tools are great whether you are a developer or a network administrator. for example, suppose that you have following content within a file named <code class="highlighter-rouge">test.json</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">{</span>
+   <span class="s">"AppName"</span><span class="p">:</span> <span class="s">"Simple App"</span><span class="p">,</span>
+   <span class="s">"Website"</span><span class="p">:</span> <span class="s">"sirwan.info"</span><span class="p">,</span>
+   <span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>As you can see we emulated the <code class="highlighter-rouge">ItemTemplate</code> and <code class="highlighter-rouge">AlternatingItemTemplate</code> using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback. <br />
-The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example can be replaced with <code class="highlighter-rouge">Func</code> delegate:</p>
+<p>Now you want to replace all occurrence of <code class="highlighter-rouge">"UseSqlite": false,</code> to <code class="highlighter-rouge">"UseSqlite": true,</code> you can do that simply by typing this command:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
-<span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">cat</span> <span class="n">text</span><span class="p">.</span><span class="n">json</span> <span class="p">|</span> <span class="n">sed</span> <span class="err">'</span><span class="n">s</span><span class="p">/</span><span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">false</span><span class="p">,/</span><span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">true</span><span class="p">,/</span><span class="err">'</span></code></pre></figure>
 
-<p>Now we can use our helper inside any view:</p>
+<p><img src="/public/img/sed_command.png" /></p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span>Id<span class="nt">&lt;/td&gt;</span>
-        <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    @Html.Repeater(Model, @<span class="nt">&lt;tr&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
-	<span class="nt">&lt;/tr&gt;</span>, 
-	@<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"alert-info"</span><span class="nt">&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>)
-<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+<p>You can definitely do wide varaity of things using these tools, I just wanted to tell you how much I am excited about these cool stuff.</p>
 
-<p>If you run the application you can see the result:</p>
+<h3 id="development-on-ubuntu">Development on Ubuntu</h3>
+<p>The good news is that .NET Core runs on Windows, Mac and Linux. In order to install .NET Core on Ubuntu you just simply need to navigate to <a href="https://www.microsoft.com/net/download">dot.net</a> site and download the appropriate version. after installing .NET Core, it gives you a CLI called <code class="highlighter-rouge">dotnet</code> so you can simply create, build and publish your applications using this command, for example:</p>
 
-<p><img src="/public/img/repeater.jpg" width="500" /></p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">dotnet</span> <span class="k">new</span>
+<span class="n">dotnet</span> <span class="n">restore</span>
+<span class="n">dotnet</span> <span class="n">run</span></code></pre></figure>
 
-<p>You can check out the <a href="https://github.com/SirwanAfifi/using_delegates">GitHub repository</a> for this post.</p>
+<p>You can also use the editor of your choice for developing .NET Core application, personally I prefer to use <a href="http://code.visualstudio.com/">Visual Studio Code</a> or VSCode for short. because it has all great features you need:</p>
 
+<p><img src="/public/img/vscode.png" width="800" /></p>
+
+<p>VSCode is great, But I think using an IDE like Visual Studio gives you the power you need when are developing applications, Unfortunately, there’s no official version of Visual Studio for Linux at this time. I hope Microsoft release it for Linux users The only reason that I can’t abandon Windows is the lack of Visual Studio So I have to keep using Windows on my main machine.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>As I mentioned Visual Studio is the only reason to not completely abandon Windows, But I will use Ubuntu for sure. This was my first attempt to use Ubuntu and I am very happy about the experience, I would like to hear your ideas about your journey.</p>
+
+<p>Happy Coding :))</p>
 
   </div>
   
@@ -396,7 +268,7 @@ The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example 
   <div class="row">
     <div class="col-md-12">
       <p>
-        Copyright &copy; 2017 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
       </p>
     </div>
   </div>

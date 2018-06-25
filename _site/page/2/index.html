@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>Home | Sirwan Afifi</title>
 <meta property="og:title" content="Home" />
 <meta name="author" content="Sirwan Afifi" />
@@ -16,7 +16,7 @@
 <link rel="prev" href="http://localhost:4000/">
 <link rel="next" href="http://localhost:4000/page/3">
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebPage","headline":"Home","author":{"@type":"Person","name":"Sirwan Afifi"},"description":"Stories from a web developer.","url":"http://localhost:4000/page/2/"}</script>
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"WebPage","url":"http://localhost:4000/page/2/","publisher":null,"image":null,"headline":"Home","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="canonical" href="http://sirwan.info/page/2/" />
@@ -41,7 +41,7 @@
 </head>
 
 
-<body class="theme-base-0c">
+<body class="theme-base-0d">
 
   <header class="masthead">
     <div class="masthead-inner">
@@ -63,7 +63,7 @@
             <a href="#">contact</a>
           </li>
         </ul>
-        <p>&copy; 2017. Sirwan Afifi All rights reserved.</p>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
       </div>
     </div>
   </header>
@@ -73,247 +73,243 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2017/02/27/My-first-experiences-with-Linux/">
-        My first experiences with Linux
+      <a href="/archive/2018/05/02/Developing-Console-based-UI-in-C/">
+        Developing Console-based UI in C#
       </a>
     </h1>
 
-    <span class="post-date">27 Feb 2017</span>
+    <span class="post-date">02 May 2018</span>
 
-    <p>Running Window 98 on my PC was my first experience with Windows. in fact, for the last 11 years or so, Windows has been the dominant operating system that I’ve been using. So, up until now, I have been an avid fan of Windows.</p>
+    <p>As you know Console Applications don’t have graphical user interface or GUI. Instead, they run from Command Line, for example instead of writing a name into a textbox and clicking a button we would instead invoke the Console Application and provide the name as a parameter. In fact, in Console Applications we instead interact with the user using text inputs. For example, we could prompt something like this:</p>
+
+<p><img src="/public/img/consoleTest.jpg" width="700" /></p>
+
+<p>The user can then write a name and hit enter then we can read that text input into our application.</p>
+
+<p>Wouldn’t be better to make it beautiful? This is where we can use <a href="https://github.com/migueldeicaza/gui.cs">Terminal.Gui</a> a cross-platform GUI toolkit:</p>
+
+<p><img src="/public/img/guics.png" alt="Sample app" width="700" /></p>
 
 <blockquote>
-  <p>Disclaimer: I’m not going to say that I’m not interested in Windows anymore, I just want to explain my experience with Ubuntu</p>
+  <p>Terminal.Gui is a library intended to create console-based applications using C#. The framework has been designed to make it easy to write applications that will work on monochrome terminals, as well as modern color terminals with mouse support. This library works across Windows, Linux and MacOS.</p>
 </blockquote>
 
-<p>Windows just works fine for the most part. But, as a developer, I have always felt something is missing. For solving this problem, Microsoft has tried its best bringing in tools like PowerShell and Bash to Windows. But again, with all these great features and tools, as a developer, you think something is missing.</p>
+<p>Using this UI toolkit is pretty simple, all you need to do is adding its package into your project:</p>
 
-<p>Two weeks ago, I decided to give Linux a try, So I chose Ubuntu because it’s user-friendly and its community is huge. Actually, my goal was to do some experiments with new version of .NET called .NET Core. The experience was great. First, I created a very simple console application on Windows and deployed it as a <a href="https://docs.microsoft.com/en-us/dotnet/articles/core/preview3/deploying/#self-contained-deployments-scd">SCD (Self-Contained Deployment)</a>:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Terminal.Gui
+</code></pre></div></div>
 
-<p><img width="800" src="/public/img/publish.jpg" /></p>
+<p>The simplest application looks like this:</p>
 
-<p>Then, I copied the publish folder on my USB stick and finally, I could run my .NET Core application without installing the .NET runtime on the target machine:</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 
-<p><img src="/public/img/run_app.png" /></p>
+<span class="k">namespace</span> <span class="nn">consoleTest</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="nn">Terminal.Gui</span><span class="p">;</span>
 
-<p>As a .NET developer I have been waiting voraciously for such opportunity. So, I think it’s the best time to migrate to Linux.</p>
+    <span class="k">class</span> <span class="nc">Demo</span> <span class="p">{</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">Main</span> <span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
 
-<p>Actually, I was amazed at the first impression because Linux has everything a developer needs out of the box. Python is already installed on the OS. This is great because there are times you want to write simple scripts, scrap a page or something like that.</p>
+            <span class="kt">var</span> <span class="n">n</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Query</span> <span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span>
+                <span class="s">"Question"</span><span class="p">,</span> <span class="s">"Do you like console apps?"</span><span class="p">,</span> <span class="s">"Yes"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">);</span>
 
-<p>Other cool features of Linux are commands like <a href="https://www.gnu.org/software/sed/manual/sed.html">sed</a> and <a href="https://www.gnu.org/software/grep/manual/html_node/index.html">grep</a>. These tools are great whether you are a developer or a network administrator. for example, suppose that you have following content within a file named <code class="highlighter-rouge">test.json</code>:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">{</span>
-   <span class="s">"AppName"</span><span class="p">:</span> <span class="s">"Simple App"</span><span class="p">,</span>
-   <span class="s">"Website"</span><span class="p">:</span> <span class="s">"sirwan.info"</span><span class="p">,</span>
-   <span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
+            <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>Now you want to replace all occurrence of <code class="highlighter-rouge">"UseSqlite": false,</code> to <code class="highlighter-rouge">"UseSqlite": true,</code> you can do that simply by typing this command:</p>
+<p>This example shows a prompt and returns an integer value depending on which value was selected by the user (Yes, No, or if they use chose not to make a decision and instead pressed the ESC key):</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">cat</span> <span class="n">text</span><span class="p">.</span><span class="n">json</span> <span class="p">|</span> <span class="n">sed</span> <span class="err">'</span><span class="n">s</span><span class="p">/</span><span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">false</span><span class="p">,/</span><span class="s">"UseSqlite"</span><span class="p">:</span> <span class="k">true</span><span class="p">,/</span><span class="err">'</span></code></pre></figure>
+<p><img src="/public/img/firstTerminalUIapp.png" alt="Sample app" width="700" /></p>
 
-<p><img src="/public/img/sed_command.png" /></p>
+<p>As you can see the first thing to do is calling <code class="highlighter-rouge">Application.Init ();</code> to actually initialize the application. We can also create a window and then add a menu to it:</p>
 
-<p>You can definitely do wide varaity of things using these tools, I just wanted to tell you how much I am excited about these cool stuff.</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
+<span class="kt">var</span> <span class="n">top</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">Top</span><span class="p">;</span>
 
-<h3 id="development-on-ubuntu">Development on Ubuntu</h3>
-<p>The good news is that .NET Core runs on Windows, Mac and Linux. In order to install .NET Core on Ubuntu you just simply need to navigate to <a href="https://www.microsoft.com/net/download">dot.net</a> site and download the appropriate version. after installing .NET Core, it gives you a CLI called <code class="highlighter-rouge">dotnet</code> so you can simply create, build and publish your applications using this command, for example:</p>
+<span class="c1">// Creates the top-level window to show</span>
+<span class="kt">var</span> <span class="n">win</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Window</span> <span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Height</span><span class="p">-</span><span class="m">1</span><span class="p">),</span> <span class="s">"MyApp"</span><span class="p">);</span>
+<span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">win</span><span class="p">);</span>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">dotnet</span> <span class="k">new</span>
-<span class="n">dotnet</span> <span class="n">restore</span>
-<span class="n">dotnet</span> <span class="n">run</span></code></pre></figure>
+<span class="c1">// Creates a menubar, the item "New" has a help menu.</span>
+<span class="kt">var</span> <span class="n">menu</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MenuBar</span> <span class="p">(</span><span class="k">new</span> <span class="n">MenuBarItem</span> <span class="p">[]</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_File"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_New"</span><span class="p">,</span> <span class="s">"Creates new file"</span><span class="p">,</span> <span class="p">()=&gt;</span> <span class="p">{}),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Close"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{}),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Quit"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">top</span><span class="p">.</span><span class="n">Running</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">}),</span>
+    <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_Edit"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Copy"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"C_ut"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Paste"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+<span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">menu</span><span class="p">);</span>
 
-<p>You can also use the editor of your choice for developing .NET Core application, personally I prefer to use <a href="http://code.visualstudio.com/">Visual Studio Code</a> or VSCode for short. because it has all great features you need:</p>
+<span class="c1">// Add some controls</span>
+<span class="n">win</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="s">"Login: "</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">TextField</span> <span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="s">""</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="s">"Password: "</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">TextField</span> <span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span> <span class="p">{</span>  <span class="p">},</span>
+    <span class="k">new</span> <span class="nf">CheckBox</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="s">"Remember me"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">RadioGroup</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="k">new</span> <span class="p">[]</span> <span class="p">{</span> <span class="s">"_Personal"</span><span class="p">,</span> <span class="s">"_Company"</span> <span class="p">}),</span>
+    <span class="k">new</span> <span class="nf">Button</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="s">"Ok"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Button</span> <span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="s">"Cancel"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="s">"Press ESC and 9 to activate the menubar"</span><span class="p">));</span>
 
-<p><img src="/public/img/vscode.png" width="800" /></p>
+<span class="n">Application</span><span class="p">.</span><span class="nf">Run</span> <span class="p">();</span></code></pre></figure>
 
-<p>VSCode is great, But I think using an IDE like Visual Studio gives you the power you need when are developing applications, Unfortunately, there’s no official version of Visual Studio for Linux at this time. I hope Microsoft release it for Linux users The only reason that I can’t abandon Windows is the lack of Visual Studio So I have to keep using Windows on my main machine.</p>
+<p><img src="/public/img/sampleTerminalUI.png" alt="Sample app" width="700" /></p>
 
-<h3 id="conclusion">Conclusion</h3>
-<p>As I mentioned Visual Studio is the only reason to not completely abandon Windows, But I will use Ubuntu for sure. This was my first attempt to use Ubuntu and I am very happy about the experience, I would like to hear your ideas about your journey.</p>
+<p>You can build even complex console-based UI using this toolkit:</p>
 
-<p>Happy Coding :))</p>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NStack</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Terminal.Gui</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingGuiCS.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingGuiCS</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
+            <span class="kt">var</span> <span class="n">top</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">Top</span><span class="p">;</span>
+
+            <span class="c1">// Creates a menubar, the item "New" has a help menu.</span>
+            <span class="kt">var</span> <span class="n">menu</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MenuBar</span> <span class="p">(</span><span class="k">new</span> <span class="n">MenuBarItem</span> <span class="p">[]</span> <span class="p">{</span>
+                <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_File"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+                    <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Quit"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">top</span><span class="p">.</span><span class="n">Running</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="p">})</span>
+                <span class="p">})</span>
+            <span class="p">});</span>
+            <span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">menu</span><span class="p">);</span>
+
+
+            <span class="c1">// Creates the top-level window to show</span>
+            <span class="kt">var</span> <span class="n">win</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Window</span> <span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Height</span><span class="p">-</span><span class="m">1</span><span class="p">),</span> <span class="s">"Movie Db"</span><span class="p">);</span>
+            <span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">win</span><span class="p">);</span>
+
+            <span class="c1">// Add some controls</span>
+            <span class="kt">var</span> <span class="n">txtSearchLbl</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Label</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="s">"Movie Name: "</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">txtSearch</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextField</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">forKidsOnly</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CheckBox</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">"For Kids?"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">minimumRatingLbl</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Label</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">"Minimum Rating: "</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">minimumRatingTxt</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextField</span><span class="p">(</span><span class="m">41</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">searchBtn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Button</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="s">"Filter"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">allMoviesListView</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span> <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="m">0</span><span class="p">).</span><span class="nf">ToList</span><span class="p">());</span>
+            <span class="n">searchBtn</span><span class="p">.</span><span class="n">Clicked</span> <span class="p">=</span> <span class="p">()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+
+                <span class="kt">double</span> <span class="n">rating</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+                <span class="kt">var</span> <span class="n">isDouble</span> <span class="p">=</span> <span class="kt">double</span><span class="p">.</span><span class="nf">TryParse</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="k">out</span> <span class="n">rating</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">())</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">isDouble</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">MessageBox</span><span class="p">.</span><span class="nf">ErrorQuery</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="s">"Error"</span><span class="p">,</span> <span class="s">"Rating must be number"</span><span class="p">);</span>
+                    <span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">ustring</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="n">win</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">txtSearch</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">())</span> <span class="p">||</span> <span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()))</span>
+                <span class="p">{</span>
+                    <span class="n">allMoviesListView</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span>
+                        <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="n">rating</span><span class="p">).</span><span class="nf">ToList</span><span class="p">());</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span>
+                        <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="n">rating</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+                            <span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">txtSearch</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">)</span>
+                        <span class="p">).</span><span class="nf">ToList</span><span class="p">()));</span>
+                <span class="p">}</span>
+
+            <span class="p">};</span>
+            <span class="n">win</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span>
+                <span class="n">txtSearchLbl</span><span class="p">,</span>
+                <span class="n">txtSearch</span><span class="p">,</span>
+                <span class="n">forKidsOnly</span><span class="p">,</span>
+                <span class="n">minimumRatingLbl</span><span class="p">,</span>
+                <span class="n">minimumRatingTxt</span><span class="p">,</span>
+                <span class="n">searchBtn</span><span class="p">,</span>
+                <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="s">"-------------Search Result--------------"</span><span class="p">)</span>
+            <span class="p">);</span>
+
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Run</span> <span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/public/img/terminalUI.gif" alt="Sample app" width="700" /></p>
+
+<p>You can grab the working sample project from <a href="https://github.com/SirwanAfifi/Console-based-UI">GitHub</a>.</p>
+
+<h3 id="what-about-cross-platform-ui-frameworks">What about cross platform UI frameworks?</h3>
+<p>Developing cross platform UIs is not officially supported by Microsoft, But there are some open source projects out there for doing so:</p>
+<ul>
+  <li><a href="https://github.com/AvaloniaUI/Avalonia">Avalonia</a></li>
+  <li><a href="https://github.com/picoe/Eto">Eto.Forms</a></li>
+</ul>
+
 
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2016/11/23/Environments-in-ASP.NET-Core/">
-        Environments in ASP.NET Core
+      <a href="/archive/2018/04/27/Does-making-decision-matter/">
+        Does making decision matter?
       </a>
     </h1>
 
-    <span class="post-date">23 Nov 2016</span>
+    <span class="post-date">27 Apr 2018</span>
 
-    <p>In ASP.NET Core we can have different hosting environments, this is supported by an environment variable called <code class="highlighter-rouge">ASPNETCORE_ENVIRONMENT</code>. You can see this value is already set to <code class="highlighter-rouge">Development</code>:</p>
+    <p><img src="/public/img/decision.jpg" width="500" />
+<em>Photo by Felix Russell-Saw on Unsplash</em></p>
 
-<p><img src="/public/img/environment.jpg" width="600" /></p>
+<p>We make decision all the time, most of these decisions are done unconsciously, others we agonize over, we all have been there agonizing over a difficult or big decision, we always worry about what to do next, in fact we are trying to make the right decision, But in my opinion there’s no such thing as the right thing or the wrong thing, it’s been a big deal for me because making decisions (big and little ones) have been challenging in my life.</p>
 
-<p>This value is active as long as you run your application inside Visual Studio, So when you deploy your application you must change this value. Actually, this value comes from a file called <code class="highlighter-rouge">launchSettings.json</code>:</p>
+<p>Last Friday I was talking with a friend (<a href="http://foad-ansari.ir/">Foad</a>) about making decisions, he told me about something called Decidophobia or simply fear of making decisions.</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="p">{</span>
-  <span class="s">"iisSettings"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"windowsAuthentication"</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span>
-    <span class="s">"anonymousAuthentication"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
-    <span class="s">"iisExpress"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">"applicationUrl"</span><span class="p">:</span> <span class="s">"http://localhost:13880/"</span><span class="p">,</span>
-      <span class="s">"sslPort"</span><span class="p">:</span> <span class="m">0</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="s">"profiles"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s">"IIS Express"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">"commandName"</span><span class="p">:</span> <span class="s">"IISExpress"</span><span class="p">,</span>
-      <span class="s">"launchBrowser"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
-      <span class="s">"environmentVariables"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">"ASPNETCORE_ENVIRONMENT"</span><span class="p">:</span> <span class="s">"Development"</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="s">"ProjectName"</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s">"commandName"</span><span class="p">:</span> <span class="s">"Project"</span><span class="p">,</span>
-      <span class="s">"launchBrowser"</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span>
-      <span class="s">"launchUrl"</span><span class="p">:</span> <span class="s">"http://localhost:5000"</span><span class="p">,</span>
-      <span class="s">"environmentVariables"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">"ASPNETCORE_ENVIRONMENT"</span><span class="p">:</span> <span class="s">"Development"</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>You can determine what the environment is by using <code class="highlighter-rouge">IHostingEnvironment</code>:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> 
-	<span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="n">loggerFactory</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">();</span>
-
-	<span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
-	<span class="p">{</span>
-		<span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
-	<span class="p">}</span>
-	<span class="k">else</span>
-	<span class="p">{</span>
-		<span class="n">app</span><span class="p">.</span><span class="nf">UseExceptionHandler</span><span class="p">(</span><span class="k">new</span> <span class="n">ExceptionHandlerOptions</span>
-		<span class="p">{</span>
-			<span class="n">ExceptionHandler</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="n">context</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">WriteAsync</span><span class="p">(</span><span class="s">"Opps!"</span><span class="p">)</span>
-		<span class="p">});</span>
-	<span class="p">}</span>
-
-	<span class="c1">// other configurations
-</span><span class="p">}</span></code></pre></figure>
-
-<p>This object also has a method called <code class="highlighter-rouge">IsEnvironment</code> for using custom environment:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsEnvironment</span><span class="p">(</span><span class="s">"envName"</span><span class="p">))</span>
-<span class="p">{</span>
-    <span class="c1">// some config
-</span><span class="p">}</span></code></pre></figure>
-
-<p>One interesting thing is that the Startup class itself supports different environments, it means that for each environment you can have both <code class="highlighter-rouge">Configure</code> and <code class="highlighter-rouge">ConfigureServices</code>:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureDevelopment</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesDevelopment</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
-
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureStaging</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesStaging</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
-
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureProduction</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="p">.....</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServicesProduction</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span></code></pre></figure>
-
-<p>Now you might ask how we can set this environment variable, well there are several ways that you can use, this great <a href="http://andrewlock.net/how-to-set-the-hosting-environment-in-asp-net-core/">post</a> explains them in details.</p>
+<p>Life is full of options and choices so don’t waste your time to worry about right and wrong decisions JUST take action it’s worth it.</p>
 
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2016/11/08/Getting-to-know-Singletone-Pattern/">
-        Getting to know Singleton pattern in C#
+      <a href="/archive/2017/06/06/Powershell-on-macOS/">
+        Running PowerShell on macOS
       </a>
     </h1>
 
-    <span class="post-date">08 Nov 2016</span>
+    <span class="post-date">06 Jun 2017</span>
 
-    <p>This pattern helps us to ensure a class has only one instance. The term comes from the <a href="https://en.wikipedia.org/wiki/Singleton_(mathematics)">mathematical concept of a singleton</a>:</p>
+    <p>It’s been a while I have been using macOS as my primary operating system, you can read about my expreince <a href="http://sirwan.info/archive/2017/06/04/SQL-Server-on-Linux-in-Docker-on-a-Mac/">here</a>.</p>
 
+<p>Today I wanted to run a PowerShell script, I searched around and figured out Microsoft has made PowerShell <a href="https://github.com/PowerShell/PowerShell">open source</a> open source and the good news is that PowerShell is now cross-platform! this means that you can also run PowerShell scripts on Linux, macOS.</p>
+
+<p>Actually to get PowerShell to work all you need to do is installing it using Homebrew:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask install powershell
+</code></pre></div></div>
+<p><em>Before preceding, make sure you have already installed <a href="https://caskroom.github.io/">Homebrew-Cask</a> on your machine.</em></p>
 <blockquote>
-  <p>In mathematics, a singleton, also known as a unit set,[1] is a set with exactly one element. For example, the set {0} is a singleton.</p>
+  <p>Homebrew-Cask extends Homebrew and brings its elegance, simplicity, and speed to macOS applications and large binaries alike.
+It only takes 1 line in your shell to reach 3759 Casks maintained by 4856 contributors.</p>
 </blockquote>
 
-<p>Eventually we must have a class that only gives us a single instance:</p>
+<center><img width="900" src="/public/img/powershell_installation_on_mac.png" /></center>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sigleInstance</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span></code></pre></figure>
+<p>That’s it, now <code class="highlighter-rouge">PowerShell</code> is installed, so you can use it in your terminal:</p>
+<center><img width="900" src="/public/img/powershell_foreach.png" /></center>
 
-<p>As you can see the only way to access the instance is by calling a public static method called <code class="highlighter-rouge">GetInstance()</code>, the single object instance under consideration is created only for the first time it is requested. suppose the following class:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
-    <span class="p">{</span>
-	
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Now I want to make this class singleton, So the first step is to ensure that no one can instantiate our class for doing so we must make the constrauctor <code class="highlighter-rouge">private</code>:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
-<span class="p">{</span>
-    <span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
-    <span class="p">{</span>
-	
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Now whenever you want to create a new instance of <code class="highlighter-rouge">MySingletonClass</code> using <code class="highlighter-rouge">new</code> keyword, Visual Studio gives you this error:</p>
-
-<p><img src="/public/img/singleton_error.jpg" width="500" /></p>
-
-<p>But we can still instantiate it from within the class. So next step is to create a new variable of type <code class="highlighter-rouge">MySingletonClass</code> inside the class, this class is going to be the only instance of the class:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
-<span class="p">{</span>
-	<span class="k">private</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="n">_instance</span><span class="p">;</span>
-
-	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>So we are getting close to implementing the pattern. Now we need a way to get access the single instance. So we need a method like this:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
-<span class="p">{</span>
-	<span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="n">_instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">();</span>
-	<span class="p">}</span>
-	<span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>This method instantiates <code class="highlighter-rouge">MySingletonClass</code> if an instance doesn’t already exist, otherwise it return the existing instance. To demonstrate the object lifetime we can print value of <code class="highlighter-rouge">GetHashCode()</code> fo these objects:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">mySingleInstance</span>   <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
-<span class="kt">var</span> <span class="n">mySingleInstance_2</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
-<span class="kt">var</span> <span class="n">mySingleInstance_3</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
-<span class="kt">var</span> <span class="n">mySingleInstance_4</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
-
-<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj1: {mySingleInstance.GetHashCode()}"</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj2: {mySingleInstance_2.GetHashCode()} "</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj3: {mySingleInstance_3.GetHashCode()} "</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">"obj4: {mySingleInstance_4.GetHashCode()} "</span><span class="p">);</span></code></pre></figure>
-
-<p><img src="/public/img/singleton_GetHashCode.jpg" />
-As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>; it means that if seperate threads of execution access the <code class="highlighter-rouge">_instance</code> at the same time, more that one instance of the <code class="highlighter-rouge">MySingletonClass</code> object may be created. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
-<span class="p">{</span>
-	<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;</span> <span class="n">_instance</span> <span class="p">=</span> 
-		<span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">());</span>
-
-	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
-
-	<span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
-	<span class="p">{</span>
-		<span class="k">return</span> <span class="n">_instance</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span> </code></pre></figure>
-
+<p>There’s also a great <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell">VSCode extension</a> to write, debug PowerShell scripts:</p>
+<center><img width="900" src="/public/img/powershell_debugging_on_vscode.png" /></center>
 
   </div>
   
@@ -335,7 +331,7 @@ As you can see all of the objects are the same and share the same instance. The 
   <div class="row">
     <div class="col-md-12">
       <p>
-        Copyright &copy; 2017 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
       </p>
     </div>
   </div>

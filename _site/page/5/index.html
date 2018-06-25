@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>Home | Sirwan Afifi</title>
 <meta property="og:title" content="Home" />
 <meta name="author" content="Sirwan Afifi" />
@@ -14,8 +14,9 @@
 <meta property="og:url" content="http://localhost:4000/page/5/" />
 <meta property="og:site_name" content="Sirwan Afifi" />
 <link rel="prev" href="http://localhost:4000/page/4">
+<link rel="next" href="http://localhost:4000/page/6">
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"WebPage","headline":"Home","author":{"@type":"Person","name":"Sirwan Afifi"},"description":"Stories from a web developer.","url":"http://localhost:4000/page/5/"}</script>
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"WebPage","url":"http://localhost:4000/page/5/","publisher":null,"image":null,"headline":"Home","dateModified":null,"datePublished":null,"sameAs":null,"mainEntityOfPage":null,"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="canonical" href="http://sirwan.info/page/5/" />
@@ -40,7 +41,7 @@
 </head>
 
 
-<body class="theme-base-0c">
+<body class="theme-base-0d">
 
   <header class="masthead">
     <div class="masthead-inner">
@@ -62,7 +63,7 @@
             <a href="#">contact</a>
           </li>
         </ul>
-        <p>&copy; 2017. Sirwan Afifi All rights reserved.</p>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
       </div>
     </div>
   </header>
@@ -72,237 +73,244 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/">
-        Object Oriented JavaScript Part 2
+      <a href="/archive/2016/08/12/Explicit-Interface-Implementation/">
+        Explicit Interface Implementation
       </a>
     </h1>
 
-    <span class="post-date">11 Dec 2015</span>
+    <span class="post-date">12 Aug 2016</span>
 
-    <p>###Classes
-In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(computer_programming)">class</a> is a standard unit of work, which means that you normally create all of your code inside classes and these classes contain data, behaviour, events and those sort of things that you are going to use in developing your solutions. for example in C# we can create a class this way:</p>
+    <p>Let’s imagine that you have a class with two methods:</p>
 
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span>
 <span class="p">{</span>
-    <span class="c1">// Field
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">firstName</span><span class="p">;</span>
-	<span class="c1">// Constructor that takes no arguments.
-</span>    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">firstName</span> <span class="p">=</span> <span class="n">firstName</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">lastName</span> <span class="p">=</span> <span class="n">lastName</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="c1">// Method
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Greet</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="err">$</span><span class="s">"Hello, { name }. My name is { this.firstName }"</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>In this case we have a class along with properties, constructor. So a class in C# contains data as well as operation as well as events. It will be useful to create same sort of structure in JavaScript. Prior to ES6 there was no such thing as a class in JavaScript, we could simply do everything with functions, we could create classes by using some of the language semantics to create things that look and feels like classes. But they were not classes in the classical sense. for example we used function to do this:</p>
+<p>Now when we want to create an instance of this class and call one of those methods, it executes as expected:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">){</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-	<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">greet</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-	<span class="k">return</span> <span class="s2">"Hello, "</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">". My name is "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span>
-<span class="p">};</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="c1">// "Buy"</span></code></pre></figure>
 
-<p>So what this function does is use the <code class="highlighter-rouge">this</code> keyword to define new property that represents a person object in this case. And what’s interesting here this is what’s called a constructor syntax. So this function when called will return an object. By doing this, we can create a new person:</p>
+<p>Now suppose that we have an interface called <code class="highlighter-rouge">IVendingMachine</code> that has two methods:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">interface</span> <span class="nc">IVendingMachine</span> 
+<span class="p">{</span>
+    <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="nf">Buy</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
 
-<p>In this case, we can see that it is using the <code class="highlighter-rouge">new</code> keyword. this keyword is used to find a function with a name, after the <code class="highlighter-rouge">new</code>, return an object that contained the shape that is defined in the function. Once we have an instance of that, we can get any of the properties that are specified in the constructor syntax function:</p>
+<p>We want our class to implements this interface:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="nx">person</span><span class="p">.</span><span class="nx">firstName</span><span class="p">;</span></code></pre></figure>
-
-<p>ES6 introduces language support for classes with <code class="highlighter-rouge">class</code> keyword. So the ES6 equivalent of the <code class="highlighter-rouge">Person</code> function would be the following:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-		<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
-	<span class="p">}</span>
-	
-	<span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
-	<span class="p">}</span>
-<span class="p">}</span>	</code></pre></figure>
-
-<p>So we have essentially recreated the same Person data type but with much better syntax. behind the scene the runtime is doing the exactly what we used to do. But now the syntax is clean and expressive. As you can see there is <code class="highlighter-rouge">constructor</code> in the class definition. the constructor is one of the class members that we can list in the body of a class, just like the other members it is a function, it is a function that automatically invoked when we say <code class="highlighter-rouge">new</code> and use the class name as a function call:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s2">"Sirwan"</span><span class="p">,</span> <span class="s2">"Afifi"</span><span class="p">);</span></code></pre></figure>
-
-<p>###Getters and Setters
-In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// ES6 get and set</span>
-<span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
     <span class="p">}</span>
-  
-    <span class="nx">get</span> <span class="nx">fullName</span><span class="p">()</span> <span class="p">{</span>
-      <span class="kd">var</span> <span class="nx">result</span>  <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span><span class="p">;</span>
-        <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
     <span class="p">}</span>
-  
-    <span class="nx">set</span> <span class="nx">firstName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
+<span class="p">}</span></code></pre></figure>
+
+<p>Our class satisfied the interface because it has the methods with the same names. So Visual Studio doesn’t give you a compiler error. Now let’s imagine that we
+also want to add interface’s methods to this class, So, in this case, we must explicitly prefix the methods with <code class="highlighter-rouge">IVendingMachine.</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">VendingMachine</span> <span class="p">:</span> <span class="n">IVendingMachine</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">500</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
     <span class="p">}</span>
-   <span class="nx">set</span> <span class="nx">lastName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
+
+    <span class="kt">bool</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="kt">float</span> <span class="n">amount</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&lt;</span> <span class="m">300</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
     <span class="p">}</span>
-   <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
-   <span class="p">}</span>
-<span class="p">}</span>    
-<span class="kd">let</span> <span class="nx">sirwan</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'Sirwan'</span><span class="p">,</span> <span class="s1">'Afifi'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sirwan</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'SIRWAN, AFIFI'</span>
-<span class="kd">let</span> <span class="nx">omid</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'Daryoush'</span><span class="p">,</span> <span class="s1">'Zandi'</span><span class="p">);</span>
-<span class="nx">omid</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="s2">"Omid"</span><span class="p">;</span>
-<span class="nx">omid</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="s2">"Kamangar"</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">omid</span><span class="p">.</span><span class="nx">fullName</span><span class="p">);</span>  <span class="c1">// Outputs 'OMID, KAMANGAR'</span></code></pre></figure>
 
-<p>###Inheritance
-ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Employee</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
-  <span class="c1">// more features</span>
-  <span class="nx">getWork</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="p">}</span> <span class="nx">is</span> <span class="nx">working</span><span class="p">.</span><span class="err">`</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+    <span class="kt">string</span> <span class="n">IVendingMachine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"IVendingMachine Buy"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
 
-<span class="kd">let</span> <span class="nx">emp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employee</span><span class="p">(</span><span class="s1">'Sirwan'</span><span class="p">,</span> <span class="s1">'Afifi'</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">emp</span><span class="p">.</span><span class="nx">getWork</span><span class="p">());</span> <span class="c1">// Outputs 'Sirwan is working.'</span></code></pre></figure>
+<p>Note that Visual Studio can help you to implement interface explicitly by pressing <code class="highlighter-rouge">Ctrl + .</code> on the name of the interface and select <code class="highlighter-rouge">Implement interface explicitly</code>:</p>
 
-<p>The only thing is that a lot of features in ES2015 are not supported in the browsers. For example classes are not supported by any browser, now there might be a nightly built of Firefox that supports classes. So instead we have to use a transpiler and there are many transpilers such as <a href="http://www.typescriptlang.org">TypeScript</a>, <a href="https://babeljs.io">Bable</a> and variety of others. I recommend you to use Bable because it has the best support for all of ES2015 features.</p>
+<p><img src="/public/img/explicit_interface_implementation.jpg" width="800" />
+Now, what happens when we call the <code class="highlighter-rouge">InsertCoin</code> and <code class="highlighter-rouge">Buy</code> methods? In this case, we should consider two different situations when we create the object:</p>
 
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2015/12/10/Object-Oriented-JavaScript-Part-1/">
-        Object Oriented JavaScript Part 1
-      </a>
-    </h1>
-
-    <span class="post-date">10 Dec 2015</span>
-
-    <p>Recently I’ve started to improve my JavaScript skill, So I decided to keep notes about new things I learn from now on.
-Since I’m a C# developer, I’m trying to use my existing knowledge in C# to learn JavaScript.<br />
-As you know in C# we have something called <a href="https://msdn.microsoft.com/en-us/library/bb384062.aspx">Object and collection initializer</a>. For example we can use object initializer to create name and value pairs for different properties of the object, in this case <code class="highlighter-rouge">car</code> object:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Car</span><span class="p">()</span>
-<span class="p">{</span> 
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
-    <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
-    <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CarManufacturer</span><span class="p">()</span> 
-    <span class="p">{</span> 
-        <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet"</span><span class="p">,</span> 
-        <span class="n">Country</span> <span class="p">=</span> <span class="s">"USA"</span> 
-    <span class="p">}</span> 
-<span class="p">};</span></code></pre></figure>
-
-<p>As you can see we used object initializer for those embedded objects too.
-Although object initializers can be used for anonymous types. So here’s the same example which we build with anonymous object:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">car</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
-    <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">,</span> 
-    <span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">,</span> 
-    <span class="n">Manufacturer</span> <span class="p">=</span> <span class="k">new</span> <span class="p">{</span> 
-        <span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet"</span><span class="p">,</span> 
-        <span class="n">Country</span> <span class="p">=</span> <span class="s">"USA"</span> 
-    <span class="p">}</span> 
-<span class="p">};</span></code></pre></figure>
-
-<p>This is very similar the way dynamic objects work in JavaScript. So in JavaScript object creation is going to follow this pattern:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span> 
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet Corvette"</span><span class="p">,</span> 
-    <span class="na">color</span><span class="p">:</span> <span class="s2">"Red"</span><span class="p">,</span> 
-    <span class="na">manufacturer</span><span class="p">:</span> <span class="p">{</span> 
-        <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet"</span><span class="p">,</span> 
-        <span class="na">country</span><span class="p">:</span> <span class="s2">"USA"</span> 
-    <span class="p">},</span>
-    <span class="s2">"towing capacity"</span><span class="p">:</span> <span class="s2">"5,952 lbs"</span> 
-<span class="p">};</span></code></pre></figure>
-
-<p>As you can see we use key/value pairs. Actually it’s a little different from C# for instance we used colons (<code class="highlighter-rouge">:</code>) instead of equals (<code class="highlighter-rouge">=</code>) but generally the syntaxes are similar. In some case you may see the name is embedded in quotes, it’s optional but if you’re using any reserved characters like space, in this case, you need to surround the name with quotes (like <code class="highlighter-rouge">towing capacity</code>).</p>
-
-<p>These dynamic objects that you have defined with this name value pairs allows you to take these objects you are creating and access each the properties you have defined in that name value pair by the name using a simple dot syntax. For example here in JavaScript you can just access the name using dot name convention:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">car</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span></code></pre></figure>
-
-<p>You can also use a bracket syntax, that’s why objects are sometimes called associative arrays:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">car</span><span class="p">[</span><span class="s2">"name"</span><span class="p">];</span></code></pre></figure>
-
-<p>This way we can retrieve or set the property values. There are other ways for accessing and retrieving property value that are as follows:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">car</span><span class="p">.</span><span class="nx">color</span>                <span class="o">=</span> <span class="s2">"Dot syntax"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">[</span><span class="s2">"towing capacity"</span><span class="p">]</span>   <span class="o">=</span> <span class="s2">"String with space"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">[</span><span class="nx">str</span><span class="p">]</span>                 <span class="o">=</span> <span class="s2">"String value"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">[</span><span class="nx">rand</span><span class="p">]</span>                <span class="o">=</span> <span class="s2">"Random Number"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">[</span><span class="nx">obj</span><span class="p">]</span>                 <span class="o">=</span> <span class="s2">"Object"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">[</span><span class="s2">""</span><span class="p">]</span>                  <span class="o">=</span> <span class="s2">"Even an empty string"</span><span class="p">;</span> </code></pre></figure>
-
-<p>We can also get embedded objects that are the properties of those dynamic objects as well and retrive properties from them:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">manufacturer</span> <span class="o">=</span> <span class="nx">car</span><span class="p">.</span><span class="nx">manufacturer</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">country</span> <span class="o">=</span> <span class="nx">manufacturer</span><span class="p">.</span><span class="nx">country</span><span class="p">;</span></code></pre></figure>
-
-<p>###Malleability
-As you probably know, One of the key features of JavaScript is that the language is <a href="http://blog.jeremymartin.name/2008/03/understanding-loose-typing-in.html">loosely typed</a> it means that variables are declared without a type. So the objects that you are creating in this way are very malleable. In C# <code class="highlighter-rouge">ExpandoObject</code> gives you this behavior.</p>
-
-<blockquote>
-  <p>ExpandoObject Represents an object whose members can be dynamically added and removed at run time.</p>
-</blockquote>
-
-<p>For example in this code we are creating a new object and marking it as dynamic so that we can add members to this <code class="highlighter-rouge">ExpandoObject</code> as we want:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">dynamic</span> <span class="n">car</span>  <span class="p">=</span> <span class="k">new</span> <span class="nf">ExpandoObject</span><span class="p">();</span>
-<span class="n">car</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"Chevrolet Corvette"</span><span class="p">;</span>
-<span class="n">car</span><span class="p">.</span><span class="n">Color</span> <span class="p">=</span> <span class="s">"Red"</span><span class="p">;</span></code></pre></figure>
-
-<p>These are being added on-the-fly. It means that these aren’t defining the shape ahead of time. We are just saying we are going to add properties to the <code class="highlighter-rouge">car</code> object. In fact this is pretty much the same way in JavaScript:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span> 
-    <span class="na">name</span><span class="p">:</span> <span class="s2">"Chevrolet Corvette"</span><span class="p">,</span> 
-    <span class="na">color</span><span class="p">:</span> <span class="s2">"Red"</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>We can still add another property or function on-the-fly:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">car</span><span class="p">[</span><span class="s2">"towing capacity"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"5,952 lbs"</span><span class="p">;</span>
-<span class="nx">car</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
-<span class="p">};</span></code></pre></figure>
-
-<p>Resourses:</p>
 <ul>
-    <li><a href="https://pluralsight.com/courses/js4cs
-">JavaScript for C# Developers by Shawn Wildermuth</a></li>
-    <li><a href="https://mauricebutler.wordpress.com/2011/11/07/getting-started-with-javascript-with-a-c-background/">Getting started with JavaScript with a C# background</a></li>
-    <li><a href="https://dzone.com/articles/javascript-c-developers">JavaScript for C# Developers: Functions are Objects</a></li>
+  <li>Concrete Type</li>
+  <li>Interface Variable</li>
 </ul>
 
+<p>If we want the methods of <code class="highlighter-rouge">VendingMachine</code> we should create the object with concrete type:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">VendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// false</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="c1">// "Buy"</span></code></pre></figure>
+
+<p>If we want the methods of <code class="highlighter-rouge">IVendingMachine</code> we should create the object with interface variable:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IVendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="c1">// "IVendingMachine Buy"</span></code></pre></figure>
+
+
   </div>
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/archive/2015/11/28/First-Blog-Post/">
-        My first blog post!
+      <a href="/archive/2016/07/02/Delegates/">
+        Delegates in C#
       </a>
     </h1>
 
-    <span class="post-date">28 Nov 2015</span>
+    <span class="post-date">02 Jul 2016</span>
 
-    <p>Here’s my first blog post :) In this blog I’m going to share thing that I learn, hope you enjoy reading my blog :)</p>
+    <p>Lately I have been studying some topics in C# in order to improve myself. I think <a href="https://msdn.microsoft.com/en-us/library/ms173171.aspx">Delegate</a> is one of those topics which is kinda difficult for beginners to initiate with. So, in order to make it clear how it works, I’m going to make some explanations in this post.</p>
+
+<h3 id="what-are-delegates">What are Delegates?</h3>
+<p>Delegate was introduced in C# 1. Think of it as a simply being a placeholder for functions that’ll be called at some point in time. Assume you want to declare a variable that is a reference to a specific method. In this case, the variable encapsulates some executable code and you can invoke the variable just like an actual method. In doing so, we need to create a delegate</p>
+
+<h3 id="defining-a-delegate">Defining a Delegate</h3>
+<p>Delegates are created using <code class="highlighter-rouge">delegate</code> keyword along with the function signature:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">delegate</span> <span class="kt">int</span> <span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see we are defining a delegate called <code class="highlighter-rouge">Sum</code> that is compatible with any method with an <code class="highlighter-rouge">int</code> return type with two parameters. Actually we defined a type that we can use to create variables and point those variables to methods that have the same signature and same return type. 
+The type defenition for a delegate describes the method that we want to call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can assign a method to the delegate variable. This assignment creates a delegate instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Sum</span> <span class="n">s</span> <span class="p">=</span> <span class="n">Add</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can invoke the delegate instance in the same way as a method:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">s</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">);</span></code></pre></figure>
+
+<h3 id="advantages-of-delegate">Advantages of Delegate</h3>
+
+<ul>
+  <li>Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.</li>
+  <li>Can be used to define callback functions.</li>
+  <li>Can be dynamically switched at runtime.</li>
+</ul>
+
+<h3 id="real-world-example">Real World example</h3>
+<p>Suppose that you want to implement something like a <a href="https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx">Repeater</a> control in your ASP.NET MVC application, As you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Helpers</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">delegate</span> <span class="n">HelperResult</span> <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">input</span><span class="p">);</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">HelperResult</span> <span class="n">Repeater</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">html</span><span class="p">,</span>
+	  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">HelperResult</span><span class="p">(</span><span class="n">writer</span> <span class="p">=&gt;</span>
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+			<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="kt">var</span> <span class="n">func</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">itemTemplate</span> <span class="p">:</span> <span class="n">alternatingitemTemplate</span><span class="p">;</span>
+				<span class="nf">func</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="nf">WriteTo</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span>
+				<span class="n">i</span><span class="p">++;</span>
+			<span class="p">}</span>
+		<span class="p">});</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see we emulated the <code class="highlighter-rouge">ItemTemplate</code> and <code class="highlighter-rouge">AlternatingItemTemplate</code> using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback. <br />
+The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example can be replaced with <code class="highlighter-rouge">Func</code> delegate:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+<span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span></code></pre></figure>
+
+<p>Now we can use our helper inside any view:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Id<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    @Html.Repeater(Model, @<span class="nt">&lt;tr&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>, 
+	@<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"alert-info"</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>)
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>If you run the application you can see the result:</p>
+
+<p><img src="/public/img/repeater.jpg" width="500" /></p>
+
+<p>You can check out the <a href="https://github.com/SirwanAfifi/using_delegates">GitHub repository</a> for this post.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/archive/2016/06/11/Thinking-out-of-the-box-to-become-a-better-programmer/">
+        Thinking out of the box to become a better programmer
+      </a>
+    </h1>
+
+    <span class="post-date">11 Jun 2016</span>
+
+    <p><img src="/public/img/Thinking_Man.jpg" width="350" />
+<em>Image courtesy of <a href="http://goo.gl/iu68gq">http://goo.gl/iu68gq</a></em></p>
+
+<p>Today I was talking with a friend of mine about thinking, The topic is interesting and I wanted to share it with you because as a programmer we are always thinking and trying to find solutions. Actually it’s a good habit when you want to learn something new, instead of taking action and delve into the details, you should think about that and break it down into several pieces then construct it as a big picture. Once you get familiar to it you can start trying to figure out each individual piece, By doing so you will become great in your field.</p>
+
+<p><img src="/public/img/think-outside-the-box.jpg" width="500" />
+<em>Image courtesy of <a href="http://goo.gl/Xi2Cn4">http://goo.gl/Xi2Cn4</a></em></p>
+
+<p>On the other hand, thinking isn’t the only thing for being an expert in programming. Suppose that you are given a challenging feature to implement in a team you’re working with, you might spend days and days trying to implement this feature and each time you fail and stuck in it then you try to find a solution on the net or asking questions on Stackoverflow. I’m not saying you shouldn’t google about your problem, What I’m saying is that you should understand the problem, This is where a Thinking out of the box’s metaphor comes into play.</p>
+
+<p>This is very helpful because when you ran into a problem you should first think about it in a new or a different prespective, For example you can put yourself in end user’s place and try to figure it out. Once you understand it, you can start coding the feature. By doing so you can help yourself and believe me it works like a charm and you don’t need to post off-topic questions every single day on Stackoverflow anymore, Instead when you run into a serious problem, you can post your question and get extra votes :)</p>
+
+<p>So thinking out of the box helps us to think like a programmer, It also helps you to approach problems in new ways.</p>
+
 
   </div>
   
@@ -315,7 +323,7 @@ As you probably know, One of the key features of JavaScript is that the language
   
 
   
-    <span>Next &raquo;</span>
+    <a href="/page/6">Next &raquo;</a>
   
 </div>
 
@@ -324,7 +332,7 @@ As you probably know, One of the key features of JavaScript is that the language
   <div class="row">
     <div class="col-md-12">
       <p>
-        Copyright &copy; 2017 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
       </p>
     </div>
   </div>

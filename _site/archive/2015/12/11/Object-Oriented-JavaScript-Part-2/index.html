@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- Begin Jekyll SEO tag v2.2.3 -->
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
 <title>Object Oriented JavaScript Part 2 | Sirwan Afifi</title>
 <meta property="og:title" content="Object Oriented JavaScript Part 2" />
 <meta name="author" content="Sirwan Afifi" />
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-12-11T00:00:00+03:30" />
 <script type="application/ld+json">
-{"@context":"http://schema.org","@type":"BlogPosting","headline":"Object Oriented JavaScript Part 2","author":{"@type":"Person","name":"Sirwan Afifi"},"datePublished":"2015-12-11T00:00:00+03:30","dateModified":"2015-12-11T00:00:00+03:30","description":"Stories from a web developer.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/"},"url":"http://localhost:4000/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/"}</script>
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"BlogPosting","url":"http://localhost:4000/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/","publisher":null,"image":null,"headline":"Object Oriented JavaScript Part 2","dateModified":"2015-12-11T00:00:00+03:30","datePublished":"2015-12-11T00:00:00+03:30","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="canonical" href="http://sirwan.info/archive/2015/12/11/Object-Oriented-JavaScript-Part-2/" />
@@ -41,7 +41,7 @@
 </head>
 
 
-<body class="theme-base-0c">
+<body class="theme-base-0d">
 
   <header class="masthead">
     <div class="masthead-inner">
@@ -63,7 +63,7 @@
             <a href="#">contact</a>
           </li>
         </ul>
-        <p>&copy; 2017. Sirwan Afifi All rights reserved.</p>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
       </div>
     </div>
   </header>
@@ -77,18 +77,18 @@ In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(co
 
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
 <span class="p">{</span>
-    <span class="c1">// Field
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">firstName</span><span class="p">;</span>
-	<span class="c1">// Constructor that takes no arguments.
-</span>    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">)</span>
+    <span class="c1">// Field</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">firstName</span><span class="p">;</span>
+	<span class="c1">// Constructor that takes no arguments.</span>
+    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">firstName</span><span class="p">,</span> <span class="kt">string</span> <span class="n">lastName</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="n">firstName</span> <span class="p">=</span> <span class="n">firstName</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="n">lastName</span> <span class="p">=</span> <span class="n">lastName</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="c1">// Method
-</span>    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Greet</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
+    <span class="c1">// Method</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">Greet</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="k">return</span> <span class="err">$</span><span class="s">"Hello, { name }. My name is { this.firstName }"</span>
+        <span class="k">return</span> <span class="s">$"Hello, </span><span class="p">{</span> <span class="n">name</span> <span class="p">}</span><span class="s">. My name is </span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="n">firstName</span> <span class="p">}</span><span class="s">"</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -112,14 +112,14 @@ In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(co
 
 <p>ES6 introduces language support for classes with <code class="highlighter-rouge">class</code> keyword. So the ES6 equivalent of the <code class="highlighter-rouge">Person</code> function would be the following:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-	<span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+	<span class="kd">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
 		<span class="k">this</span><span class="p">.</span><span class="nx">lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
 	<span class="p">}</span>
 	
 	<span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+		<span class="k">return</span> <span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">. My name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
 	<span class="p">}</span>
 <span class="p">}</span>	</code></pre></figure>
 
@@ -131,25 +131,25 @@ In many programming languages a <a href="https://en.wikipedia.org/wiki/Class_(co
 In a class we can also use getter and setter, they are created using <code class="highlighter-rouge">get</code> and <code class="highlighter-rouge">set</code> keyword. get and set allows us to run code on the reading or writing of a property:</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">// ES6 get and set</span>
-<span class="kr">class</span> <span class="nx">Person</span> <span class="p">{</span>
-    <span class="nx">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span> <span class="nx">lastName</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">firstName</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">lastName</span><span class="p">;</span>
     <span class="p">}</span>
   
-    <span class="nx">get</span> <span class="nx">fullName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nx">fullName</span><span class="p">()</span> <span class="p">{</span>
       <span class="kd">var</span> <span class="nx">result</span>  <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span><span class="p">;</span>
         <span class="k">return</span> <span class="nx">result</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
     <span class="p">}</span>
   
-    <span class="nx">set</span> <span class="nx">firstName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">set</span> <span class="nx">firstName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
     <span class="p">}</span>
-   <span class="nx">set</span> <span class="nx">lastName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
+   <span class="kd">set</span> <span class="nx">lastName</span><span class="p">(</span><span class="nx">newName</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="nx">_lastName</span> <span class="o">=</span> <span class="nx">newName</span><span class="p">;</span> 
     <span class="p">}</span>
    <span class="nx">greet</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-     <span class="k">return</span> <span class="err">`</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}.</span> <span class="nx">My</span> <span class="nx">name</span> <span class="nx">is</span> <span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+     <span class="k">return</span> <span class="s2">`Hello, </span><span class="p">${</span><span class="nx">name</span><span class="p">}</span><span class="s2">. My name is </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
    <span class="p">}</span>
 <span class="p">}</span>    
 <span class="kd">let</span> <span class="nx">sirwan</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="s1">'Sirwan'</span><span class="p">,</span> <span class="s1">'Afifi'</span><span class="p">);</span>
@@ -162,10 +162,10 @@ In a class we can also use getter and setter, they are created using <code class
 <p>###Inheritance
 ES6 also gives us an easy syntax to specify and inheritance for relationship. Which is a way we say a class inherits from another class. Now assume that we need another class for modling an <code class="highlighter-rouge">Employee</code>, since every employee is a person, maybe we will have the <code class="highlighter-rouge">Employee</code> inherit from a <code class="highlighter-rouge">Person</code>. In ES6 inheritance is specified using <code class="highlighter-rouge">extends</code> keyword:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Employee</span> <span class="kr">extends</span> <span class="nx">Person</span><span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">class</span> <span class="nx">Employee</span> <span class="kd">extends</span> <span class="nx">Person</span><span class="p">{</span>
   <span class="c1">// more features</span>
   <span class="nx">getWork</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="err">`</span><span class="nx">$</span><span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="p">}</span> <span class="nx">is</span> <span class="nx">working</span><span class="p">.</span><span class="err">`</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">`</span><span class="p">${</span> <span class="k">this</span><span class="p">.</span><span class="nx">_firstName</span> <span class="p">}</span><span class="s2"> is working.`</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
@@ -201,27 +201,27 @@ s.setAttribute('data-timestamp', +new Date());
     
       <li>
         <h3>
-          <a href="/archive/2017/06/06/Powershell-on-macOS/">
-            Running PowerShell on macOS
-            <small>06 Jun 2017</small>
+          <a href="/archive/2018/06/25/Hackathon/">
+            Hackathon
+            <small>25 Jun 2018</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/archive/2017/06/04/SQL-Server-on-Linux-in-Docker-on-a-Mac/">
-            SQL Server on Linux in Docker on a Mac
-            <small>04 Jun 2017</small>
+          <a href="/archive/2018/06/04/Uploading-file-in-Vue.js/">
+            Uploading file in Vue.js
+            <small>04 Jun 2018</small>
           </a>
         </h3>
       </li>
     
       <li>
         <h3>
-          <a href="/archive/2017/05/03/Working-remotely/">
-            Working remotely
-            <small>03 May 2017</small>
+          <a href="/archive/2018/05/28/TypeScript-and-Vue.js/">
+            TypeScript and Vue.js
+            <small>28 May 2018</small>
           </a>
         </h3>
       </li>
@@ -234,7 +234,7 @@ s.setAttribute('data-timestamp', +new Date());
   <div class="row">
     <div class="col-md-12">
       <p>
-        Copyright &copy; 2017 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
       </p>
     </div>
   </div>

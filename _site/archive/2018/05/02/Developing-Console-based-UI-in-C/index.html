@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+<head>
+
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>Developing Console-based UI in C# | Sirwan Afifi</title>
+<meta property="og:title" content="Developing Console-based UI in C#" />
+<meta name="author" content="Sirwan Afifi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stories from a web developer." />
+<meta property="og:description" content="Stories from a web developer." />
+<link rel="canonical" href="http://localhost:4000/archive/2018/05/02/Developing-Console-based-UI-in-C/" />
+<meta property="og:url" content="http://localhost:4000/archive/2018/05/02/Developing-Console-based-UI-in-C/" />
+<meta property="og:site_name" content="Sirwan Afifi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-02T00:00:00+04:30" />
+<script type="application/ld+json">
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"BlogPosting","url":"http://localhost:4000/archive/2018/05/02/Developing-Console-based-UI-in-C/","publisher":null,"image":null,"headline":"Developing Console-based UI in C#","dateModified":"2018-05-02T00:00:00+04:30","datePublished":"2018-05-02T00:00:00+04:30","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archive/2018/05/02/Developing-Console-based-UI-in-C/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="canonical" href="http://sirwan.info/archive/2018/05/02/Developing-Console-based-UI-in-C/" />
+  <title>
+    Developing Console-based UI in C# &middot;  
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+<body class="theme-base-0d">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="profilepic">
+        <a href="http://localhost:4000"><img src="/public/avatar.png" alt="Profile Picture"></a>
+      </div>
+      <h2>Sirwan Afifi</h2>
+      <p class="lead">Stories from a web developer.</p>
+
+      <div class="colophon">
+        <ul class="colophon-links">
+          <li>
+            <a href="/about">about</a>
+          </li>
+          <li>
+            <a href="/archive">archives</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+        </ul>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="content container">
+    <div class="post">
+  <h1>Developing Console-based UI in C#</h1>
+  <span class="post-date">02 May 2018</span>
+  <p>As you know Console Applications don’t have graphical user interface or GUI. Instead, they run from Command Line, for example instead of writing a name into a textbox and clicking a button we would instead invoke the Console Application and provide the name as a parameter. In fact, in Console Applications we instead interact with the user using text inputs. For example, we could prompt something like this:</p>
+
+<p><img src="/public/img/consoleTest.jpg" width="700" /></p>
+
+<p>The user can then write a name and hit enter then we can read that text input into our application.</p>
+
+<p>Wouldn’t be better to make it beautiful? This is where we can use <a href="https://github.com/migueldeicaza/gui.cs">Terminal.Gui</a> a cross-platform GUI toolkit:</p>
+
+<p><img src="/public/img/guics.png" alt="Sample app" width="700" /></p>
+
+<blockquote>
+  <p>Terminal.Gui is a library intended to create console-based applications using C#. The framework has been designed to make it easy to write applications that will work on monochrome terminals, as well as modern color terminals with mouse support. This library works across Windows, Linux and MacOS.</p>
+</blockquote>
+
+<p>Using this UI toolkit is pretty simple, all you need to do is adding its package into your project:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Terminal.Gui
+</code></pre></div></div>
+
+<p>The simplest application looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">consoleTest</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="nn">Terminal.Gui</span><span class="p">;</span>
+
+    <span class="k">class</span> <span class="nc">Demo</span> <span class="p">{</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">Main</span> <span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
+
+            <span class="kt">var</span> <span class="n">n</span> <span class="p">=</span> <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Query</span> <span class="p">(</span><span class="m">50</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span>
+                <span class="s">"Question"</span><span class="p">,</span> <span class="s">"Do you like console apps?"</span><span class="p">,</span> <span class="s">"Yes"</span><span class="p">,</span> <span class="s">"No"</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This example shows a prompt and returns an integer value depending on which value was selected by the user (Yes, No, or if they use chose not to make a decision and instead pressed the ESC key):</p>
+
+<p><img src="/public/img/firstTerminalUIapp.png" alt="Sample app" width="700" /></p>
+
+<p>As you can see the first thing to do is calling <code class="highlighter-rouge">Application.Init ();</code> to actually initialize the application. We can also create a window and then add a menu to it:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
+<span class="kt">var</span> <span class="n">top</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">Top</span><span class="p">;</span>
+
+<span class="c1">// Creates the top-level window to show</span>
+<span class="kt">var</span> <span class="n">win</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Window</span> <span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Height</span><span class="p">-</span><span class="m">1</span><span class="p">),</span> <span class="s">"MyApp"</span><span class="p">);</span>
+<span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">win</span><span class="p">);</span>
+
+<span class="c1">// Creates a menubar, the item "New" has a help menu.</span>
+<span class="kt">var</span> <span class="n">menu</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MenuBar</span> <span class="p">(</span><span class="k">new</span> <span class="n">MenuBarItem</span> <span class="p">[]</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_File"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_New"</span><span class="p">,</span> <span class="s">"Creates new file"</span><span class="p">,</span> <span class="p">()=&gt;</span> <span class="p">{}),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Close"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{}),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Quit"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">top</span><span class="p">.</span><span class="n">Running</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="p">})</span>
+    <span class="p">}),</span>
+    <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_Edit"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Copy"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"C_ut"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Paste"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">});</span>
+<span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">menu</span><span class="p">);</span>
+
+<span class="c1">// Add some controls</span>
+<span class="n">win</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="s">"Login: "</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">TextField</span> <span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="s">""</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="s">"Password: "</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">TextField</span> <span class="p">(</span><span class="m">14</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">40</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span> <span class="p">{</span>  <span class="p">},</span>
+    <span class="k">new</span> <span class="nf">CheckBox</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="s">"Remember me"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">RadioGroup</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="k">new</span> <span class="p">[]</span> <span class="p">{</span> <span class="s">"_Personal"</span><span class="p">,</span> <span class="s">"_Company"</span> <span class="p">}),</span>
+    <span class="k">new</span> <span class="nf">Button</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="s">"Ok"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Button</span> <span class="p">(</span><span class="m">10</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="s">"Cancel"</span><span class="p">),</span>
+    <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">18</span><span class="p">,</span> <span class="s">"Press ESC and 9 to activate the menubar"</span><span class="p">));</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="nf">Run</span> <span class="p">();</span></code></pre></figure>
+
+<p><img src="/public/img/sampleTerminalUI.png" alt="Sample app" width="700" /></p>
+
+<p>You can build even complex console-based UI using this toolkit:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">NStack</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Terminal.Gui</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TestingGuiCS.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TestingGuiCS</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Init</span> <span class="p">();</span>
+            <span class="kt">var</span> <span class="n">top</span> <span class="p">=</span> <span class="n">Application</span><span class="p">.</span><span class="n">Top</span><span class="p">;</span>
+
+            <span class="c1">// Creates a menubar, the item "New" has a help menu.</span>
+            <span class="kt">var</span> <span class="n">menu</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MenuBar</span> <span class="p">(</span><span class="k">new</span> <span class="n">MenuBarItem</span> <span class="p">[]</span> <span class="p">{</span>
+                <span class="k">new</span> <span class="nf">MenuBarItem</span> <span class="p">(</span><span class="s">"_File"</span><span class="p">,</span> <span class="k">new</span> <span class="n">MenuItem</span> <span class="p">[]</span> <span class="p">{</span>
+                    <span class="k">new</span> <span class="nf">MenuItem</span> <span class="p">(</span><span class="s">"_Quit"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">top</span><span class="p">.</span><span class="n">Running</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span> <span class="p">})</span>
+                <span class="p">})</span>
+            <span class="p">});</span>
+            <span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">menu</span><span class="p">);</span>
+
+
+            <span class="c1">// Creates the top-level window to show</span>
+            <span class="kt">var</span> <span class="n">win</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Window</span> <span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span> <span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Height</span><span class="p">-</span><span class="m">1</span><span class="p">),</span> <span class="s">"Movie Db"</span><span class="p">);</span>
+            <span class="n">top</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span><span class="n">win</span><span class="p">);</span>
+
+            <span class="c1">// Add some controls</span>
+            <span class="kt">var</span> <span class="n">txtSearchLbl</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Label</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="s">"Movie Name: "</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">txtSearch</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextField</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">30</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">forKidsOnly</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CheckBox</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">"For Kids?"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">minimumRatingLbl</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Label</span><span class="p">(</span><span class="m">25</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="s">"Minimum Rating: "</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">minimumRatingTxt</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TextField</span><span class="p">(</span><span class="m">41</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">searchBtn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Button</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="s">"Filter"</span><span class="p">);</span>
+            <span class="kt">var</span> <span class="n">allMoviesListView</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span> <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="m">0</span><span class="p">).</span><span class="nf">ToList</span><span class="p">());</span>
+            <span class="n">searchBtn</span><span class="p">.</span><span class="n">Clicked</span> <span class="p">=</span> <span class="p">()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+
+                <span class="kt">double</span> <span class="n">rating</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+                <span class="kt">var</span> <span class="n">isDouble</span> <span class="p">=</span> <span class="kt">double</span><span class="p">.</span><span class="nf">TryParse</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="k">out</span> <span class="n">rating</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">())</span> <span class="p">&amp;&amp;</span> <span class="p">!</span><span class="n">isDouble</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">MessageBox</span><span class="p">.</span><span class="nf">ErrorQuery</span><span class="p">(</span><span class="m">30</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="s">"Error"</span><span class="p">,</span> <span class="s">"Rating must be number"</span><span class="p">);</span>
+                    <span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">ustring</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="n">win</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">txtSearch</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">())</span> <span class="p">||</span> <span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">minimumRatingTxt</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">()))</span>
+                <span class="p">{</span>
+                    <span class="n">allMoviesListView</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span>
+                        <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="n">rating</span><span class="p">).</span><span class="nf">ToList</span><span class="p">());</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">allMoviesListView</span><span class="p">);</span>
+                    <span class="n">win</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">ListView</span><span class="p">(</span><span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="n">top</span><span class="p">.</span><span class="n">Frame</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span> <span class="m">200</span><span class="p">),</span>
+                        <span class="n">MovieDataSource</span><span class="p">.</span><span class="nf">GetList</span><span class="p">(</span><span class="n">forKidsOnly</span><span class="p">.</span><span class="n">Checked</span><span class="p">,</span> <span class="n">rating</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span>
+                            <span class="n">x</span><span class="p">.</span><span class="n">Name</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">txtSearch</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">ToString</span><span class="p">(),</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">)</span>
+                        <span class="p">).</span><span class="nf">ToList</span><span class="p">()));</span>
+                <span class="p">}</span>
+
+            <span class="p">};</span>
+            <span class="n">win</span><span class="p">.</span><span class="nf">Add</span> <span class="p">(</span>
+                <span class="n">txtSearchLbl</span><span class="p">,</span>
+                <span class="n">txtSearch</span><span class="p">,</span>
+                <span class="n">forKidsOnly</span><span class="p">,</span>
+                <span class="n">minimumRatingLbl</span><span class="p">,</span>
+                <span class="n">minimumRatingTxt</span><span class="p">,</span>
+                <span class="n">searchBtn</span><span class="p">,</span>
+                <span class="k">new</span> <span class="nf">Label</span> <span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="s">"-------------Search Result--------------"</span><span class="p">)</span>
+            <span class="p">);</span>
+
+            <span class="n">Application</span><span class="p">.</span><span class="nf">Run</span> <span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/public/img/terminalUI.gif" alt="Sample app" width="700" /></p>
+
+<p>You can grab the working sample project from <a href="https://github.com/SirwanAfifi/Console-based-UI">GitHub</a>.</p>
+
+<h3 id="what-about-cross-platform-ui-frameworks">What about cross platform UI frameworks?</h3>
+<p>Developing cross platform UIs is not officially supported by Microsoft, But there are some open source projects out there for doing so:</p>
+<ul>
+  <li><a href="https://github.com/AvaloniaUI/Avalonia">Avalonia</a></li>
+  <li><a href="https://github.com/picoe/Eto">Eto.Forms</a></li>
+</ul>
+
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/06/25/Hackathon/">
+            Hackathon
+            <small>25 Jun 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/06/04/Uploading-file-in-Vue.js/">
+            Uploading file in Vue.js
+            <small>04 Jun 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/05/28/TypeScript-and-Vue.js/">
+            TypeScript and Vue.js
+            <small>28 May 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+  </div>
+  <footer id="footer" class="inner"><div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+      </p>
+    </div>
+  </div>
+</div></footer>
+</body>
+
+</html>
