@@ -151,7 +151,7 @@ pre code {
   margin-bottom: 15px;
   border-radius: 4px;
   margin-left: 0px;
-  margin-right: 0px; 
+  margin-right: 0px;
 }
 .highlight pre {
   margin-bottom: 0;
@@ -515,4 +515,10 @@ a:focus {
 
 .home article .post-meta{
   margin-bottom: 15px;
+}
+
+
+
+.center-image {
+  margin: 0 auto;
 }
