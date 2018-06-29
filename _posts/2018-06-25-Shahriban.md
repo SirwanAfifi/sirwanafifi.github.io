@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Shahriban - My first Hackathon project (Challenges, Lesson Learned)
+title: Shahriban - My first Hackathon project (Challenges, Lessons Learned)
 tags: Vue.js, JavaScript, Teamwork, SideProject
 image: /public/img/shahriban_logo.png
 ---
@@ -23,6 +23,8 @@ The next challenge after choosing the project was the technical side of it, Sinc
 The last challenge was to implement an app, Since Telegram is the most popular instant messaging app in Iran, we decided to develop a bot to do the job for us. This was really great because we didn't have to implement an app for Android, iOS:
 
 <img class="center-image" src="/public/img/shahriban_screenshots.png" alt="Shahriban" width="700">
+
+By the way, there are some restrictions to access Telegram in Iran, Perhaps we should have developed a native app for both Android and iOS. But the problem is that at the moment this was not possible for us because we didn't have an app developer in our team, I have developed some native Android apps in the past but my main focus these days is on the web so I wasn't able to do that. If you want to contribute and are interested in, or you know someone who is interested in please let us know.
 
 ### Conclusion
 The whole experience was really great, we learned a lot in the process and feel a lot more confident and prepared for future events.
