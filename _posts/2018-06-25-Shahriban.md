@@ -27,4 +27,4 @@ The last challenge was to implement an app, Since Telegram is the most popular i
 By the way, there are some restrictions to access Telegram in Iran, Perhaps we should have developed a native app for both Android and iOS. But the problem is that at the moment this was not possible for us because we didn't have an app developer in our team, I have developed some native Android apps in the past but my main focus these days is on the web so I wasn't able to do that. If you want to contribute and are interested in, or you know someone who is interested in please let us know.
 
 ### Conclusion
-The whole experience was really great, we learned a lot in the process and feel a lot more confident and prepared for future events.
+The whole experience was really great, we learned a lot in the process and feel a lot more confident and prepared for future events. Also in addition to the experience, I think this is a best opportunity to have a little bit impact in our community.
