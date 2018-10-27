@@ -73,6 +73,200 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/archive/2018/05/28/TypeScript-and-Vue.js/">
+        TypeScript and Vue.js
+      </a>
+    </h1>
+
+    <span class="post-date">28 May 2018</span>
+
+    <p><img src="/public/img/vuepost.png" alt="Webpack" width="750" /></p>
+
+<p>You might be wondering why do we need to worry about yet another framework when we already know there are things like Angular, React, … the answer is simplicity. I have used Angular in some of my previous projects by Angular I mean the first version of it (AngularJS 1.x) but these days I feel like Angular team is going to force developers to migrate to Angular (2, 3, 4, 5, 6, …). I really like Vue.js, it’s really a great one because I think Vue.js is Declarative, Easy to Maintain and Powerful.
+Also, the integration between Vue and TypeScript is really good. Just like other frameworks Vue also has CLI which helps you to scaffold your project quickly. In this blog post, I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application.</p>
+
+<h3 id="project-setup">Project Setup</h3>
+<p>The easiest way to get started is by using dotnet cli tool to create a project:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">dotnet new mvc <span class="nt">--name</span> aspnet-vue-typescript</code></pre></figure>
+
+<p>Then cd to that directory and then use <code class="highlighter-rouge">code .</code> to open VSCode. At this point the project structure looks like this:</p>
+
+<p><img src="/public/img/dotnet-new.png" alt="Sample app" width="700" /></p>
+
+<p>To get started with our client side code we need to install some packages, for doing so we need <code class="highlighter-rouge">package.json</code> file:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aspnet-vue-typescript"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"main"</span><span class="p">:</span><span class="w"> </span><span class="s2">"index.js"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"echo </span><span class="se">\"</span><span class="s2">Error: no test specified</span><span class="se">\"</span><span class="s2"> &amp;&amp; exit 1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sirwan Afifi"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"license"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"ts-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.3.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"typescript"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.8.3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.5.16"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vue-class-component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vue-property-decorator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^6.1.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webpack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^4.9.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webpack-dev-server"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^3.1.4"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"aspnet-webpack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.0.3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"css-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.28.11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"file-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.1.11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sass-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^7.0.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"style-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^0.21.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vue-loader"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^15.2.1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vue-template-compiler"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.5.16"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webpack-cli"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.1.4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"webpack-hot-middleware"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^2.22.2"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Once you installed this packages using <code class="highlighter-rouge">npm install</code>, we’ll create our <code class="highlighter-rouge">webpack.config.js</code> file:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">VueLoaderPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'vue-loader/lib/plugin'</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">main</span><span class="p">:</span> <span class="s1">'./ClientApp/main'</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'wwwroot'</span><span class="p">,</span> <span class="s1">'js'</span><span class="p">),</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].js'</span><span class="p">,</span>
+        <span class="na">publicPath</span><span class="p">:</span> <span class="s1">'/js/'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">vue$/</span><span class="p">,</span> <span class="na">loader</span><span class="p">:</span> <span class="s2">"vue-loader"</span> <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">tsx</span><span class="se">?</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'ts-loader'</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+                <span class="na">options</span><span class="p">:</span> <span class="p">{</span> <span class="na">appendTsSuffixTo</span><span class="p">:</span> <span class="p">[</span><span class="sr">/</span><span class="se">\.</span><span class="sr">vue$/</span><span class="p">]</span> <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.tsx'</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">],</span>
+        <span class="na">alias</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">'vue$'</span><span class="p">:</span> <span class="s1">'vue/dist/vue.esm.js'</span> <span class="c1">// 'vue/dist/vue.common.js' for webpack 1</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">optimization</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">splitChunks</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">cacheGroups</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">commons</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">[\\/]</span><span class="sr">node_modules</span><span class="se">[\\/]</span><span class="sr">/</span><span class="p">,</span>
+                    <span class="na">name</span><span class="p">:</span> <span class="s2">"main"</span><span class="p">,</span>
+                    <span class="na">chunks</span><span class="p">:</span> <span class="s2">"all"</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">VueLoaderPlugin</span><span class="p">()</span>
+    <span class="p">]</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>As you can see we’re telling webpack where the entry point is, so create a new directory inside the project called <code class="highlighter-rouge">ClientApp</code>, this directory contains all Vue’s related files, Inside this directory, create a ts file called <code class="highlighter-rouge">main.ts</code> this file is going to be our entry point:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="s1">'vue'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">MyComponent</span> <span class="k">from</span> <span class="s1">'./components/MyComponent.vue'</span><span class="p">;</span>
+
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">productionTip</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">v</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+    <span class="na">el</span><span class="p">:</span> <span class="s1">'#app'</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">name</span><span class="p">:</span> <span class="s1">'Sirwan'</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nx">MyComponent</span>
+    <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Next, we have specified the output which is <code class="highlighter-rouge">bundle.js</code> file, this file doesn’t yet exist, it’s going to be created by webpack. Then we have specified TypeScript loader for webpack. Next thing left to do is adding <code class="highlighter-rouge">tsconfig.json</code> file to the project:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s2">"compilerOptions"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"sourceMap"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"noImplicitReturns"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"noImplicitAny"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"experimentalDecorators"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"emitDecoratorMetadata"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"target"</span><span class="p">:</span> <span class="s2">"es5"</span><span class="p">,</span>
+        <span class="s2">"strict"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="s2">"module"</span><span class="p">:</span> <span class="s2">"es2015"</span><span class="p">,</span>
+        <span class="s2">"moduleResolution"</span><span class="p">:</span> <span class="s2">"node"</span><span class="p">,</span>
+        <span class="s2">"lib"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"es2016"</span><span class="p">,</span>
+            <span class="s2">"dom"</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"exclude"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"node_modules"</span><span class="p">,</span>
+        <span class="s2">"wwwroot"</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>At this point if you run <code class="highlighter-rouge">npx webpack</code> you’ll see the bundle file:</p>
+
+<p><img src="/public/img/npx-webpack.png" alt="Webpack" width="700" /></p>
+
+<p>Now we can add a script reference inside <code class="highlighter-rouge">Views/Shared/_Layout.cshtml</code> to <code class="highlighter-rouge">bundle.js</code> file:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"~/js/bundle.js"</span> <span class="na">asp-append-version=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+
+<p>Now we can use Vue inside our views:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="err">@</span><span class="p">{</span>
+    <span class="n">ViewData</span><span class="p">[</span><span class="s">"Title"</span><span class="p">]</span> <span class="p">=</span> <span class="s">"Home Page"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="err">="</span><span class="nc">jumbotron</span><span class="s">"&gt;
+</span>  <span class="p">&lt;</span><span class="n">h1</span> <span class="k">class</span><span class="err">="</span><span class="nc">display</span><span class="p">-</span><span class="m">4</span><span class="s">"&gt;Hello, &lt;/h1&gt;
+</span><span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span></code></pre></figure>
+
+<h3 id="hot-module-replacement">Hot Module Replacement</h3>
+<p>Webpack has something called Hot <a href="https://webpack.js.org/concepts/hot-module-replacement/">Module Replacement</a>:</p>
+
+<blockquote>
+  <p>Hot Module Replacement (HMR) exchanges, adds, or removes modules while an application is running, without a full reload. This can significantly speed up development in a few ways:
+Retain application state which is lost during a full reload.
+Save valuable development time by only updating what’s changed.
+Tweak styling faster – almost comparable to changing styles in the browser’s debugger.</p>
+</blockquote>
+
+<p>For adding this functionality we need to install <code class="highlighter-rouge">webpack-hot-middleware</code> package:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">npm i <span class="nt">-D</span> webpack-hot-middleware</code></pre></figure>
+
+<p>Then we need to register this component into MVC’s HTTP request pipeline in the <code class="highlighter-rouge">Configure</code> method, for doing this we need to install <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices">Microsoft.AspNetCore.SpaServices</a>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">app</span><span class="p">.</span><span class="nf">UseWebpackDevMiddleware</span><span class="p">(</span><span class="k">new</span> <span class="n">WebpackDevMiddlewareOptions</span>
+<span class="p">{</span>
+    <span class="n">HotModuleReplacement</span> <span class="p">=</span> <span class="k">true</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>This middleware looks for webpack file and automatically executes it for us when we change client side code:</p>
+
+<p><img src="/public/img/reload-webpack.gif" alt="Webpack" width="700" /></p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/archive/2018/05/02/Developing-Console-based-UI-in-C/">
         Developing Console-based UI in C#
       </a>
@@ -278,38 +472,6 @@
 <p>Last Friday I was talking with a friend (<a href="http://foad-ansari.ir/">Foad</a>) about making decisions, he told me about something called Decidophobia or simply fear of making decisions.</p>
 
 <p>Life is full of options and choices so don’t waste your time to worry about right and wrong decisions JUST take action it’s worth it.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2017/06/06/Powershell-on-macOS/">
-        Running PowerShell on macOS
-      </a>
-    </h1>
-
-    <span class="post-date">06 Jun 2017</span>
-
-    <p>It’s been a while I have been using macOS as my primary operating system, you can read about my expreince <a href="http://sirwan.info/archive/2017/06/04/SQL-Server-on-Linux-in-Docker-on-a-Mac/">here</a>.</p>
-
-<p>Today I wanted to run a PowerShell script, I searched around and figured out Microsoft has made PowerShell <a href="https://github.com/PowerShell/PowerShell">open source</a> open source and the good news is that PowerShell is now cross-platform! this means that you can also run PowerShell scripts on Linux, macOS.</p>
-
-<p>Actually to get PowerShell to work all you need to do is installing it using Homebrew:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask install powershell
-</code></pre></div></div>
-<p><em>Before preceding, make sure you have already installed <a href="https://caskroom.github.io/">Homebrew-Cask</a> on your machine.</em></p>
-<blockquote>
-  <p>Homebrew-Cask extends Homebrew and brings its elegance, simplicity, and speed to macOS applications and large binaries alike.
-It only takes 1 line in your shell to reach 3759 Casks maintained by 4856 contributors.</p>
-</blockquote>
-
-<center><img width="900" src="/public/img/powershell_installation_on_mac.png" /></center>
-
-<p>That’s it, now <code class="highlighter-rouge">PowerShell</code> is installed, so you can use it in your terminal:</p>
-<center><img width="900" src="/public/img/powershell_foreach.png" /></center>
-
-<p>There’s also a great <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell">VSCode extension</a> to write, debug PowerShell scripts:</p>
-<center><img width="900" src="/public/img/powershell_debugging_on_vscode.png" /></center>
 
   </div>
   
