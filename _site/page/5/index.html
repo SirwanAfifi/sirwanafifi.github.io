@@ -73,6 +73,100 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/archive/2016/11/08/Getting-to-know-Singletone-Pattern/">
+        Getting to know Singleton pattern in C#
+      </a>
+    </h1>
+
+    <span class="post-date">08 Nov 2016</span>
+
+    <p>This pattern helps us to ensure a class has only one instance. The term comes from the <a href="https://en.wikipedia.org/wiki/Singleton_(mathematics)">mathematical concept of a singleton</a>:</p>
+
+<blockquote>
+  <p>In mathematics, a singleton, also known as a unit set,[1] is a set with exactly one element. For example, the set {0} is a singleton.</p>
+</blockquote>
+
+<p>Eventually we must have a class that only gives us a single instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">sigleInstance</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span></code></pre></figure>
+
+<p>As you can see the only way to access the instance is by calling a public static method called <code class="highlighter-rouge">GetInstance()</code>, the single object instance under consideration is created only for the first time it is requested. suppose the following class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now I want to make this class singleton, So the first step is to ensure that no one can instantiate our class for doing so we must make the constrauctor <code class="highlighter-rouge">private</code>:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span>
+    <span class="p">{</span>
+	
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now whenever you want to create a new instance of <code class="highlighter-rouge">MySingletonClass</code> using <code class="highlighter-rouge">new</code> keyword, Visual Studio gives you this error:</p>
+
+<p><img src="/public/img/singleton_error.jpg" width="500" /></p>
+
+<p>But we can still instantiate it from within the class. So next step is to create a new variable of type <code class="highlighter-rouge">MySingletonClass</code> inside the class, this class is going to be the only instance of the class:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="n">_instance</span><span class="p">;</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So we are getting close to implementing the pattern. Now we need a way to get access the single instance. So we need a method like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">_instance</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">_instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">_instance</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This method instantiates <code class="highlighter-rouge">MySingletonClass</code> if an instance doesn’t already exist, otherwise it return the existing instance. To demonstrate the object lifetime we can print value of <code class="highlighter-rouge">GetHashCode()</code> fo these objects:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">mySingleInstance</span>   <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_2</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_3</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+<span class="kt">var</span> <span class="n">mySingleInstance_4</span> <span class="p">=</span> <span class="n">MySingletonClass</span><span class="p">.</span><span class="nf">GetInstance</span><span class="p">();</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"obj1: </span><span class="p">{</span><span class="n">mySingleInstance</span><span class="p">.</span><span class="nf">GetHashCode</span><span class="p">()}</span><span class="s">"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"obj2: </span><span class="p">{</span><span class="n">mySingleInstance_2</span><span class="p">.</span><span class="nf">GetHashCode</span><span class="p">()}</span><span class="s"> "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"obj3: </span><span class="p">{</span><span class="n">mySingleInstance_3</span><span class="p">.</span><span class="nf">GetHashCode</span><span class="p">()}</span><span class="s"> "</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"obj4: </span><span class="p">{</span><span class="n">mySingleInstance_4</span><span class="p">.</span><span class="nf">GetHashCode</span><span class="p">()}</span><span class="s"> "</span><span class="p">);</span></code></pre></figure>
+
+<p><img src="/public/img/singleton_GetHashCode.jpg" />
+As you can see all of the objects are the same and share the same instance. The problem with this implementation is that, it’s not <a href="http://csharpindepth.com/Articles/General/Singleton.aspx">thread-safe</a>; it means that if seperate threads of execution access the <code class="highlighter-rouge">_instance</code> at the same time, more that one instance of the <code class="highlighter-rouge">MySingletonClass</code> object may be created. One of the solution is by using .NET 4’s <code class="highlighter-rouge">Lazy&lt;T&gt;</code> type:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MySingletonClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;</span> <span class="n">_instance</span> <span class="p">=</span> 
+		<span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">MySingletonClass</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MySingletonClass</span><span class="p">());</span>
+
+	<span class="k">private</span> <span class="nf">MySingletonClass</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">MySingletonClass</span> <span class="nf">GetInstance</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="n">_instance</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span> </code></pre></figure>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/archive/2016/10/26/Designing-Fluent-Interfaces-in-C/">
         Designing Fluent Interfaces in C#
       </a>
@@ -277,103 +371,6 @@ Now, what happens when we call the <code class="highlighter-rouge">InsertCoin</c
 <figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">IVendingMachine</span> <span class="n">machine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">VendingMachine</span><span class="p">();</span>
 <span class="n">machine</span><span class="p">.</span><span class="nf">InsertCoin</span><span class="p">(</span><span class="m">5</span><span class="p">);</span> <span class="c1">// true</span>
 <span class="n">machine</span><span class="p">.</span><span class="nf">Buy</span><span class="p">();</span>         <span class="c1">// "IVendingMachine Buy"</span></code></pre></figure>
-
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2016/07/02/Delegates/">
-        Delegates in C#
-      </a>
-    </h1>
-
-    <span class="post-date">02 Jul 2016</span>
-
-    <p>Lately I have been studying some topics in C# in order to improve myself. I think <a href="https://msdn.microsoft.com/en-us/library/ms173171.aspx">Delegate</a> is one of those topics which is kinda difficult for beginners to initiate with. So, in order to make it clear how it works, I’m going to make some explanations in this post.</p>
-
-<h3 id="what-are-delegates">What are Delegates?</h3>
-<p>Delegate was introduced in C# 1. Think of it as a simply being a placeholder for functions that’ll be called at some point in time. Assume you want to declare a variable that is a reference to a specific method. In this case, the variable encapsulates some executable code and you can invoke the variable just like an actual method. In doing so, we need to create a delegate</p>
-
-<h3 id="defining-a-delegate">Defining a Delegate</h3>
-<p>Delegates are created using <code class="highlighter-rouge">delegate</code> keyword along with the function signature:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">delegate</span> <span class="kt">int</span> <span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span></code></pre></figure>
-
-<p>As you can see we are defining a delegate called <code class="highlighter-rouge">Sum</code> that is compatible with any method with an <code class="highlighter-rouge">int</code> return type with two parameters. Actually we defined a type that we can use to create variables and point those variables to methods that have the same signature and same return type. 
-The type defenition for a delegate describes the method that we want to call:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span></code></pre></figure>
-
-<p>Now we can assign a method to the delegate variable. This assignment creates a delegate instance:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Sum</span> <span class="n">s</span> <span class="p">=</span> <span class="n">Add</span><span class="p">;</span></code></pre></figure>
-
-<p>Now we can invoke the delegate instance in the same way as a method:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">s</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">);</span></code></pre></figure>
-
-<h3 id="advantages-of-delegate">Advantages of Delegate</h3>
-
-<ul>
-  <li>Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.</li>
-  <li>Can be used to define callback functions.</li>
-  <li>Can be dynamically switched at runtime.</li>
-</ul>
-
-<h3 id="real-world-example">Real World example</h3>
-<p>Suppose that you want to implement something like a <a href="https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx">Repeater</a> control in your ASP.NET MVC application, As you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup.</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Helpers</span>
-<span class="p">{</span>
-	<span class="k">public</span> <span class="k">delegate</span> <span class="n">HelperResult</span> <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">input</span><span class="p">);</span>
-
-	<span class="k">public</span> <span class="k">static</span> <span class="n">HelperResult</span> <span class="n">Repeater</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">html</span><span class="p">,</span>
-	  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">,</span>
-	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
-	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
-	<span class="p">{</span>
-		<span class="k">return</span> <span class="k">new</span> <span class="nf">HelperResult</span><span class="p">(</span><span class="n">writer</span> <span class="p">=&gt;</span>
-		<span class="p">{</span>
-			<span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-			<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
-			<span class="p">{</span>
-				<span class="kt">var</span> <span class="n">func</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">itemTemplate</span> <span class="p">:</span> <span class="n">alternatingitemTemplate</span><span class="p">;</span>
-				<span class="nf">func</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="nf">WriteTo</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span>
-				<span class="n">i</span><span class="p">++;</span>
-			<span class="p">}</span>
-		<span class="p">});</span>
-	<span class="p">}</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>As you can see we emulated the <code class="highlighter-rouge">ItemTemplate</code> and <code class="highlighter-rouge">AlternatingItemTemplate</code> using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback. <br />
-The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example can be replaced with <code class="highlighter-rouge">Func</code> delegate:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
-<span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span></code></pre></figure>
-
-<p>Now we can use our helper inside any view:</p>
-
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
-    <span class="nt">&lt;tr&gt;</span>
-        <span class="nt">&lt;td&gt;</span>Id<span class="nt">&lt;/td&gt;</span>
-        <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>
-    @Html.Repeater(Model, @<span class="nt">&lt;tr&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
-	<span class="nt">&lt;/tr&gt;</span>, 
-	@<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"alert-info"</span><span class="nt">&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
-	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
-    <span class="nt">&lt;/tr&gt;</span>)
-<span class="nt">&lt;/table&gt;</span></code></pre></figure>
-
-<p>If you run the application you can see the result:</p>
-
-<p><img src="/public/img/repeater.jpg" width="500" /></p>
-
-<p>You can check out the <a href="https://github.com/SirwanAfifi/using_delegates">GitHub repository</a> for this post.</p>
 
 
   </div>

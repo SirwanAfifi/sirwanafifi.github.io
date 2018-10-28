@@ -73,6 +73,103 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/archive/2016/07/02/Delegates/">
+        Delegates in C#
+      </a>
+    </h1>
+
+    <span class="post-date">02 Jul 2016</span>
+
+    <p>Lately I have been studying some topics in C# in order to improve myself. I think <a href="https://msdn.microsoft.com/en-us/library/ms173171.aspx">Delegate</a> is one of those topics which is kinda difficult for beginners to initiate with. So, in order to make it clear how it works, I’m going to make some explanations in this post.</p>
+
+<h3 id="what-are-delegates">What are Delegates?</h3>
+<p>Delegate was introduced in C# 1. Think of it as a simply being a placeholder for functions that’ll be called at some point in time. Assume you want to declare a variable that is a reference to a specific method. In this case, the variable encapsulates some executable code and you can invoke the variable just like an actual method. In doing so, we need to create a delegate</p>
+
+<h3 id="defining-a-delegate">Defining a Delegate</h3>
+<p>Delegates are created using <code class="highlighter-rouge">delegate</code> keyword along with the function signature:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">delegate</span> <span class="kt">int</span> <span class="nf">Sum</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span></code></pre></figure>
+
+<p>As you can see we are defining a delegate called <code class="highlighter-rouge">Sum</code> that is compatible with any method with an <code class="highlighter-rouge">int</code> return type with two parameters. Actually we defined a type that we can use to create variables and point those variables to methods that have the same signature and same return type. 
+The type defenition for a delegate describes the method that we want to call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="nf">Add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="n">a</span> <span class="p">+</span> <span class="n">b</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can assign a method to the delegate variable. This assignment creates a delegate instance:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Sum</span> <span class="n">s</span> <span class="p">=</span> <span class="n">Add</span><span class="p">;</span></code></pre></figure>
+
+<p>Now we can invoke the delegate instance in the same way as a method:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">result</span> <span class="p">=</span> <span class="nf">s</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">);</span></code></pre></figure>
+
+<h3 id="advantages-of-delegate">Advantages of Delegate</h3>
+
+<ul>
+  <li>Delegates are type safe, It means that the C# compiler checks the function signatures of a Delegate when you use them at runtime.</li>
+  <li>Can be used to define callback functions.</li>
+  <li>Can be dynamically switched at runtime.</li>
+</ul>
+
+<h3 id="real-world-example">Real World example</h3>
+<p>Suppose that you want to implement something like a <a href="https://msdn.microsoft.com/en-us/library/system.web.ui.webcontrols.repeater(v=vs.85).aspx">Repeater</a> control in your ASP.NET MVC application, As you probably know a Repeater is(was) server side databound control in ASP.NET WebForm for displaying information, It had a lot of flexability becuase you had complete control over the your markup.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">Helpers</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">delegate</span> <span class="n">HelperResult</span> <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">T</span> <span class="n">input</span><span class="p">);</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="n">HelperResult</span> <span class="n">Repeater</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">HtmlHelper</span> <span class="n">html</span><span class="p">,</span>
+	  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">items</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+	  <span class="n">ItemTemplate</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="nf">HelperResult</span><span class="p">(</span><span class="n">writer</span> <span class="p">=&gt;</span>
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+			<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">item</span> <span class="k">in</span> <span class="n">items</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="kt">var</span> <span class="n">func</span> <span class="p">=</span> <span class="n">i</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">?</span> <span class="n">itemTemplate</span> <span class="p">:</span> <span class="n">alternatingitemTemplate</span><span class="p">;</span>
+				<span class="nf">func</span><span class="p">(</span><span class="n">item</span><span class="p">).</span><span class="nf">WriteTo</span><span class="p">(</span><span class="n">writer</span><span class="p">);</span>
+				<span class="n">i</span><span class="p">++;</span>
+			<span class="p">}</span>
+		<span class="p">});</span>
+	<span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>As you can see we emulated the <code class="highlighter-rouge">ItemTemplate</code> and <code class="highlighter-rouge">AlternatingItemTemplate</code> using a delegate. In this case user can pass the data and the data will be rendered inside the view. In this case the delegates act like callback. <br />
+The <code class="highlighter-rouge">ItemTemplate</code> delegate in our example can be replaced with <code class="highlighter-rouge">Func</code> delegate:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">itemTemplate</span><span class="p">,</span>
+<span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">HelperResult</span><span class="p">&gt;</span> <span class="n">alternatingitemTemplate</span> <span class="p">=</span> <span class="k">null</span></code></pre></figure>
+
+<p>Now we can use our helper inside any view:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Id<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>Name<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    @Html.Repeater(Model, @<span class="nt">&lt;tr&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+	<span class="nt">&lt;/tr&gt;</span>, 
+	@<span class="nt">&lt;tr</span> <span class="na">class=</span><span class="s">"alert-info"</span><span class="nt">&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Title<span class="nt">&lt;/td&gt;</span>
+	    <span class="nt">&lt;td&gt;</span>@item.Price<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>)
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>If you run the application you can see the result:</p>
+
+<p><img src="/public/img/repeater.jpg" width="500" /></p>
+
+<p>You can check out the <a href="https://github.com/SirwanAfifi/using_delegates">GitHub repository</a> for this post.</p>
+
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/archive/2016/06/11/Thinking-out-of-the-box-to-become-a-better-programmer/">
         Thinking out of the box to become a better programmer
       </a>
@@ -159,136 +256,6 @@ One thing that causes performance problem in Angular is having too many bindings
 
 <h3 id="conclusion">Conclusion</h3>
 <p>Even though Angular 2 is coming, But Angular 1 is still a thing and I think Angular 1 will be supported for a long time to come.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
-      <a href="/archive/2016/02/12/Asynchronous-Execution-in-JavaScript/">
-        Asynchronous Execution in JavaScript
-      </a>
-    </h1>
-
-    <span class="post-date">12 Feb 2016</span>
-
-    <p>As you know browsers are typically single threaded, It means that the browser can only be doing either update the UI or executing JavaScript at any given time. It actually incapable of doing theme simultaneously.</p>
-
-<p>As I mentioned when JavaScript is executing code, the UI is unable to respond to the user. So, our goal as a developer is to build a highly responsive UI. For doing that you could create smaller unit of work and use JavaScript timers to return execution to the next event in the queue:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">buffer</span><span class="p">(</span><span class="nx">items</span><span class="p">,</span> <span class="nx">iterFn</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">result</span><span class="p">;</span>
-
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span>  
-                    <span class="o">!==</span> <span class="kc">false</span> <span class="o">&amp;&amp;</span> <span class="p">((</span><span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">)</span> 
-                     <span class="o">-</span> <span class="nx">start</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">result</span> <span class="o">=</span> <span class="nx">iterFn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span> <span class="o">&amp;&amp;</span> <span class="nx">result</span> <span class="o">!==</span> <span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">setTimeout</span><span class="p">(</span><span class="kr">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">callback</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">},</span> <span class="mi">20</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>Assume that we want to pull down some data from the server, Then the data is going to be processed through an array loop, And we are going to build some DOM elements:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">@{</span>
-    <span class="nx">ViewBag</span><span class="p">.</span><span class="nx">Title</span> <span class="o">=</span> <span class="s2">"Home Page"</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;&lt;</span><span class="sr">/ul</span><span class="err">&gt;
-</span><span class="p">@</span><span class="nd">section</span> <span class="nx">scripts</span>
-<span class="p">{</span>
-    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="nx">$</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'@Url.Action("Date")'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-                <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-
-                <span class="nx">buffer</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'&lt;li&gt;'</span> <span class="o">+</span> <span class="nx">item</span> <span class="o">+</span> <span class="s1">'&lt;/li&gt;'</span><span class="p">;</span>
-                <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-                    <span class="nx">$</span><span class="p">(</span><span class="s1">'ul'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
-                <span class="p">});</span>
-            <span class="p">});</span>
-        <span class="p">});</span>
-    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="p">}</span></code></pre></figure>
-
-<p>Also the action method is like this:</p>
-
-<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">JsonResult</span> <span class="nf">Date</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">50000</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="nf">Json</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">JsonRequestBehavior</span><span class="p">.</span><span class="n">AllowGet</span><span class="p">);</span>
-<span class="p">}</span></code></pre></figure>
-
-<p>The <code class="highlighter-rouge">buffer</code> method works like a charm but using <code class="highlighter-rouge">setTimeout</code> is considered to be a bad practice. So that’s where the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">Web Workers</a> come into play.</p>
-
-<h3 id="web-workers">Web Workers</h3>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers">MDN</a>:</p>
-
-<blockquote>
-  <p>Web Workers provide a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface. In addition, they can perform I/O using XMLHttpRequest (although the responseXML and channel attributes are always null). Once created, a worker can send messages to the JavaScript code that created it by posting messages to an event handler specified by that code (and vice versa.) This article provides a detailed introduction to using web workers.</p>
-</blockquote>
-
-<p>Well, Web Wrokers bring background threading to browsers. It is a best option if you have intense processing that needs to happen in your browser. Since Workers run in another global context so there’s a few restrictions that you have to keep in mind, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Functions_and_classes_available_to_workers">Here</a> you can see the list of functions and classes available to Web Workers. So your favorite JavaScript library may not work with workers.</p>
-
-<p>So let’s rewrite our example with Web Workers:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">ul</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"result"</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
-</span><span class="p">@</span><span class="nd">section</span> <span class="nx">scripts</span>
-<span class="p">{</span>
-    <span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
-        <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">_worker</span><span class="p">;</span>
-
-            <span class="nx">_worker</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Worker</span><span class="p">(</span><span class="s1">'@Url.Content("~/Scripts/getData.js")'</span><span class="p">);</span>
-            <span class="nx">_worker</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="nx">messageHander</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-            <span class="nx">_worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">(</span><span class="s2">"fetch"</span><span class="p">);</span>
-
-            <span class="kd">function</span> <span class="nx">messageHander</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">$</span><span class="p">(</span><span class="s2">"#result"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-            <span class="p">}</span>
-
-        <span class="p">});</span>
-    <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
-</span><span class="p">}</span></code></pre></figure>
-
-<p>As you can see I instantiated a worker, Then I setup an event listener for message, So when data comes in from the AJAX call, we will inject the result into html of a container called <code class="highlighter-rouge">result</code>. <br />
-Here you see the worker:</p>
-
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">messageHandler</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">data</span> <span class="o">===</span> <span class="s2">"fetch"</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">fetch</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">fetch</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-
-            <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
-            <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">html</span> <span class="o">+=</span> <span class="s1">'&lt;li&gt;'</span> <span class="o">+</span> <span class="nx">res</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'&lt;/li&gt;'</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="nx">postMessage</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="s1">'/Home/Date'</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-    <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
-<span class="p">}</span>
-<span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"message"</span><span class="p">,</span> <span class="nx">messageHandler</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span></code></pre></figure>
-
-<p>Inside the fetch content we used typical AJAX call because in Web Workers you can not use a third-party library it means that there’s no access to non-thread safe components, So you have to use a native <code class="highlighter-rouge">XMLHttpRequest</code> in your worker. Now if you run the code you will see that now that’s pretty fast even quite a bit faster than before.</p>
-
-<p>You can see the sample code <a href="https://github.com/SirwanAfifi/asynchronous-execution-in-js">in the GitHub repository</a></p>
 
   </div>
   

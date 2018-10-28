@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+<head>
+
+  <!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>React Hooks | Sirwan Afifi</title>
+<meta property="og:title" content="React Hooks" />
+<meta name="author" content="Sirwan Afifi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stories from a web developer." />
+<meta property="og:description" content="Stories from a web developer." />
+<link rel="canonical" href="http://localhost:4000/archive/2018/10/27/React-Hooks/" />
+<meta property="og:url" content="http://localhost:4000/archive/2018/10/27/React-Hooks/" />
+<meta property="og:site_name" content="Sirwan Afifi" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-27T00:00:00+03:30" />
+<script type="application/ld+json">
+{"name":null,"description":"Stories from a web developer.","author":{"@type":"Person","name":"Sirwan Afifi"},"@type":"BlogPosting","url":"http://localhost:4000/archive/2018/10/27/React-Hooks/","publisher":null,"image":null,"headline":"React Hooks","dateModified":"2018-10-27T00:00:00+03:30","datePublished":"2018-10-27T00:00:00+03:30","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archive/2018/10/27/React-Hooks/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="canonical" href="http://sirwan.info/archive/2018/10/27/React-Hooks/" />
+  <title>
+    React Hooks &middot;  
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+
+
+<body class="theme-base-0d">
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="profilepic">
+        <a href="http://localhost:4000"><img src="/public/avatar.png" alt="Profile Picture"></a>
+      </div>
+      <h2>Sirwan Afifi</h2>
+      <p class="lead">Stories from a web developer.</p>
+
+      <div class="colophon">
+        <ul class="colophon-links">
+          <li>
+            <a href="/about">about</a>
+          </li>
+          <li>
+            <a href="/archive">archives</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+        </ul>
+        <p>&copy; 2018. Sirwan Afifi All rights reserved.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="content container">
+    <div class="post">
+  <h1>React Hooks</h1>
+  <span class="post-date">27 Oct 2018</span>
+  <p>Hooks are a new feature that is coming up in React v16.7.0-alpha, it’s a really great feature, I am so excited about this new feature. The goal is to use all functionalities you can do in class components in functional style components, We heavily use functional components in our project so in order to use things like State we have two options: re-writing our component in a class component or simply use a great package called <code class="highlighter-rouge">react-powerplug</code>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">State</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react-powerplug"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">Example</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">State</span>
+      <span class="nx">initial</span><span class="o">=</span><span class="mi">8</span>
+    <span class="o">&gt;</span>
+      <span class="p">{({</span> <span class="nx">state</span><span class="p">,</span> <span class="nx">setState</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">clicked</span> <span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span> <span class="nx">times</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setState</span><span class="p">({</span> <span class="na">count</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">})}</span><span class="o">&gt;</span>
+            <span class="nx">Click</span> <span class="nx">me</span>
+          <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="p">)}</span>
+    <span class="o">&lt;</span><span class="sr">/State</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="p">{</span> <span class="nx">Example</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<p>This is really great, but we don’t need to have this anymore because one of the feature of Hooks in the new version of React is using state inside a functional component, so we’d some something like this to get the same result:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useState</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kr">interface</span> <span class="nx">ReactHookProps</span> <span class="p">{}</span>
+
+<span class="kd">const</span> <span class="nx">ReactHook</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">:</span> <span class="nx">ReactHookProps</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">count</span><span class="p">,</span> <span class="nx">setCount</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">From</span> <span class="nx">ReactHook</span> <span class="nx">Component</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">You</span> <span class="nx">clicked</span> <span class="p">{</span><span class="nx">count</span><span class="p">}</span> <span class="nx">times</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setCount</span><span class="p">(</span><span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Click</span> <span class="nx">me</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="p">{</span> <span class="nx">ReactHook</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<p>As you can see, by calling <code class="highlighter-rouge">useState</code> and passing a default value, it gives you two property one for <code class="highlighter-rouge">get</code> and the other for <code class="highlighter-rouge">set</code>. The interesting point about <code class="highlighter-rouge">useState</code> is that we can have multiple states inside the component:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">[</span><span class="nx">person</span><span class="p">,</span> <span class="nx">setPerson</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">({</span>
+  <span class="na">firstName</span><span class="p">:</span> <span class="s2">"Sirwan"</span><span class="p">,</span>
+  <span class="na">lastName</span><span class="p">:</span> <span class="s2">"Afifi"</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">29</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>Working with state is just one of <code class="highlighter-rouge">Hooks</code> functionalities, I will try to blog about the other features too.</p>
+
+<p>You can grab the working sample project from <a href="https://github.com/SirwanAfifi/react-hooks.git">GitHub</a>.</p>
+
+<p>Happy coding :)</p>
+
+  
+  <div id="disqus_thread"></div>
+<script>
+ /* * * CONFIGURATION VARIABLES * * */
+var disqus_shortname = 'Sirwan';
+    
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//sirwan.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/10/28/GraphQL/">
+            GraphQL
+            <small>28 Oct 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/06/25/Shahriban/">
+            Shahriban - My first Hackathon project (Challenges, Lessons Learned)
+            <small>25 Jun 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/archive/2018/06/04/Uploading-file-in-Vue.js/">
+            Uploading file in Vue.js
+            <small>04 Jun 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+  </div>
+  <footer id="footer" class="inner"><div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        Copyright &copy; 2018 - Sirwan Afifi | Site design based on the <a href="http://hyde.getpoole.com/">Hyde theme</a>
+      </p>
+    </div>
+  </div>
+</div></footer>
+</body>
+
+</html>
