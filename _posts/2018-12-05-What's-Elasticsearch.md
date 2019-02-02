@@ -10,6 +10,8 @@ Wikipedia:
 
 Executing SELECT \* FROM .... all the time consumes a lot of CPU also it doesn't have index, One solution would be using FTS (Full Text Search) in RDBMS but in NoSQL world If you need a high performance search engine you'd better use Elasticsearch.
 
+<img class="center-image" src="/public/img/elastic_stack.jpg" alt="Elastic Stack" width="700">
+
 ### History
 
 - 1999 - Lucene
