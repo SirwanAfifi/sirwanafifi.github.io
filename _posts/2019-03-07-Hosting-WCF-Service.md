@@ -14,7 +14,7 @@ Topshelf is an open source .NET Windows Service library, it makes the process of
 Install-Package Topshelf
 ```
 
-The next step is wrapping yuor service functionality inside a classs with two methods `Start` and `Stop` these methods are going to be used by TopShelf to start and stop the service:
+The next step is wrapping your service functionality inside a class with two methods `Start` and `Stop` these methods are going to be used by TopShelf to start and stop the service:
 
 
 ```csharp
