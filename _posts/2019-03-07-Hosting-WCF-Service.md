@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hosting a WCF Services as a Windows Service Using Topshelf
+title: Hosting a WCF Service as a Windows Service Using Topshelf
 tags: C# WCF
 ---
 You might be wondering why I am blogging about WCF. Is it still relevant?  This is part of a legacy WCF project, and I am responsible for adding some functionalities to it, I like it though. By the way, it's been a long time since it went out of fashion, but many large enterprise applications still use it. 
