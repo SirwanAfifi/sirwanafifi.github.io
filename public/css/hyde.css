@@ -303,8 +303,7 @@ a:focus {
     padding: 60px 0;
   }
   .container {
-    width: 55%;
-    margin-left: 35%;
+    margin-left: 30%;
     margin-right: 10%;
   }
 }
@@ -472,11 +471,11 @@ a:focus {
 
 /* Blue */
 .theme-base-0d .masthead {
-  background-color: #6a9fb5;
+  background-image: linear-gradient(to top,#03A9F4,#124ed4bf);
 }
 .theme-base-0d .container a,
 .theme-base-0d .related-posts li a:hover {
-  color: #6a9fb5;
+  color: linear-gradient(to top,#03A9F4,#124ed4bf);
 }
 
 /* Magenta */
