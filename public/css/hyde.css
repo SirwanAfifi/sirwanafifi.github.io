@@ -475,9 +475,13 @@ a:focus {
 }
 .theme-base-0d .container a,
 .theme-base-0d .related-posts li a:hover {
-  color: linear-gradient(to top,#03A9F4,#124ed4bf);
+  color: #6a9fb5;
 }
-
+.theme-base-0d .container a:hover {
+  background: linear-gradient(to top,#03A9F4,#124ed4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /* Magenta */
 .theme-base-0e .masthead {
   background-color: #aa759f;
