@@ -13,7 +13,7 @@ serve -s
 
 This is great but the problem is that my application is using React Router and when I wanted to navigate between pages I got `404` error:
 
-<img class="center-image" src="/public/img/react-serve-404" alt="React App 404" width="700">
+<img class="center-image" src="/public/img/react-serve-404.png" alt="React App 404" width="700">
 
 based on the officail React docs:
 
@@ -23,11 +23,11 @@ So I decided to host the app on IIS and define a URL rewrite to redirect all unk
 
 1- Adding a new website on IIS
 
-<img class="center-image" src="/public/img/create-website-react-app" alt="Create website on IIS for React app" width="700">
+<img class="center-image" src="/public/img/create-website-react-app.png" alt="Create website on IIS for React app" width="700">
 
 2- Adding the following rule to URL rewrite:
 
-<img class="center-image" src="/public/img/url-rewite-ui" alt="URL Rewrite UI" width="700">
+<img class="center-image" src="/public/img/url-rewite-ui.png" alt="URL Rewrite UI" width="700">
 
 As you know, this configuration is also saved in somewhere else which is the location of the newly created website inside a file called `web.config`, So this means that what we created in the UI is generated into this XML file. If we open up the file, we can see the following configuration:
 
