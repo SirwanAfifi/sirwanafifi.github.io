@@ -17,7 +17,7 @@ But the problem is that the column names in the result set must match the column
 ```sql
 CREATE DEFINER=`root`@`%` PROCEDURE `GetBlogs`()
 BEGIN
-	select avg(Rate) as average, min(Rate)as minimum, max(Rate) as maximum
+	select avg(Rating) as average, min(Rating)as minimum, max(Rating) as maximum
 	from blogs
 END
 ```
