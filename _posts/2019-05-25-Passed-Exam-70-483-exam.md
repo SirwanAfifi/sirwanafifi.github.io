@@ -50,6 +50,8 @@ You can check the details in the [Exam 70–483 Official Website](https://www.mi
 
 These are the books I used for passing the exam.
 
+<img class="center-image" src="/public/img/books.jpg" alt="CSharp notes" width="400">
+
 - [Exam Ref 70-483 Programming in C#, 2nd Edition By Rob Miles](https://www.amazon.com/Exam-Ref-70-483-Programming-Miles/dp/1509306986)
 - [C# 6.0 in a Nutshell: The Definitive Reference](https://www.amazon.com/C-6-0-Nutshell-Definitive-Reference/dp/1491927062/ref=sr_1_4?crid=218XJSHWO1SYD&keywords=c+in+a+nutshell&qid=1560670921&s=books&sprefix=C%23+in+a+%2Cstripbooks-intl-ship%2C380&sr=1-4)
 
