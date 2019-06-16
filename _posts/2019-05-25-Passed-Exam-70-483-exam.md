@@ -4,7 +4,7 @@ title: Passed Exam 70-483 - Programming in C#
 tags: C# Exam
 ---
 
-<a href="https://www.youracclaim.com/badges/4f0b2269-04b6-4d81-8b37-e25f7956dc4f"><img class="center-image" src="/public/img/csharp_badge.png" alt="CSharp notes" width="400"></a>
+<a href="https://www.youracclaim.com/badges/4f0b2269-04b6-4d81-8b37-e25f7956dc4f"><img class="center-image" src="/public/img/csharp_badge.png" alt="CSharp notes" width="230"></a>
 
 I have been developing with C# for a while, and I decided to pass Exam 70-483 in order to validate my skill. In order to pass the exam, you should be able to perform the following skills:
 
