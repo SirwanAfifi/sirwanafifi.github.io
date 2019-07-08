@@ -4,7 +4,7 @@ title: Morse code
 tags: React Algorithm Morse
 ---
 
-<img class="center-image" src="/public/img/morse_code.png" alt="Morse Code table" width="700">
+<img class="center-image" src="/public/img/morse_code.png" alt="Morse Code table" width="600">
 
 Morse Code is a set of dots and dashes (short mark, dot or 'dit' (·) and longer mark, dash or 'dah' (-)). Basically, it's a character encoding scheme for transmitting cryptographic messages which used in telecommunication. Think of it as the early version of texting. The system is named after the American artist Samuel Finley Breese Morse who co-developed an electrical telegraph system at the beginning of 1836. In fact it was heavily used for (secret) transmissions during WWI and WWII. Different combination of dots and dashes will produce different letters it also means that different combination of letters will be eventually your encoded messages.
 
