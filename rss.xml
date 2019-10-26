@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[Stories from a web developer.]]></description><link>http://sirwan.info</link><generator>RSS for Node</generator><lastBuildDate>Sat, 26 Oct 2019 22:06:01 GMT</lastBuildDate><item><title><![CDATA[Flux]]></title><description><![CDATA[What's Flux? A design pattern developed at Facebook to keep data flowing in one direction (unidirectional data flow) An alternative to MVC…]]></description><link>http://sirwan.info2019-10-27-Flux</link><guid isPermaLink="false">http://sirwan.info2019-10-27-Flux</guid><pubDate>Sun, 27 Oct 2019 23:46:37 GMT</pubDate><content:encoded>&lt;h1&gt;What&apos;s Flux?&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[Stories from a web developer.]]></description><link>http://sirwan.info</link><generator>RSS for Node</generator><lastBuildDate>Sat, 26 Oct 2019 22:14:50 GMT</lastBuildDate><item><title><![CDATA[Flux]]></title><description><![CDATA[What's Flux? A design pattern developed at Facebook to keep data flowing in one direction (unidirectional data flow) An alternative to MVC…]]></description><link>http://sirwan.info2019-10-27-Flux</link><guid isPermaLink="false">http://sirwan.info2019-10-27-Flux</guid><pubDate>Sun, 27 Oct 2019 23:46:37 GMT</pubDate><content:encoded>&lt;h1&gt;What&apos;s Flux?&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;A design pattern developed at Facebook to keep data flowing in one direction (unidirectional data flow)&lt;/li&gt;
 &lt;li&gt;An alternative to MVC&lt;/li&gt;
@@ -17,6 +17,11 @@
 &lt;li&gt;Actions are object that at minimum contain a type field&lt;/li&gt;
 &lt;li&gt;Dispatcher takes an action, packages it with some information and send it on to the appropriate store.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;img class=&quot;images&quot; src=&quot;/img/flux.png&quot;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Structure and Data Flow
+&lt;a href=&quot;https://facebook.github.io/flux/docs/in-depth-overview/&quot;&gt;https://facebook.github.io/flux/docs/in-depth-overview/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h1&gt;Flux implementations&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Flux (&lt;a href=&quot;https://facebook.github.io/flux/&quot;&gt;https://facebook.github.io/flux/&lt;/a&gt;)&lt;/li&gt;
