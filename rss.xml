@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[Stories from a web developer.]]></description><link>http://sirwan.info</link><generator>RSS for Node</generator><lastBuildDate>Wed, 06 Nov 2019 06:59:51 GMT</lastBuildDate><item><title><![CDATA[Redux]]></title><description><![CDATA[Redux is a predictable state container for JavaScript apps. The whole state of your app is stored in an object tree inside a single store…]]></description><link>http://sirwan.info2019-11-05-Redux</link><guid isPermaLink="false">http://sirwan.info2019-11-05-Redux</guid><pubDate>Tue, 05 Nov 2019 23:46:37 GMT</pubDate><content:encoded>&lt;ul&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[Stories from a web developer.]]></description><link>http://sirwan.info</link><generator>RSS for Node</generator><lastBuildDate>Wed, 06 Nov 2019 07:08:28 GMT</lastBuildDate><item><title><![CDATA[Redux]]></title><description><![CDATA[Redux is a predictable state container for JavaScript apps. The whole state of your app is stored in an object tree inside a single store…]]></description><link>http://sirwan.info2019-11-05-Redux</link><guid isPermaLink="false">http://sirwan.info2019-11-05-Redux</guid><pubDate>Tue, 05 Nov 2019 23:46:37 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;Redux is a predictable state container for JavaScript apps.&lt;/li&gt;
 &lt;li&gt;The whole state of your app is stored in an object tree inside a single store.&lt;/li&gt;
 &lt;li&gt;The only way to change the state tree is to emit an action.&lt;/li&gt;
@@ -30,9 +30,38 @@ document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span c
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;ul&gt;
 &lt;li&gt;Redux is very useful when you start getting a complicated data scenarios or complicate change of events.&lt;/li&gt;
-&lt;li&gt;It&apos;s really going to simplify your application.&lt;/li&gt;
-&lt;li&gt;Setting up Redux is a bit confusing but once you set it up, it&apos;s going to pay off over the lifespan of the application&lt;/li&gt;
-&lt;li&gt;Store is immutable, we can&apos;t mutate any value on the store, we only ever create a brand new store object.&lt;/li&gt;
+&lt;li&gt;It&apos;s really going to simplify your application:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img class=&quot;images&quot; alt=&quot;Redux is really going to simplify your application&quot; src=&quot;/img/redux.png&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;Setting up Redux is a bit confusing but once you set it up, it&apos;s going to pay off over the lifespan of the application.&lt;/li&gt;
+&lt;li&gt;Store is immutable, we can&apos;t mutate any value on the store, we only ever create a brand new store object:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;createStore&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;reducer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; state
+  &lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; listeners &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;getState&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; state
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;subscribe&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;listener&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    listeners&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;listener&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      listeners &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; listeners&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; l &lt;span class=&quot;token operator&quot;&gt;!==&lt;/span&gt; listeners&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token parameter&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    state &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;reducer&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;state&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; action&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    listeners&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;listener&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;listener&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    getState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    subscribe&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    dispatch&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
 &lt;li&gt;We are going to wrap entire React application with one Provider component, So when the store changes it re-render the whole application.&lt;/li&gt;
 &lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Initializing state using class field declaration]]></title><description><![CDATA[If you want to initialize state in a class based component we have two options: In constructor As a class property For class based…]]></description><link>http://sirwan.info2019-10-29-React</link><guid isPermaLink="false">http://sirwan.info2019-10-29-React</guid><pubDate>Tue, 29 Oct 2019 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;If you want to initialize state in a class based component we have two options:&lt;/p&gt;
 &lt;ul&gt;
