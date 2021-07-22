@@ -128,7 +128,7 @@ http <span class="token punctuation">{</span>
               onClick="copyToClipboard(`events {}
 
 http {
-  log_format custom '\$remote_addr - USERNAME - URL(\$request_uri) - \$time_local - \$http_user_agent'; // highlight-line
+  log_format custom '\$remote_addr - user_full_name - URL(\$request_uri) - \$time_local - \$http_user_agent'; // highlight-line
 
   server {
     listen 80;
@@ -152,7 +152,7 @@ http {
 <div class="gatsby-highlight" data-language="js"><pre style="counter-reset: linenumber NaN" class="language-js line-numbers"><code class="language-js">events <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
 http <span class="token punctuation">{</span>
-<span class="gatsby-highlight-code-line">  log_format custom <span class="token string">'$remote_addr - USERNAME - URL($request_uri) - $time_local - $http_user_agent'</span><span class="token punctuation">;</span></span>
+<span class="gatsby-highlight-code-line">  log_format custom <span class="token string">'$remote_addr - user_full_name - URL($request_uri) - $time_local - $http_user_agent'</span><span class="token punctuation">;</span></span>
   server <span class="token punctuation">{</span>
     listen <span class="token number">80</span><span class="token punctuation">;</span>
     
