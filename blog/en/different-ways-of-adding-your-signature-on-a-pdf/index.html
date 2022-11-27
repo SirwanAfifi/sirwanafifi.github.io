@@ -112,7 +112,7 @@ time<span class="token punctuation">.</span>sleep<span class="token punctuation"
 merge_pdf<span class="token punctuation">(</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <p>There's nothing complicated about the code. A PDF is created by converting the image into a PDF and merging it with the PDF that needs to have a signature.</p>
 <h2>PowerShell</h2>
-<p>I will start with the PowerShell version, I have used iTextSharp, which is a .NET library to manipulate PDFs. The code is pretty straightforward:</p>
+<p>I will start with the PowerShell version, I have used <a href="https://github.com/VahidN/iTextSharp.LGPLv2.Core">iTextSharp</a>, which is a .NET library to work with PDFs. The code is pretty straightforward:</p>
 <div
               class="gatsby-code-button-container"
               data-toaster-id=""
@@ -125,9 +125,7 @@ merge_pdf<span class="token punctuation">(</span><span class="token punctuation"
 \$fs = [System.IO.FileStream]::new(&quot;\$(Get-Location)/signed-invoice.pdf&quot;,
     [System.IO.FileMode]::Create)
 \$stamper = [iTextSharp.text.pdf.PdfStamper]::new(\$pdf, \$fs)
-\$gs = [iTextSharp.text.pdf.PdfGState]::new()
 \$content = \$stamper.GetOverContent(1)
-\$content.SetGState(\$gs)
 \$width = \$pdf.GetPageSize(1).Width
 \$image = [iTextSharp.text.Image]::GetInstance(&quot;\$(Get-Location)/sign.jpg&quot;)
 \$image.SetAbsolutePosition(\$width - 130, 50)
@@ -149,9 +147,7 @@ merge_pdf<span class="token punctuation">(</span><span class="token punctuation"
 <span class="token variable">$fs</span> = <span class="token namespace">[System.IO.FileStream]</span>::new<span class="token punctuation">(</span><span class="token string">"<span class="token function">$<span class="token punctuation">(</span><span class="token function">Get-Location</span><span class="token punctuation">)</span></span>/signed-invoice.pdf"</span><span class="token punctuation">,</span>
     <span class="token namespace">[System.IO.FileMode]</span>::Create<span class="token punctuation">)</span>
 <span class="token variable">$stamper</span> = <span class="token namespace">[iTextSharp.text.pdf.PdfStamper]</span>::new<span class="token punctuation">(</span><span class="token variable">$pdf</span><span class="token punctuation">,</span> <span class="token variable">$fs</span><span class="token punctuation">)</span>
-<span class="token variable">$gs</span> = <span class="token namespace">[iTextSharp.text.pdf.PdfGState]</span>::new<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token variable">$content</span> = <span class="token variable">$stamper</span><span class="token punctuation">.</span>GetOverContent<span class="token punctuation">(</span>1<span class="token punctuation">)</span>
-<span class="token variable">$content</span><span class="token punctuation">.</span>SetGState<span class="token punctuation">(</span><span class="token variable">$gs</span><span class="token punctuation">)</span>
 <span class="token variable">$width</span> = <span class="token variable">$pdf</span><span class="token punctuation">.</span>GetPageSize<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">.</span>Width
 <span class="token variable">$image</span> = <span class="token namespace">[iTextSharp.text.Image]</span>::GetInstance<span class="token punctuation">(</span><span class="token string">"<span class="token function">$<span class="token punctuation">(</span><span class="token function">Get-Location</span><span class="token punctuation">)</span></span>/sign.jpg"</span><span class="token punctuation">)</span>
 <span class="token variable">$image</span><span class="token punctuation">.</span>SetAbsolutePosition<span class="token punctuation">(</span><span class="token variable">$width</span> <span class="token operator">-</span> 130<span class="token punctuation">,</span> 50<span class="token punctuation">)</span>
@@ -159,7 +155,7 @@ merge_pdf<span class="token punctuation">(</span><span class="token punctuation"
 <span class="token variable">$content</span><span class="token punctuation">.</span>AddImage<span class="token punctuation">(</span><span class="token variable">$image</span><span class="token punctuation">)</span>
 <span class="token variable">$stamper</span><span class="token punctuation">.</span>Close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token variable">$pdf</span><span class="token punctuation">.</span>Close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token variable">$fs</span><span class="token punctuation">.</span>Dispose<span class="token punctuation">(</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<span class="token variable">$fs</span><span class="token punctuation">.</span>Dispose<span class="token punctuation">(</span><span class="token punctuation">)</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
 <h2>C#</h2>
 <p>The C# version is almost the same as the PowerShell one. I have used the same library, iTextSharp:</p>
 <div
@@ -175,9 +171,7 @@ using iTextSharp.text.pdf;
 var pdfReader = new PdfReader(&quot;../invoice.pdf&quot;);
 var outStream = new FileStream(&quot;../signed-invoice.pdf&quot;, FileMode.Create);
 var pdfStamper = new PdfStamper(pdfReader, outStream);
-var gs = new PdfGState();
 var content = pdfStamper.GetOverContent(1);
-content.SetGState(gs);
 var width = pdfReader.GetPageSize(1).Width;
 var baseDir = AppDomain.CurrentDomain.BaseDirectory.Split(new[] { &quot;bin&quot; }, StringSplitOptions.None)[0];
 var signFile = Path.Combine(baseDir, &quot;..&quot;, &quot;sign.jpg&quot;);
@@ -187,8 +181,7 @@ image.ScaleAbsolute(100, 30);
 content.AddImage(image);
 pdfStamper.Close();
 pdfReader.Close();
-outStream.Close();
-`, ``)"
+outStream.Close();`, ``)"
             >
               <div
                 class="gatsby-code-button"
@@ -203,9 +196,7 @@ outStream.Close();
 <span class="token class-name"><span class="token keyword">var</span></span> pdfReader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">PdfReader</span><span class="token punctuation">(</span><span class="token string">"../invoice.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> outStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">FileStream</span><span class="token punctuation">(</span><span class="token string">"../signed-invoice.pdf"</span><span class="token punctuation">,</span> FileMode<span class="token punctuation">.</span>Create<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> pdfStamper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">PdfStamper</span><span class="token punctuation">(</span>pdfReader<span class="token punctuation">,</span> outStream<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token class-name"><span class="token keyword">var</span></span> gs <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">PdfGState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> content <span class="token operator">=</span> pdfStamper<span class="token punctuation">.</span><span class="token function">GetOverContent</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-content<span class="token punctuation">.</span><span class="token function">SetGState</span><span class="token punctuation">(</span>gs<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> width <span class="token operator">=</span> pdfReader<span class="token punctuation">.</span><span class="token function">GetPageSize</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Width<span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> baseDir <span class="token operator">=</span> AppDomain<span class="token punctuation">.</span>CurrentDomain<span class="token punctuation">.</span>BaseDirectory<span class="token punctuation">.</span><span class="token function">Split</span><span class="token punctuation">(</span><span class="token keyword">new</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span> <span class="token string">"bin"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> StringSplitOptions<span class="token punctuation">.</span>None<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token class-name"><span class="token keyword">var</span></span> signFile <span class="token operator">=</span> Path<span class="token punctuation">.</span><span class="token function">Combine</span><span class="token punctuation">(</span>baseDir<span class="token punctuation">,</span> <span class="token string">".."</span><span class="token punctuation">,</span> <span class="token string">"sign.jpg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -215,8 +206,8 @@ image<span class="token punctuation">.</span><span class="token function">ScaleA
 content<span class="token punctuation">.</span><span class="token function">AddImage</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">;</span>
 pdfStamper<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 pdfReader<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-outStream<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+outStream<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>Both versions use the <code class="language-text">PdfReader</code> class to open a PDF file, then use <code class="language-text">PdfStamper</code> to create a new PDF file. <code class="language-text">PdfStamper</code> adds content to an existing PDF. Then we have added the image to the PDF using the <code class="language-text">AddImage</code> method.</p>
 <h2>Golang</h2>
 <p>As you can see the Golang version is pretty short. It uses the <code class="language-text">pdft</code> library to add the signature to the PDF. I could have removed the error handling to make it even shorter.</p>
 <div
