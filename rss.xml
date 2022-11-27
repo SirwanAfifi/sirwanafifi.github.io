@@ -1,4 +1,339 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[A blog about software engineering]]></description><link>https://sirwan.info</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 04 Jun 2022 09:19:11 GMT</lastBuildDate><item><title><![CDATA[web automation]]></title><description><![CDATA[یکی از کارهای خسته‌کننده برام web automation هست؛ ابزارهای زیادی برای این کار توسعه داده شدن معروفترین‌هاش Puppeteer، Playwright…]]></description><link>https://sirwan.info/2022-07-04-web-automation/</link><guid isPermaLink="false">https://sirwan.info/2022-07-04-web-automation/</guid><pubDate>Sat, 04 Jun 2022 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;یکی از کارهای خسته‌کننده برام web automation هست؛ ابزارهای زیادی برای این کار توسعه داده شدن معروفترین‌هاش Puppeteer، Playwright هستن. برای یک پروژه نیاز بود یک فرآیند رو به صورت headless انجام بدم؛ چون با این دو ابزار زیاد کار کرده بودم تصمیم گرفتم با یک چیز متفاوت و جدید تسکم رو انجام بدم بنابراین پروژه رو با Golang شروع کردم و از go-rod استفاده کردم. این کتابخونه هم پشت‌پرده از Google DevTool Protocol استفاده میکنه بنابراین APIش خیلی شبیه به Puppeteer و Playwright هست. یه بخش از کاری که میخواستم انجام بدم اتوماتیک کردن فرآیند ساختن ایمیل توی سایت IONOS بود. این بخش بیشترین تایمم رو به خودش اختصاص داد چون فرم ایجاد ایمیل به شدت به اصطلاح tricky بود و هر کاری میکردم با کد نمیتونستم النمت پسورد رو فوکس کنم؛ فرآیند خیلی ساده بود چون در نهایت میبایست مقادیر یه سری فیلد مثل یوزرنیم، پسورد رو ست میکردم و دکمه Save داخل فرم کلیک میکردم. اما فیلد پسورد یک Password Strength Meter داشت که حتماً با &lt;strong&gt;کلیک&lt;/strong&gt; داخل فیلد فعال میشد نه فوکوس (چون خود focus هم از طریق DevTools قابل انجام نیست معمولاً &lt;a href=&quot;https://stackoverflow.com/q/1096436/1646540&quot;&gt;https://stackoverflow.com/q/1096436/1646540&lt;/a&gt;):&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Sirwan Afifi]]></title><description><![CDATA[A blog about software engineering]]></description><link>https://sirwan.info</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 27 Nov 2022 10:46:43 GMT</lastBuildDate><item><title><![CDATA[Different ways of add your signature on a PDF]]></title><description><![CDATA[My coworker wrote some Python code to add a signature to PDFs. Since Python isn't my thing, I wrote the same code in a few of my favorite…]]></description><link>https://sirwan.info/2022-11-27-different-ways-of-add-your-signature-on-a-pdf/</link><guid isPermaLink="false">https://sirwan.info/2022-11-27-different-ways-of-add-your-signature-on-a-pdf/</guid><pubDate>Sun, 27 Nov 2022 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;My coworker wrote some Python code to add a signature to PDFs. Since Python isn&apos;t my thing, I wrote the same code in a few of my favorite languages. I don&apos;t like Python because I&apos;ve never worked with it in production or because of its wired syntax. Anyway, here&apos;s the Python code I mentioned:&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`import PyPDF2
+from fpdf import FPDF
+import time
+​
+output_file = &amp;quot;merged.pdf&amp;quot;
+watermark_file = &amp;quot;converted.pdf&amp;quot;
+​
+def convert_to_pdf():
+    path_to_image = input(&apos;image to add: &apos;)
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.image(path_to_image,130,270, 75, 25)
+    pdf.output(&apos;converted.pdf&apos;)
+​
+def merge_pdf():
+    input_file = input(&apos;Path to target pdf: &apos;)
+    with open(input_file, &amp;quot;rb&amp;quot;) as filehandle_input:
+    # read content of the original file
+        pdf = PyPDF2.PdfFileReader(filehandle_input)
+
+        with open(watermark_file, &amp;quot;rb&amp;quot;) as filehandle_watermark:
+            # read content of the watermark
+            watermark = PyPDF2.PdfFileReader(filehandle_watermark)
+
+            # get first page of the original PDF
+            first_page = pdf.getPage(0)
+
+            # get first page of the watermark PDF
+            first_page_watermark = watermark.getPage(0)
+
+            # merge the two pages
+            first_page.merge_page(first_page_watermark)
+
+            # create a pdf writer object for the output file
+            pdf_writer = PyPDF2.PdfFileWriter()
+
+            # add page
+            pdf_writer.addPage(first_page)
+
+            with open(output_file, &amp;quot;wb&amp;quot;) as filehandle_output:
+                # write the watermarked file to the new file
+                pdf_writer.write(filehandle_output)
+​
+convert_to_pdf()
+time.sleep(1)
+merge_pdf()`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-python line-numbers&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; PyPDF2
+&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; fpdf &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; FPDF
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; time
+​
+output_file &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;merged.pdf&quot;&lt;/span&gt;
+watermark_file &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;converted.pdf&quot;&lt;/span&gt;
+​
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;convert_to_pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    path_to_image &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;image to add: &apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    pdf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; FPDF&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    pdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;add_page&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    pdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;image&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;path_to_image&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;130&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;270&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;75&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    pdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;output&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;converted.pdf&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+​
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;merge_pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    input_file &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Path to target pdf: &apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;input_file&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; filehandle_input&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;# read content of the original file&lt;/span&gt;
+        pdf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; PyPDF2&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PdfFileReader&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filehandle_input&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;watermark_file&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;rb&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; filehandle_watermark&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;token comment&quot;&gt;# read content of the watermark&lt;/span&gt;
+            watermark &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; PyPDF2&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PdfFileReader&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filehandle_watermark&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token comment&quot;&gt;# get first page of the original PDF&lt;/span&gt;
+            first_page &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pdf&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getPage&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token comment&quot;&gt;# get first page of the watermark PDF&lt;/span&gt;
+            first_page_watermark &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; watermark&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;getPage&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token comment&quot;&gt;# merge the two pages&lt;/span&gt;
+            first_page&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;merge_page&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;first_page_watermark&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token comment&quot;&gt;# create a pdf writer object for the output file&lt;/span&gt;
+            pdf_writer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; PyPDF2&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PdfFileWriter&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token comment&quot;&gt;# add page&lt;/span&gt;
+            pdf_writer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;addPage&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;first_page&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+            &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;output_file&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;wb&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; filehandle_output&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;token comment&quot;&gt;# write the watermarked file to the new file&lt;/span&gt;
+                pdf_writer&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;write&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;filehandle_output&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+​
+convert_to_pdf&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+time&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sleep&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+merge_pdf&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There&apos;s nothing complicated about the code. A PDF is created by converting the image into a PDF and merging it with the PDF that needs to have a signature.&lt;/p&gt;
+&lt;h2&gt;PowerShell&lt;/h2&gt;
+&lt;p&gt;I will start with the PowerShell version:&lt;/p&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`Add-Type -Path &amp;quot;*.dll&amp;quot;
+\$pdf = [iTextSharp.text.pdf.PdfReader]::new(&amp;quot;\$(Get-Location)/invoice.pdf&amp;quot;)
+\$fs = [System.IO.FileStream]::new(&amp;quot;\$(Get-Location)/signed-invoice.pdf&amp;quot;,
+    [System.IO.FileMode]::Create)
+\$stamper = [iTextSharp.text.pdf.PdfStamper]::new(\$pdf, \$fs)
+\$gs = [iTextSharp.text.pdf.PdfGState]::new()
+\$content = \$stamper.GetOverContent(1)
+\$content.SetGState(\$gs)
+\$width = \$pdf.GetPageSize(1).Width
+\$image = [iTextSharp.text.Image]::GetInstance(&amp;quot;\$(Get-Location)/sign.jpg&amp;quot;)
+\$image.SetAbsolutePosition(\$width - 130, 50)
+\$image.ScaleAbsolute(100, 30)
+\$content.AddImage(\$image)
+\$stamper.Close()
+\$pdf.Close()
+\$fs.Dispose()`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-powershell line-numbers&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;Add-Type&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Path &lt;span class=&quot;token string&quot;&gt;&quot;*.dll&quot;&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt; = &lt;span class=&quot;token namespace&quot;&gt;[iTextSharp.text.pdf.PdfReader]&lt;/span&gt;::new&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token function&quot;&gt;$&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Get-Location&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt;/invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$fs&lt;/span&gt; = &lt;span class=&quot;token namespace&quot;&gt;[System.IO.FileStream]&lt;/span&gt;::new&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token function&quot;&gt;$&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Get-Location&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt;/signed-invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;token namespace&quot;&gt;[System.IO.FileMode]&lt;/span&gt;::Create&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$stamper&lt;/span&gt; = &lt;span class=&quot;token namespace&quot;&gt;[iTextSharp.text.pdf.PdfStamper]&lt;/span&gt;::new&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$fs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$gs&lt;/span&gt; = &lt;span class=&quot;token namespace&quot;&gt;[iTextSharp.text.pdf.PdfGState]&lt;/span&gt;::new&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$content&lt;/span&gt; = &lt;span class=&quot;token variable&quot;&gt;$stamper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GetOverContent&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$content&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;SetGState&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$gs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$width&lt;/span&gt; = &lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GetPageSize&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Width
+&lt;span class=&quot;token variable&quot;&gt;$image&lt;/span&gt; = &lt;span class=&quot;token namespace&quot;&gt;[iTextSharp.text.Image]&lt;/span&gt;::GetInstance&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token function&quot;&gt;$&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Get-Location&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/span&gt;/sign.jpg&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;SetAbsolutePosition&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$width&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; 130&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 50&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;ScaleAbsolute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;100&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; 30&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$content&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;AddImage&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$image&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$stamper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Close&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Close&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$fs&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Dispose&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;C#&lt;/h2&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`using iTextSharp.text;
+using iTextSharp.text.pdf;
+
+var pdfReader = new PdfReader(&amp;quot;../invoice.pdf&amp;quot;);
+var outStream = new FileStream(&amp;quot;../signed-invoice.pdf&amp;quot;, FileMode.Create);
+var pdfStamper = new PdfStamper(pdfReader, outStream);
+var gs = new PdfGState();
+var content = pdfStamper.GetOverContent(1);
+content.SetGState(gs);
+var width = pdfReader.GetPageSize(1).Width;
+var baseDir = AppDomain.CurrentDomain.BaseDirectory.Split(new[] { &amp;quot;bin&amp;quot; }, StringSplitOptions.None)[0];
+var signFile = Path.Combine(baseDir, &amp;quot;..&amp;quot;, &amp;quot;sign.jpg&amp;quot;);
+var image = Image.GetInstance(signFile);
+image.SetAbsolutePosition(width - 130, 50);
+image.ScaleAbsolute(100, 30);
+content.AddImage(image);
+pdfStamper.Close();
+pdfReader.Close();
+outStream.Close();
+`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-csharp line-numbers&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;iTextSharp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;iTextSharp&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; pdfReader &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token constructor-invocation class-name&quot;&gt;PdfReader&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;../invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; outStream &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token constructor-invocation class-name&quot;&gt;FileStream&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;../signed-invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; FileMode&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Create&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; pdfStamper &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token constructor-invocation class-name&quot;&gt;PdfStamper&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdfReader&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; outStream&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; gs &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token constructor-invocation class-name&quot;&gt;PdfGState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; content &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pdfStamper&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;GetOverContent&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;SetGState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;gs&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; width &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pdfReader&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;GetPageSize&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Width&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; baseDir &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; AppDomain&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;CurrentDomain&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;BaseDirectory&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Split&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;bin&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; StringSplitOptions&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;None&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; signFile &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Path&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Combine&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;baseDir&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;..&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;sign.jpg&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; image &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Image&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;GetInstance&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;signFile&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+image&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;SetAbsolutePosition&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;width &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;130&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+image&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ScaleAbsolute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+content&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;AddImage&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;image&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+pdfStamper&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+pdfReader&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+outStream&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Both versions are pretty similar. They both use the iTextSharp library to add the signature to the PDF.&lt;/p&gt;
+&lt;h2&gt;Golang&lt;/h2&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`package main
+
+import (
+	&amp;quot;io/ioutil&amp;quot;
+
+	&amp;quot;github.com/signintech/pdft&amp;quot;
+)
+
+func main() {
+	var pt pdft.PDFt
+	err := pt.Open(&amp;quot;../invoice.pdf&amp;quot;)
+	if err != nil {
+		panic(&amp;quot;Couldn&apos;t open pdf.&amp;quot;)
+	}
+	pic, err := ioutil.ReadFile(&amp;quot;../sign.jpg&amp;quot;)
+	if err != nil {
+		panic(&amp;quot;Couldn&apos;t read pic.&amp;quot;)
+	}
+	err = pt.InsertImg(pic, 1, 1950.0, -2450.0, 400, 100)
+	if err != nil {
+		panic(&amp;quot;Couldn&apos;t insert image&amp;quot;)
+	}
+	err = pt.Save(&amp;quot;../signed-invoice.pdf&amp;quot;)
+	if err != nil {
+		panic(&amp;quot;Couldn&apos;t save pdf.&amp;quot;)
+	}
+}`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;go&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-go line-numbers&quot;&gt;&lt;code class=&quot;language-go&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;package&lt;/span&gt; main
+
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+	&lt;span class=&quot;token string&quot;&gt;&quot;io/ioutil&quot;&lt;/span&gt;
+
+	&lt;span class=&quot;token string&quot;&gt;&quot;github.com/signintech/pdft&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; pt pdft&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;PDFt
+	err &lt;span class=&quot;token operator&quot;&gt;:=&lt;/span&gt; pt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;../invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; err &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Couldn&apos;t open pdf.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	pic&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; err &lt;span class=&quot;token operator&quot;&gt;:=&lt;/span&gt; ioutil&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ReadFile&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;../sign.jpg&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; err &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Couldn&apos;t read pic.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	err &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;InsertImg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pic&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1950.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2450.0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; err &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Couldn&apos;t insert image&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+	err &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pt&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Save&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;../signed-invoice.pdf&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; err &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Couldn&apos;t save pdf.&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As you can see the Golang version is pretty short. It uses the &lt;code class=&quot;language-text&quot;&gt;pdft&lt;/code&gt; library to add the signature to the PDF. I could have removed the error handling to make it even shorter.&lt;/p&gt;
+&lt;h2&gt;Perl&lt;/h2&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`use PDF::API2;
+my \$pdf = PDF::API2-&gt;open(&apos;../invoice.pdf&apos;);
+my \$img = \$pdf-&gt;image_jpeg(&apos;../sign.jpg&apos;);
+my \$page = \$pdf-&gt;openpage(1);
+my \$gfx = \$page-&gt;gfx;
+\$gfx-&gt;image(\$img, 1950, 3200, 400, 100);
+\$pdf-&gt;saveas(&apos;../signed-invoice.pdf&apos;);`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;perl&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-perl line-numbers&quot;&gt;&lt;code class=&quot;language-perl&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;use&lt;/span&gt; PDF&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;API2&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; PDF&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;API2&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;open&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;../invoice.pdf&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$img&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;image_jpeg&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;../sign.jpg&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$page&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;openpage&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$gfx&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;$page&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;gfx&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$gfx&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;image&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;$img&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1950&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3200&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token variable&quot;&gt;$pdf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;saveas&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;../signed-invoice.pdf&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The Perl version is also pretty short. It uses the &lt;code class=&quot;language-text&quot;&gt;PDF::API2&lt;/code&gt; library to add the signature to the PDF.&lt;/p&gt;
+&lt;h2&gt;Bash&lt;/h2&gt;
+&lt;div
+              class=&quot;gatsby-code-button-container&quot;
+              data-toaster-id=&quot;&quot;
+              data-toaster-class=&quot;gatsby-code-button-toaster&quot;
+              data-toaster-text-class=&quot;gatsby-code-button-toaster-text&quot;
+              data-toaster-text=&quot;&quot;
+              data-toaster-duration=&quot;3500&quot;
+              onClick=&quot;copyToClipboard(`pdftk ./invoice.pdf stamp ./a4-sign.pdf output signed-invoice.pdf`, ``)&quot;
+            &gt;
+              &lt;div
+                class=&quot;gatsby-code-button&quot;
+                data-tooltip=&quot;&quot;
+              &gt;
+                &lt;svg class=&quot;gatsby-code-button-icon&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;24&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot;&gt;&lt;path fill=&quot;none&quot; d=&quot;M0 0h24v24H0V0z&quot;/&gt;&lt;path d=&quot;M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z&quot;/&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-bash line-numbers&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pdftk ./invoice.pdf stamp ./a4-sign.pdf output signed-invoice.pdf&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The Bash version is the shortest one. It uses the &lt;code class=&quot;language-text&quot;&gt;pdftk&lt;/code&gt; command to add the signature to the PDF. The only thing that needs to be done is to create a PDF with the signature on it.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[web automation]]></title><description><![CDATA[یکی از کارهای خسته‌کننده برام web automation هست؛ ابزارهای زیادی برای این کار توسعه داده شدن معروفترین‌هاش Puppeteer، Playwright…]]></description><link>https://sirwan.info/2022-07-04-web-automation/</link><guid isPermaLink="false">https://sirwan.info/2022-07-04-web-automation/</guid><pubDate>Sat, 04 Jun 2022 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;یکی از کارهای خسته‌کننده برام web automation هست؛ ابزارهای زیادی برای این کار توسعه داده شدن معروفترین‌هاش Puppeteer، Playwright هستن. برای یک پروژه نیاز بود یک فرآیند رو به صورت headless انجام بدم؛ چون با این دو ابزار زیاد کار کرده بودم تصمیم گرفتم با یک چیز متفاوت و جدید تسکم رو انجام بدم بنابراین پروژه رو با Golang شروع کردم و از go-rod استفاده کردم. این کتابخونه هم پشت‌پرده از Google DevTool Protocol استفاده میکنه بنابراین APIش خیلی شبیه به Puppeteer و Playwright هست. یه بخش از کاری که میخواستم انجام بدم اتوماتیک کردن فرآیند ساختن ایمیل توی سایت IONOS بود. این بخش بیشترین تایمم رو به خودش اختصاص داد چون فرم ایجاد ایمیل به شدت به اصطلاح tricky بود و هر کاری میکردم با کد نمیتونستم النمت پسورد رو فوکس کنم؛ فرآیند خیلی ساده بود چون در نهایت میبایست مقادیر یه سری فیلد مثل یوزرنیم، پسورد رو ست میکردم و دکمه Save داخل فرم کلیک میکردم. اما فیلد پسورد یک Password Strength Meter داشت که حتماً با &lt;strong&gt;کلیک&lt;/strong&gt; داخل فیلد فعال میشد نه فوکوس (چون خود focus هم از طریق DevTools قابل انجام نیست معمولاً &lt;a href=&quot;https://stackoverflow.com/q/1096436/1646540&quot;&gt;https://stackoverflow.com/q/1096436/1646540&lt;/a&gt;):&lt;/p&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;این مشکل سمت خود سایته که میخوام automateش کنم؛ چون با DevTools هم تست کردم همین مشکل رو دارم: (چیزی که انتظار دارم تصویر دومه)&lt;br&gt;- تب ایندکس رو تست کردم&lt;br&gt;- ایونت mouse click رو dispatch کردم&lt;br&gt;- + ۱۰۰۰ حالت دیگه 😀 &lt;a href=&quot;https://t.co/RnvfJ8zeNZ&quot;&gt;https://t.co/RnvfJ8zeNZ&lt;/a&gt; &lt;a href=&quot;https://t.co/qoWCRHU1tP&quot;&gt;pic.twitter.com/qoWCRHU1tP&lt;/a&gt;&lt;/p&gt;&amp;mdash; Sirwan Afifi (@SirwanAfifi) &lt;a href=&quot;https://twitter.com/SirwanAfifi/status/1532850388671549440?ref_src=twsrc%5Etfw&quot;&gt;June 3, 2022&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 &lt;p&gt;تقریباً تمام حالت‌های ممکن رو تست کردم از ست کردن tabIndex گرفته تا dispatch کردن تمام ایونت‌های اتچ شده به المنت:&lt;/p&gt;
 &lt;div
@@ -541,8 +876,7 @@ filter(@Body() filterInput: FilterInputDto) {
 &lt;li&gt;Render components from JS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;The last one was my personal favourite. Steve demonstrated how to use a Blazor component within a React application.&lt;/p&gt;
- &lt;img src=&quot;/img/blazor/ms_reading_react.jpg&quot; alt=&quot;ms_reading_react&quot; /&gt;</content:encoded></item><item><title><![CDATA[client_max_body_size]]></title><description><![CDATA[https://stackoverflow.com/questions/19917401/error-request-entity-too-large https://www.tecmint.com/limit-file-upload-size-in-nginx/]]></description><link>https://sirwan.info/2021-10-13-client_max_body_size/</link><guid isPermaLink="false">https://sirwan.info/2021-10-13-client_max_body_size/</guid><pubDate>Wed, 13 Oct 2021 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/19917401/error-request-entity-too-large&quot;&gt;https://stackoverflow.com/questions/19917401/error-request-entity-too-large&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.tecmint.com/limit-file-upload-size-in-nginx/&quot;&gt;https://www.tecmint.com/limit-file-upload-size-in-nginx/&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React: The order of the hooks being called is important]]></title><description><![CDATA[https://stackoverflow.com/questions/53472795/uncaught-error-rendered-fewer-hooks-than-expected-this-may-be-caused-by-an-acc]]></description><link>https://sirwan.info/2021-10-13-The-order-of-the-hooks-being-called-is-importantreact/</link><guid isPermaLink="false">https://sirwan.info/2021-10-13-The-order-of-the-hooks-being-called-is-importantreact/</guid><pubDate>Wed, 13 Oct 2021 23:46:37 GMT</pubDate><content:encoded>&lt;div
+ &lt;img src=&quot;/img/blazor/ms_reading_react.jpg&quot; alt=&quot;ms_reading_react&quot; /&gt;</content:encoded></item><item><title><![CDATA[React: The order of the hooks being called is important]]></title><description><![CDATA[https://stackoverflow.com/questions/53472795/uncaught-error-rendered-fewer-hooks-than-expected-this-may-be-caused-by-an-acc]]></description><link>https://sirwan.info/2021-10-13-The-order-of-the-hooks-being-called-is-importantreact/</link><guid isPermaLink="false">https://sirwan.info/2021-10-13-The-order-of-the-hooks-being-called-is-importantreact/</guid><pubDate>Wed, 13 Oct 2021 23:46:37 GMT</pubDate><content:encoded>&lt;div
               class=&quot;gatsby-code-button-container&quot;
               data-toaster-id=&quot;&quot;
               data-toaster-class=&quot;gatsby-code-button-toaster&quot;
@@ -755,7 +1089,8 @@ user &lt;span class=&quot;token operator&quot;&gt;:=&lt;/span&gt; &lt;span class
               &lt;/div&gt;
             &lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;go&quot;&gt;&lt;pre style=&quot;counter-reset: linenumber NaN&quot; class=&quot;language-go line-numbers&quot;&gt;&lt;code class=&quot;language-go&quot;&gt;user &lt;span class=&quot;token operator&quot;&gt;:=&lt;/span&gt; User&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;firstName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Sirwan&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; lastName&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Afifi&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;line-numbers-rows&quot; style=&quot;white-space: normal; width: auto; left: 0;&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;Go از unnamed structها پشتیبانی میکنه؛ خوبیش اینکه یک unnamed struct رو میتونیم به یک named struct اساین کنیم (به شرطی که ساختارشون یکی باشه) به این میگن structural typing ولی اگر بخوایم یک named struct رو به یک named struct دیگه اساین کنیم باید حتماً تایپ مقصد رو تعیین کنیم: &lt;a href=&quot;https://t.co/TFMHVsMmvq&quot;&gt;pic.twitter.com/TFMHVsMmvq&lt;/a&gt;&lt;/p&gt;&amp;mdash; Sirwan Afifi (@SirwanAfifi) &lt;a href=&quot;https://twitter.com/SirwanAfifi/status/1449641225628307457?ref_src=twsrc%5Etfw&quot;&gt;October 17, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</content:encoded></item><item><title><![CDATA[تولید فایل‌های PDF توسط React]]></title><description><![CDATA[تهیه فایل PDF تا حدودی چالشی است به خصوص زمانیکه بخواهیم یکسری کامپوننت ری‌اکتی را تبدیل به PDF…]]></description><link>https://sirwan.info/2021-09-25-generating-pdf/</link><guid isPermaLink="false">https://sirwan.info/2021-09-25-generating-pdf/</guid><pubDate>Sat, 25 Sep 2021 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;تهیه فایل PDF تا حدودی چالشی است به خصوص زمانیکه بخواهیم یکسری کامپوننت ری‌اکتی را تبدیل به PDF کنیم؛ در یکی از پروژه‌هایمان امکان تهیه فایل PDF را در اختیار کاربران قرار داده‌ایم. روال کار به این صورت است که ابتدا کاربر با کلیک روی یک باتن یک گزارش تهیه میکند سپس کاربر باید امکان پیش‌نمایش گزارش را نیز داشته باشد. تا اینجای کار خبری از PDF و تولید PDF نیست و چیزی که به کاربر نمایش داده میشود یکسری کامپوننت ری‌اکتی هستند که درون یک مودال پشت سر هم نمایش داده میشوند. درون هدر این مودال یک باتن جهت دانلود گزارش به صورت PDF را داریم؛ مشکل از آنجایی شروع میشود که این کامپوننت‌ها باید با همان کیفیت یا به اصطلاح به صورت pixel perfect به PDF تبدیل شوند و سپس سپس کاربر بتواند فایل را ذخیره کند.&lt;/p&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;fa&quot; dir=&quot;rtl&quot;&gt;Go از unnamed structها پشتیبانی میکنه؛ خوبیش اینکه یک unnamed struct رو میتونیم به یک named struct اساین کنیم (به شرطی که ساختارشون یکی باشه) به این میگن structural typing ولی اگر بخوایم یک named struct رو به یک named struct دیگه اساین کنیم باید حتماً تایپ مقصد رو تعیین کنیم: &lt;a href=&quot;https://t.co/TFMHVsMmvq&quot;&gt;pic.twitter.com/TFMHVsMmvq&lt;/a&gt;&lt;/p&gt;&amp;mdash; Sirwan Afifi (@SirwanAfifi) &lt;a href=&quot;https://twitter.com/SirwanAfifi/status/1449641225628307457?ref_src=twsrc%5Etfw&quot;&gt;October 17, 2021&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</content:encoded></item><item><title><![CDATA[client_max_body_size]]></title><description><![CDATA[https://stackoverflow.com/questions/19917401/error-request-entity-too-large https://www.tecmint.com/limit-file-upload-size-in-nginx/]]></description><link>https://sirwan.info/2021-10-13-client_max_body_size/</link><guid isPermaLink="false">https://sirwan.info/2021-10-13-client_max_body_size/</guid><pubDate>Wed, 13 Oct 2021 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://stackoverflow.com/questions/19917401/error-request-entity-too-large&quot;&gt;https://stackoverflow.com/questions/19917401/error-request-entity-too-large&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tecmint.com/limit-file-upload-size-in-nginx/&quot;&gt;https://www.tecmint.com/limit-file-upload-size-in-nginx/&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[تولید فایل‌های PDF توسط React]]></title><description><![CDATA[تهیه فایل PDF تا حدودی چالشی است به خصوص زمانیکه بخواهیم یکسری کامپوننت ری‌اکتی را تبدیل به PDF…]]></description><link>https://sirwan.info/2021-09-25-generating-pdf/</link><guid isPermaLink="false">https://sirwan.info/2021-09-25-generating-pdf/</guid><pubDate>Sat, 25 Sep 2021 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;تهیه فایل PDF تا حدودی چالشی است به خصوص زمانیکه بخواهیم یکسری کامپوننت ری‌اکتی را تبدیل به PDF کنیم؛ در یکی از پروژه‌هایمان امکان تهیه فایل PDF را در اختیار کاربران قرار داده‌ایم. روال کار به این صورت است که ابتدا کاربر با کلیک روی یک باتن یک گزارش تهیه میکند سپس کاربر باید امکان پیش‌نمایش گزارش را نیز داشته باشد. تا اینجای کار خبری از PDF و تولید PDF نیست و چیزی که به کاربر نمایش داده میشود یکسری کامپوننت ری‌اکتی هستند که درون یک مودال پشت سر هم نمایش داده میشوند. درون هدر این مودال یک باتن جهت دانلود گزارش به صورت PDF را داریم؛ مشکل از آنجایی شروع میشود که این کامپوننت‌ها باید با همان کیفیت یا به اصطلاح به صورت pixel perfect به PDF تبدیل شوند و سپس سپس کاربر بتواند فایل را ذخیره کند.&lt;/p&gt;
  &lt;img src=&quot;/img/report_pdf_list.jpeg&quot; alt=&quot;report_pdf_list&quot; /&gt;
 &lt;p&gt;برای تولید PDF در سمت کلاینت تصمیم گرفتیم که از html2pdf.js استفاده کنیم که یک لایبرری سمت کلاینت برای تبدیل HTML به PDF میباشد؛ این لایبرری در واقع براساس دو لایبرری دیگر یعنی html2canvas و jsPDF تهیه شده است؛ در واقع کاری که انجام میدهد تبدیل یک قسمت از DOM به Canvas و در نهایت ذخیره Canvas در قالب PDF است. بنابراین در قدم اول باید کامپوننت‌های ری‌اکتی را به DOM تبدیل کنیم؛ برای اینکار هم از renderToString میتوان استفاده کرد:&lt;/p&gt;
 &lt;div
