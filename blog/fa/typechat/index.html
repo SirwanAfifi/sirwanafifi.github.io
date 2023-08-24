@@ -1,0 +1,331 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.7b34ee6fa70c073bae63.css" id="gatsby-global-css">.gatsby-code-button-container{touch-action:none;display:flex;justify-content:flex-end;position:relative;top:28px;z-index:100;pointer-events:none}.gatsby-code-button{cursor:pointer;pointer-events:auto}.gatsby-code-button:after{visibility:hidden;position:absolute;display:none;padding:5px;content:attr(data-tooltip);color:#fff;font-size:16px;background-color:#000;white-space:nowrap}.gatsby-code-button[data-tooltip]:after{top:26px;right:0}.gatsby-code-button[data-tooltip]:focus:after,.gatsby-code-button[data-tooltip]:hover:after{visibility:visible;display:block;z-index:200}.gatsby-code-button-toaster{z-index:500;position:fixed;top:0;bottom:0;left:0;right:0;display:flex;justify-content:center;align-items:center;height:100vh;width:100vw;pointer-events:none}.gatsby-code-button-toaster-text{width:100%;margin:0 15px;max-width:850px;padding:20px;font-size:24px;letter-spacing:-1px;font-family:monospace;color:#fff;background-color:#000;border-radius:2px;text-align:center;opacity:0;-webkit-animation:animation 3s cubic-bezier(.98,.01,.53,.47);animation:animation 3s cubic-bezier(.98,.01,.53,.47)}.gatsby-code-button-buffer{position:fixed;top:-9999px;opacity:0}@-webkit-keyframes animation{0%,50%{opacity:1}50%,to{opacity:0}}@keyframes animation{0%,50%{opacity:1}50%,to{opacity:0}}
+
+/*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
+
+/*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */html{-moz-tab-size:4;-o-tab-size:4;tab-size:4;line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji}hr{height:0;color:inherit}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,select{text-transform:none}[type=button],button{-webkit-appearance:button}::-moz-focus-inner{border-style:none;padding:0}legend{padding:0}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}button{background-color:transparent;background-image:none}fieldset,ol,ul{margin:0;padding:0}ol,ul{list-style:none}html{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}body{font-family:inherit;line-height:inherit}*,:after,:before{box-sizing:border-box;border:0 solid}hr{border-top-width:1px}img{border-style:solid}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input:-ms-input-placeholder,textarea:-ms-input-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}button{cursor:pointer}table{border-collapse:collapse}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}button,input,optgroup,select,textarea{padding:0;line-height:inherit;color:inherit}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*,:after,:before{--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity))}.prose{color:#374151;max-width:65ch}.prose a{color:#111827;text-decoration:underline;font-weight:500}.prose strong{color:#111827;font-weight:600}.prose ol[type=A]{--list-counter-style:upper-alpha}.prose ol[type=a]{--list-counter-style:lower-alpha}.prose ol[type=I]{--list-counter-style:upper-roman}.prose ol[type=i]{--list-counter-style:lower-roman}.prose ol[type="1"]{--list-counter-style:decimal}.prose ol>li{position:relative;padding-left:1.75em}.prose ol>li:before{content:counter(list-item,var(--list-counter-style,decimal)) ".";position:absolute;font-weight:400;color:#6b7280;left:0}.prose ul>li{position:relative;padding-left:1.75em}.prose ul>li:before{content:"";position:absolute;background-color:#d1d5db;border-radius:50%;width:.375em;height:.375em;top:.6875em;left:.25em}.prose hr{border-color:#e5e7eb;border-top-width:1px;margin-top:3em;margin-bottom:3em}.prose blockquote{font-weight:500;font-style:italic;color:#111827;border-left-width:.25rem;border-left-color:#e5e7eb;quotes:"\201C""\201D""\2018""\2019";margin-top:1.6em;margin-bottom:1.6em;padding-left:1em}.prose blockquote p:first-of-type:before{content:open-quote}.prose blockquote p:last-of-type:after{content:close-quote}.prose h1{color:#111827;font-weight:800;font-size:2.25em;margin-top:0;margin-bottom:.8888889em;line-height:1.1111111}.prose h2{color:#111827;font-weight:700;font-size:1.5em;margin-top:2em;margin-bottom:1em;line-height:1.3333333}.prose h3{font-size:1.25em;margin-top:1.6em;margin-bottom:.6em;line-height:1.6}.prose h3,.prose h4{color:#111827;font-weight:600}.prose h4{margin-top:1.5em;margin-bottom:.5em;line-height:1.5}.prose figure figcaption{color:#6b7280;font-size:.875em;line-height:1.4285714;margin-top:.8571429em}.prose code{color:#111827;font-weight:600;font-size:.875em}.prose code:after,.prose code:before{content:""}.prose a code{color:#111827}.prose pre{color:#e5e7eb;background-color:#1f2937;overflow-x:auto;font-size:.875em;line-height:1.7142857;margin-top:1.7142857em;margin-bottom:1.7142857em;border-radius:.375rem;padding:.8571429em 1.1428571em}.prose pre code{background-color:transparent;border-width:0;border-radius:0;padding:0;font-weight:400;color:inherit;font-size:inherit;font-family:inherit;line-height:inherit}.prose pre code:after,.prose pre code:before{content:none}.prose table{width:100%;table-layout:auto;text-align:left;margin-top:2em;margin-bottom:2em;font-size:.875em;line-height:1.7142857}.prose thead{color:#111827;font-weight:600;border-bottom-width:1px;border-bottom-color:#d1d5db}.prose thead th{vertical-align:bottom;padding-right:.5714286em;padding-bottom:.5714286em;padding-left:.5714286em}.prose tbody tr{border-bottom-width:1px;border-bottom-color:#e5e7eb}.prose tbody tr:last-child{border-bottom-width:0}.prose tbody td{vertical-align:top;padding:.5714286em}.prose{font-size:1rem;line-height:1.75}.prose p{margin-top:1.25em;margin-bottom:1.25em}.prose figure,.prose img,.prose video{margin-top:2em;margin-bottom:2em}.prose figure>*{margin-top:0;margin-bottom:0}.prose h2 code{font-size:.875em}.prose h3 code{font-size:.9em}.prose ol,.prose ul{margin-top:1.25em;margin-bottom:1.25em}.prose li{margin-top:.5em;margin-bottom:.5em}.prose>ul>li p{margin-top:.75em;margin-bottom:.75em}.prose>ul>li>:first-child{margin-top:1.25em}.prose>ul>li>:last-child{margin-bottom:1.25em}.prose>ol>li>:first-child{margin-top:1.25em}.prose>ol>li>:last-child{margin-bottom:1.25em}.prose ol ol,.prose ol ul,.prose ul ol,.prose ul ul{margin-top:.75em;margin-bottom:.75em}.prose h2+*,.prose h3+*,.prose h4+*,.prose hr+*{margin-top:0}.prose thead th:first-child{padding-left:0}.prose thead th:last-child{padding-right:0}.prose tbody td:first-child{padding-left:0}.prose tbody td:last-child{padding-right:0}.prose>:first-child{margin-top:0}.prose>:last-child{margin-bottom:0}.prose-lg{font-size:1.125rem;line-height:1.7777778}.prose-lg p{margin-top:1.3333333em;margin-bottom:1.3333333em}.prose-lg blockquote{margin-top:1.6666667em;margin-bottom:1.6666667em;padding-left:1em}.prose-lg h1{font-size:2.6666667em;margin-top:0;margin-bottom:.8333333em;line-height:1}.prose-lg h2{font-size:1.6666667em;margin-top:1.8666667em;margin-bottom:1.0666667em;line-height:1.3333333}.prose-lg h3{font-size:1.3333333em;margin-top:1.6666667em;margin-bottom:.6666667em;line-height:1.5}.prose-lg h4{margin-top:1.7777778em;margin-bottom:.4444444em;line-height:1.5555556}.prose-lg figure,.prose-lg img,.prose-lg video{margin-top:1.7777778em;margin-bottom:1.7777778em}.prose-lg figure>*{margin-top:0;margin-bottom:0}.prose-lg figure figcaption{font-size:.8888889em;line-height:1.5;margin-top:1em}.prose-lg code{font-size:.8888889em}.prose-lg h2 code{font-size:.8666667em}.prose-lg h3 code{font-size:.875em}.prose-lg pre{font-size:.8888889em;line-height:1.75;margin-top:2em;margin-bottom:2em;border-radius:.375rem;padding:1em 1.5em}.prose-lg ol,.prose-lg ul{margin-top:1.3333333em;margin-bottom:1.3333333em}.prose-lg li{margin-top:.6666667em;margin-bottom:.6666667em}.prose-lg ol>li{padding-left:1.6666667em}.prose-lg ol>li:before{left:0}.prose-lg ul>li{padding-left:1.6666667em}.prose-lg ul>li:before{width:.3333333em;height:.3333333em;top:.72222em;left:.2222222em}.prose-lg>ul>li p{margin-top:.8888889em;margin-bottom:.8888889em}.prose-lg>ul>li>:first-child{margin-top:1.3333333em}.prose-lg>ul>li>:last-child{margin-bottom:1.3333333em}.prose-lg>ol>li>:first-child{margin-top:1.3333333em}.prose-lg>ol>li>:last-child{margin-bottom:1.3333333em}.prose-lg ol ol,.prose-lg ol ul,.prose-lg ul ol,.prose-lg ul ul{margin-top:.8888889em;margin-bottom:.8888889em}.prose-lg hr{margin-top:3.1111111em;margin-bottom:3.1111111em}.prose-lg h2+*,.prose-lg h3+*,.prose-lg h4+*,.prose-lg hr+*{margin-top:0}.prose-lg table{font-size:.8888889em;line-height:1.5}.prose-lg thead th{padding-right:.75em;padding-bottom:.75em;padding-left:.75em}.prose-lg thead th:first-child{padding-left:0}.prose-lg thead th:last-child{padding-right:0}.prose-lg tbody td{padding:.75em}.prose-lg tbody td:first-child{padding-left:0}.prose-lg tbody td:last-child{padding-right:0}.prose-lg>:first-child{margin-top:0}.prose-lg>:last-child{margin-bottom:0}.prose-indigo a,.prose-indigo a code{color:#4f46e5}.m-auto{margin:auto}.mx-auto{margin-left:auto;margin-right:auto}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-8{margin-top:2rem}.mt-16{margin-top:4rem}.mb-0{margin-bottom:0}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.table{display:table}.hidden{display:none}.h-px{height:1px}.h-screen{height:100vh}.w-screen{width:100vw}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}@-webkit-keyframes spin{to{transform:rotate(1turn)}}@keyframes spin{to{transform:rotate(1turn)}}@-webkit-keyframes ping{75%,to{transform:scale(2);opacity:0}}@keyframes ping{75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{50%{opacity:.5}}@keyframes pulse{50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@-webkit-keyframes wavehand{0%{transform:rotate(0deg)}15%{transform:rotate(14deg)}30%{transform:rotate(-8deg)}40%{transform:rotate(14deg)}50%{transform:rotate(-4deg)}60%{transform:rotate(10deg)}70%{transform:rotate(0deg)}to{transform:rotate(0deg)}}@keyframes wavehand{0%{transform:rotate(0deg)}15%{transform:rotate(14deg)}30%{transform:rotate(-8deg)}40%{transform:rotate(14deg)}50%{transform:rotate(-4deg)}60%{transform:rotate(10deg)}70%{transform:rotate(0deg)}to{transform:rotate(0deg)}}.animate-wavehand{-webkit-animation:wavehand 2.5s ease-in-out infinite;animation:wavehand 2.5s ease-in-out infinite}.list-disc{list-style-type:disc}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.space-x-1>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem*var(--tw-space-x-reverse));margin-left:calc(0.25rem*(1 - var(--tw-space-x-reverse)))}.space-x-2>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem*var(--tw-space-x-reverse));margin-left:calc(0.5rem*(1 - var(--tw-space-x-reverse)))}.space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem*var(--tw-space-x-reverse));margin-left:calc(0.75rem*(1 - var(--tw-space-x-reverse)))}.space-x-6>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem*var(--tw-space-x-reverse));margin-left:calc(1.5rem*(1 - var(--tw-space-x-reverse)))}.space-y-2>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem*var(--tw-space-y-reverse))}.space-y-3>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem*var(--tw-space-y-reverse))}.rounded-md{border-radius:.375rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-transparent{border-color:transparent}.bg-gray-100{--tw-bg-opacity:1;background-color:rgba(243,244,246,var(--tw-bg-opacity))}.bg-purple-100{--tw-bg-opacity:1;background-color:rgba(237,233,254,var(--tw-bg-opacity))}.hover\:bg-gray-200:hover{--tw-bg-opacity:1;background-color:rgba(229,231,235,var(--tw-bg-opacity))}.bg-hero-pattern{background-image:url(/background.svg)}.p-1{padding:.25rem}.p-2{padding:.5rem}.p-4{padding:1rem}.p-1\.5{padding:.375rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-8{padding-left:2rem;padding-right:2rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.pb-2{padding-bottom:.5rem}.text-center{text-align:center}.align-middle{vertical-align:middle}.text-sm{font-size:.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-5xl{font-size:3rem;line-height:1}.font-normal{font-weight:400}.font-medium{font-weight:500}.font-black{font-weight:900}.text-gray-400{--tw-text-opacity:1;color:rgba(156,163,175,var(--tw-text-opacity))}.text-gray-500{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.text-gray-900{--tw-text-opacity:1;color:rgba(17,24,39,var(--tw-text-opacity))}.text-indigo-700{--tw-text-opacity:1;color:rgba(67,56,202,var(--tw-text-opacity))}.text-purple-800{--tw-text-opacity:1;color:rgba(91,33,182,var(--tw-text-opacity))}.hover\:text-gray-500:hover{--tw-text-opacity:1;color:rgba(107,114,128,var(--tw-text-opacity))}.hover\:text-gray-900:hover{--tw-text-opacity:1;color:rgba(17,24,39,var(--tw-text-opacity))}*,.shadow-none,:after,:before{--tw-shadow:0 0 transparent}.shadow-none{box-shadow:var(--tw-ring-offset-shadow,0 0 transparent),var(--tw-ring-shadow,0 0 transparent),var(--tw-shadow)}*,:after,:before{--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 transparent;--tw-ring-shadow:0 0 transparent}.filter{--tw-blur:var(--tw-empty,/*!*/ /*!*/);--tw-brightness:var(--tw-empty,/*!*/ /*!*/);--tw-contrast:var(--tw-empty,/*!*/ /*!*/);--tw-grayscale:var(--tw-empty,/*!*/ /*!*/);--tw-hue-rotate:var(--tw-empty,/*!*/ /*!*/);--tw-invert:var(--tw-empty,/*!*/ /*!*/);--tw-saturate:var(--tw-empty,/*!*/ /*!*/);--tw-sepia:var(--tw-empty,/*!*/ /*!*/);--tw-drop-shadow:var(--tw-empty,/*!*/ /*!*/);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.home{background:radial-gradient(at top left,#932de1 0,#2b096b 100%);background-repeat:no-repeat}.gradient-text{-webkit-background-clip:text;background-clip:text;color:transparent;background-image:radial-gradient(at top,#932de1 0,#2b096b 100%)}.hand{transform-origin:70% 70%}.gatsby-code-button{border-radius:.25rem;border-width:1px;--tw-border-opacity:1;border-color:rgba(255,255,255,var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgba(67,56,202,var(--tw-bg-opacity))}.gatsby-code-button-icon{padding:3px;fill:#fff}.rtl{direction:rtl;font-family:Vazir,sans-serif}.rtl pre{direction:ltr}.rtl blockquote{text-align:left;direction:ltr}.rtl nav a{margin:10px}.rtl .gatsby-code-button-container{justify-content:flex-start}.rtl .post-meta-data div:first-child{display:none}@media (min-width:640px){.sm\:pt-24{padding-top:6rem}.sm\:pb-24{padding-bottom:6rem}}@media (min-width:768px){.md\:flex{display:flex}.md\:px-10{padding-left:2.5rem;padding-right:2.5rem}.md\:py-4{padding-top:1rem;padding-bottom:1rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}code[class*=language-],pre[class*=language-]{color:#f8f8f2;background:none;text-shadow:0 1px rgba(0,0,0,.3);font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;border-radius:.3em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#282a36}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#6272a4}.token.punctuation{color:#f8f8f2}.namespace{opacity:.7}.token.constant,.token.deleted,.token.property,.token.symbol,.token.tag{color:#ff79c6}.token.boolean,.token.number{color:#bd93f9}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#50fa7b}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url,.token.variable{color:#f8f8f2}.token.atrule,.token.attr-value,.token.class-name,.token.function{color:#f1fa8c}.token.keyword{color:#8be9fd}.token.important,.token.regex{color:#ffb86c}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.gatsby-highlight-code-line{background-color:rgba(201,167,255,.2);display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:.75em;border-left:.3em solid #c9a7ff}</style><meta name="generator" content="Gatsby 3.3.1"/><title data-react-helmet="true">typechat</title><link data-react-helmet="true" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css"/><link rel="alternate" type="application/rss+xml" title="Sirwan Afifi" href="/rss.xml"/><link as="script" rel="preload" href="/webpack-runtime-c25ff246476fa47f41b2.js"/><link as="script" rel="preload" href="/framework-1f8db60c4f6292df0945.js"/><link as="script" rel="preload" href="/app-db5c6081bf5a36710bbb.js"/><link as="script" rel="preload" href="/d7eeaac4-ec307d019a22c1d4bbe0.js"/><link as="script" rel="preload" href="/5f633ea2af7a5bf413f28de9769dbfd425bbd9ce-9d4e5f425821a8bae1c1.js"/><link as="script" rel="preload" href="/component---src-templates-blog-details-js-68c498db51dbbb5254b9.js"/><link as="fetch" rel="preload" href="/page-data/blog/fa/typechat/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="max-w-2xl mx-auto px-5 py-10 rtl"><nav class="hidden md:flex space-x-6 border-b pb-2"><a class="text-base font-medium text-gray-500 hover:text-gray-900" href="/">صفحه اصلی</a><a class="text-base font-medium text-gray-500 hover:text-gray-900" href="/">درباره من</a></nav><main><article><header><h1 class="gradient-text text-5xl font-black mt-8 mb-0">typechat</h1><div class="mt-4 mb-4"><div class="space-y-3 post-meta-data"><div class="space-x-1 text-sm text-gray-500 mb-2 flex flex-wrap items-center"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" class="inline-block" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg><time dateTime="August 18th, 2023">August 18th, 2023</time><span aria-hidden="true">-</span><svg stroke="currentColor" fill="currentColor" stroke-width="0" t="1569683618210" viewBox="0 0 1024 1024" version="1.1" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><defs></defs><path d="M945 412H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h256c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM811 548H689c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h122c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM477.3 322.5H434c-6.2 0-11.2 5-11.2 11.2v248c0 3.6 1.7 6.9 4.6 9l148.9 108.6c5 3.6 12 2.6 15.6-2.4l25.7-35.1v-0.1c3.6-5 2.5-12-2.5-15.6l-126.7-91.6V333.7c0.1-6.2-5-11.2-11.1-11.2z"></path><path d="M804.8 673.9H747c-5.6 0-10.9 2.9-13.9 7.7-12.7 20.1-27.5 38.7-44.5 55.7-29.3 29.3-63.4 52.3-101.3 68.3-39.3 16.6-81 25-124 25-43.1 0-84.8-8.4-124-25-37.9-16-72-39-101.3-68.3s-52.3-63.4-68.3-101.3c-16.6-39.2-25-80.9-25-124 0-43.1 8.4-84.7 25-124 16-37.9 39-72 68.3-101.3 29.3-29.3 63.4-52.3 101.3-68.3 39.2-16.6 81-25 124-25 43.1 0 84.8 8.4 124 25 37.9 16 72 39 101.3 68.3 17 17 31.8 35.6 44.5 55.7 3 4.8 8.3 7.7 13.9 7.7h57.8c6.9 0 11.3-7.2 8.2-13.3-65.2-129.7-197.4-214-345-215.7-216.1-2.7-395.6 174.2-396 390.1C71.6 727.5 246.9 903 463.2 903c149.5 0 283.9-84.6 349.8-215.8 3.1-6.1-1.4-13.3-8.2-13.3z"></path></svg><span>4<!-- --> min read</span></div><div class="space-x-1"><span class="bg-purple-100 text-purple-800 rounded-full p-1.5 font-medium">TypeScript</span><span class="bg-purple-100 text-purple-800 rounded-full p-1.5 font-medium">GPT</span><span class="bg-purple-100 text-purple-800 rounded-full p-1.5 font-medium">OpenAI</span><span class="bg-purple-100 text-purple-800 rounded-full p-1.5 font-medium">AI</span></div></div></div></header><section class="prose prose-lg prose-indigo"><p>در دنیای Generative AI مفهوم Prompt نقش خیلی مهمی را ایفا میکند؛ چون برای گرفتن یک خروجی با کیفیت میبایست یک ورودی یا Prompt با کیفیت و خلاقانه داشته باشیم؛ این قضیه به قدری اهمیت دارد که یک عنوان شغلی هم برای آن در نظر گرفته شده است Prompt Engineer؛ چون اگر یک Prompt به خوبی نوشته نشود، نتایج غیرواقعی و نادرستی میتواند تولید کند که به این رفتار <a href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)">Hallucination</a> یا Fabulations گفته میشود. برای این LLMها دادن کانتکست اهمیت زیادی دارد چون یک Prompt به تنهایی پاسخ مطلوب را برایمان جنریت نمیکند و باید تا جایی که امکان دارد توضیحات کافی را بدهیم. به صورت پیش‌فرض هم همه در دادن instruction خوب نیستند و این خودش یک مهارت محسوب میشه بخاطر همین است که Prompt Engineering مطرح میشود. OpenAI هم یکسری Best Practise برای نوشتن Promptهای خوب دارد که از <a href="https://help.openai.com/en/collections/3675942-prompt-engineering">اینجا</a> یا <a href="https://cloud.google.com/blog/products/application-development/five-best-practices-for-prompt-engineering">اینجا</a> میتوانید مشاهده کنید. به عنوان مثال برای ChatGPT با تغییر کوچکی در نحوه پرسیدن سوال نتایج خیلی متفاوتی دریافت خواهیم کرد. ایده‌هایی که بهتر است به کار بگیریم:</p>
+<p><strong>دادن نقش یا Personas</strong></p>
+<p>مثلاً با عباراتی از قبیل act as a... میتوانیم یک نقش برای پاسخ تعیین کنیم.</p>
+<p>​     Act as a marketing copywriter, and write three ads for...</p>
+<p><strong>تعیین Tone</strong></p>
+<p>مثلاً میتوانیم تعیین کنیم که خروجی که تولید میشود چه tone داشته باشد:</p>
+<p>​    Use a friendly and inviting tone...</p>
+<p>نکته‌ایی که در مورد این LLMها وجود دارد این است که در تولید متن به صورت پیش‌فرض عالی هستند در واقع بیشترین کاربرد آنها در تبدیل یک متن به یک متن دیگر است یعنی یک نوع text to text transformation هستند. این شاید نیاز خیلی‌ها را برطرف کند اما اگر خروجی را بخواهیم درون یک application code استفاده کنیم چطور؟ قاعدتاً میبایست خروجی متن را پارز کنیم که خود این فرآیند چالش‌های خاص خودش را دارد. اخیراً یک پروژه جالب از Microsoft با نام <a href="https://github.com/microsoft/TypeChat">TypeChat</a> منتشر شده است که دقیقاً همینکار را انجام میدهد؛ با کمک TypeScript میتوانیم فرمت یا اسکیمای خروجی موردنظرمان را از این LLMها درخواست کنیم. خوبی داستان این است که بیشتر این LLMها خیلی خوب با TypeScript و JSON آشنا هستند. در نتیجه به راحتی میتوانیم خروجی JSON تولید شده توسط این LLMها را درون کدهایمان استفاده کنیم؛ در اینحالت اپلیکیشن ما به جای سروکار داشتن با یک دیتای unstructured با یک ساختار مشخص یا structured سروکار خواهد داشت. مزیت TypeScript نیز این است که خیلی نسبت به JSON Schema به اصطلاح compactتر است؛ چیزی حدود ۵ برابر compactتر است.</p>
+<p>برای استفاده از TypeChat نیاز به API Key یکی از سرویس‌های Azure OpenAI یا Open AI خواهید داشت. برای APIیی که OpenAI ارائه میدهد نیاز به یک اشتراک داریم که البته با اشتراک ChatGPT متفاوت است و آن را باید جدا تهیه کرد؛ برای محاسبه هزینه استفاده از این API میتواند از این <a href="https://gptforwork.com/tools/openai-chatgpt-api-pricing-calculator">لینک</a> کمک بگیرید. در ادامه میخواهیم یک پروژه ساده Node/TypeScript درست کنیم که کاربر با وارد کردن Prompt بتواند یک جدول درون یک دیتابیس MySQL ایجاد کند؛ برای اینکار اسکیمای مدنظرم را با کمک TypeScript تعیین میکنم؛ در واقع میخواهیم خروجی پاسخی که از LLM برای جنریت میکند را مشخص کنیم:</p>
+<div
+              class="gatsby-code-button-container"
+              data-toaster-id=""
+              data-toaster-class="gatsby-code-button-toaster"
+              data-toaster-text-class="gatsby-code-button-toaster-text"
+              data-toaster-text=""
+              data-toaster-duration="3500"
+              onClick="copyToClipboard(`export interface DatabaseSchema {
+  databaseName: string;
+  tables: Table[];
+}
+
+export interface Table {
+  name: string;
+  columns: Column[];
+}
+
+export interface Column {
+  name: string;
+  type:
+    | &quot;BIT&quot;
+    | &quot;TINYINT&quot;
+    | &quot;SMALLINT&quot;
+    | &quot;MEDIUMINT&quot;
+    | &quot;INT&quot;
+    | &quot;INTEGER&quot;
+    | &quot;BIGINT&quot;
+    | &quot;REAL&quot;
+    | &quot;DOUBLE&quot;
+    | &quot;FLOAT&quot;
+    | &quot;DECIMAL&quot;
+    | &quot;NUMERIC&quot;
+    | &quot;DATE&quot;
+    | &quot;TIME&quot;
+    | &quot;TIMESTAMP&quot;
+    | &quot;DATETIME&quot;
+    | &quot;VARCHAR(255)&quot;
+    | &quot;TEXT&quot;
+    | &quot;JSON&quot;;
+  allowNull: boolean;
+}`, ``)"
+            >
+              <div
+                class="gatsby-code-button"
+                data-tooltip=""
+              >
+                <svg class="gatsby-code-button-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z"/></svg>
+              </div>
+            </div>
+<div class="gatsby-highlight" data-language="typescript"><pre style="counter-reset: linenumber NaN" class="language-typescript line-numbers"><code class="language-typescript"><span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">DatabaseSchema</span> <span class="token punctuation">{</span>
+  databaseName<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  tables<span class="token operator">:</span> Table<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Table</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  columns<span class="token operator">:</span> Column<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">interface</span> <span class="token class-name">Column</span> <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  type<span class="token operator">:</span>
+    <span class="token operator">|</span> <span class="token string">"BIT"</span>
+    <span class="token operator">|</span> <span class="token string">"TINYINT"</span>
+    <span class="token operator">|</span> <span class="token string">"SMALLINT"</span>
+    <span class="token operator">|</span> <span class="token string">"MEDIUMINT"</span>
+    <span class="token operator">|</span> <span class="token string">"INT"</span>
+    <span class="token operator">|</span> <span class="token string">"INTEGER"</span>
+    <span class="token operator">|</span> <span class="token string">"BIGINT"</span>
+    <span class="token operator">|</span> <span class="token string">"REAL"</span>
+    <span class="token operator">|</span> <span class="token string">"DOUBLE"</span>
+    <span class="token operator">|</span> <span class="token string">"FLOAT"</span>
+    <span class="token operator">|</span> <span class="token string">"DECIMAL"</span>
+    <span class="token operator">|</span> <span class="token string">"NUMERIC"</span>
+    <span class="token operator">|</span> <span class="token string">"DATE"</span>
+    <span class="token operator">|</span> <span class="token string">"TIME"</span>
+    <span class="token operator">|</span> <span class="token string">"TIMESTAMP"</span>
+    <span class="token operator">|</span> <span class="token string">"DATETIME"</span>
+    <span class="token operator">|</span> <span class="token string">"VARCHAR(255)"</span>
+    <span class="token operator">|</span> <span class="token string">"TEXT"</span>
+    <span class="token operator">|</span> <span class="token string">"JSON"</span><span class="token punctuation">;</span>
+  allowNull<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>بنابراین اگر یک Prompt اینچنینی داشته باشیم:</p>
+<blockquote>
+<p>I want a table called 'Employee' with these columns: 'EmployeeID', 'FirstName', 'LastName', 'DepartmentID', 'DepartmentName', 'ManagerID', 'ManagerName'.</p>
+</blockquote>
+<p>خروجی زیر برایمان مطابق با اسکیمایی که تعریف کردیم جنریت خواهد شد:</p>
+<div
+              class="gatsby-code-button-container"
+              data-toaster-id=""
+              data-toaster-class="gatsby-code-button-toaster"
+              data-toaster-text-class="gatsby-code-button-toaster-text"
+              data-toaster-text=""
+              data-toaster-duration="3500"
+              onClick="copyToClipboard(`{
+  &quot;databaseName&quot;: &quot;&quot;,
+  &quot;tables&quot;: [
+    {
+      &quot;name&quot;: &quot;Employee&quot;,
+      &quot;columns&quot;: [
+        {
+          &quot;name&quot;: &quot;EmployeeID&quot;,
+          &quot;type&quot;: &quot;INT&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;FirstName&quot;,
+          &quot;type&quot;: &quot;VARCHAR(255)&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;LastName&quot;,
+          &quot;type&quot;: &quot;VARCHAR(255)&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;DepartmentID&quot;,
+          &quot;type&quot;: &quot;INT&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;DepartmentName&quot;,
+          &quot;type&quot;: &quot;VARCHAR(255)&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;ManagerID&quot;,
+          &quot;type&quot;: &quot;INT&quot;,
+          &quot;allowNull&quot;: false
+        },
+        {
+          &quot;name&quot;: &quot;ManagerName&quot;,
+          &quot;type&quot;: &quot;VARCHAR(255)&quot;,
+          &quot;allowNull&quot;: false
+        }
+      ]
+    }
+  ]
+}`, ``)"
+            >
+              <div
+                class="gatsby-code-button"
+                data-tooltip=""
+              >
+                <svg class="gatsby-code-button-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z"/></svg>
+              </div>
+            </div>
+<div class="gatsby-highlight" data-language="json"><pre style="counter-reset: linenumber NaN" class="language-json line-numbers"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"databaseName"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"tables"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Employee"</span><span class="token punctuation">,</span>
+      <span class="token property">"columns"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"EmployeeID"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"INT"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"FirstName"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"VARCHAR(255)"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"LastName"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"VARCHAR(255)"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"DepartmentID"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"INT"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"DepartmentName"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"VARCHAR(255)"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"ManagerID"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"INT"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"ManagerName"</span><span class="token punctuation">,</span>
+          <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"VARCHAR(255)"</span><span class="token punctuation">,</span>
+          <span class="token property">"allowNull"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>با خروجی فوق به راحتی میتوانیم توسط هر ORM جدول مدنظر را درون دیتابیس‌مان ایجاد کنیم؛ مزیت TypeChat این است که یک نوع validator نیز دارد یعنی اگر خروجی LLM مطابق اسکیمای تعریف شده نباشد یک خطا صادر خواهد شد. در ادامه کدهای مثال فوق را مشاهده میکنید:</p>
+<div
+              class="gatsby-code-button-container"
+              data-toaster-id=""
+              data-toaster-class="gatsby-code-button-toaster"
+              data-toaster-text-class="gatsby-code-button-toaster-text"
+              data-toaster-text=""
+              data-toaster-duration="3500"
+              onClick="copyToClipboard(`import * as fs from &quot;fs&quot;;
+import * as path from &quot;path&quot;;
+import dotenv from &quot;dotenv&quot;;
+import * as typechat from &quot;typechat&quot;;
+import { DatabaseSchema } from &quot;./schema&quot;;
+import knex from &quot;knex&quot;;
+
+dotenv.config();
+
+export const Database = knex({
+  client: &quot;mysql2&quot;,
+  connection: {
+    host: process.env.DATABASE_HOST,
+    port: Number(process.env.DATABASE_PORT),
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+  },
+});
+
+const model = typechat.createLanguageModel(process.env);
+
+const schema = fs.readFileSync(path.join(__dirname, &quot;schema.ts&quot;), &quot;utf8&quot;);
+const translator = typechat.createJsonTranslator<DatabaseSchema>(
+  model,
+  schema,
+  &quot;DatabaseSchema&quot;
+);
+
+typechat.processRequests(&quot;😀> &quot;, &quot;./input.txt&quot;, async (request) => {
+  try {
+    await Database.raw(&quot;SELECT 1&quot;);
+    const response = await translator.translate(request);
+    if (!response.success) {
+      console.log(response.message);
+      return;
+    }
+    console.log(JSON.stringify(response.data, null, 2));
+    const { tables } = response.data;
+    for (const table of tables) {
+      const { name, columns } = table;
+      let CREATE_TABLE = \`CREATE TABLE IF NOT EXISTS \${name} (\`;
+      for (const column of columns) {
+        const { name, type, allowNull } = column;
+        CREATE_TABLE += \`\n  \${name} \${type}\${allowNull ? &quot;&quot; : &quot; NOT NULL&quot;},\`;
+      }
+      CREATE_TABLE = CREATE_TABLE.slice(0, -1) + &quot;);&quot;;
+      await Database.raw(CREATE_TABLE);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+`, ``)"
+            >
+              <div
+                class="gatsby-code-button"
+                data-tooltip=""
+              >
+                <svg class="gatsby-code-button-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M16 1H2v16h2V3h12V1zm-1 4l6 6v12H6V5h9zm-1 7h5.5L14 6.5V12z"/></svg>
+              </div>
+            </div>
+<div class="gatsby-highlight" data-language="typescript"><pre style="counter-reset: linenumber NaN" class="language-typescript line-numbers"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> fs <span class="token keyword">from</span> <span class="token string">"fs"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> path <span class="token keyword">from</span> <span class="token string">"path"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> dotenv <span class="token keyword">from</span> <span class="token string">"dotenv"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> typechat <span class="token keyword">from</span> <span class="token string">"typechat"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> DatabaseSchema <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./schema"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> knex <span class="token keyword">from</span> <span class="token string">"knex"</span><span class="token punctuation">;</span>
+
+dotenv<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> Database <span class="token operator">=</span> <span class="token function">knex</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  client<span class="token operator">:</span> <span class="token string">"mysql2"</span><span class="token punctuation">,</span>
+  connection<span class="token operator">:</span> <span class="token punctuation">{</span>
+    host<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_HOST</span><span class="token punctuation">,</span>
+    port<span class="token operator">:</span> <span class="token function">Number</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_PORT</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    user<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_USER</span><span class="token punctuation">,</span>
+    password<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_PASSWORD</span><span class="token punctuation">,</span>
+    database<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">DATABASE_NAME</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> model <span class="token operator">=</span> typechat<span class="token punctuation">.</span><span class="token function">createLanguageModel</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> schema <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"schema.ts"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> translator <span class="token operator">=</span> typechat<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">createJsonTranslator</span><span class="token generic class-name"><span class="token operator">&lt;</span>DatabaseSchema<span class="token operator">></span></span></span><span class="token punctuation">(</span>
+  model<span class="token punctuation">,</span>
+  schema<span class="token punctuation">,</span>
+  <span class="token string">"DatabaseSchema"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+typechat<span class="token punctuation">.</span><span class="token function">processRequests</span><span class="token punctuation">(</span><span class="token string">"😀> "</span><span class="token punctuation">,</span> <span class="token string">"./input.txt"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> Database<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span><span class="token string">"SELECT 1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> translator<span class="token punctuation">.</span><span class="token function">translate</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response<span class="token punctuation">.</span>success<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> tables <span class="token punctuation">}</span> <span class="token operator">=</span> response<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> table <span class="token keyword">of</span> tables<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> columns <span class="token punctuation">}</span> <span class="token operator">=</span> table<span class="token punctuation">;</span>
+      <span class="token keyword">let</span> <span class="token constant">CREATE_TABLE</span> <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">CREATE TABLE IF NOT EXISTS </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> (</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> column <span class="token keyword">of</span> columns<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> type<span class="token punctuation">,</span> allowNull <span class="token punctuation">}</span> <span class="token operator">=</span> column<span class="token punctuation">;</span>
+        <span class="token constant">CREATE_TABLE</span> <span class="token operator">+=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\n  </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">type</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>allowNull <span class="token operator">?</span> <span class="token string">""</span> <span class="token operator">:</span> <span class="token string">" NOT NULL"</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">,</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token constant">CREATE_TABLE</span> <span class="token operator">=</span> <span class="token constant">CREATE_TABLE</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">");"</span><span class="token punctuation">;</span>
+      <span class="token keyword">await</span> Database<span class="token punctuation">.</span><span class="token function">raw</span><span class="token punctuation">(</span><span class="token constant">CREATE_TABLE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><span aria-hidden="true" class="line-numbers-rows" style="white-space: normal; width: auto; left: 0;"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></pre></div>
+<p>کدهای کامل مثال فوق را نیز از <a href="https://github.com/SirwanAfifi/typechat-test">اینجا</a> میتوانید دریافت کنید.</p></section><hr class="h-px mb-8"/><footer></footer></article></main><footer>© 2023</footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/blog/fa/typechat";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-fd41d3bba3dba0c60639.js"],"app":["/app-db5c6081bf5a36710bbb.js"],"component---src-pages-404-js":["/component---src-pages-404-js-b3ffa4121aaacbdb4687.js"],"component---src-pages-blog-en-js":["/component---src-pages-blog-en-js-214de01f0f5158ec88ff.js"],"component---src-pages-blog-fa-js":["/component---src-pages-blog-fa-js-9b64dd670e7ebcb5a0b2.js"],"component---src-pages-index-js":["/component---src-pages-index-js-fa3ddbd56b678dfd2571.js"],"component---src-pages-now-js":["/component---src-pages-now-js-d40630f4c820efb2a51a.js"],"component---src-templates-blog-details-js":["/component---src-templates-blog-details-js-68c498db51dbbb5254b9.js"]};/*]]>*/</script><script src="/polyfill-fd41d3bba3dba0c60639.js" nomodule=""></script><script src="/component---src-templates-blog-details-js-68c498db51dbbb5254b9.js" async=""></script><script src="/5f633ea2af7a5bf413f28de9769dbfd425bbd9ce-9d4e5f425821a8bae1c1.js" async=""></script><script src="/d7eeaac4-ec307d019a22c1d4bbe0.js" async=""></script><script src="/app-db5c6081bf5a36710bbb.js" async=""></script><script src="/framework-1f8db60c4f6292df0945.js" async=""></script><script src="/webpack-runtime-c25ff246476fa47f41b2.js" async=""></script></body></html>
