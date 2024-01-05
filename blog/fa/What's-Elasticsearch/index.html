@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.0.9"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://sirwanafifi.github.io/blog/fa/What's-Elasticsearch/"><!-- Primary Meta Tags --><title>What&#39;s Elasticsearch</title><meta name="title" content="What's Elasticsearch"><meta name="description" content="Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwanafifi.github.io/blog/fa/What's-Elasticsearch/"><meta property="og:title" content="What's Elasticsearch"><meta property="og:description" content="Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents."><meta property="og:image" content="https://sirwanafifi.github.io/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwanafifi.github.io/blog/fa/What's-Elasticsearch/"><meta property="twitter:title" content="What's Elasticsearch"><meta property="twitter:description" content="Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents."><meta property="twitter:image" content="https://sirwanafifi.github.io/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/_astro/about.lZdPILSY.css" />
+<link rel="stylesheet" href="/_astro/about.MT11H7wM.css" />
+<style>a[data-astro-cid-eimmu3lg]{display:inline-block;text-decoration:none}a[data-astro-cid-eimmu3lg].active{font-weight:bolder;text-decoration:underline}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;background:linear-gradient(var(--gray-gradient)) no-repeat;color:rgb(var(--gray));text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}
+</style><script type="module" src="/_astro/hoisted.4PK_pqbL.js"></script></head> <body class="bg-white antialiased dark:bg-zinc-900"> <header class="mb-30"> <nav class="w-full z-20 top-0 start-0 border-b border-gray-200 text-white dark:text-emerald-400"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"></a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"></div> <div class="items-center justify-between w-full md:flex md:w-auto md:order-1"> <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"> <li> <a href="/" data-astro-cid-eimmu3lg> Home </a>  </li><li> <a href="/blog/en" data-astro-cid-eimmu3lg> Blog </a>  </li><li> <a href="/about" data-astro-cid-eimmu3lg> About </a>  </li> </ul> </div> </div> </nav> </header> <main> <article>  <div class="prose m-auto p-4"> <div class="title"> <div class="date">  </div> <h1 class="block gradient-title-en">What&#39;s Elasticsearch</h1> <hr class="m-2"> </div> <div class="space-x-1 text-sm dark:text-gray-500 mb-2 flex flex-wrap items-center"> 5 years ago - &nbsp;<time datetime="2018-12-05T23:46:37.121Z">December 5, 2018</time> </div> <div class="tags"> <span class="dark:text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Search</span><span class="dark:text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Programming Notes</span> </div> <section class="main-body text-zinc-600 dark:text-zinc-400">  <p>Wikipedia:</p>
+<blockquote>
+<p>Elasticsearch is a search engine based on the Lucene library. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents. Elasticsearch is developed in Java and is released as open source under the terms of the Apache License. Official clients are available in Java, .NET (C#), PHP, Python, Apache Groovy, Ruby and many other languages.5 According to the DB-Engines ranking, Elasticsearch is the most popular enterprise search engine followed by Apache Solr, also based on Lucene.</p>
+</blockquote>
+<p>Executing SELECT * FROM … all the time consumes a lot of CPU also it doesn’t have index, One solution would be using FTS (Full Text Search) in RDBMS but in NoSQL world If you need a high performance search engine you’d better use Elasticsearch.</p>
+<img class="center-image img-res" src="/img/elastic_stack.jpg" alt="Elastic Stack">
+<h3 id="history">History</h3>
+<ul>
+<li>1999 - Lucene
+<ul>
+<li>It helped all search engines back then index the data that they were adjusting from the internet and provide reasonable ways of retrieving that information based fuzzy matching.</li>
+</ul>
+</li>
+<li>2004 - Compass
+<ul>
+<li>Built on top of Lucene, the same services but in a more scalable manner, idea was to provide a distributed search solution.</li>
+</ul>
+</li>
+<li>2010 - Elasticsearch
+<ul>
+<li>Distributed, RESTful search and analytical engine</li>
+</ul>
+</li>
+</ul>
+<h3 id="use-cases">Use cases</h3>
+<ul>
+<li>Security/log analytics</li>
+<li>Marketing = Use this data to find things:
+<ul>
+<li>How people find our website?</li>
+<li>Where they came from?</li>
+<li>What device they are using?</li>
+<li>What part of the world they are coming from?</li>
+</ul>
+</li>
+<li>Search = ES was built with idea of great search engine</li>
+</ul>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li>Near Real Time (NRT)</li>
+<li>Cluster:
+<ul>
+<li>collection of our nodes</li>
+<li>has a unique name</li>
+</ul>
+</li>
+<li>Node:
+<ul>
+<li>part of the cluster to store the data</li>
+<li>has a unique name</li>
+</ul>
+</li>
+<li>Index:
+<ul>
+<li>a collection of similar documents</li>
+</ul>
+</li>
+<li>Type:
+<ul>
+<li>a category or a partition of your index</li>
+</ul>
+</li>
+<li>Document:
+<ul>
+<li>in JSON format</li>
+<li>customer</li>
+<li>event</li>
+</ul>
+</li>
+</ul>
+<h3 id="querying">Querying</h3>
+<ul>
+<li>Simple query:
+<ul>
+<li>get all accounts: GET bank/account/_search</li>
+<li>get all accounts in state of CA:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#79B8FF">GET</span><span style="color:#E1E4E8"> bank</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">account</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">_search</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "query"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">        "match"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">            "state"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"CA"</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+- multiple conditions:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#79B8FF">GET</span><span style="color:#E1E4E8"> bank</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">account</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">_search</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "query"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">        "bool"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">            "state"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"CA"</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>boost: 3 = three times more important than state</li>
+<li><code>_score</code>: How ES identifies the relevance of a document based on your search query</li>
+</ul>
+</li>
+</ul>
+<h3 id="bulk-loading-data-into-elasticsearch">Bulk loading data into Elasticsearch</h3>
+<p>_bulk: The endpoint for bulk api, this is where we send request to when we want to bulk load data. it expects new-line delimited JSON data (including a new-line at the very end, which is important, otherwise we’ll get errors). It allows us to <code>Index</code>, <code>Create</code>, <code>Delete</code>, <code>Update</code>. When using this we need to make sure we are using <code>--data-binary</code> flag from the curl command.</p>
+<ul>
+<li>/_bulk</li>
+<li>new-line JSON</li>
+<li>Index, Create, Delete, Update</li>
+<li>—data-binary</li>
+</ul>
+<h4 id="how-to-bulk-load-data">How to bulk load data</h4>
+<ul>
+<li>Create a file that has some data in it:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">{ </span><span style="color:#9ECBFF">"index"</span><span style="color:#E1E4E8"> : { </span><span style="color:#9ECBFF">"_index"</span><span style="color:#E1E4E8"> : </span><span style="color:#9ECBFF">"indexName"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"_type"</span><span style="color:#E1E4E8"> : </span><span style="color:#9ECBFF">"typeName"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"_id"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1"</span><span style="color:#E1E4E8"> }}</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span><span style="color:#9ECBFF">"title"</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">"Web Developer II"</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">"author"</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">"Chrysler Clerk"</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">"content"</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus."</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">"publishedDate"</span><span style="color:#E1E4E8">:</span><span style="color:#9ECBFF">"2018-02-03T17:51:14Z"</span><span style="color:#E1E4E8">}</span></span></code></pre>
+<ul>
+<li>Load the data into Elasticsearch using curl:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">curl </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">s </span><span style="color:#F97583">-</span><span style="color:#79B8FF">H</span><span style="color:#9ECBFF"> "Content-Type: application/x-ndjson"</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">XPOST</span><span style="color:#B392F0"> localhost</span><span style="color:#E1E4E8">:</span><span style="color:#79B8FF">9200</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">_bulk </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">data</span><span style="color:#F97583">-</span><span style="color:#E1E4E8">binary </span><span style="color:#9ECBFF">"@reqs"</span><span style="color:#E1E4E8">; echo</span></span></code></pre>  </section> <hr> </div> </article> </main> <footer data-astro-cid-sz7xmlte> <span class="text-zinc-600 dark:text-zinc-400" data-astro-cid-sz7xmlte>
+&copy; 2024 Sirwan Afifi. All rights reserved.
+</span> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://twitter.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter" class="fill-zinc-500 hover:fill-white transition-colors duration-200" data-astro-cid-sz7xmlte><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" class="fill-zinc-500 hover:fill-white tr" data-astro-cid-sz7xmlte><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </body></html>

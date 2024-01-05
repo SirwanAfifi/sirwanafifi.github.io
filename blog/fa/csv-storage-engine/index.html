@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.0.9"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://sirwanafifi.github.io/blog/fa/csv-storage-engine/"><!-- Primary Meta Tags --><title>آشنایی با CSV Storage Engine در MySQL</title><meta name="title" content="آشنایی با CSV Storage Engine در MySQL"><meta name="description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwanafifi.github.io/blog/fa/csv-storage-engine/"><meta property="og:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="og:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="og:image" content="https://sirwanafifi.github.io/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwanafifi.github.io/blog/fa/csv-storage-engine/"><meta property="twitter:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="twitter:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="twitter:image" content="https://sirwanafifi.github.io/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><style>
+			main {
+				:not(:has(code)) {
+					direction: rtl;
+					text-align: right;
+				}
+			}
+		</style><link rel="stylesheet" href="/_astro/about.lZdPILSY.css" />
+<link rel="stylesheet" href="/_astro/about.MT11H7wM.css" />
+<style>a[data-astro-cid-eimmu3lg]{display:inline-block;text-decoration:none}a[data-astro-cid-eimmu3lg].active{font-weight:bolder;text-decoration:underline}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;background:linear-gradient(var(--gray-gradient)) no-repeat;color:rgb(var(--gray));text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}
+</style><script type="module" src="/_astro/hoisted.4PK_pqbL.js"></script></head> <body class="bg-white antialiased dark:bg-zinc-900"> <header class="mb-30"> <nav class="w-full z-20 top-0 start-0 border-b border-gray-200 text-white dark:text-emerald-400"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"></a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"></div> <div class="items-center justify-between w-full md:flex md:w-auto md:order-1"> <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"> <li> <a href="/about" data-astro-cid-eimmu3lg> درباره </a>  </li><li> <a href="/blog/fa" data-astro-cid-eimmu3lg> وبلاگ </a>  </li><li> <a href="/" data-astro-cid-eimmu3lg> خانه </a>  </li> </ul> </div> </div> </nav> </header> <main> <article>  <div class="prose m-auto p-4"> <div class="title"> <div class="date">  </div> <h1 class="block gradient-title-fa">آشنایی با CSV Storage Engine در MySQL</h1> <hr class="m-2"> </div> <div class="space-x-1 text-sm dark:text-gray-500 mb-2 flex flex-wrap items-center"> ۲ سال پیش - &nbsp;<time datetime="2021-09-07T23:46:37.121Z">۱۷ شهریور ۱۴۰۰</time> </div> <div class="tags"> <span class="dark:text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">MySQL</span><span class="dark:text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">CSV</span><span class="dark:text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Storage Engine</span> </div> <section class="main-body text-zinc-600 dark:text-zinc-400">  <p>MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. این قابلیت یک معماری pluggable است به این معنا که حتی خودمان نیز میتوانیم یک Storage Engine سفارشی را نیز توسعه دهیم (در
+<a href="https://dev.mysql.com/doc/internals/en/custom-engine.html">اینجا</a>
+راهنمای کامل ایجاد یک Storage Engine سفارشی توضیح داده شده است). در MySQL توسط دستور زیر میتوانید لیست Storage Engineهای قابل پشتیبانی روی سرورتان را مشاهید کنید:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">SHOW ENGINES;</span></span>
+<span class="line"><span style="color:#6A737D">-- OR</span></span>
+<span class="line"><span style="color:#F97583">SELECT</span><span style="color:#E1E4E8"> ENGINE </span><span style="color:#F97583">FROM</span><span style="color:#79B8FF"> INFORMATION_SCHEMA</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">ENGINES</span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>SUPPORT</th><th>Engine</th></tr></thead><tbody><tr><td>YES</td><td>ARCHIVE</td></tr><tr><td>YES</td><td>BLACKHOLE</td></tr><tr><td>YES</td><td>MRG_MYISAM</td></tr><tr><td>NO</td><td>FEDERATED</td></tr><tr><td>YES</td><td>MyISAM</td></tr><tr><td>YES</td><td>PERFORMANCE_SCHEMA</td></tr><tr><td><strong>DEFAULT</strong></td><td><strong>InnoDB</strong></td></tr><tr><td>YES</td><td>MEMORY</td></tr><tr><td><strong>YES</strong></td><td><strong>CSV</strong></td></tr></tbody></table>
+<p>به صورت پیش‌فرض MySQL از InnoDB به عنوان Storage Engine استفاده میکند. این Storage Engine به اصطلاح transaction-safe است به این معنی که خواص ACID را دارد؛ همچنین از FOREIGN KEY نیز پشتیبانی میکند.</p>
+<p>میتوانیم در یک دیتابیس چندین Storage Engine را داشته باشیم زیرا این قابلیت در سطح جداول میباشد به این معنی که هر جدول میتواند Storage Engine خودش را داشته باشد؛ در ادامه یک دیتابیس تستی به همراه چندین جدول ایجاد خواهیم کرد:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> SCHEMA</span><span style="color:#E1E4E8"> `</span><span style="color:#B392F0">storage_engine</span><span style="color:#E1E4E8">`;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#E1E4E8"> `</span><span style="color:#B392F0">storage_engine</span><span style="color:#E1E4E8">`.</span><span style="color:#9ECBFF">`Users`</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Id`</span><span style="color:#F97583"> INT</span><span style="color:#F97583"> NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Username`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `FirstName`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `LastName`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Bio`</span><span style="color:#F97583"> TEXT</span><span style="color:#F97583"> NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">  PRIMARY KEY</span><span style="color:#E1E4E8"> (</span><span style="color:#9ECBFF">`Id`</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#E1E4E8"> `</span><span style="color:#B392F0">storage_engine</span><span style="color:#E1E4E8">`.</span><span style="color:#9ECBFF">`Products`</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Id`</span><span style="color:#F97583"> INT</span><span style="color:#F97583"> NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Title`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Price`</span><span style="color:#F97583"> FLOAT</span><span style="color:#F97583"> NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Description`</span><span style="color:#F97583"> TEXT</span><span style="color:#F97583"> NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `CreatedBy`</span><span style="color:#F97583"> INT</span><span style="color:#F97583"> NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#F97583">  PRIMARY KEY</span><span style="color:#E1E4E8"> (</span><span style="color:#9ECBFF">`Id`</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#F97583">  FOREIGN KEY</span><span style="color:#E1E4E8"> (CreatedBy) </span><span style="color:#F97583">REFERENCES</span><span style="color:#E1E4E8"> Users(Id)</span></span>
+<span class="line"><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>فرض کنید میخواهیم یکسری کاربر را از طریق یک فایل CSV دورن جدول Users ذخیره کنیم. خوشبختانه MySQL از CSV به عنوان یک Storage Engine پشتیبانی میکند. برای اینکار کافی است Storage Engine جدول Users را به CSV تغییر دهیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">ALTER</span><span style="color:#F97583"> TABLE</span><span style="color:#79B8FF"> storage_engine</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">Users</span></span>
+<span class="line"><span style="color:#E1E4E8">ENGINE </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> CSV;</span></span></code></pre>
+<p>اکنون اگر دستور بالا را اجرا کنید MySQL خطای زیر را به صادر میکند:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#B392F0">Error</span><span style="color:#9ECBFF"> Code:</span><span style="color:#79B8FF"> 3776</span><span style="color:#9ECBFF">.</span><span style="color:#9ECBFF"> Cannot</span><span style="color:#9ECBFF"> change</span><span style="color:#9ECBFF"> table's storage engine because the table participates in a foreign key constraint.</span></span></code></pre>
+<p>دلیل آن نیز این است که CSV Storage Engine برخلاف InnoDB از FOREIGN KEY و Index و همچنین AUTO_INCREMENT پشتیبانی نمیکند.</p>
+<p>برای حل این مشکل میتوانیم یک جدول موقع ایجاد کنیم و سپس با نوشتن یک کوئری دیتای آن را بعد از ایمپورت کردن به جدول اصلی منتقل کنیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">CREATE</span><span style="color:#F97583"> TABLE</span><span style="color:#E1E4E8"> `</span><span style="color:#B392F0">storage_engine</span><span style="color:#E1E4E8">`.</span><span style="color:#9ECBFF">`UsersCSV`</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Id`</span><span style="color:#F97583"> INT</span><span style="color:#F97583"> NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Username`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `FirstName`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `LastName`</span><span style="color:#F97583"> VARCHAR</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">45</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">NOT NULL</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">  `Bio`</span><span style="color:#F97583"> TEXT</span><span style="color:#F97583"> NOT NULL</span></span>
+<span class="line"><span style="color:#E1E4E8">) ENGINE </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> CSV;</span></span></code></pre>
+<p>دقت داشته باشید که ستون‌های جدول میبایست به صورت NOT NULL تعریف شوند در غیر اینصورت حین ایجاد جدول خطای زیر را دریافت خواهیم کرد:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">Error Code: </span><span style="color:#79B8FF">1178</span><span style="color:#E1E4E8">. The storage engine </span><span style="color:#F97583">for</span><span style="color:#E1E4E8"> the </span><span style="color:#F97583">table</span><span style="color:#E1E4E8"> doesn</span><span style="color:#9ECBFF">'t support nullable columns</span></span></code></pre>
+<p>بعد از ایجاد جدول میتوانیم اطلاعات موردنظرمان را درون جدول ذخیره کنیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">INSERT INTO</span><span style="color:#79B8FF"> storage_engine</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">UsersCSV</span><span style="color:#F97583"> VALUES</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'36'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Rose_Mosciski'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Mackenzie'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'McCullough'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'3'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Genoveva98'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Rick'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Blick'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'40'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Kirk_Halvorson'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Jennyfer'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Rogahn'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'20'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Coty91'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Domenic'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Schamberger'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'17'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Haylie_Strosin0'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Nasir'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Steuber'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'46'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Cassandre.Casper60'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Della'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Becker'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'38'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Adella3'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Angel'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Johnson'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'8'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Delaney_Sauer37'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Kole'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Gerlach'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'14'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Mariam.Sporer'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'April'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Bernhard'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'15'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Addie.Howell'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Katlyn'</span><span style="color:#E1E4E8">,</span><span style="color:#9ECBFF">'Anderson'</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">''</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>اکنون میتوانیم دیتای ذخیره شده را در قالب فایل CSV در مسیر زیر مشاهده کنیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">cat </span><span style="color:#F97583">/</span><span style="color:#E1E4E8">usr</span><span style="color:#F97583">/local/</span><span style="color:#E1E4E8">mysql</span><span style="color:#F97583">/data/</span><span style="color:#E1E4E8">[db_name]</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">[table_name].CSV</span></span></code></pre>
+<p>این یعنی به راحتی میتوانیم فایل فوق را ویرایش کنیم یا حتی یک فایل CSV جدید نیز به این مسیر کپی کنیم که با اینکار MySQL به صورت جدول فایل موردنظر را برایمان نمایش خواهد داد و به راحتی میتوانیم از دستورات SQL برای کوئری گرفتن دیتا استفاده کنیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#79B8FF"> storage_engine</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">UsersCSV</span><span style="color:#F97583"> WHERE</span><span style="color:#E1E4E8"> FirstName </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> 'Rick'</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>اکنون برای ذخیره دیتای ایمپورت شده میتوانیم اینگونه عمل کنیم:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#F97583">INSERT INTO</span><span style="color:#79B8FF"> storage_engine</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">Users</span></span>
+<span class="line"><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#79B8FF"> storage_engine</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">UsersCSV</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>لازم به ذکر است که امکان تغییر Storage Engine از CSV به InnoDB وجود دارد؛ اما در اینحالت باید FK/Index ,… را مجدداً ایجاد کنید.</p>
+<p><strong>نکته</strong>: در نهایت اگر یک فایل حجیم CSV دارید میتوانید به راحتی و بدون نیاز به Application Code آن را درون دیتابیس ایمپورت کنید؛ توجه داشته باشید که تنها کپی کردن فایل CSV به پوشه دیتا کافی نیست و قبل از آن میبایست جدول را توسط MySQL ایجاد کنید با اینکار فایل‌های CSM و FRM نیز ایجاد خواهند شد که در واقع حاوی تعاریف جدول میباشند. در نهایت برای دیدن دیتا کافی است دستور زیر را وارد کنید:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color:#E1E4E8">FLUSH TABLES;</span></span></code></pre>  </section> <hr> </div> </article> </main> <footer data-astro-cid-sz7xmlte> <span class="text-zinc-600 dark:text-zinc-400" data-astro-cid-sz7xmlte>
+&copy; 2024 Sirwan Afifi. All rights reserved.
+</span> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://twitter.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter" class="fill-zinc-500 hover:fill-white transition-colors duration-200" data-astro-cid-sz7xmlte><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" class="fill-zinc-500 hover:fill-white tr" data-astro-cid-sz7xmlte><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </body></html>
