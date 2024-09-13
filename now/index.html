@@ -9,7 +9,21 @@ What I'm Doing Now
 A bit of everything from JavaScript to cooking.
  </div> </article> <article class="bg-zinc-50 p-6 dark:bg-white/2.5 dark:highlight-white/5 border border-zinc-200 shadow-md rounded-2xl"> <h2 class="mb-1 text-2xl font-bold tracking-tight block gradient-title"> Reading </h2> <p class="mb-2 text-sm text-zinc-500 dark:text-zinc-500"> Books I&#39;m currently reading </p> <div class="mb-5 font-light text-zinc-600 dark:text-zinc-400">  <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"> <li>
 Zen and the Art of Motorcycle Maintenance by Robert M. Pirsig
-</li> </ul>  </div> </article> <article class="bg-zinc-50 p-6 dark:bg-white/2.5 dark:highlight-white/5 border border-zinc-200 shadow-md rounded-2xl"> <h2 class="mb-1 text-2xl font-bold tracking-tight block gradient-title"> Gym Routine </h2> <p class="mb-2 text-sm text-zinc-500 dark:text-zinc-500"> My current fitness focus </p> <div class="mb-5 font-light text-zinc-600 dark:text-zinc-400">  <p>I'm committed to a 5-day split routine at the gym:</p> <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"> <li class="mt-2"> <strong class="font-bold">Monday:</strong>  Lats and Back </li><li> <strong class="font-bold">Tuesday:</strong>  Arms </li><li> <strong class="font-bold">Wednesday:</strong>  Legs </li><li class="text-emerald-400"> <strong class="font-bold">Thursday:</strong>  Rest </li><li> <strong class="font-bold">Friday:</strong>  Rest </li><li> <strong class="font-bold">Saturday:</strong>  Chest </li><li> <strong class="font-bold">Sunday:</strong>  Shoulders </li> </ul>  </div> </article> </div> <p class="mt-8 text-sm text-gray-500">
-This page was last updated on 9/12/2024. For
-          more frequent updates, follow me on <a href="https://x.com/sirwanafifi" class="text-blue-500 hover:underline">X</a>.
-</p> </div> </main> </body></html>
+</li> </ul>  </div> </article> <article class="bg-zinc-50 p-6 dark:bg-white/2.5 dark:highlight-white/5 border border-zinc-200 shadow-md rounded-2xl"> <h2 class="mb-1 text-2xl font-bold tracking-tight block gradient-title"> Gym Routine </h2> <p class="mb-2 text-sm text-zinc-500 dark:text-zinc-500"> My current fitness focus </p> <div class="mb-5 font-light text-zinc-600 dark:text-zinc-400">  <p>I'm committed to a 5-day split routine at the gym:</p> <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400"> <li class="mt-2"> <strong class="font-bold">Monday:</strong>  Lats and Back </li><li> <strong class="font-bold">Tuesday:</strong>  Arms </li><li> <strong class="font-bold">Wednesday:</strong>  Legs </li><li> <strong class="font-bold">Thursday:</strong>  Rest </li><li class="text-emerald-400"> <strong class="font-bold">Friday:</strong>  Rest </li><li> <strong class="font-bold">Saturday:</strong>  Chest </li><li> <strong class="font-bold">Sunday:</strong>  Shoulders </li> </ul>  </div> </article> </div> <p class="mt-8 text-sm text-gray-500">
+This page was last updated on 9/13/2024. For
+          more frequent updates, follow me on
+<a href="https://x.com/sirwanafifi" class="text-blue-500 hover:underline">X</a>.
+</p> </div> </main> <!-- Optional: Dynamic JavaScript to update day in real-time --> <script>
+      setInterval(() => {
+        const today = new Date().toLocaleDateString("en-US", {
+          weekday: "long",
+        });
+        document.querySelectorAll("li").forEach((li) => {
+          if (li.textContent.includes(today)) {
+            li.classList.add("text-emerald-400");
+          } else {
+            li.classList.remove("text-emerald-400");
+          }
+        });
+      }, 60000); // check every minute
+    </script> </body> </html>
