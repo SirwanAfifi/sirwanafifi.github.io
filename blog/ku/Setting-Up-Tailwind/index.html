@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.13.4"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/ku/Setting-Up-Tailwind/"><!-- Primary Meta Tags --><title>Setting Up Tailwind</title><meta name="title" content="Setting Up Tailwind"><meta name="description" content="Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/ku/Setting-Up-Tailwind/"><meta property="og:title" content="Setting Up Tailwind"><meta property="og:description" content="Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/ku/Setting-Up-Tailwind/"><meta property="twitter:title" content="Setting Up Tailwind"><meta property="twitter:description" content="Tailwind is a utility-first CSS framework for rapidly building custom user interfaces."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/assets/about.vQU_Be1A.css">
+<link rel="stylesheet" href="/assets/about.GeqxkIV0.css">
+<style>a[data-astro-cid-eimmu3lg]{display:inline-block;text-decoration:none}a[data-astro-cid-eimmu3lg].active{font-weight:bolder;text-decoration:underline}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;background:linear-gradient(var(--gray-gradient)) no-repeat;color:rgb(var(--gray));text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}
+</style><script type="module" src="/assets/hoisted.D-2wbxhY.js"></script></head> <body class="antialiased bg-zinc-900"> <header class="mb-30"> <nav class="w-full z-20 top-0 start-0 border-b border-gray-200 text-white dark:text-emerald-400"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"></a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"></div> <div class="items-center justify-between w-full md:flex md:w-auto md:order-1"> <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"> <li> <a href="/" data-astro-cid-eimmu3lg> Home </a>  </li><li> <a href="/blog/en" data-astro-cid-eimmu3lg> Blog </a>  </li><li> <a href="/about" data-astro-cid-eimmu3lg> About </a>  </li><li> <a href="/now" data-astro-cid-eimmu3lg> /now </a>  </li> </ul> </div> </div> </nav> </header> <main> <article>  <div class="prose m-auto p-4"> <div class="title"> <div class="date">  </div> <h1 class="block gradient-title-en">Setting Up Tailwind</h1> <hr class="m-2"> </div> <div class="space-x-1 text-sm text-gray-500 mb-2 flex flex-wrap items-center"> 5 years ago - &nbsp;<time datetime="2019-11-16T23:46:37.121Z">November 16, 2019</time> </div> <div class="tags"> <span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Tailwind</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">PostCSS</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">CSS</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Programming Notes</span> </div> <section class="main-body text-zinc-400">  <h1 id="setup">Setup</h1>
+<ol>
+<li>Create a directory then:</li>
+</ol>
+<p><code>npm init -y</code></p>
+<ol start="2">
+<li>Install these dependencies:</li>
+</ol>
+<p><code>npm install tailwindcss postcss-cli autoprefixer</code></p>
+<ol start="3">
+<li><code>npx tailwind init</code> (It creates an empty <strong>tailwind.config.js</strong> file in the project root):</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>module.exports = {</span></span>
+<span class="line"><span>  theme: {</span></span>
+<span class="line"><span>    extend: {}</span></span>
+<span class="line"><span>  },</span></span>
+<span class="line"><span>  variants: {},</span></span>
+<span class="line"><span>  plugins: []</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span></code></pre>
+<ol start="4">
+<li>Create a <strong>postcss.config.js</strong> in the root of the project:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>module.exports = {</span></span>
+<span class="line"><span>  plugins: [</span></span>
+<span class="line"><span>      require("tailwindcss"),</span></span>
+<span class="line"><span>      require("autoprefixer")</span></span>
+<span class="line"><span>  ]</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span></code></pre>
+<ol start="5">
+<li>Create a CSS file that runs through the above process: <code>css/tailwind.css</code>:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> base;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> components;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> utilities;</span></span>
+<span class="line"></span></code></pre>
+<ol start="6">
+<li>Create a script to process the CSS through our list of PostCSS plugins:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "build"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"postcss css/tailwind.css -o public/build/tailwind.css"</span></span>
+<span class="line"><span style="color:#E1E4E8">},</span></span>
+<span class="line"></span></code></pre>
+<ol start="7">
+<li>
+<p>Run the command: <code>npm run build</code>; A new CSS file is generated that has been processed through the PostCSS.</p>
+</li>
+<li>
+<p>Add an HTML file in <code>public/index.html</code> and use the tailwind classes:</p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> charset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"UTF-8"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"viewport"</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"width=device-width, initial-scale=1.0"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> http-equiv</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"X-UA-Compatible"</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"ie=edge"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">>Tailwindcss&#x3C;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">link</span><span style="color:#B392F0"> rel</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"stylesheet"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"./build/tailwind.css"</span><span style="color:#E1E4E8"> /></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">    &#x3C;</span><span style="color:#85E89D">h1</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"text-4xl font-bold text-center text-blue-400"</span><span style="color:#E1E4E8">>Hello World!&#x3C;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">  &#x3C;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#E1E4E8">&#x3C;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss">Tailwind CSS Intellisense</a> for intelligent auto-completion in VS Code</p>
+<h2 id="hover">Hover</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">a</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"bg-indigo-500 hover:bg-indigo-400"</span><span style="color:#B392F0"> href</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"#"</span><span style="color:#E1E4E8">>Book your escape&#x3C;/</span><span style="color:#85E89D">a</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="responsive-design">Responsive design:</h2>
+<p>Out of the box Tailwind ships with four default breakpoints:</p>
+<ul>
+<li><code>sm</code> which kicks in at 640</li>
+<li><code>md</code> which kicks in at 768</li>
+<li><code>lg</code> which kicks in at 1024</li>
+<li><code>xl</code> which kicks in at 1280</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">div</span><span style="color:#B392F0"> class</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"mt-4 sm:mt-6 md:mt-4"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">div</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<h2 id="composing-utilities-with-apply">Composing Utilities with <code>@apply</code>:</h2>
+<p>Change <code>tailwind.css</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> base;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> components;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">.btn</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> inline-block</span><span style="color:#79B8FF"> bg-indigo-</span><span style="color:#E1E4E8">500 </span><span style="color:#79B8FF">text-white</span><span style="color:#79B8FF"> px-</span><span style="color:#E1E4E8">5 </span><span style="color:#79B8FF">py-</span><span style="color:#E1E4E8">3 </span><span style="color:#79B8FF">rounded-lg</span><span style="color:#79B8FF"> shadow-lg</span><span style="color:#79B8FF"> uppercase</span><span style="color:#79B8FF"> tracking-wider</span><span style="color:#79B8FF"> font-semibold</span><span style="color:#79B8FF"> text-sm</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">.btn:hover</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> bg-indigo-</span><span style="color:#E1E4E8">400;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">.btn:focus</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> outline-none</span><span style="color:#79B8FF"> shadow-outline</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#B392F0">.btn:active</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> bg-indigo-</span><span style="color:#E1E4E8">600;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">@screen</span><span style="color:#E1E4E8"> sm {</span></span>
+<span class="line"><span style="color:#B392F0">  .btn</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    @</span><span style="color:#79B8FF">apply</span><span style="color:#79B8FF"> text-base</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> utilities;</span></span>
+<span class="line"></span></code></pre>
+<h2 id="add-watch-script-for-css-files">Add watch script for CSS files:</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">  "watch"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"postcss css/tailwind.css -o public/build/tailwind.css --watch"</span></span>
+<span class="line"><span style="color:#E1E4E8">},</span></span>
+<span class="line"></span></code></pre>
+<h1 id="adding-tailwind-to-a-react-project">Adding Tailwind to a React project</h1>
+<ol>
+<li>
+<p><code>npx create-react-app tailwind</code></p>
+</li>
+<li>
+<p><code>cd tailwind</code></p>
+</li>
+<li>
+<p><code>npm install tailwindcss postcss-cli autoprefixer</code></p>
+</li>
+<li>
+<p><code>touch postcss.config.js</code>:</p>
+</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#B392F0">require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"tailwindcss"</span><span style="color:#E1E4E8">), </span><span style="color:#B392F0">require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"autoprefixer"</span><span style="color:#E1E4E8">)],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span></code></pre>
+<ol start="5">
+<li><code>touch tailwind.css</code>:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> base;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> components;</span></span>
+<span class="line"><span style="color:#F97583">@tailwind</span><span style="color:#E1E4E8"> utilities;</span></span>
+<span class="line"></span></code></pre>
+<ol start="6">
+<li>Add build script:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "build:css"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"postcss ./tailwind.css -o src/css/style.css"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">},</span></span>
+<span class="line"></span></code></pre>
+<ol start="7">
+<li>Update <code>public/index.html</code>:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">body</span><span style="color:#B392F0"> class</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"w-full bg-purple-100"</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<ol start="8">
+<li>Install <code>concurrently</code> for watching <code>tailwind.css</code> changes:</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "dev"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"concurrently </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">yarn watch:css</span><span style="color:#79B8FF">\"</span><span style="color:#79B8FF"> \"</span><span style="color:#9ECBFF">yarn start</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "start"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"react-scripts start"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "build"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"react-scripts build"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "watch:css"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"onchange 'tailwind.css' -- yarn build:css"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "build:css"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"postcss ./tailwind.css -o src/css/style.css"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "test"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"react-scripts test"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "eject"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"react-scripts eject"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"></span></code></pre>  </section> <hr> </div> </article> </main> <footer data-astro-cid-sz7xmlte> <span class="text-zinc-600 dark:text-zinc-400" data-astro-cid-sz7xmlte>
+&copy; 2024 Sirwan Afifi. All rights reserved.
+</span> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://twitter.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter" class="fill-zinc-500 hover:fill-white transition-colors duration-200" data-astro-cid-sz7xmlte><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" class="fill-zinc-500 hover:fill-white tr" data-astro-cid-sz7xmlte><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </body></html>

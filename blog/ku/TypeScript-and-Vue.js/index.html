@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.13.4"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/ku/TypeScript-and-Vue.js/"><!-- Primary Meta Tags --><title>TypeScript and Vue.js</title><meta name="title" content="TypeScript and Vue.js"><meta name="description" content="In this blog post I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/ku/TypeScript-and-Vue.js/"><meta property="og:title" content="TypeScript and Vue.js"><meta property="og:description" content="In this blog post I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application."><meta property="og:image" content="https://sirwan.info/img/vue.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/ku/TypeScript-and-Vue.js/"><meta property="twitter:title" content="TypeScript and Vue.js"><meta property="twitter:description" content="In this blog post I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application."><meta property="twitter:image" content="https://sirwan.info/img/vue.png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="stylesheet" href="/assets/about.vQU_Be1A.css">
+<link rel="stylesheet" href="/assets/about.GeqxkIV0.css">
+<style>a[data-astro-cid-eimmu3lg]{display:inline-block;text-decoration:none}a[data-astro-cid-eimmu3lg].active{font-weight:bolder;text-decoration:underline}
+footer[data-astro-cid-sz7xmlte]{padding:2em 1em 6em;background:linear-gradient(var(--gray-gradient)) no-repeat;color:rgb(var(--gray));text-align:center}.social-links[data-astro-cid-sz7xmlte]{display:flex;justify-content:center;gap:1em;margin-top:1em}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]{text-decoration:none;color:rgb(var(--gray))}.social-links[data-astro-cid-sz7xmlte] a[data-astro-cid-sz7xmlte]:hover{color:rgb(var(--gray-dark))}
+</style><script type="module" src="/assets/hoisted.D-2wbxhY.js"></script></head> <body class="antialiased bg-zinc-900"> <header class="mb-30"> <nav class="w-full z-20 top-0 start-0 border-b border-gray-200 text-white dark:text-emerald-400"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"></a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"></div> <div class="items-center justify-between w-full md:flex md:w-auto md:order-1"> <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0"> <li> <a href="/" data-astro-cid-eimmu3lg> Home </a>  </li><li> <a href="/blog/en" data-astro-cid-eimmu3lg> Blog </a>  </li><li> <a href="/about" data-astro-cid-eimmu3lg> About </a>  </li><li> <a href="/now" data-astro-cid-eimmu3lg> /now </a>  </li> </ul> </div> </div> </nav> </header> <main> <article>  <div class="prose m-auto p-4"> <div class="title"> <div class="date">  </div> <h1 class="block gradient-title-en">TypeScript and Vue.js</h1> <hr class="m-2"> </div> <div class="space-x-1 text-sm text-gray-500 mb-2 flex flex-wrap items-center"> 6 years ago - &nbsp;<time datetime="2018-05-28T23:46:37.121Z">May 29, 2018</time> </div> <div class="tags"> <span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">TypeScript</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">Vue.js</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">JavaScript</span><span class="text-gray-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border-dashed border-2 border-emerald-500">ASP.NET Core</span> </div> <section class="main-body text-zinc-400">  <img class="img-res" src="/img/vuepost.png" alt="Webpack">
+<p>You might be wondering why do we need to worry about yet another framework when we already know there are things like Angular, React, … the answer is simplicity. I have used Angular in some of my previous projects by Angular I mean the first version of it (AngularJS 1.x) but these days I feel like Angular team is going to force developers to migrate to Angular (2, 3, 4, 5, 6, …). I really like Vue.js, it’s really a great one because I think Vue.js is Declarative, Easy to Maintain and Powerful.
+Also, the integration between Vue and TypeScript is really good. Just like other frameworks Vue also has CLI which helps you to scaffold your project quickly. In this blog post, I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application.</p>
+<h3 id="project-setup">Project Setup</h3>
+<p>The easiest way to get started is by using dotnet cli tool to create a project:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">dotnet</span><span style="color:#9ECBFF"> new</span><span style="color:#9ECBFF"> mvc</span><span style="color:#79B8FF"> --name</span><span style="color:#9ECBFF"> aspnet-vue-typescript</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>Then cd to that directory and then use <code>code .</code> to open VSCode. At this point the project structure looks like this:</p>
+<img class="img-res" src="/img/dotnet-new.png" alt="Sample app">
+<p>To get started with our client side code we need to install some packages, for doing so we need <code>package.json</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"aspnet-vue-typescript"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "version"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1.0.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "description"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">""</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "main"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"index.js"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "scripts"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "test"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"echo </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">Error: no test specified</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> &#x26;&#x26; exit 1"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "author"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"Sirwan Afifi"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "license"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"ISC"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "dependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "ts-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.3.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "typescript"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.8.3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.5.16"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue-class-component"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^6.2.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue-property-decorator"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^6.1.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^4.9.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack-dev-server"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^3.1.4"</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  "devDependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "aspnet-webpack"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.0.3"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "css-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^0.28.11"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "file-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^1.1.11"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "sass-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^7.0.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "style-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^0.21.0"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue-loader"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^15.2.1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "vue-template-compiler"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.5.16"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack-cli"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.1.4"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "webpack-hot-middleware"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"^2.22.2"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>Once you installed this packages using <code>npm install</code>, we’ll create our <code>webpack.config.js</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> webpack </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"webpack"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> VueLoaderPlugin</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"vue-loader/lib/plugin"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">let</span><span style="color:#E1E4E8"> path </span><span style="color:#F97583">=</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"path"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">module</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">exports</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  entry: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    main: </span><span style="color:#9ECBFF">"./ClientApp/main"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  output: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    path: path.</span><span style="color:#B392F0">resolve</span><span style="color:#E1E4E8">(__dirname, </span><span style="color:#9ECBFF">"wwwroot"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"js"</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">    filename: </span><span style="color:#9ECBFF">"[name].js"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    publicPath: </span><span style="color:#9ECBFF">"/js/"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  module: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    rules: [</span></span>
+<span class="line"><span style="color:#E1E4E8">      { test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">vue</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">, loader: </span><span style="color:#9ECBFF">"vue-loader"</span><span style="color:#E1E4E8"> },</span></span>
+<span class="line"><span style="color:#E1E4E8">      {</span></span>
+<span class="line"><span style="color:#E1E4E8">        test:</span><span style="color:#9ECBFF"> /</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">tsx</span><span style="color:#F97583">?$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        loader: </span><span style="color:#9ECBFF">"ts-loader"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        exclude:</span><span style="color:#9ECBFF"> /</span><span style="color:#DBEDFF">node_modules</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        options: { appendTsSuffixTo: [</span><span style="color:#9ECBFF">/</span><span style="color:#85E89D;font-weight:bold">\.</span><span style="color:#DBEDFF">vue</span><span style="color:#F97583">$</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">] },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    ],</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  resolve: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    extensions: [</span><span style="color:#9ECBFF">".tsx"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">".ts"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">".js"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    alias: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      vue$: </span><span style="color:#9ECBFF">"vue/dist/vue.esm.js"</span><span style="color:#E1E4E8">, </span><span style="color:#6A737D">// 'vue/dist/vue.common.js' for webpack 1</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  optimization: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    splitChunks: {</span></span>
+<span class="line"><span style="color:#E1E4E8">      cacheGroups: {</span></span>
+<span class="line"><span style="color:#E1E4E8">        commons: {</span></span>
+<span class="line"><span style="color:#E1E4E8">          test:</span><span style="color:#9ECBFF"> /</span><span style="color:#79B8FF">[</span><span style="color:#85E89D;font-weight:bold">\\</span><span style="color:#79B8FF">/]</span><span style="color:#DBEDFF">node_modules</span><span style="color:#79B8FF">[</span><span style="color:#85E89D;font-weight:bold">\\</span><span style="color:#79B8FF">/]</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          name: </span><span style="color:#9ECBFF">"main"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">          chunks: </span><span style="color:#9ECBFF">"all"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#E1E4E8">      },</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  plugins: [</span><span style="color:#F97583">new</span><span style="color:#B392F0"> VueLoaderPlugin</span><span style="color:#E1E4E8">()],</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span></code></pre>
+<p>As you can see we’re telling webpack where the entry point is, so create a new directory inside the project called <code>ClientApp</code>, this directory contains all Vue’s related files, Inside this directory, create a ts file called <code>main.ts</code> this file is going to be our entry point:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Vue </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> "vue"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> MyComponent </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> "./components/MyComponent.vue"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Vue.config.productionTip </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> false</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> v</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Vue</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  el: </span><span style="color:#9ECBFF">"#app"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#B392F0">  data</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      name: </span><span style="color:#9ECBFF">"Sirwan"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">    };</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">  components: {</span></span>
+<span class="line"><span style="color:#E1E4E8">    MyComponent,</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>Next, we have specified the output which is <code>bundle.js</code> file, this file doesn’t yet exist, it’s going to be created by webpack. Then we have specified TypeScript loader for webpack. Next thing left to do is adding <code>tsconfig.json</code> file to the project:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#9ECBFF">    "compilerOptions"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#9ECBFF">        "sourceMap"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "noImplicitReturns"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "noImplicitAny"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "experimentalDecorators"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "emitDecoratorMetadata"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "target"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"es5"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "strict"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "module"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"es2015"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "moduleResolution"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"node"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "lib"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">            "es2016"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">            "dom"</span></span>
+<span class="line"><span style="color:#E1E4E8">        ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    },</span></span>
+<span class="line"><span style="color:#9ECBFF">    "exclude"</span><span style="color:#E1E4E8">: [</span></span>
+<span class="line"><span style="color:#9ECBFF">        "node_modules"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#9ECBFF">        "wwwroot"</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span></code></pre>
+<p>At this point if you run <code>npx webpack</code> you’ll see the bundle file:</p>
+<img class="img-res" src="/img/npx-webpack.png" alt="Webpack">
+<p>Now we can add a script reference inside <code>Views/Shared/_Layout.cshtml</code> to <code>bundle.js</code> file:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">script</span><span style="color:#B392F0"> src</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"~/js/bundle.js"</span><span style="color:#B392F0"> asp-append-version</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">"true"</span><span style="color:#E1E4E8">>&#x3C;/</span><span style="color:#85E89D">script</span><span style="color:#E1E4E8">></span></span>
+<span class="line"></span></code></pre>
+<p>Now we can use Vue inside our views:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#E1E4E8">@{</span></span>
+<span class="line"><span style="color:#E1E4E8">    ViewData[</span><span style="color:#9ECBFF">"Title"</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Home Page"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#B392F0">div</span><span style="color:#B392F0"> class</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"jumbotron"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">  &#x3C;</span><span style="color:#E1E4E8">h1 class</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"display-4"</span><span style="color:#F97583">></span><span style="color:#E1E4E8">Hello, {{ </span><span style="color:#B392F0">name</span><span style="color:#E1E4E8"> }}</span><span style="color:#F97583">&#x3C;/</span><span style="color:#E1E4E8">h1</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;/</span><span style="color:#E1E4E8">div</span><span style="color:#F97583">></span></span>
+<span class="line"></span></code></pre>
+<h3 id="hot-module-replacement">Hot Module Replacement</h3>
+<p>Webpack has something called Hot <a href="https://webpack.js.org/concepts/hot-module-replacement/">Module Replacement</a>:</p>
+<blockquote>
+<p>Hot Module Replacement (HMR) exchanges, adds, or removes modules while an application is running, without a full reload. This can significantly speed up development in a few ways:
+Retain application state which is lost during a full reload.
+Save valuable development time by only updating what’s changed.
+Tweak styling faster — almost comparable to changing styles in the browser’s debugger.</p>
+</blockquote>
+<p>For adding this functionality we need to install <code>webpack-hot-middleware</code> package:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> i</span><span style="color:#79B8FF"> -D</span><span style="color:#9ECBFF"> webpack-hot-middleware</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+<p>Then we need to register this component into MVC’s HTTP request pipeline in the <code>Configure</code> method, for doing this we need to install <a href="https://www.nuget.org/packages/Microsoft.AspNetCore.SpaServices">Microsoft.AspNetCore.SpaServices</a>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="csharp"><code><span class="line"><span style="color:#E1E4E8">app.</span><span style="color:#B392F0">UseWebpackDevMiddleware</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">new</span><span style="color:#B392F0"> WebpackDevMiddlewareOptions</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">    HotModuleReplacement </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> true</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span></code></pre>
+<p>This middleware looks for webpack file and automatically executes it for us when we change client side code:</p>
+<img class="img-res" src="/img/reload-webpack.gif" alt="Webpack">  </section> <hr> </div> </article> </main> <footer data-astro-cid-sz7xmlte> <span class="text-zinc-600 dark:text-zinc-400" data-astro-cid-sz7xmlte>
+&copy; 2024 Sirwan Afifi. All rights reserved.
+</span> <div class="social-links" data-astro-cid-sz7xmlte> <a href="https://twitter.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/twitter" class="fill-zinc-500 hover:fill-white transition-colors duration-200" data-astro-cid-sz7xmlte><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" data-astro-cid-sz7xmlte></path></svg> </a> <a href="https://github.com/SirwanAfifi" target="_blank" data-astro-cid-sz7xmlte> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github" class="fill-zinc-500 hover:fill-white tr" data-astro-cid-sz7xmlte><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" data-astro-cid-sz7xmlte></path></svg> </a> </div> </footer>  </body></html>
