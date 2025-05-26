@@ -1,5 +1,6 @@
 # Sirwan Afifi' Personal Blog
 
+- [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper/)
 - [How I Use Back Tap and Shortcuts to Capture Info on My iPhone](https://sirwan.info/blog/en/how-i-use-back-tap-and-shortcuts-to-capture-info-on-my-iphone/)
 - [ترندهای تکنولوژی در سال ۲۰۲۵](https://sirwan.info/blog/fa/tech-trends-2025/)
 - [Turning Notes into Knowledge](https://sirwan.info/blog/en/turning-notes-into-knowledge/)
