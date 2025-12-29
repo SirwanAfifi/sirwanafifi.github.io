@@ -1,0 +1,9 @@
+import{r as R}from"./index.CzltbaZf.js";var c={exports:{}},o={};/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */var y;function w(){if(y)return o;y=1;var i=R(),d=Symbol.for("react.element"),n=Symbol.for("react.fragment"),u=Object.prototype.hasOwnProperty,_=i.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,h={key:!0,ref:!0,__self:!0,__source:!0};function m(s,e,p){var r,a={},l=null,x=null;p!==void 0&&(l=""+p),e.key!==void 0&&(l=""+e.key),e.ref!==void 0&&(x=e.ref);for(r in e)u.call(e,r)&&!h.hasOwnProperty(r)&&(a[r]=e[r]);if(s&&s.defaultProps)for(r in e=s.defaultProps,e)a[r]===void 0&&(a[r]=e[r]);return{$$typeof:d,type:s,key:l,ref:x,props:a,_owner:_.current}}return o.Fragment=n,o.jsx=m,o.jsxs=m,o}var f;function k(){return f||(f=1,c.exports=w()),c.exports}var t=k();const v=({})=>{const i=Intl.DateTimeFormat("en-US",{weekday:"long"}).format(new Date),d=[{day:"Monday",workout:"Back and Shoulders"},{day:"Wednesday",workout:"Legs and Lats"},{day:"Friday",workout:"Chest and Biceps"},{day:"Sunday",workout:"Full Body"}];return t.jsxs(t.Fragment,{children:[d.map((n,u)=>t.jsxs("li",{className:[i===n.day?"text-emerald-400":"",u===0?"mt-2":""].join(" "),children:[t.jsxs("strong",{className:"font-bold",children:[n.day,":"]})," ",n.workout]})),t.jsx("br",{}),t.jsx("p",{children:"I'm also placing additional emphasis on neck training these days:"}),t.jsx("ul",{className:"max-w-md space-y-1 list-disc list-inside text-gray-400",children:t.jsx("li",{children:t.jsx("a",{href:"https://www.youtube.com/watch?v=gimeRpdqWQw)",className:"text-blue-500 hover:underline",target:"_blank",children:"How To Build A Thicker Neck Fast! (Simple Science-Based Training)"})})})]})};export{v as Workout};
