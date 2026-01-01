@@ -1,5 +1,6 @@
 # Sirwan Afifi' Personal Blog
 
+- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills/)
 - [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again/)
 - [Learning Without Shortcuts](https://sirwan.info/blog/en/learning-without-shortcuts/)
 - [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper/)
