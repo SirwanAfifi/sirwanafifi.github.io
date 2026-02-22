@@ -1,5 +1,6 @@
 # Sirwan Afifi' Personal Blog
 
+- [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax/)
 - [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge/)
 - [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills/)
 - [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again/)
