@@ -1,9 +1,79 @@
-<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.16.6"><!-- Font preloads --><link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin><link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/web-server-logs/"><!-- Primary Meta Tags --><title>Web Server Logs</title><meta name="title" content="Web Server Logs"><meta name="description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/web-server-logs/"><meta property="og:title" content="Web Server Logs"><meta property="og:description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/web-server-logs/"><meta property="twitter:title" content="Web Server Logs"><meta property="twitter:description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><link rel="stylesheet" href="/assets/about.KD6WZZGx.css">
+<!DOCTYPE html><html lang="en" dir="ltr"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.16.6"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ✻ claude · ❯ codex · ✦ gemini — auto-cycles by default --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const INTERVAL = 12000; // ms each theme is on screen in auto mode
+    let timer = null;
+
+    const root = document.documentElement;
+
+    // Clock-sliced slot: deterministic, so it stays in sync across
+    // page loads and even across open tabs.
+    const slot = () =>
+      THEMES[Math.floor(Date.now() / INTERVAL) % THEMES.length];
+
+    const mode = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : "auto";
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      const m = mode();
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        const v = btn.dataset.setTheme;
+        btn.setAttribute(
+          "aria-pressed",
+          String(v === "auto" ? m === "auto" : v === theme),
+        );
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => {
+      if (mode() === "auto") {
+        setTheme(slot());
+        if (!timer) {
+          timer = setInterval(() => {
+            const next = slot();
+            if (!root.classList.contains(`theme-${next}`)) {
+              fade(() => setTheme(next));
+            }
+          }, 1000);
+        }
+      } else {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+        setTheme(mode());
+      }
+    };
+
+    sync();
+
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      localStorage.setItem("agent-theme", btn.dataset.setTheme);
+      fade(sync);
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/web-server-logs/"><!-- Primary Meta Tags --><title>Web Server Logs</title><meta name="title" content="Web Server Logs"><meta name="description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/web-server-logs/"><meta property="og:title" content="Web Server Logs"><meta property="og:description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/web-server-logs/"><meta property="twitter:title" content="Web Server Logs"><meta property="twitter:description" content="An important part of managing software applications effectively is keeping logs, because they provide information about the server's performance and activity and can indicate any issues. An application's behavior has to be analyzed in order to track events and debug any issues..."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><link rel="stylesheet" href="/assets/about.DlRKqioD.css">
 <style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
 </style>
-<link rel="stylesheet" href="/assets/about.STybyyxN.css"></head> <body class="antialiased bg-[#030711] text-neutral-300"> <nav class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/5"> <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between"> <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> <span class="font-bold tracking-tighter text-lg bg-gradient-to-r from-white via-neutral-400 to-white bg-clip-text text-transparent animate-gradient">
-Sirwan Afifi
-</span> </a> <div class="flex gap-4 text-[14px] font-mono"> <a href="/" class="text-neutral-500 hover:text-white transition-colors"> Home </a><a href="/blog/en" class="text-neutral-500 hover:text-white transition-colors"> Blog </a><a href="/about" class="text-neutral-500 hover:text-white transition-colors"> About </a><a href="/now" class="flex items-center gap-2 text-green-400 text-neutral-500 hover:text-white transition-colors">  <span class="w-2 h-2 rounded-full bg-green-500/50 animate-pulse"></span> /now </a> </div> </div> </nav> <main class="flex-grow max-w-3xl mx-auto px-6 pt-24" data-pagefind-body> <article class="mb-0">  <div class="prose m-auto p-4 text-neutral-300"> <h1 class="block gradient-title-en text-4xl font-bold mt-4">Web Server Logs</h1> <div class="metadata-grid border border-neutral-800 rounded-lg p-4 mb-8"> <div class="grid grid-cols-[auto,1fr] gap-x-4 gap-y-2 text-sm"> <!-- Date --> <div class="flex items-center gap-2 text-neutral-500"> <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg> <span>Published</span> </div> <div class="text-neutral-300"> July 21, 2021 </div> <!-- Updated Date (if it exists) -->  <!-- Tags -->  <div class="flex items-center gap-2 text-neutral-500 self-start"> <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M938 458.8l-29.6-312.6c-1.5-16.2-14.4-29-30.6-30.6L565.2 86h-.4c-3.2 0-5.7 1-7.6 2.9L88.9 557.2a9.96 9.96 0 0 0 0 14.1l363.8 363.8c1.9 1.9 4.4 2.9 7.1 2.9s5.2-1 7.1-2.9l468.3-468.3c2-2.1 3-5 2.8-8zM459.7 834.7L189.3 564.3 589 164.6 836 188l23.4 247-399.7 399.7zM680 256c-48.5 0-88 39.5-88 88s39.5 88 88 88 88-39.5 88-88-39.5-88-88-88zm0 120c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path></svg> <span>Tags</span> </div> <div class="flex flex-wrap gap-2"> <span class="bg-neutral-800 text-neutral-300 text-xs font-medium px-2.5 py-1 rounded"> Web Server </span><span class="bg-neutral-800 text-neutral-300 text-xs font-medium px-2.5 py-1 rounded"> Nginx </span><span class="bg-neutral-800 text-neutral-300 text-xs font-medium px-2.5 py-1 rounded"> Logging </span> </div>  </div> </div> <section class="main-body">  <figure>
+<link rel="stylesheet" href="/assets/about.DYNrvRBl.css"></head> <body class="antialiased"> <header class="pt-8"> <div class="max-w-3xl mx-auto px-6"> <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"> <a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">
+Sirwan Afifi<span class="text-accent">_</span> </a> <div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"> <nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]"> <a href="/" class="text-muted hover:text-accent transition-colors"> Home </a><a href="/blog/en" class="text-muted hover:text-accent transition-colors"> Blog </a><a href="/about" class="text-muted hover:text-accent transition-colors"> About </a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> /now </a> </nav> <!-- Agent theme switcher --> <div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"> <button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button> <button data-set-theme="codex" title="Codex" aria-label="Codex theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button> <button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button> <span class="w-px h-3.5 bg-line self-center" aria-hidden="true"></span> <button data-set-theme="auto" title="Auto-cycle themes" aria-label="Auto-cycle themes" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-accent">⟳</button> </div> </div> </div> <div class="rule"></div> </div> </header> <main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body> <article> <header class="mb-8 reveal "> <h1 class="font-display font-bold tracking-tight text-4xl md:text-[2.75rem] leading-[1.12] text-ink"> Web Server Logs </h1> <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"> <span class="glyph text-accent" aria-hidden="true"></span> <span>Published July 21, 2021</span>  <span class="flex flex-wrap items-center gap-1.5"> <span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> Web Server </span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> Nginx </span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> Logging </span> </span> </div> </header>  <div class="prose max-w-none reveal reveal-2 "> <section class="main-body">  <figure>
   <img src="/img/web-server-logs.jpeg" alt="Web Server Logs">
   <figcaption class="text-center">Photo by <a href="https://unsplash.com/@clemono?utm_source=unsplash&#x26;utm_medium=referral&#x26;utm_content=creditCopyText">Clem Onojeghuo</a> on <a href="https://unsplash.com/s/photos/searching?utm_source=unsplash&#x26;utm_medium=referral&#x26;utm_content=creditCopyText">Unsplash</a>
   </figcaption>
@@ -95,6 +165,6 @@ In order to achieve this goal, I was given the task to implement logging into ou
 <span class="line"><span style="color:#FF8F40">      return</span><span style="color:#D2A6FF"> 200</span><span style="color:#AAD94C"> "Hello World!"</span><span style="color:#BFBDB6B3">;</span></span>
 <span class="line"><span style="color:#BFBDB6">    }</span></span>
 <span class="line"><span style="color:#BFBDB6">  }</span></span>
-<span class="line"><span style="color:#BFBDB6">}</span></span></code></pre>  </section> <hr> </div> </article> <section class="giscus prose m-auto p-0 mb-0"></section> <script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script> </main> <div class="mb-24"> <footer class="mt-12 pt-10 border-t border-white/5"> <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 max-w-3xl mx-auto px-6"> <div class="text-neutral-600 text-xs font-mono space-y-2 tracking-[0.1em]"> <p>&copy; 2026 Sirwan Afifi</p> <p>Crafted with Astro & Tailwind</p> </div> <div class="flex items-center gap-2 text-neutral-600 text-xs font-mono tracking-[0.1em]"> <span class="w-2 h-2 rounded-full bg-green-500/50 animate-pulse"></span>
-UK
-</div> </div> </footer> </div> </body></html>
+<span class="line"><span style="color:#BFBDB6">}</span></span></code></pre>  </section> </div> </article> <div class="rule mt-14 mb-10"></div> <section class="giscus prose m-auto p-0 mb-0"></section> <script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script> </main> <footer class="mt-20 pb-10"> <div class="max-w-3xl mx-auto px-6"> <div class="rule mb-6"></div> <div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"> <div class="space-y-1.5"> <p>&copy; 2026 Sirwan Afifi</p> <p><span class="glyph text-accent"></span> Built with Astro</p> </div> <p class="flex items-center gap-2 shrink-0"> <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+Writing from the UK
+</p> </div> </div> </footer> </body></html>
