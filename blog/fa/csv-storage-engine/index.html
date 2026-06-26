@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="fa" dir="rtl"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.16.6"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ✻ claude · ❯ codex · ✦ gemini — auto-cycles by default --><script>
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ✻ claude · ❯ codex · ✦ gemini — auto-cycles by default --><script>
   (() => {
     const THEMES = ["claude", "codex", "gemini"];
     const INTERVAL = 12000; // ms each theme is on screen in auto mode
@@ -69,65 +69,65 @@
       fade(sync);
     });
   })();
-</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/csv-storage-engine/"><!-- Primary Meta Tags --><title>آشنایی با CSV Storage Engine در MySQL</title><meta name="title" content="آشنایی با CSV Storage Engine در MySQL"><meta name="description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/csv-storage-engine/"><meta property="og:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="og:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/csv-storage-engine/"><meta property="twitter:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="twitter:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.QW52Ox2j.js"></script><link rel="stylesheet" href="/assets/about.DlRKqioD.css">
-<style>.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
-</style>
-<link rel="stylesheet" href="/assets/about.DYNrvRBl.css"></head> <body class="antialiased"> <header class="pt-8"> <div class="max-w-3xl mx-auto px-6"> <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"> <a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">
-Sirwan Afifi<span class="text-accent">_</span> </a> <div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"> <nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm"> <a href="/" class="text-muted hover:text-accent transition-colors"> خانه </a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors"> وبلاگ </a><a href="/about" class="text-muted hover:text-accent transition-colors"> درباره </a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">  <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span> الان چیکار میکنم؟ </a> </nav> <!-- Agent theme switcher --> <div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"> <button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button> <button data-set-theme="codex" title="Codex" aria-label="Codex theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button> <button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button> <span class="w-px h-3.5 bg-line self-center" aria-hidden="true"></span> <button data-set-theme="auto" title="Auto-cycle themes" aria-label="Auto-cycle themes" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-accent">⟳</button> </div> </div> </div> <div class="rule"></div> </div> </header> <main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body> <article> <header class="mb-8 reveal rtl"> <h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink"> آشنایی با CSV Storage Engine در MySQL </h1> <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"> <span class="glyph text-accent" aria-hidden="true"></span> <span>منتشر شده ۱۷ شهریور ۱۴۰۰</span>  <span class="flex flex-wrap items-center gap-1.5"> <span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> MySQL </span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> CSV </span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink"> Storage Engine </span> </span> </div> </header>  <div class="prose max-w-none reveal reveal-2 rtl font-rtl"> <section class="main-body">  <p>MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. این قابلیت یک معماری pluggable است به این معنا که حتی خودمان نیز میتوانیم یک Storage Engine سفارشی را نیز توسعه دهیم (در
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/csv-storage-engine/"><!-- Primary Meta Tags --><title>آشنایی با CSV Storage Engine در MySQL</title><meta name="title" content="آشنایی با CSV Storage Engine در MySQL"><meta name="description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/csv-storage-engine/"><meta property="og:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="og:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/csv-storage-engine/"><meta property="twitter:title" content="آشنایی با CSV Storage Engine در MySQL"><meta property="twitter:description" content="MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. "><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Footer.C3VFFYDW.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button><span class="w-px h-3.5 bg-line self-center" aria-hidden="true"></span><button data-set-theme="auto" title="Auto-cycle themes" aria-label="Auto-cycle themes" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-accent">⟳</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">آشنایی با CSV Storage Engine در MySQL</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۷ شهریور ۱۴۰۰</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">MySQL</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">CSV</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">Storage Engine</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <p>MySQL از چندین Storage Engine پشتیبانی میکند؛ Storage Engine در واقع کامپوننت‌های MySQL هستند که عملیات SQL را بر روی جداول میسر میکنند. این قابلیت یک معماری pluggable است به این معنا که حتی خودمان نیز میتوانیم یک Storage Engine سفارشی را نیز توسعه دهیم (در
 <a href="https://dev.mysql.com/doc/internals/en/custom-engine.html">اینجا</a>
 راهنمای کامل ایجاد یک Storage Engine سفارشی توضیح داده شده است). در MySQL توسط دستور زیر میتوانید لیست Storage Engineهای قابل پشتیبانی روی سرورتان را مشاهید کنید:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">SHOW ENGINES;</span></span>
-<span class="line"><span style="color:#ACB6BF8C;font-style:italic">-- OR</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">SHOW ENGINES;</span></span>
+<span class="line"><span style="color:#5A6673;font-style:italic">-- OR</span></span>
 <span class="line"><span style="color:#FF8F40">SELECT</span><span style="color:#BFBDB6"> ENGINE </span><span style="color:#FF8F40">FROM</span><span style="color:#95E6CB"> INFORMATION_SCHEMA</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">ENGINES</span></span></code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>SUPPORT</th><th>Engine</th></tr></thead><tbody><tr><td>YES</td><td>ARCHIVE</td></tr><tr><td>YES</td><td>BLACKHOLE</td></tr><tr><td>YES</td><td>MRG_MYISAM</td></tr><tr><td>NO</td><td>FEDERATED</td></tr><tr><td>YES</td><td>MyISAM</td></tr><tr><td>YES</td><td>PERFORMANCE_SCHEMA</td></tr><tr><td><strong>DEFAULT</strong></td><td><strong>InnoDB</strong></td></tr><tr><td>YES</td><td>MEMORY</td></tr><tr><td><strong>YES</strong></td><td><strong>CSV</strong></td></tr></tbody></table>
+<table>
+<thead>
+<tr>
+<th>SUPPORT</th>
+<th>Engine</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YES</td>
+<td>ARCHIVE</td>
+</tr>
+<tr>
+<td>YES</td>
+<td>BLACKHOLE</td>
+</tr>
+<tr>
+<td>YES</td>
+<td>MRG_MYISAM</td>
+</tr>
+<tr>
+<td>NO</td>
+<td>FEDERATED</td>
+</tr>
+<tr>
+<td>YES</td>
+<td>MyISAM</td>
+</tr>
+<tr>
+<td>YES</td>
+<td>PERFORMANCE_SCHEMA</td>
+</tr>
+<tr>
+<td><strong>DEFAULT</strong></td>
+<td><strong>InnoDB</strong></td>
+</tr>
+<tr>
+<td>YES</td>
+<td>MEMORY</td>
+</tr>
+<tr>
+<td><strong>YES</strong></td>
+<td><strong>CSV</strong></td>
+</tr>
+</tbody>
+</table>
 <p>به صورت پیش‌فرض MySQL از InnoDB به عنوان Storage Engine استفاده میکند. این Storage Engine به اصطلاح transaction-safe است به این معنی که خواص ACID را دارد؛ همچنین از FOREIGN KEY نیز پشتیبانی میکند.</p>
 <p>میتوانیم در یک دیتابیس چندین Storage Engine را داشته باشیم زیرا این قابلیت در سطح جداول میباشد به این معنی که هر جدول میتواند Storage Engine خودش را داشته باشد؛ در ادامه یک دیتابیس تستی به همراه چندین جدول ایجاد خواهیم کرد:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">CREATE</span><span style="color:#FF8F40"> SCHEMA</span><span style="color:#BFBDB6"> `</span><span style="color:#FFB454">storage_engine</span><span style="color:#BFBDB6">`;</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">CREATE</span><span style="color:#FF8F40"> SCHEMA</span><span style="color:#BFBDB6"> `</span><span style="color:#FFB454">storage_engine</span><span style="color:#BFBDB6">`;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#FF8F40">CREATE</span><span style="color:#FF8F40"> TABLE</span><span style="color:#BFBDB6"> `</span><span style="color:#FFB454">storage_engine</span><span style="color:#BFBDB6">`.</span><span style="color:#AAD94C">`Users`</span><span style="color:#BFBDB6"> (</span></span>
 <span class="line"><span style="color:#AAD94C">  `Id`</span><span style="color:#FF8F40"> INT</span><span style="color:#FF8F40"> NOT NULL</span><span style="color:#BFBDB6">,</span></span>
@@ -147,13 +147,13 @@ Sirwan Afifi<span class="text-accent">_</span> </a> <div class="flex items-basel
 <span class="line"><span style="color:#FF8F40">  FOREIGN KEY</span><span style="color:#BFBDB6"> (CreatedBy) </span><span style="color:#FF8F40">REFERENCES</span><span style="color:#BFBDB6"> Users(Id)</span></span>
 <span class="line"><span style="color:#BFBDB6">);</span></span></code></pre>
 <p>فرض کنید میخواهیم یکسری کاربر را از طریق یک فایل CSV دورن جدول Users ذخیره کنیم. خوشبختانه MySQL از CSV به عنوان یک Storage Engine پشتیبانی میکند. برای اینکار کافی است Storage Engine جدول Users را به CSV تغییر دهیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">ALTER</span><span style="color:#FF8F40"> TABLE</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">Users</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">ALTER</span><span style="color:#FF8F40"> TABLE</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">Users</span></span>
 <span class="line"><span style="color:#BFBDB6">ENGINE </span><span style="color:#F29668">=</span><span style="color:#BFBDB6"> CSV;</span></span></code></pre>
 <p>اکنون اگر دستور بالا را اجرا کنید MySQL خطای زیر را به صادر میکند:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59C2FF">Error</span><span style="color:#AAD94C"> Code:</span><span style="color:#AAD94C"> 3776.</span><span style="color:#AAD94C"> Cannot</span><span style="color:#AAD94C"> change</span><span style="color:#AAD94C"> table's storage engine because the table participates in a foreign key constraint.</span></span></code></pre>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59C2FF">Error</span><span style="color:#AAD94C"> Code:</span><span style="color:#AAD94C"> 3776.</span><span style="color:#AAD94C"> Cannot</span><span style="color:#AAD94C"> change</span><span style="color:#AAD94C"> table's storage engine because the table participates in a foreign key constraint.</span></span></code></pre>
 <p>دلیل آن نیز این است که CSV Storage Engine برخلاف InnoDB از FOREIGN KEY و Index و همچنین AUTO_INCREMENT پشتیبانی نمیکند.</p>
 <p>برای حل این مشکل میتوانیم یک جدول موقع ایجاد کنیم و سپس با نوشتن یک کوئری دیتای آن را بعد از ایمپورت کردن به جدول اصلی منتقل کنیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">CREATE</span><span style="color:#FF8F40"> TABLE</span><span style="color:#BFBDB6"> `</span><span style="color:#FFB454">storage_engine</span><span style="color:#BFBDB6">`.</span><span style="color:#AAD94C">`UsersCSV`</span><span style="color:#BFBDB6"> (</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">CREATE</span><span style="color:#FF8F40"> TABLE</span><span style="color:#BFBDB6"> `</span><span style="color:#FFB454">storage_engine</span><span style="color:#BFBDB6">`.</span><span style="color:#AAD94C">`UsersCSV`</span><span style="color:#BFBDB6"> (</span></span>
 <span class="line"><span style="color:#AAD94C">  `Id`</span><span style="color:#FF8F40"> INT</span><span style="color:#FF8F40"> NOT NULL</span><span style="color:#BFBDB6">,</span></span>
 <span class="line"><span style="color:#AAD94C">  `Username`</span><span style="color:#FF8F40"> VARCHAR</span><span style="color:#BFBDB6">(</span><span style="color:#D2A6FF">45</span><span style="color:#BFBDB6">) </span><span style="color:#FF8F40">NOT NULL</span><span style="color:#BFBDB6">,</span></span>
 <span class="line"><span style="color:#AAD94C">  `FirstName`</span><span style="color:#FF8F40"> VARCHAR</span><span style="color:#BFBDB6">(</span><span style="color:#D2A6FF">45</span><span style="color:#BFBDB6">) </span><span style="color:#FF8F40">NOT NULL</span><span style="color:#BFBDB6">,</span></span>
@@ -161,9 +161,9 @@ Sirwan Afifi<span class="text-accent">_</span> </a> <div class="flex items-basel
 <span class="line"><span style="color:#AAD94C">  `Bio`</span><span style="color:#FF8F40"> TEXT</span><span style="color:#FF8F40"> NOT NULL</span></span>
 <span class="line"><span style="color:#BFBDB6">) ENGINE </span><span style="color:#F29668">=</span><span style="color:#BFBDB6"> CSV;</span></span></code></pre>
 <p>دقت داشته باشید که ستون‌های جدول میبایست به صورت NOT NULL تعریف شوند در غیر اینصورت حین ایجاد جدول خطای زیر را دریافت خواهیم کرد:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">Error Code: </span><span style="color:#D2A6FF">1178</span><span style="color:#BFBDB6">. The storage engine </span><span style="color:#FF8F40">for</span><span style="color:#BFBDB6"> the </span><span style="color:#FF8F40">table</span><span style="color:#BFBDB6"> doesn</span><span style="color:#AAD94C">'t support nullable columns</span></span></code></pre>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">Error Code: </span><span style="color:#D2A6FF">1178</span><span style="color:#BFBDB6">. The storage engine </span><span style="color:#FF8F40">for</span><span style="color:#BFBDB6"> the </span><span style="color:#FF8F40">table</span><span style="color:#BFBDB6"> doesn</span><span style="color:#AAD94C">'t support nullable columns</span></span></code></pre>
 <p>بعد از ایجاد جدول میتوانیم اطلاعات موردنظرمان را درون جدول ذخیره کنیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">INSERT INTO</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">UsersCSV</span><span style="color:#FF8F40"> VALUES</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">INSERT INTO</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">UsersCSV</span><span style="color:#FF8F40"> VALUES</span></span>
 <span class="line"><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">'36'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Rose_Mosciski'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Mackenzie'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'McCullough'</span><span style="color:#BFBDB6">, </span><span style="color:#AAD94C">''</span><span style="color:#BFBDB6">),</span></span>
 <span class="line"><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">'3'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Genoveva98'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Rick'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Blick'</span><span style="color:#BFBDB6">, </span><span style="color:#AAD94C">''</span><span style="color:#BFBDB6">),</span></span>
 <span class="line"><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">'40'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Kirk_Halvorson'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Jennyfer'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Rogahn'</span><span style="color:#BFBDB6">, </span><span style="color:#AAD94C">''</span><span style="color:#BFBDB6">),</span></span>
@@ -175,14 +175,14 @@ Sirwan Afifi<span class="text-accent">_</span> </a> <div class="flex items-basel
 <span class="line"><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">'14'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Mariam.Sporer'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'April'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Bernhard'</span><span style="color:#BFBDB6">, </span><span style="color:#AAD94C">''</span><span style="color:#BFBDB6">),</span></span>
 <span class="line"><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">'15'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Addie.Howell'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Katlyn'</span><span style="color:#BFBDB6">,</span><span style="color:#AAD94C">'Anderson'</span><span style="color:#BFBDB6">, </span><span style="color:#AAD94C">''</span><span style="color:#BFBDB6">)</span></span></code></pre>
 <p>اکنون میتوانیم دیتای ذخیره شده را در قالب فایل CSV در مسیر زیر مشاهده کنیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">cat </span><span style="color:#F29668">/</span><span style="color:#BFBDB6">usr</span><span style="color:#F29668">/</span><span style="color:#FF8F40">local</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">mysql</span><span style="color:#F29668">/</span><span style="color:#FF8F40">data</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">[db_name]</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">[table_name].CSV</span></span></code></pre>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">cat </span><span style="color:#F29668">/</span><span style="color:#BFBDB6">usr</span><span style="color:#F29668">/</span><span style="color:#FF8F40">local</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">mysql</span><span style="color:#F29668">/</span><span style="color:#FF8F40">data</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">[db_name]</span><span style="color:#F29668">/</span><span style="color:#BFBDB6">[table_name].CSV</span></span></code></pre>
 <p>این یعنی به راحتی میتوانیم فایل فوق را ویرایش کنیم یا حتی یک فایل CSV جدید نیز به این مسیر کپی کنیم که با اینکار MySQL به صورت جدول فایل موردنظر را برایمان نمایش خواهد داد و به راحتی میتوانیم از دستورات SQL برای کوئری گرفتن دیتا استفاده کنیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">SELECT</span><span style="color:#F29668"> *</span><span style="color:#FF8F40"> FROM</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">UsersCSV</span><span style="color:#FF8F40"> WHERE</span><span style="color:#BFBDB6"> FirstName </span><span style="color:#F29668">=</span><span style="color:#AAD94C"> 'Rick'</span><span style="color:#BFBDB6">;</span></span></code></pre>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">SELECT</span><span style="color:#F29668"> *</span><span style="color:#FF8F40"> FROM</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">UsersCSV</span><span style="color:#FF8F40"> WHERE</span><span style="color:#BFBDB6"> FirstName </span><span style="color:#F29668">=</span><span style="color:#AAD94C"> 'Rick'</span><span style="color:#BFBDB6">;</span></span></code></pre>
 <p>اکنون برای ذخیره دیتای ایمپورت شده میتوانیم اینگونه عمل کنیم:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">INSERT INTO</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">Users</span></span>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#FF8F40">INSERT INTO</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">Users</span></span>
 <span class="line"><span style="color:#FF8F40">SELECT</span><span style="color:#F29668"> *</span><span style="color:#FF8F40"> FROM</span><span style="color:#95E6CB"> storage_engine</span><span style="color:#BFBDB6">.</span><span style="color:#95E6CB">UsersCSV</span><span style="color:#BFBDB6">;</span></span></code></pre>
 <p>لازم به ذکر است که امکان تغییر Storage Engine از CSV به InnoDB وجود دارد؛ اما در اینحالت باید FK/Index ,… را مجدداً ایجاد کنید.</p>
 <p><strong>نکته</strong>: در نهایت اگر یک فایل حجیم CSV دارید میتوانید به راحتی و بدون نیاز به Application Code آن را درون دیتابیس ایمپورت کنید؛ توجه داشته باشید که تنها کپی کردن فایل CSV به پوشه دیتا کافی نیست و قبل از آن میبایست جدول را توسط MySQL ایجاد کنید با اینکار فایل‌های CSM و FRM نیز ایجاد خواهند شد که در واقع حاوی تعاریف جدول میباشند. در نهایت برای دیدن دیتا کافی است دستور زیر را وارد کنید:</p>
-<pre class="astro-code ayu-dark" style="background-color:#0b0e14;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">FLUSH TABLES;</span></span></code></pre>  </section> </div> </article> <div class="rule mt-14 mb-10"></div> <section class="giscus prose m-auto p-0 mb-0"></section> <script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script> </main> <footer class="mt-20 pb-10"> <div class="max-w-3xl mx-auto px-6"> <div class="rule mb-6"></div> <div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"> <div class="space-y-1.5"> <p>&copy; 2026 Sirwan Afifi</p> <p><span class="glyph text-accent"></span> Built with Astro</p> </div> <p class="flex items-center gap-2 shrink-0"> <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-Writing from the UK
-</p> </div> </div> </footer> </body></html>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#BFBDB6">FLUSH TABLES;</span></span></code></pre>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>
