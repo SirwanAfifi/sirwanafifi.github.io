@@ -1,31 +1,20 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ✻ claude · ❯ codex · ✦ gemini — auto-cycles by default --><script>
+<!DOCTYPE html><html lang="en" dir="ltr"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
   (() => {
     const THEMES = ["claude", "codex", "gemini"];
-    const INTERVAL = 12000; // ms each theme is on screen in auto mode
-    let timer = null;
+    const DEFAULT_THEME = "codex";
 
     const root = document.documentElement;
 
-    // Clock-sliced slot: deterministic, so it stays in sync across
-    // page loads and even across open tabs.
-    const slot = () =>
-      THEMES[Math.floor(Date.now() / INTERVAL) % THEMES.length];
-
-    const mode = () => {
+    const selectedTheme = () => {
       const stored = localStorage.getItem("agent-theme");
-      return THEMES.includes(stored) ? stored : "auto";
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
     };
 
     const setTheme = (theme) => {
       THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
       root.classList.add(`theme-${theme}`);
-      const m = mode();
       document.querySelectorAll("[data-set-theme]").forEach((btn) => {
-        const v = btn.dataset.setTheme;
-        btn.setAttribute(
-          "aria-pressed",
-          String(v === "auto" ? m === "auto" : v === theme),
-        );
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
       });
     };
 
@@ -37,42 +26,27 @@
       setTimeout(() => root.classList.remove("theme-fade"), 1000);
     };
 
-    const sync = () => {
-      if (mode() === "auto") {
-        setTheme(slot());
-        if (!timer) {
-          timer = setInterval(() => {
-            const next = slot();
-            if (!root.classList.contains(`theme-${next}`)) {
-              fade(() => setTheme(next));
-            }
-          }, 1000);
-        }
-      } else {
-        if (timer) {
-          clearInterval(timer);
-          timer = null;
-        }
-        setTheme(mode());
-      }
-    };
+    const sync = () => setTheme(selectedTheme());
 
     sync();
 
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
     document.addEventListener("astro:after-swap", sync);
     document.addEventListener("astro:page-load", sync);
 
     document.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-set-theme]");
       if (!btn) return;
-      localStorage.setItem("agent-theme", btn.dataset.setTheme);
-      fade(sync);
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
     });
   })();
-</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/microsoft-extensions-ai/"><!-- Primary Meta Tags --><title>Microsoft.Extensions.AI</title><meta name="title" content="Microsoft.Extensions.AI"><meta name="description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><meta property="og:title" content="Microsoft.Extensions.AI"><meta property="og:description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><meta property="og:image" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><meta property="twitter:title" content="Microsoft.Extensions.AI"><meta property="twitter:description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><meta property="twitter:image" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Footer.C3VFFYDW.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
-</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]"><a href="/" class="text-muted hover:text-accent transition-colors">Home</a><a href="/blog/en" class="text-muted hover:text-accent transition-colors">Blog</a><a href="/about" class="text-muted hover:text-accent transition-colors">About</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/microsoft-extensions-ai/"><link rel="alternate" type="text/markdown" href="/blog/en/microsoft-extensions-ai.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>Microsoft.Extensions.AI</title><meta name="title" content="Microsoft.Extensions.AI"><meta name="description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><meta property="og:title" content="Microsoft.Extensions.AI"><meta property="og:description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><meta property="og:image" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><meta property="twitter:title" content="Microsoft.Extensions.AI"><meta property="twitter:description" content="With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: `Microsoft.Extensions.AI`. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models."><meta property="twitter:image" content="https://sirwan.info/blog/en/microsoft-extensions-ai/"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.8nvxxO02.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">Home</a><a href="/blog/en" class="text-muted hover:text-accent transition-colors">Blog</a><a href="/fitness" class="text-muted hover:text-accent transition-colors">Fitness</a><a href="/about" class="text-muted hover:text-accent transition-colors">About</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
                     <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-                    /now</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button><span class="w-px h-3.5 bg-line self-center" aria-hidden="true"></span><button data-set-theme="auto" title="Auto-cycle themes" aria-label="Auto-cycle themes" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-accent">⟳</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal "><h1 class="font-display font-bold tracking-tight text-4xl md:text-[2.75rem] leading-[1.12] text-ink">Microsoft.Extensions.AI</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>Published November 14, 2024</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">.NET 9.0</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">AI</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">RAG</span></span></div></header><div class="prose max-w-none reveal reveal-2 "><section class="main-body">
+                    /now</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal "><h1 class="font-display font-bold tracking-tight text-4xl md:text-[2.75rem] leading-[1.12] text-ink">Microsoft.Extensions.AI</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>Published November 14, 2024</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">.NET 9.0</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">AI</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">RAG</span></span></div></header><div class="prose max-w-none reveal reveal-2 "><section class="main-body">
   <p>With .NET 9.0, a new set of abstractions has been introduced to simplify integrating AI into applications: <code>Microsoft.Extensions.AI</code>. This package offers a consistent programming model by wrapping various AI providers (such as OpenAI, Azure OpenAI, and Ollama), allowing .NET developers to work seamlessly with different models.</p>
 <img src="https://devblogs.microsoft.com/dotnet/announcing-dotnet-9/aiextensions.svg" alt="AI Building Blocks for .NET" />
 <p>I experimented with it a bit, and it’s quite promising. Here’s a simple example how it can be used:</p>

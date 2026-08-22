@@ -1,94 +1,47 @@
-# Sirwan Afifi' Personal Blog
+# Sirwan Afifi — Personal Engineering Journal
 
-- [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber/)
-- [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax/)
-- [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge/)
-- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills/)
-- [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again/)
-- [Learning Without Shortcuts](https://sirwan.info/blog/en/learning-without-shortcuts/)
-- [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper/)
-- [How I Use Back Tap and Shortcuts to Capture Info on My iPhone](https://sirwan.info/blog/en/how-i-use-back-tap-and-shortcuts-to-capture-info-on-my-iphone/)
-- [ترندهای تکنولوژی در سال ۲۰۲۵](https://sirwan.info/blog/fa/tech-trends-2025/)
-- [Turning Notes into Knowledge](https://sirwan.info/blog/en/turning-notes-into-knowledge/)
-- [How I Use Obsidian to Publish Posts](https://sirwan.info/blog/en/how-i-use-obsidian-to-publish-posts/)
-- [Advent of Code 2024](https://sirwan.info/blog/en/advent-of-code-2024/)
-- [Microsoft.Extensions.AI](https://sirwan.info/blog/en/microsoft-extensions-ai/)
-- [Git Commits as Documentation (RAG-Powered Commit Search)](https://sirwan.info/blog/en/git-commit-as-documentation/)
-- [A Weekend with Chrome AI](https://sirwan.info/blog/en/weekend-with-chrome-ai/)
-- [HTML Parser and Whitespace](https://sirwan.info/blog/en/html-parser-and-whitespace/)
-- [موختەسەر لە بارەی موهیم بوون نووسین بلاگ](https://sirwan.info/blog/ku/importance-of-blogging/)
-- [مختصر له باره‌ی LLM](https://sirwan.info/blog/ku/llm-brief/)
-- [Local AI Models in Browsers (Chrome Canary)](https://sirwan.info/blog/en/local-ai-models-in-browsers/)
-- [My Approach to Problem Solving - Blazor Version](https://sirwan.info/blog/en/my-approach-to-problem-solving-blazor-version/)
-- [System-Versioned Tables in SQL Server/EF Core](https://sirwan.info/blog/en/system-versioned-tables-in-sql-server/)
-- [Azure API Management](https://sirwan.info/blog/en/azure-api-management/)
-- [Redis RESP](https://sirwan.info/blog/en/redis-resp/)
-- [Securing Next.js Apps Using Microsoft Identity Platform](https://sirwan.info/blog/en/securing-next.js-apps-using-microsoft-identity-platform/)
-- [Securing Blazor 8.x Web Apps Using Microsoft Identity Platform](https://sirwan.info/blog/en/securing-blazor-8.x-web-apps-using-microsoft-identity-platform/)
-- [Beyond Titles, Embracing Data Analysis in Every Tech Role](https://sirwan.info/blog/en/beyond-titles-embracing-data-analysis-in-every-tech-role/)
-- [A Weekend with Swift](https://sirwan.info/blog/en/a-weekend-with-swift/)
-- [Programmers and LLMs](https://sirwan.info/blog/en/programmers-and-llms/)
-- [Migrating to Astro](https://sirwan.info/blog/en/migrating-to-astro/)
-- [A Quick Note](https://sirwan.info/blog/en/a-quick-note/)
-- [آشنایی با TypeChat](https://sirwan.info/blog/fa/typechat/)
-- [iPhone](https://sirwan.info/blog/en/iphone-theft/)
-- [Visualising Your IoT Data](https://sirwan.info/blog/en/visualising-your-iot-data/)
-- [Different ways of adding your signature on a PDF](https://sirwan.info/blog/en/different-ways-of-adding-your-signature-on-a-pdf/)
-- [انجام یک تسک ساده با Golang](https://sirwan.info/blog/fa/web-automation/)
-- [بررسی خطای undefined is not iterable در JavaScript](https://sirwan.info/blog/fa/undefined-is-not-iterable/)
-- [Blazor Meetup](https://sirwan.info/blog/en/blazor-meetup-reading/)
-- [نکات Golang](https://sirwan.info/blog/fa/golang-basics/)
-- [تولید فایل‌های PDF توسط React](https://sirwan.info/blog/fa/generating-pdf/)
-- [ذخیره فایل CSV در SQL Server](https://sirwan.info/blog/fa/importing-csv-file-in-sql-server/)
-- [آشنایی با CSV Storage Engine در MySQL](https://sirwan.info/blog/fa/csv-storage-engine/)
-- [Showing Topbar Progress Indicator in React](https://sirwan.info/blog/en/showing-topbar-progress-indicator-in-react/)
-- [Using Mirage With Vite](https://sirwan.info/blog/en/using-mirage-with-vite/)
-- [Web Server Logs](https://sirwan.info/blog/en/web-server-logs/)
-- [disallow nested ternary expressions (no-nested-ternary)](https://sirwan.info/blog/en/no-nested-ternary/)
-- [OS Notification](https://sirwan.info/blog/en/OS-Notification/)
-- [MySQL - Transforming JSON data into relational tables](https://sirwan.info/blog/en/Transforming-JSON-data-into-relational-tables/)
-- [Getting Started With Sequelize](https://sirwan.info/blog/en/getting-started-with-sequelize/)
-- [WebSocket and React](https://sirwan.info/blog/en/WebSocket-and-React/)
-- [Displaying Secured Images](https://sirwan.info/blog/en/Displaying-Secured-Images/)
-- [MobX with React and TypeScript](https://sirwan.info/blog/en/MobX-with-React-and-TypeScript/)
-- [Server-Sent Events and React](https://sirwan.info/blog/en/ Server-Sent-Events-and-React/)
-- [Setting Up Tailwind](https://sirwan.info/blog/en/Setting-Up-Tailwind/)
-- [Passing custom HTTP Header via Apollo Client](https://sirwan.info/blog/en/Passing-custom-HTTP-Header-via-Apollo-Client/)
-- [Redux](https://sirwan.info/blog/en/Redux/)
-- [Initializing state using class field declaration](https://sirwan.info/blog/en/Initializing-state-using-class-field-declaration/)
-- [Flux](https://sirwan.info/blog/en/Flux/)
-- [Building Ionic React App](https://sirwan.info/blog/en/Building-Ionic-React-App/)
-- [Testing React Components](https://sirwan.info/blog/en/Testing-React-Components/)
-- [Higher-Order Components](https://sirwan.info/blog/en/Higher-Order-Components/)
-- [Importing JSON files into SQL Server](https://sirwan.info/blog/en/Importing-JSON-files-into-SQL-Server/)
-- [Using IHostingEnvironment in a test project](https://sirwan.info/blog/en/Using-IHostingEnvironment-in-a-test-project/)
-- [Migrating To Gatsby](https://sirwan.info/blog/en/Migrating-To-Gatsby/)
-- [Morse code](https://sirwan.info/blog/en/Programming-challenges-morse-code/)
-- [Calling Stored Procedures using Dapper](https://sirwan.info/blog/en/Calling-Stored-Procedures/)
-- [Highlighting Current Link in Razor Pages](https://sirwan.info/blog/en/Razor-Pages-Highlight-Current-Link/)
-- [Passed Exam 70-483 - Programming in C#](https://sirwan.info/blog/en/Passed-Exam-70-483-exam/)
-- [Hosting React app on IIS](https://sirwan.info/blog/en/Hosting-react-app-on-iis/)
-- [Hosting a WCF Service as a Windows Service Using Topshelf](https://sirwan.info/blog/en/Hosting-WCF-Service/)
-- [What's Elasticsearch](https://sirwan.info/blog/en/What's-Elasticsearch/)
-- [GraphQL](https://sirwan.info/blog/en/Graphql/)
-- [React Hooks](https://sirwan.info/blog/en/React-Hooks/)
-- [Shahriban - My first Hackathon project (Challenges, Lessons Learned)](https://sirwan.info/blog/en/Shahriban/)
-- [Uploading file in Vue.js](https://sirwan.info/blog/en/Uploading-file-in-Vue.js/)
-- [TypeScript and Vue.js](https://sirwan.info/blog/en/TypeScript-and-Vue.js/)
-- [Developing Console-based UI in CSharp](https://sirwan.info/blog/en/Developing-Console-based-UI-in-C/)
-- [Does making decision matter?](https://sirwan.info/blog/en/Does-making-decision-matter/)
-- [Running PowerShell on macOS](https://sirwan.info/blog/en/Powershell-on-macOS/)
-- [SQL Server on Linux in Docker on a Mac](https://sirwan.info/blog/en/SQL-Server-on-Linux-in-Docker-on-a-Mac/)
-- [Working remotely](https://sirwan.info/blog/en/Working-remotely/)
-- [My first experiences with Linux](https://sirwan.info/blog/en/My-first-experiences-with-Linux/)
-- [Environments in ASP.NET Core](https://sirwan.info/blog/en/Environments-in-ASP.NET-Core/)
-- [Getting to know Singleton pattern in C#](https://sirwan.info/blog/en/Getting-to-know-Singletone-Pattern/)
-- [Designing Fluent Interfaces in C#](https://sirwan.info/blog/en/Designing-Fluent-Interfaces-in-C/)
-- [Explicit Interface Implementation](https://sirwan.info/blog/en/Explicit-Interface-Implementation/)
-- [Delegates in C#](https://sirwan.info/blog/en/Delegates/)
-- [Thinking out of the box to become a better programmer](https://sirwan.info/blog/en/Thinking-out-of-the-box-to-become-a-better-programmer/)
-- [Why AngularJS?](https://sirwan.info/blog/en/Why-Angular/)
-- [Asynchronous Execution in JavaScript](https://sirwan.info/blog/en/Asynchronous-Execution-in-JavaScript/)
-- [Object Oriented JavaScript Part 2](https://sirwan.info/blog/en/Object-Oriented-JavaScript-Part-2/)
-- [Object Oriented JavaScript Part 1](https://sirwan.info/blog/en/Object-Oriented-JavaScript-Part-1/)
-- [My first blog post!](https://sirwan.info/blog/en/First-Blog-Post/)
+> Sirwan Afifi is a UK-based senior software engineer. This site contains his writing about web engineering, developer tooling, AI agents, and practical technology experiments in English, Farsi, and Kurdish.
+
+Use the developer resources for the public read-only API. Content pages support explicit Markdown URLs and, when the Cloudflare edge Worker is active, `Accept: text/markdown` on their canonical URLs. No account or API key is required.
+
+## Start Here
+
+- [Homepage](https://sirwan.info/index.md): Identity, current focus, recent writing, and primary site links.
+- [About Sirwan Afifi](https://sirwan.info/about.md): Professional background, technologies, and interests.
+- [What Sirwan is doing now](https://sirwan.info/now.md): Current projects, learning, reading, and personal activities.
+- [Complete sitemap](https://sirwan.info/sitemap-index.xml): Canonical crawl index for every public page.
+
+## Developer Resources
+
+- [Sirwan Afifi developer portal](https://sirwan.info/developers.md): Quickstart, authentication policy, API keys, documentation, and the read-only sandbox.
+- [Public API documentation](https://sirwan.info/docs.md): Endpoint behavior, response conventions, errors, and examples.
+- [OpenAPI specification](https://sirwan.info/openapi.json): OpenAPI 3.1 contract for the public JSON endpoints.
+- [Site metadata API](https://sirwan.info/api/site.json): JSON identity and discovery links.
+- [Post index API](https://sirwan.info/api/posts.json): JSON index of all published posts.
+
+## Writing Indexes
+
+- [English writing](https://sirwan.info/blog/en.md): English post archive.
+- [Farsi writing](https://sirwan.info/blog/fa.md): Farsi post archive.
+- [Kurdish writing](https://sirwan.info/blog/ku.md): Kurdish post archive.
+- [RSS feed](https://sirwan.info/rss.xml): Chronological feed of published posts.
+
+## Recent Writing
+
+- [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md): A small dev-only inspector that links each permission check back to the DOM element it gated, using React 19's internals behind one adapter.
+- [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md): Kotlin's familiar generics syntax like foo<String>() isn't trivial, it's a deliberate parser compromise inspired by C#
+- [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge.md): How to use Homebridge to connect non-HomeKit devices like the Levoit air purifier to Apple Home
+- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills.md): Gemini CLI now supports Agent Skills
+- [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again.md): The second time my Apple Podcasts library vanished, I decided I wasn't going to just wait for it to reappear. Here's what I learned by diving into the app's SQLite database and discovering how Apple Podcasts really works under the hood.
+- [Learning Without Shortcuts](https://sirwan.info/blog/en/learning-without-shortcuts.md): Learning without shortcuts: LLMs and AI agents have made my life much easier compared to, say, ten years ago. Learning new topics is now faster, more accessible, and even customisable to the way I want to be taught.
+- [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper.md): A small VS Code extension that sends code snippets directly into your Obsidian vault
+- [How I Use Back Tap and Shortcuts to Capture Info on My iPhone](https://sirwan.info/blog/en/how-i-use-back-tap-and-shortcuts-to-capture-info-on-my-iphone.md): iPhone has a hidden gem called Back Tap within its Accessibility features that I've found incredibly useful. As someone who values productivity and believes that a day without learning is a day lost, I've developed a workflow that transforms passive social media consumption into active knowledge capture.
+- [ترندهای تکنولوژی در سال ۲۰۲۵](https://sirwan.info/blog/fa/tech-trends-2025.md): اخیراً دو پلتفرم معروف Pluralsight و O'Reilly گزارشی از ترندهای تکنولوژی در سال ۲۰۲۵ منتشر کردن که ارزش بررسی داره و یک دید اساسی بهمون میدن که برای سال جدید روی چه مهارت‌هایی تمرکز کنیم، تفاوت جالب این دو گزارش اینه که O'Reilly بیشتر روی تأثیر AI در حوزه‌های خاص (امنیت، شغل‌ و ...) تمرکز کرده، در حالی که Pluralsight بر اهمیت انطباق‌پذیری و یادگیری مداوم به عنوان مهارت‌های اصلی برای مواجهه با این تغییرات تأکید داره.
+- [Turning Notes into Knowledge](https://sirwan.info/blog/en/turning-notes-into-knowledge.md): Taking notes is essential for learning and retaining information, but without regular review, those notes lose their value. Over time, I’ve discovered that how you revisit and engage with your notes matters just as much as taking them.
+- [How I Use Obsidian to Publish Posts](https://sirwan.info/blog/en/how-i-use-obsidian-to-publish-posts.md): Obsidian has become a key part of my daily routine—it's one of those apps I always keep open on my computer. While I started using it for journaling, planning tasks, and reviews, it has now become my main tool for writing blog posts too.
+- [Advent of Code 2024](https://sirwan.info/blog/en/advent-of-code-2024.md): As we approach Advent of Code 2024, I wanted to share my experience from previous years tackling these coding challenges with perhaps an unconventional choice of tools: PowerShell and Pester. While PowerShell is often pigeonholed as just an automation tool, I've found it to be a surprisingly powerful language for algorithmic problem-solving, thanks to its foundation on .NET and its expressive pipeline syntax.
+
+## Optional
+
+- [GitHub](https://github.com/SirwanAfifi): Public source repositories and projects.
+- [LinkedIn](https://www.linkedin.com/in/sirwan-a-73225345/): Professional profile.

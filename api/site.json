@@ -1,0 +1,27 @@
+{
+  "name": "Sirwan Afifi",
+  "url": "https://sirwan.info/",
+  "description": "A personal engineering journal about software, the web, developer tooling, and practical technology experiments.",
+  "author": {
+    "name": "Sirwan Afifi",
+    "role": "Senior Software Engineer",
+    "location": "United Kingdom"
+  },
+  "languages": [
+    "en",
+    "fa",
+    "ku"
+  ],
+  "resources": {
+    "developers": "https://sirwan.info/developers",
+    "documentation": "https://sirwan.info/docs",
+    "openapi": "https://sirwan.info/openapi.json",
+    "llms": "https://sirwan.info/llms.txt",
+    "rss": "https://sirwan.info/rss.xml",
+    "sitemap": "https://sirwan.info/sitemap-index.xml"
+  },
+  "authentication": {
+    "required": false,
+    "apiKeysIssued": false
+  }
+}

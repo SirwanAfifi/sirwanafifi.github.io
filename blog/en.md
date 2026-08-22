@@ -1,0 +1,91 @@
+# Sirwan Afifi — English Writing
+
+Published posts in English, newest first.
+
+- [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md) — 2026-06-26
+- [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md) — 2026-02-22
+- [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge.md) — 2026-02-08
+- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills.md) — 2026-01-01
+- [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again.md) — 2025-12-20
+- [Learning Without Shortcuts](https://sirwan.info/blog/en/learning-without-shortcuts.md) — 2025-09-13
+- [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper.md) — 2025-05-26
+- [How I Use Back Tap and Shortcuts to Capture Info on My iPhone](https://sirwan.info/blog/en/how-i-use-back-tap-and-shortcuts-to-capture-info-on-my-iphone.md) — 2025-03-16
+- [Turning Notes into Knowledge](https://sirwan.info/blog/en/turning-notes-into-knowledge.md) — 2025-01-12
+- [How I Use Obsidian to Publish Posts](https://sirwan.info/blog/en/how-i-use-obsidian-to-publish-posts.md) — 2025-01-05
+- [Advent of Code 2024](https://sirwan.info/blog/en/advent-of-code-2024.md) — 2024-11-30
+- [Microsoft.Extensions.AI](https://sirwan.info/blog/en/microsoft-extensions-ai.md) — 2024-11-14
+- [Git Commits as Documentation (RAG-Powered Commit Search)](https://sirwan.info/blog/en/git-commit-as-documentation.md) — 2024-11-02
+- [A Weekend with Chrome AI](https://sirwan.info/blog/en/weekend-with-chrome-ai.md) — 2024-10-26
+- [HTML Parser and Whitespace](https://sirwan.info/blog/en/html-parser-and-whitespace.md) — 2024-10-20
+- [Local AI Models in Browsers (Chrome Canary)](https://sirwan.info/blog/en/local-ai-models-in-browsers.md) — 2024-09-09
+- [My Approach to Problem Solving - Blazor Version](https://sirwan.info/blog/en/my-approach-to-problem-solving-blazor-version.md) — 2024-07-31
+- [Azure API Management](https://sirwan.info/blog/en/azure-api-management.md) — 2024-04-17
+- [Redis RESP](https://sirwan.info/blog/en/redis-resp.md) — 2024-04-17
+- [Securing Next.js Apps Using Microsoft Identity Platform](https://sirwan.info/blog/en/securing-next.js-apps-using-microsoft-identity-platform.md) — 2024-04-09
+- [Securing Blazor 8.x Web Apps Using Microsoft Identity Platform](https://sirwan.info/blog/en/securing-blazor-8.x-web-apps-using-microsoft-identity-platform.md) — 2024-04-06
+- [Beyond Titles, Embracing Data Analysis in Every Tech Role](https://sirwan.info/blog/en/beyond-titles-embracing-data-analysis-in-every-tech-role.md) — 2024-03-02
+- [A Weekend with Swift](https://sirwan.info/blog/en/a-weekend-with-swift.md) — 2024-02-17
+- [Programmers and LLMs](https://sirwan.info/blog/en/programmers-and-llms.md) — 2024-02-01
+- [Migrating to Astro](https://sirwan.info/blog/en/migrating-to-astro.md) — 2024-01-05
+- [A Quick Note](https://sirwan.info/blog/en/a-quick-note.md) — 2023-09-07
+- [iPhone](https://sirwan.info/blog/en/iphone-theft.md) — 2023-04-03
+- [Visualising Your IoT Data](https://sirwan.info/blog/en/visualising-your-iot-data.md) — 2023-03-18
+- [Different ways of adding your signature on a PDF](https://sirwan.info/blog/en/different-ways-of-adding-your-signature-on-a-pdf.md) — 2022-11-27
+- [Blazor Meetup](https://sirwan.info/blog/en/blazor-meetup-reading.md) — 2022-05-05
+- [Showing Topbar Progress Indicator in React](https://sirwan.info/blog/en/showing-topbar-progress-indicator-in-react.md) — 2021-09-01
+- [Using Mirage With Vite](https://sirwan.info/blog/en/using-mirage-with-vite.md) — 2021-07-25
+- [Web Server Logs](https://sirwan.info/blog/en/web-server-logs.md) — 2021-07-20
+- [disallow nested ternary expressions (no-nested-ternary)](https://sirwan.info/blog/en/no-nested-ternary.md) — 2021-06-10
+- [OS Notification](https://sirwan.info/blog/en/OS-Notification.md) — 2021-05-19
+- [MySQL - Transforming JSON data into relational tables](https://sirwan.info/blog/en/Transforming-JSON-data-into-relational-tables.md) — 2020-10-24
+- [Getting Started With Sequelize](https://sirwan.info/blog/en/getting-started-with-sequelize.md) — 2020-10-12
+- [WebSocket and React](https://sirwan.info/blog/en/WebSocket-and-React.md) — 2020-03-08
+- [Displaying Secured Images](https://sirwan.info/blog/en/Displaying-Secured-Images.md) — 2020-01-25
+- [MobX with React and TypeScript](https://sirwan.info/blog/en/MobX-with-React-and-TypeScript.md) — 2020-01-05
+- [Server-Sent Events and React](https://sirwan.info/blog/en/%20Server-Sent-Events-and-React.md) — 2019-12-15
+- [Setting Up Tailwind](https://sirwan.info/blog/en/Setting-Up-Tailwind.md) — 2019-11-16
+- [Passing custom HTTP Header via Apollo Client](https://sirwan.info/blog/en/Passing-custom-HTTP-Header-via-Apollo-Client.md) — 2019-11-06
+- [Redux](https://sirwan.info/blog/en/Redux.md) — 2019-11-05
+- [Initializing state using class field declaration](https://sirwan.info/blog/en/Initializing-state-using-class-field-declaration.md) — 2019-10-29
+- [Flux](https://sirwan.info/blog/en/Flux.md) — 2019-10-27
+- [Building Ionic React App](https://sirwan.info/blog/en/Building-Ionic-React-App.md) — 2019-10-21
+- [Testing React Components](https://sirwan.info/blog/en/Testing-React-Components.md) — 2019-10-02
+- [Higher-Order Components](https://sirwan.info/blog/en/Higher-Order-Components.md) — 2019-09-22
+- [Importing JSON files into SQL Server](https://sirwan.info/blog/en/Importing-JSON-files-into-SQL-Server.md) — 2019-09-18
+- [Using IHostingEnvironment in a test project](https://sirwan.info/blog/en/Using-IHostingEnvironment-in-a-test-project.md) — 2019-08-09
+- [Migrating To Gatsby](https://sirwan.info/blog/en/Migrating-To-Gatsby.md) — 2019-07-22
+- [Morse code](https://sirwan.info/blog/en/Programming-challenges-morse-code.md) — 2019-07-08
+- [Calling Stored Procedures using Dapper](https://sirwan.info/blog/en/Calling-Stored-Procedures.md) — 2019-06-07
+- [Highlighting Current Link in Razor Pages](https://sirwan.info/blog/en/Razor-Pages-Highlight-Current-Link.md) — 2019-05-31
+- [Passed Exam 70-483 - Programming in C#](https://sirwan.info/blog/en/Passed-Exam-70-483-exam.md) — 2019-05-25
+- [Hosting React app on IIS](https://sirwan.info/blog/en/Hosting-react-app-on-iis.md) — 2019-04-09
+- [Hosting a WCF Service as a Windows Service Using Topshelf](https://sirwan.info/blog/en/Hosting-WCF-Service.md) — 2019-03-07
+- [What's Elasticsearch](https://sirwan.info/blog/en/What's-Elasticsearch.md) — 2018-12-05
+- [GraphQL](https://sirwan.info/blog/en/Graphql.md) — 2018-10-28
+- [React Hooks](https://sirwan.info/blog/en/React-Hooks.md) — 2018-10-27
+- [Shahriban - My first Hackathon project (Challenges, Lessons Learned)](https://sirwan.info/blog/en/Shahriban.md) — 2018-06-25
+- [Uploading file in Vue.js](https://sirwan.info/blog/en/Uploading-file-in-Vue.js.md) — 2018-06-04
+- [TypeScript and Vue.js](https://sirwan.info/blog/en/TypeScript-and-Vue.js.md) — 2018-05-28
+- [Developing Console-based UI in CSharp](https://sirwan.info/blog/en/Developing-Console-based-UI-in-C.md) — 2018-05-02
+- [Does making decision matter?](https://sirwan.info/blog/en/Does-making-decision-matter.md) — 2018-04-27
+- [Running PowerShell on macOS](https://sirwan.info/blog/en/Powershell-on-macOS.md) — 2017-06-06
+- [SQL Server on Linux in Docker on a Mac](https://sirwan.info/blog/en/SQL-Server-on-Linux-in-Docker-on-a-Mac.md) — 2017-06-04
+- [Working remotely](https://sirwan.info/blog/en/Working-remotely.md) — 2017-05-03
+- [My first experiences with Linux](https://sirwan.info/blog/en/My-first-experiences-with-Linux.md) — 2017-02-27
+- [Environments in ASP.NET Core](https://sirwan.info/blog/en/Environments-in-ASP.NET-Core.md) — 2016-11-23
+- [Getting to know Singleton pattern in C#](https://sirwan.info/blog/en/Getting-to-know-Singletone-Pattern.md) — 2016-11-08
+- [Designing Fluent Interfaces in C#](https://sirwan.info/blog/en/Designing-Fluent-Interfaces-in-C.md) — 2016-10-26
+- [Explicit Interface Implementation](https://sirwan.info/blog/en/Explicit-Interface-Implementation.md) — 2016-08-12
+- [Delegates in C#](https://sirwan.info/blog/en/Delegates.md) — 2016-07-02
+- [Thinking out of the box to become a better programmer](https://sirwan.info/blog/en/Thinking-out-of-the-box-to-become-a-better-programmer.md) — 2016-06-11
+- [Why AngularJS?](https://sirwan.info/blog/en/Why-Angular.md) — 2016-04-17
+- [Asynchronous Execution in JavaScript](https://sirwan.info/blog/en/Asynchronous-Execution-in-JavaScript.md) — 2016-02-12
+- [Object Oriented JavaScript Part 2](https://sirwan.info/blog/en/Object-Oriented-JavaScript-Part-2.md) — 2015-12-11
+- [Object Oriented JavaScript Part 1](https://sirwan.info/blog/en/Object-Oriented-JavaScript-Part-1.md) — 2015-12-10
+- [My first blog post!](https://sirwan.info/blog/en/First-Blog-Post.md) — 2015-11-28
+
+## Discovery
+
+- [Agent guide](https://sirwan.info/llms.txt)
+- [All posts as JSON](https://sirwan.info/api/posts.json)
+- [RSS feed](https://sirwan.info/rss.xml)

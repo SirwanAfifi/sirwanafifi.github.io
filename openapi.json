@@ -1,0 +1,245 @@
+{
+  "openapi": "3.1.2",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "Sirwan Afifi Public Content API",
+    "summary": "Read-only metadata and post indexes for sirwan.info.",
+    "description": "A public, read-only API for discovering Sirwan Afifi's site and published writing. No authentication or API key is required. The API does not expose write operations, webhooks, or private data.",
+    "version": "1.0.0",
+    "license": {
+      "name": "All rights reserved"
+    },
+    "contact": {
+      "name": "Sirwan Afifi",
+      "url": "https://sirwan.info/about"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://sirwan.info",
+      "description": "Production"
+    }
+  ],
+  "externalDocs": {
+    "description": "Sirwan Afifi developer portal",
+    "url": "https://sirwan.info/developers"
+  },
+  "tags": [
+    {
+      "name": "Discovery",
+      "description": "Machine-readable information about the site."
+    },
+    {
+      "name": "Content",
+      "description": "Indexes of publicly available writing."
+    }
+  ],
+  "paths": {
+    "/api/site.json": {
+      "get": {
+        "operationId": "getSiteMetadata",
+        "summary": "Get site metadata and discovery links",
+        "tags": [
+          "Discovery"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Site identity, languages, and public resources.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteMetadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/posts.json": {
+      "get": {
+        "operationId": "listPosts",
+        "summary": "List published posts",
+        "description": "Returns the public post index across English, Farsi, and Kurdish, newest first.",
+        "tags": [
+          "Content"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing the post count and posts.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostIndex"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SiteMetadata": {
+        "type": "object",
+        "required": [
+          "name",
+          "url",
+          "description",
+          "author",
+          "languages",
+          "resources",
+          "authentication"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "examples": [
+              "Sirwan Afifi"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": {
+            "type": "string"
+          },
+          "author": {
+            "type": "object",
+            "required": [
+              "name",
+              "role",
+              "location"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              }
+            }
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "en",
+                "fa",
+                "ku"
+              ]
+            }
+          },
+          "resources": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "authentication": {
+            "type": "object",
+            "required": [
+              "required",
+              "apiKeysIssued"
+            ],
+            "properties": {
+              "required": {
+                "type": "boolean",
+                "const": false
+              },
+              "apiKeysIssued": {
+                "type": "boolean",
+                "const": false
+              }
+            }
+          }
+        }
+      },
+      "PostSummary": {
+        "type": "object",
+        "required": [
+          "title",
+          "slug",
+          "language",
+          "published",
+          "url"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "slug": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string",
+            "enum": [
+              "en",
+              "fa",
+              "ku"
+            ]
+          },
+          "published": {
+            "type": "string",
+            "format": "date"
+          },
+          "updated": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "markdownUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "PostIndex": {
+        "type": "object",
+        "required": [
+          "count",
+          "posts"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostSummary"
+            }
+          }
+        }
+      }
+    }
+  }
+}
