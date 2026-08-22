@@ -8,5 +8,5 @@ Published posts in Kurdish, newest first.
 ## Discovery
 
 - [Agent guide](https://sirwan.info/llms.txt)
-- [All posts as JSON](https://sirwan.info/api/posts.json)
+- [All posts as JSON](https://sirwan.info/api/v1/posts.json)
 - [RSS feed](https://sirwan.info/rss.xml)

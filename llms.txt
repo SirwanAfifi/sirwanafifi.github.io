@@ -4,11 +4,17 @@
 
 Use the developer resources for the public read-only API. Content pages support explicit Markdown URLs and, when the Cloudflare edge Worker is active, `Accept: text/markdown` on their canonical URLs. No account or API key is required.
 
+## When to Use This Site
+
+Use this site when an agent needs Sirwan Afifi's published perspective on practical software engineering, React and TypeScript, developer tooling, AI-assisted development, or personal technology experiments. Use the writing indexes to find source articles, the Markdown variants to quote or summarise a page, and the versioned JSON API to enumerate public posts or resolve canonical URLs. Do not use this site as live product support, private data, medical or financial guidance, or a write-capable service.
+
 ## Start Here
 
 - [Homepage](https://sirwan.info/index.md): Identity, current focus, recent writing, and primary site links.
 - [About Sirwan Afifi](https://sirwan.info/about.md): Professional background, technologies, and interests.
 - [What Sirwan is doing now](https://sirwan.info/now.md): Current projects, learning, reading, and personal activities.
+- [Contact Sirwan Afifi](https://sirwan.info/contact.md): Contact options, appropriate topics, and safety guidance.
+- [Privacy notice](https://sirwan.info/privacy.md): Hosting, local preferences, third-party content, and email handling.
 - [Complete sitemap](https://sirwan.info/sitemap-index.xml): Canonical crawl index for every public page.
 
 ## Developer Resources
@@ -16,8 +22,8 @@ Use the developer resources for the public read-only API. Content pages support 
 - [Sirwan Afifi developer portal](https://sirwan.info/developers.md): Quickstart, authentication policy, API keys, documentation, and the read-only sandbox.
 - [Public API documentation](https://sirwan.info/docs.md): Endpoint behavior, response conventions, errors, and examples.
 - [OpenAPI specification](https://sirwan.info/openapi.json): OpenAPI 3.1 contract for the public JSON endpoints.
-- [Site metadata API](https://sirwan.info/api/site.json): JSON identity and discovery links.
-- [Post index API](https://sirwan.info/api/posts.json): JSON index of all published posts.
+- [Site metadata API](https://sirwan.info/api/v1/site.json): Versioned JSON identity and discovery links.
+- [Post index API](https://sirwan.info/api/v1/posts.json): Versioned JSON index of all published posts.
 
 ## Writing Indexes
 
@@ -31,15 +37,6 @@ Use the developer resources for the public read-only API. Content pages support 
 - [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md): A small dev-only inspector that links each permission check back to the DOM element it gated, using React 19's internals behind one adapter.
 - [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md): Kotlin's familiar generics syntax like foo<String>() isn't trivial, it's a deliberate parser compromise inspired by C#
 - [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge.md): How to use Homebridge to connect non-HomeKit devices like the Levoit air purifier to Apple Home
-- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills.md): Gemini CLI now supports Agent Skills
-- [When Apple Podcasts Went Empty (Again)](https://sirwan.info/blog/en/when-apple-podcasts-went-empty-again.md): The second time my Apple Podcasts library vanished, I decided I wasn't going to just wait for it to reappear. Here's what I learned by diving into the app's SQLite database and discovering how Apple Podcasts really works under the hood.
-- [Learning Without Shortcuts](https://sirwan.info/blog/en/learning-without-shortcuts.md): Learning without shortcuts: LLMs and AI agents have made my life much easier compared to, say, ten years ago. Learning new topics is now faster, more accessible, and even customisable to the way I want to be taught.
-- [Sending Code from VS Code to Obsidian](https://sirwan.info/blog/en/weekend-project-code-clipper.md): A small VS Code extension that sends code snippets directly into your Obsidian vault
-- [How I Use Back Tap and Shortcuts to Capture Info on My iPhone](https://sirwan.info/blog/en/how-i-use-back-tap-and-shortcuts-to-capture-info-on-my-iphone.md): iPhone has a hidden gem called Back Tap within its Accessibility features that I've found incredibly useful. As someone who values productivity and believes that a day without learning is a day lost, I've developed a workflow that transforms passive social media consumption into active knowledge capture.
-- [ترندهای تکنولوژی در سال ۲۰۲۵](https://sirwan.info/blog/fa/tech-trends-2025.md): اخیراً دو پلتفرم معروف Pluralsight و O'Reilly گزارشی از ترندهای تکنولوژی در سال ۲۰۲۵ منتشر کردن که ارزش بررسی داره و یک دید اساسی بهمون میدن که برای سال جدید روی چه مهارت‌هایی تمرکز کنیم، تفاوت جالب این دو گزارش اینه که O'Reilly بیشتر روی تأثیر AI در حوزه‌های خاص (امنیت، شغل‌ و ...) تمرکز کرده، در حالی که Pluralsight بر اهمیت انطباق‌پذیری و یادگیری مداوم به عنوان مهارت‌های اصلی برای مواجهه با این تغییرات تأکید داره.
-- [Turning Notes into Knowledge](https://sirwan.info/blog/en/turning-notes-into-knowledge.md): Taking notes is essential for learning and retaining information, but without regular review, those notes lose their value. Over time, I’ve discovered that how you revisit and engage with your notes matters just as much as taking them.
-- [How I Use Obsidian to Publish Posts](https://sirwan.info/blog/en/how-i-use-obsidian-to-publish-posts.md): Obsidian has become a key part of my daily routine—it's one of those apps I always keep open on my computer. While I started using it for journaling, planning tasks, and reviews, it has now become my main tool for writing blog posts too.
-- [Advent of Code 2024](https://sirwan.info/blog/en/advent-of-code-2024.md): As we approach Advent of Code 2024, I wanted to share my experience from previous years tackling these coding challenges with perhaps an unconventional choice of tools: PowerShell and Pester. While PowerShell is often pigeonholed as just an automation tool, I've found it to be a surprisingly powerful language for algorithmic problem-solving, thanks to its foundation on .NET and its expressive pipeline syntax.
 
 ## Optional
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/contact/"><link rel="alternate" type="text/markdown" href="/contact.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>Contact Sirwan Afifi</title><meta name="title" content="Contact Sirwan Afifi"><meta name="description" content="How to contact Sirwan Afifi about software engineering, published articles, and public projects."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/contact/"><meta property="og:title" content="Contact Sirwan Afifi"><meta property="og:description" content="How to contact Sirwan Afifi about software engineering, published articles, and public projects."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/contact/"><meta property="twitter:title" content="Contact Sirwan Afifi"><meta property="twitter:description" content="How to contact Sirwan Afifi about software engineering, published articles, and public projects."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><link rel="stylesheet" href="/assets/Header.8nvxxO02.css"></head><body class="min-h-screen antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">Home</a><a href="/blog/en" class="text-muted hover:text-accent transition-colors">Blog</a><a href="/fitness" class="text-muted hover:text-accent transition-colors">Fitness</a><a href="/about" class="text-muted hover:text-accent transition-colors">About</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    /now</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><header class="reveal"><p class="font-mono text-[11px] uppercase tracking-[0.22em] text-accent mb-4"><span class="glyph"></span> Get in touch</p><h1 class="hero-name font-display text-4xl md:text-5xl font-bold tracking-tight text-ink">Contact Sirwan Afifi<span class="text-accent">_</span></h1><p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted">The simplest way to reach me is by email. I welcome thoughtful messages about software engineering, an article published on this site, an open-source project, or a potential professional collaboration.</p></header><section class="mt-12 border-t border-line pt-8 reveal reveal-2"><h2 class="font-display text-2xl font-semibold tracking-tight text-ink">Email</h2><p class="mt-3 leading-relaxed text-muted">Write to<a class="text-ink underline decoration-accent underline-offset-2" href="mailto:sir1afifi@gmail.com">sir1afifi@gmail.com</a>. Please include enough context for me to understand the topic and what kind of response would be useful. I read messages personally, but this is not a staffed support channel, so I cannot promise a particular response time.</p></section><section class="mt-12 border-t border-line pt-8"><h2 class="font-display text-2xl font-semibold tracking-tight text-ink">Public profiles</h2><p class="mt-3 leading-relaxed text-muted">For source code and technical work, visit my<a class="text-ink underline decoration-accent underline-offset-2" href="https://github.com/SirwanAfifi">GitHub profile</a>. For professional background, use<a class="text-ink underline decoration-accent underline-offset-2" href="https://www.linkedin.com/in/sirwan-a-73225345/">LinkedIn</a>. Questions about a specific post are easiest to answer when the message includes that post's URL.</p></section><section class="mt-12 border-t border-line pt-8"><h2 class="font-display text-2xl font-semibold tracking-tight text-ink">Before sending sensitive information</h2><p class="mt-3 leading-relaxed text-muted">Do not send passwords, API keys, private customer data, medical details, or other confidential material. This personal site does not provide emergency, legal, financial, or paid product support. Email is handled by an external mail provider and should be treated as a normal internet communication channel. The<a class="text-ink underline decoration-accent underline-offset-2" href="/privacy">privacy page</a> explains how this site and its third-party services handle basic technical data.</p></section></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

@@ -11,7 +11,8 @@
     },
     "contact": {
       "name": "Sirwan Afifi",
-      "url": "https://sirwan.info/about"
+      "url": "https://sirwan.info/contact",
+      "email": "sir1afifi@gmail.com"
     }
   },
   "servers": [
@@ -21,7 +22,7 @@
     }
   ],
   "externalDocs": {
-    "description": "Sirwan Afifi developer portal",
+    "description": "Sirwan Afifi developer portal, versioning policy, and error guidance",
     "url": "https://sirwan.info/developers"
   },
   "tags": [
@@ -35,10 +36,11 @@
     }
   ],
   "paths": {
-    "/api/site.json": {
+    "/api/v1/site.json": {
       "get": {
-        "operationId": "getSiteMetadata",
+        "operationId": "getSiteMetadataV1",
         "summary": "Get site metadata and discovery links",
+        "description": "Returns Sirwan Afifi's public site identity, language coverage, authentication policy, and canonical discovery-resource URLs.",
         "tags": [
           "Discovery"
         ],
@@ -46,6 +48,21 @@
         "responses": {
           "200": {
             "description": "Site identity, languages, and public resources.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -53,22 +70,126 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "The endpoint received a method other than GET or HEAD.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The client exceeded the public API quota.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The static content origin is temporarily unavailable.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/posts.json": {
+    "/api/v1/posts.json": {
       "get": {
-        "operationId": "listPosts",
+        "operationId": "listPostsV1",
         "summary": "List published posts",
-        "description": "Returns the public post index across English, Farsi, and Kurdish, newest first.",
+        "description": "Returns the complete public post index across English, Farsi, and Kurdish, newest first, with canonical HTML and Markdown URLs.",
         "tags": [
           "Content"
         ],
         "security": [],
         "responses": {
           "200": {
-            "description": "A JSON object containing the post count and posts.",
+            "description": "A JSON object containing the post count and typed post summaries.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -76,8 +197,377 @@
                 }
               }
             }
+          },
+          "405": {
+            "description": "The endpoint received a method other than GET or HEAD.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The client exceeded the public API quota.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The static content origin is temporarily unavailable.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
+      }
+    },
+    "/api/site.json": {
+      "get": {
+        "operationId": "getSiteMetadataLegacy",
+        "summary": "Get site metadata through the legacy alias",
+        "description": "Deprecated compatibility alias for GET /api/v1/site.json. It returns the same read-only representation and advertises its successor version in response headers.",
+        "tags": [
+          "Discovery"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Site identity, languages, and public resources.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Deprecation": {
+                "description": "RFC 9745 deprecation signal for the unversioned compatibility alias.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Link": {
+                "description": "RFC 8288 successor-version link to the corresponding /api/v1 endpoint.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SiteMetadata"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "The endpoint received a method other than GET or HEAD.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The client exceeded the public API quota.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The static content origin is temporarily unavailable.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/posts.json": {
+      "get": {
+        "operationId": "listPostsLegacy",
+        "summary": "List published posts through the legacy alias",
+        "description": "Deprecated compatibility alias for GET /api/v1/posts.json. It returns the same read-only representation and advertises its successor version in response headers.",
+        "tags": [
+          "Content"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "A JSON object containing the post count and typed post summaries.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Deprecation": {
+                "description": "RFC 9745 deprecation signal for the unversioned compatibility alias.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Link": {
+                "description": "RFC 8288 successor-version link to the corresponding /api/v1 endpoint.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostIndex"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "The endpoint received a method other than GET or HEAD.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The client exceeded the public API quota.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "The static content origin is temporarily unavailable.",
+            "headers": {
+              "RateLimit-Policy": {
+                "description": "Public API quota policy in the IETF RateLimit structured-field format.",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "RateLimit-Limit": {
+                "description": "Maximum requests allowed in the current 60-second window.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "Retry-After": {
+                "description": "Seconds the client should wait before retrying.",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
       }
     }
   },
@@ -85,6 +575,7 @@
     "schemas": {
       "SiteMetadata": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "name",
           "url",
@@ -110,6 +601,7 @@
           },
           "author": {
             "type": "object",
+            "additionalProperties": false,
             "required": [
               "name",
               "role",
@@ -129,6 +621,8 @@
           },
           "languages": {
             "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
             "items": {
               "type": "string",
               "enum": [
@@ -140,13 +634,65 @@
           },
           "resources": {
             "type": "object",
-            "additionalProperties": {
-              "type": "string",
-              "format": "uri"
+            "additionalProperties": false,
+            "required": [
+              "developers",
+              "documentation",
+              "openapi",
+              "llms",
+              "siteApi",
+              "postsApi",
+              "rss",
+              "sitemap",
+              "contact",
+              "privacy"
+            ],
+            "properties": {
+              "developers": {
+                "type": "string",
+                "format": "uri"
+              },
+              "documentation": {
+                "type": "string",
+                "format": "uri"
+              },
+              "openapi": {
+                "type": "string",
+                "format": "uri"
+              },
+              "llms": {
+                "type": "string",
+                "format": "uri"
+              },
+              "siteApi": {
+                "type": "string",
+                "format": "uri"
+              },
+              "postsApi": {
+                "type": "string",
+                "format": "uri"
+              },
+              "rss": {
+                "type": "string",
+                "format": "uri"
+              },
+              "sitemap": {
+                "type": "string",
+                "format": "uri"
+              },
+              "contact": {
+                "type": "string",
+                "format": "uri"
+              },
+              "privacy": {
+                "type": "string",
+                "format": "uri"
+              }
             }
           },
           "authentication": {
             "type": "object",
+            "additionalProperties": false,
             "required": [
               "required",
               "apiKeysIssued"
@@ -166,16 +712,22 @@
       },
       "PostSummary": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "title",
+          "description",
           "slug",
           "language",
           "published",
-          "url"
+          "updated",
+          "tags",
+          "url",
+          "markdownUrl"
         ],
         "properties": {
           "title": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "description": {
             "type": [
@@ -184,7 +736,8 @@
             ]
           },
           "slug": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "language": {
             "type": "string",
@@ -223,6 +776,7 @@
       },
       "PostIndex": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "count",
           "posts"
@@ -239,7 +793,67 @@
             }
           }
         }
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "type",
+          "title",
+          "status",
+          "detail",
+          "instance",
+          "code",
+          "resolution"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "minimum": 400,
+            "maximum": 599
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string",
+            "format": "uri-reference"
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "method_not_allowed",
+              "rate_limit_exceeded",
+              "api_route_not_found",
+              "upstream_unavailable"
+            ]
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "documentation_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
       }
     }
+  },
+  "x-rate-limit-policy": {
+    "name": "public-api",
+    "quota": 600,
+    "window_seconds": 60,
+    "partition": "Anonymous network address and endpoint within a Cloudflare location"
+  },
+  "x-api-lifecycle": {
+    "current_major_version": "v1",
+    "deprecation_policy_url": "https://sirwan.info/docs#versioning-and-deprecation"
   }
 }
