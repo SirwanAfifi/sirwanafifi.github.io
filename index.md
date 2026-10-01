@@ -6,10 +6,10 @@ This personal engineering journal is published in English, Farsi, and Kurdish. I
 
 ## Latest writing
 
+- [Teaching a Cardputer to Recognise Kurdish Numbers](https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers.md)
 - [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md)
 - [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md)
 - [TIL: Using Homebridge to Add Non-HomeKit Devices to Apple Home](https://sirwan.info/blog/en/homebridge.md)
-- [TIL: Gemini CLI Now Has Agent Skills](https://sirwan.info/blog/en/gemini-cli-agent-skills.md)
 
 ## Explore
 

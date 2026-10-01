@@ -1,6 +1,22 @@
 {
-  "count": 91,
+  "count": 92,
   "posts": [
+    {
+      "title": "Teaching a Cardputer to Recognise Kurdish Numbers",
+      "description": "A weekend experiment training a 2,405-parameter neural network to recognise 1, 2, and 3 in Ardalani Kurdish, running entirely offline on a Cardputer.",
+      "slug": "teaching-a-cardputer-to-recognise-kurdish-numbers",
+      "language": "en",
+      "published": "2026-10-01",
+      "updated": null,
+      "tags": [
+        "Cardputer",
+        "ESP32",
+        "Machine Learning",
+        "Kurdish"
+      ],
+      "url": "https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers",
+      "markdownUrl": "https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers.md"
+    },
     {
       "title": "A Dev-Only Permission Inspector Built on React Fiber",
       "description": "A small dev-only inspector that links each permission check back to the DOM element it gated, using React 19's internals behind one adapter.",
