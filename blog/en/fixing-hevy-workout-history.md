@@ -11,7 +11,7 @@ How a conversation with Mahdi led to a small Python tool for correcting my worko
 
 My friend [Mahdi](https://mahdi.uk/) pointed out an issue with how I was logging my gym weights: one dumbbell's weight for dumbbell exercises, and the plates on only one side for barbell exercises.
 
-I wanted to update my existing history to the totals I intended to track. Rather than editing each workout manually, I worked with ChatGPT and Codex to build a small Python tool using [Hevy's public API](https://api.hevyapp.com/docs/).
+I wanted to update my existing history to the totals I intended to track. Rather than editing each workout manually, I worked with ChatGPT to build a small Python tool using [Hevy's public API](https://api.hevyapp.com/docs/).
 
 The rules I chose were simple:
 
