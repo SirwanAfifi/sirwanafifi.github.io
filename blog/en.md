@@ -2,7 +2,7 @@
 
 Published posts in English, newest first.
 
-- [Fixing my Hevy workout history with a small Python migration](https://sirwan.info/blog/en/fixing-hevy-workout-history.md) — 2026-10-05
+- [Fixing my Hevy workout history](https://sirwan.info/blog/en/fixing-hevy-workout-history.md) — 2026-10-05
 - [Teaching a Cardputer to Recognise Kurdish Numbers](https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers.md) — 2026-10-01
 - [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md) — 2026-06-26
 - [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md) — 2026-02-22

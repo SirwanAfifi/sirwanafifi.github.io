@@ -2,8 +2,8 @@
   "count": 180,
   "posts": [
     {
-      "title": "Fixing my Hevy workout history with a small Python migration",
-      "description": "A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification.",
+      "title": "Fixing my Hevy workout history",
+      "description": "How a conversation with Mahdi led to a small Python tool for correcting my workout history without losing the original data.",
       "slug": "fixing-hevy-workout-history",
       "language": "en",
       "published": "2026-10-05",

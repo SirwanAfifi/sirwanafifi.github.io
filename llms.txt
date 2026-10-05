@@ -34,7 +34,7 @@ Use this site when an agent needs Sirwan Afifi's published perspective on practi
 
 ## Recent Writing
 
-- [Fixing my Hevy workout history with a small Python migration](https://sirwan.info/blog/en/fixing-hevy-workout-history.md): A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification.
+- [Fixing my Hevy workout history](https://sirwan.info/blog/en/fixing-hevy-workout-history.md): How a conversation with Mahdi led to a small Python tool for correcting my workout history without losing the original data.
 - [Teaching a Cardputer to Recognise Kurdish Numbers](https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers.md): A weekend experiment training a 2,405-parameter neural network to recognise 1, 2, and 3 in Ardalani Kurdish, running entirely offline on a Cardputer.
 - [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md): A small dev-only inspector that links each permission check back to the DOM element it gated, using React 19's internals behind one adapter.
 
