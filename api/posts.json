@@ -1,6 +1,21 @@
 {
-  "count": 179,
+  "count": 180,
   "posts": [
+    {
+      "title": "Fixing my Hevy workout history with a small Python migration",
+      "description": "A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification.",
+      "slug": "fixing-hevy-workout-history",
+      "language": "en",
+      "published": "2026-10-05",
+      "updated": null,
+      "tags": [
+        "Python",
+        "Automation",
+        "Hevy"
+      ],
+      "url": "https://sirwan.info/blog/en/fixing-hevy-workout-history",
+      "markdownUrl": "https://sirwan.info/blog/en/fixing-hevy-workout-history.md"
+    },
     {
       "title": "Teaching a Cardputer to Recognise Kurdish Numbers",
       "description": "A weekend experiment training a 2,405-parameter neural network to recognise 1, 2, and 3 in Ardalani Kurdish, running entirely offline on a Cardputer.",

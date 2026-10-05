@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/fixing-hevy-workout-history/"><link rel="alternate" type="text/markdown" href="/blog/en/fixing-hevy-workout-history.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>Fixing my Hevy workout history with a small Python migration</title><meta name="title" content="Fixing my Hevy workout history with a small Python migration"><meta name="description" content="A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/fixing-hevy-workout-history/"><meta property="og:title" content="Fixing my Hevy workout history with a small Python migration"><meta property="og:description" content="A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/fixing-hevy-workout-history/"><meta property="twitter:title" content="Fixing my Hevy workout history with a small Python migration"><meta property="twitter:description" content="A conversation with Mahdi turned into a Python tool for correcting workout weights, with backups, a reviewable plan, and verification."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">Home</a><a href="/blog/en" class="text-muted hover:text-accent transition-colors">Blog</a><a href="/fitness" class="text-muted hover:text-accent transition-colors">Fitness</a><a href="/about" class="text-muted hover:text-accent transition-colors">About</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    /now</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal "><h1 class="font-display font-bold tracking-tight text-4xl md:text-[2.75rem] leading-[1.12] text-ink">Fixing my Hevy workout history with a small Python migration</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>Published October 5, 2026</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">Python</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">Automation</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">Hevy</span></span></div></header><div class="prose max-w-none reveal reveal-2 "><section class="main-body">
+  <p>This started with my friend <a href="https://mahdi.uk/">Mahdi</a>, who pointed out an issue with how I was recording my gym weights.</p>
+<p>For dumbbell exercises, I had been entering the weight of one dumbbell. For barbell exercises, I had been entering the plates on one side, without including the other side or the bar itself. I wanted to correct the existing history, while leaving the rest of each workout alone.</p>
+<p>The arithmetic was straightforward. Updating a history I cared about needed a little more thought.</p>
+<p>I worked through it with ChatGPT and Codex, and the result is a small Python tool: <a href="https://github.com/SirwanAfifi/hevy-weight-correction">hevy-weight-correction</a>. The repository contains the tool and synthetic tests. My API key and workout data stayed local.</p>
+<h2 id="deciding-what-the-numbers-should-mean">Deciding what the numbers should mean</h2>
+<p>These were the rules I chose for this migration:</p>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>dumbbell: recorded weight × 2</span></span>
+<span class="line"><span>standard barbell: recorded weight × 2 + bar weight</span></span></code></pre>
+<p>For example, a hypothetical dumbbell entry of 10 kg becomes 20 kg. A hypothetical entry of 15 kg of plates on one side of a 20 kg bar becomes 50 kg.</p>
+<p>The script works in kilograms, regardless of the units displayed in the app. The bar weight is configurable, with overrides for individual exercises. I used 20 kg as the assumption for a standard Olympic bar, rather than weighing the equipment myself.</p>
+<p>There is a distinction here between a logging convention and a correction that everyone should run. Hevy Trainer’s <a href="https://help.hevyapp.com/hc/en-us/articles/43572343844247-How-Hevy-Trainer-Settings-Work">equipment documentation</a> describes combined weight for exercises that use two dumbbells. That does not mean every exercise involving a dumbbell should automatically be doubled. The exercise, number of dumbbells, and way reps were recorded matter. The tool implements the migration I requested; anyone reusing it needs to review whether those rules fit their own history.</p>
+<h2 id="from-a-manual-edit-to-an-api-migration">From a manual edit to an API migration</h2>
+<p>The Hevy connection available in my initial ChatGPT conversation could read workout history, but it did not provide an action for editing old sets. The first suggestion was to open each workout and edit it manually.</p>
+<p>Hevy’s <a href="https://api.hevyapp.com/docs/">public API</a> provided another route: read the workouts, then update an existing workout with <code>PUT /v1/workouts/{workoutId}</code>. It requires a developer API key, available to Pro users through <a href="https://hevy.com/settings?developer">Hevy’s developer settings</a>.</p>
+<p>The first generated script already separated planning from applying. That was a useful starting point. Before running it against my account, we checked the actual API schema and strengthened the preservation checks.</p>
+<p>One detail made this more involved than updating a single database column: the API expects a workout write payload. The script has to carry over the other exercises and set information while changing the selected weights. A missing note, superset, or set metric could therefore become an unintended edit.</p>
+<h2 id="download-first-decide-what-to-write-second">Download first, decide what to write second</h2>
+<p>The tool downloads all pages of workout history and the exercise templates. It checks the workout count, saves a backup, and creates a separate plan containing the exact old and new weights.</p>
+<p>It also writes a CSV preview and a short summary. Planning sends no update requests.</p>
+<p>The plan is tied to both the account and the backup. Before applying it, the script regenerates the expected corrections from that backup and checks that they match the saved plan. The first run directory is kept, rather than overwritten by another download.</p>
+<p>This separation turned an instruction like “double my dumbbell weights” into a specific set of changes that could be inspected before anything was written.</p>
+<h2 id="equipment-labels-needed-checking">Equipment labels needed checking</h2>
+<p>The initial script assumed that EZ bars, Smith machines, and trap bars would always be identified by separate equipment categories. The schema did not support that assumption, and the data confirmed why it mattered: an EZ-bar exercise could be labelled simply as <code>barbell</code>.</p>
+<p>The final version uses the exercise template’s equipment metadata and checks for specialty-bar names before accepting an exercise as a standard barbell. EZ, Smith, trap, hex, and other recognised specialty bars are left alone. Explicit non-target equipment is never overridden just because an exercise title happens to contain a familiar word.</p>
+<p>That still has limits. Metadata can be incomplete, and a custom exercise name cannot prove which physical bar somebody used. Missing equipment metadata blocks the run for review. The preview remains part of the workflow.</p>
+<h2 id="the-unexpected-privacy-question">The unexpected privacy question</h2>
+<p>The API’s workout read response did not include <code>is_private</code>. Its write schema, however, documented a public default when that field was omitted.</p>
+<p>A public profile was not enough to resolve this. Hevy allows <a href="https://help.hevyapp.com/hc/en-us/articles/34461853165079-How-to-keep-my-information-private-Account-Single-Private-Workout-Remove-Social-Media-Features">individual private workouts on a public profile</a>.</p>
+<p>We stopped before applying the plan while I checked the visibility settings. Once the existing visibility of the affected workouts was confirmed, it was supplied explicitly in the update requests.</p>
+<p>The script now refuses to update an affected workout without a known visibility value. It can preserve a value supplied by the user, but it cannot independently read that value back through an API response that does not expose it.</p>
+<h2 id="applying-one-workout-then-the-rest">Applying one workout, then the rest</h2>
+<p>Before the first write, every affected workout is fetched again and compared with the backup. This checks more than the weights: reps, set order, notes, exercise identities, and unrelated fields must still match. Each workout is checked once more immediately before its update.</p>
+<p>We applied one workout first and fetched it back to verify the result. That also established that its routine link and supersets survived the update. Only then did we continue with the rest.</p>
+<p>For every write, the script records a pending entry in a local journal, sends the update, fetches the workout again, and records the verified result. A request timing out does not automatically trigger another write. The same plan can be resumed after inspecting what the server actually saved.</p>
+<p>This matters because a successful request and a received response are different things. If the server saved the update but the response was lost, calculating another correction from the new weight would double it again. Reusing the original plan means the script can recognise the already-corrected result and skip it.</p>
+<h2 id="a-mismatch-that-was-worth-stopping-for">A mismatch that was worth stopping for</h2>
+<p>The batch did stop partway through.</p>
+<p>Hevy had refreshed an exercise’s display name to its current catalogue title. The exercise ID was unchanged, and every other checked field matched. Our comparison was strict enough to notice the name difference and stop.</p>
+<p>We inspected the saved response before resuming. The new name exactly matched the template name captured in the original download. We then added a narrow allowance: for a corrected target exercise, its display name may become that exact known template name, provided its ID and all other expected fields still match.</p>
+<p>That is the only name change the comparison allows. An arbitrary new title, a different exercise ID, or a title change in an untouched workout still fails verification. The accepted catalogue-name refreshes are recorded in the report.</p>
+<p>After adding regression tests, we resumed the same plan. The tool recognised the completed updates and continued with the remaining workouts.</p>
+<h2 id="checking-the-entire-history">Checking the entire history</h2>
+<p>The final pass fetched every original workout, including those that did not need a correction. It compared the corrected workouts with the planned result and the untouched workouts with the backup.</p>
+<p>The verification passed. Beyond the planned weight changes, the recorded differences were Hevy’s refreshed catalogue name and the server-maintained modification timestamps. Reps, notes, set types, supersets, routine links, and the other exposed workout fields were checked against their expected values.</p>
+<p>There are practical limits to that claim. A backup made through the public API covers the data the API exposes. There is no documented conditional-write mechanism, so another edit between the final read and the write remains possible. I would avoid editing the same history while running a migration like this.</p>
+<h2 id="keeping-the-tool-public-and-the-history-local">Keeping the tool public and the history local</h2>
+<p>The public repository contains the Python source, example configuration, documentation, and tests built from invented workouts. It does not contain my workout export, account or workout IDs, correction plan, visibility mapping, journal, reports, or API key.</p>
+<p>There are 31 simulated-API tests covering the formulas, preservation checks, privacy blockers, interrupted requests, repeated application, and the catalogue-name case. They do not contact Hevy.</p>
+<p>The basic workflow is:</p>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="sh"><code><span class="line"><span style="color:#59C2FF">python3</span><span style="color:#AAD94C"> fix_hevy_weights.py</span><span style="color:#AAD94C"> plan</span></span>
+<span class="line"><span style="color:#5A6673;font-style:italic"># Inspect the saved plan and resolve any blockers.</span></span>
+<span class="line"><span style="color:#59C2FF">python3</span><span style="color:#AAD94C"> fix_hevy_weights.py</span><span style="color:#AAD94C"> apply</span><span style="color:#95E6CB"> --limit</span><span style="color:#D2A6FF"> 1</span></span>
+<span class="line"><span style="color:#59C2FF">python3</span><span style="color:#AAD94C"> fix_hevy_weights.py</span><span style="color:#AAD94C"> apply</span></span>
+<span class="line"><span style="color:#59C2FF">python3</span><span style="color:#AAD94C"> fix_hevy_weights.py</span><span style="color:#AAD94C"> verify</span></span></code></pre>
+<p>The <a href="https://github.com/SirwanAfifi/hevy-weight-correction#readme">repository README</a> covers configuration and credentials. These commands are for a new migration; after a run has started, continue using its original plan. Generating a fresh plan from already-corrected history would calculate another conversion.</p>
+<p>Thanks to <a href="https://mahdi.uk/">Mahdi</a> for starting this. A small observation about my gym log became a useful exercise in working with personal data: make the intended changes explicit, keep the original state, and be able to explain every difference afterward.</p>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>
