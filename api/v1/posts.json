@@ -1,6 +1,21 @@
 {
-  "count": 180,
+  "count": 181,
   "posts": [
+    {
+      "title": "Chrome’s Decisions API: A Semantic If for the Browser",
+      "description": "Chrome is exploring a Decisions API for fast, local decisions over text. A follow-up to my experiments with local AI models in the browser.",
+      "slug": "chrome-decisions-api-semantic-if",
+      "language": "en",
+      "published": "2026-10-05",
+      "updated": null,
+      "tags": [
+        "AI",
+        "Browsers",
+        "JavaScript"
+      ],
+      "url": "https://sirwan.info/blog/en/chrome-decisions-api-semantic-if",
+      "markdownUrl": "https://sirwan.info/blog/en/chrome-decisions-api-semantic-if.md"
+    },
     {
       "title": "Fixing my Hevy workout history",
       "description": "How a conversation with Mahdi led to a small Python tool for correcting my workout history without losing the original data.",

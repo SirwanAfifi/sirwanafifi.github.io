@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/en/chrome-decisions-api-semantic-if/"><link rel="alternate" type="text/markdown" href="/blog/en/chrome-decisions-api-semantic-if.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>Chrome’s Decisions API: A Semantic If for the Browser</title><meta name="title" content="Chrome’s Decisions API: A Semantic If for the Browser"><meta name="description" content="Chrome is exploring a Decisions API for fast, local decisions over text. A follow-up to my experiments with local AI models in the browser."><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/en/chrome-decisions-api-semantic-if/"><meta property="og:title" content="Chrome’s Decisions API: A Semantic If for the Browser"><meta property="og:description" content="Chrome is exploring a Decisions API for fast, local decisions over text. A follow-up to my experiments with local AI models in the browser."><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/en/chrome-decisions-api-semantic-if/"><meta property="twitter:title" content="Chrome’s Decisions API: A Semantic If for the Browser"><meta property="twitter:description" content="Chrome is exploring a Decisions API for fast, local decisions over text. A follow-up to my experiments with local AI models in the browser."><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-mono text-[11px] uppercase tracking-[0.18em]" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">Home</a><a href="/blog/en" class="text-muted hover:text-accent transition-colors">Blog</a><a href="/fitness" class="text-muted hover:text-accent transition-colors">Fitness</a><a href="/about" class="text-muted hover:text-accent transition-colors">About</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    /now</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal "><h1 class="font-display font-bold tracking-tight text-4xl md:text-[2.75rem] leading-[1.12] text-ink">Chrome’s Decisions API: A Semantic If for the Browser</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>Published October 5, 2026</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">AI</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">Browsers</span><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">JavaScript</span></span></div></header><div class="prose max-w-none reveal reveal-2 "><section class="main-body">
+  <p>Back in 2024, I wrote about <a href="https://sirwan.info/blog/en/local-ai-models-in-browsers/">Local AI Models in Browsers</a> and later built <a href="https://sirwan.info/blog/en/weekend-with-chrome-ai/">a Chrome extension</a> to summarise pages before saving them to Obsidian. What interested me was doing useful work locally, without sending the text to a remote LLM.</p>
+<p>Chrome’s team is now exploring a <a href="https://github.com/explainers-by-googlers/decisions-api">Decisions API</a>, described as a <a href="https://www.mail-archive.com/blink-dev@chromium.org/msg17639.html"><strong>“Semantic If”</strong></a>. The idea is to score predefined answers locally in one pass, without generating text token by token. Think checking whether a bug report contains reproduction steps, or suggesting a category for a support request.</p>
+<p>A keyword check for <code>"steps"</code> would accept “I don’t know the steps” and miss “Open Settings, choose Dark Mode, then reload.” We care about the meaning of the report. With the proposed API, that check could look like this:</p>
+<p><strong>This is illustrative syntax. As of 5 October 2026, the API is an early proposal and has not been approved to ship.</strong></p>
+<pre class="astro-code ayu-dark" style="background-color:#0d1017;color:#bfbdb6; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#FF8F40">const</span><span style="color:#BFBDB6"> reportChecker </span><span style="color:#F29668">=</span><span style="color:#FF8F40"> await</span><span style="color:#BFBDB6"> DecisionModel</span><span style="color:#F29668">.</span><span style="color:#FFB454">create</span><span style="color:#BFBDB6">({</span></span>
+<span class="line"><span style="color:#BFBDB6">  context</span><span style="color:#BFBDB6B3">:</span><span style="color:#AAD94C"> "Software bug report form"</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">  questions</span><span style="color:#BFBDB6B3">:</span><span style="color:#BFBDB6"> [</span></span>
+<span class="line"><span style="color:#BFBDB6">    {</span></span>
+<span class="line"><span style="color:#BFBDB6">      id</span><span style="color:#BFBDB6B3">:</span><span style="color:#AAD94C"> "has_steps"</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">      type</span><span style="color:#BFBDB6B3">:</span><span style="color:#AAD94C"> "boolean"</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">      prompt</span><span style="color:#BFBDB6B3">:</span><span style="color:#AAD94C"> "Does the report describe actions that reproduce the problem?"</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">    }</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">  ]</span><span style="color:#BFBDB6B3">,</span></span>
+<span class="line"><span style="color:#BFBDB6">})</span><span style="color:#BFBDB6B3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF8F40">try</span><span style="color:#BFBDB6"> {</span></span>
+<span class="line"><span style="color:#FF8F40">  const</span><span style="color:#BFBDB6"> { has_steps } </span><span style="color:#F29668">=</span><span style="color:#FF8F40"> await</span><span style="color:#BFBDB6"> reportChecker</span><span style="color:#F29668">.</span><span style="color:#FFB454">decide</span><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">"The page is broken."</span><span style="color:#BFBDB6">)</span><span style="color:#BFBDB6B3">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FF8F40">  if</span><span style="color:#BFBDB6"> (has_steps</span><span style="color:#F29668">.</span><span style="color:#BFBDB6">label </span><span style="color:#F29668">===</span><span style="color:#AAD94C"> "false"</span><span style="color:#F29668"> &#x26;&#x26;</span><span style="color:#BFBDB6"> has_steps</span><span style="color:#F29668">.</span><span style="color:#BFBDB6">confidence </span><span style="color:#F29668">></span><span style="color:#D2A6FF"> 0.8</span><span style="color:#BFBDB6">) {</span></span>
+<span class="line"><span style="color:#BFBDB6">    console</span><span style="color:#F29668">.</span><span style="color:#FFB454">log</span><span style="color:#BFBDB6">(</span><span style="color:#AAD94C">"Could you add the steps to reproduce the issue?"</span><span style="color:#BFBDB6">)</span><span style="color:#BFBDB6B3">;</span></span>
+<span class="line"><span style="color:#BFBDB6">  }</span></span>
+<span class="line"><span style="color:#BFBDB6">} </span><span style="color:#FF8F40">finally</span><span style="color:#BFBDB6"> {</span></span>
+<span class="line"><span style="color:#BFBDB6">  reportChecker</span><span style="color:#F29668">.</span><span style="color:#FFB454">destroy</span><span style="color:#BFBDB6">()</span><span style="color:#BFBDB6B3">;</span></span>
+<span class="line"><span style="color:#BFBDB6">}</span></span></code></pre>
+<p>The proposed boolean labels are strings, hence <code>"false"</code>. The <code>0.8</code> threshold is just an example to evaluate with real reports; it doesn’t guarantee 80% accuracy. I’d use this for optional hints and keep the form working when the model is uncertain or unavailable. Feature detection and model download handling are omitted here.</p>
+<p>Chrome’s <a href="https://developer.chrome.com/docs/ai/prompt-api">Prompt API already supports structured output</a>. What interests me about Decisions is the prospect of making these small checks faster and cheaper to run. For my Obsidian clipper, I’d like to try suggesting whether a page belongs with tutorials, reference material or opinion pieces.</p>
+<p>One related update: Chrome is <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/k80to1ZlrbY">proposing to sunset the experimental Writer and Rewriter APIs</a> in favour of the Prompt API. The Early Preview Program consultation runs through <strong>23 October 2026</strong>; that’s a feedback deadline, not a removal date. My original post’s API examples reflect the experiments available in 2024.</p>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

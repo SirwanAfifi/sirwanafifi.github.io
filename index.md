@@ -6,10 +6,10 @@ This personal engineering journal is published in English, Farsi, and Kurdish. I
 
 ## Latest writing
 
+- [Chrome’s Decisions API: A Semantic If for the Browser](https://sirwan.info/blog/en/chrome-decisions-api-semantic-if.md)
 - [Fixing my Hevy workout history](https://sirwan.info/blog/en/fixing-hevy-workout-history.md)
 - [Teaching a Cardputer to Recognise Kurdish Numbers](https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers.md)
 - [A Dev-Only Permission Inspector Built on React Fiber](https://sirwan.info/blog/en/permission-inspector-react-fiber.md)
-- [TIL: Kotlin's Generics Syntax Is a Pragmatic Compiler Trade-off](https://sirwan.info/blog/en/kotlin-generics-syntax.md)
 
 ## Explore
 
