@@ -9,31 +9,25 @@ How a conversation with Mahdi led to a small Python tool for correcting my worko
 
 ---
 
-My friend [Mahdi](https://mahdi.uk/) pointed out an issue with how I was logging my gym weights: one dumbbell's weight for dumbbell exercises, and the plates on only one side for barbell exercises.
+A conversation with my friend [Mahdi](https://mahdi.uk/) made me revisit how I was logging weights in Hevy. For dumbbell exercises, I had entered one dumbbell's weight and wanted to track the combined weight.
 
-I wanted to update my existing history to the totals I intended to track. Rather than editing each workout manually, I worked with ChatGPT to build a small Python tool using [Hevy's public API](https://api.hevyapp.com/docs/).
-
-The rules I chose were simple:
+I used a small Python tool with [Hevy's public API](https://api.hevyapp.com/docs/) to update my history. The initial request included two rules:
 
 ```text
 dumbbell: recorded weight × 2
 standard barbell: recorded weight × 2 + bar weight
 ```
 
-I used a configurable 20 kg assumption for the standard bar. These rules reflect my requested migration, not a recommendation to double every dumbbell entry: the exercise and how you record reps matter. Specialty bars, machines, cables, and other equipment were left alone.
+After applying them, I realised the barbell assumption was wrong: those entries already included the bar and plates on both sides. Applying the formula again had inflated correct values.
 
-## Making the update safe
+The backup made this recoverable. We restored the exact original barbell weights while keeping the dumbbell corrections. Machines, cables, specialty bars, and other exercises stayed unchanged. These rules depend on how the original entries were logged; they are not a general recommendation for everyone using Hevy.
 
-The script separates the work into three steps:
+The tool separates planning from applying: save the original history, review each proposed change, then check every workout before writing and fetch it again afterward. A journal supports resuming the same run without applying changes twice.
 
-1. **Plan:** download a backup and generate the exact before-and-after weights for review. No updates yet.
-2. **Apply:** check that the workouts still match the backup, update them, and fetch each result to verify it. A journal lets the same plan resume without doubling corrected weights again.
-3. **Verify:** compare the entire original history, including untouched workouts, with the expected result.
+For the restoration, we also saved the current history and compared it with the expected result of the first update. Only the affected barbell weights were replaced, and the final comparison checked the full history, including untouched workouts.
 
-There were a couple of surprises. The API did not return workout visibility, but its write schema documented a public default. We stopped until I confirmed the existing settings, then supplied them explicitly. A public profile alone was not enough: Hevy supports [individual private workouts](https://help.hevyapp.com/hc/en-us/articles/34461853165079-How-to-keep-my-information-private-Account-Single-Private-Workout-Remove-Social-Media-Features).
+One API detail needed care: reads omitted workout visibility. I confirmed the existing settings so updates could supply them explicitly. The API could not independently verify visibility afterward. We also allowed a confirmed catalogue-name refresh while checking other fields strictly.
 
-Later, Hevy refreshed an exercise's display name while keeping its ID. The strict comparison stopped the batch. After checking the response, we allowed only that exact, known catalogue-name refresh and resumed the original plan. Already-corrected workouts were skipped.
+The lesson for me was to review the assumptions as carefully as the calculations. A successful API update can still apply the wrong rule.
 
-We verified one workout before the batch and checked the full history afterward. The final comparison passed, allowing only the planned weights, the catalogue-name refresh, and server-managed modification timestamps. Verification covers the fields the API exposes; visibility cannot be independently read back.
-
-The code, setup instructions, and 31 synthetic tests are on GitHub: **[hevy-weight-correction](https://github.com/SirwanAfifi/hevy-weight-correction)**. My API key, workout exports, backups, and run reports stayed local.
+The code and setup instructions are on GitHub: **[hevy-weight-correction](https://github.com/SirwanAfifi/hevy-weight-correction)**. My API key, workout exports, backups, and run reports stayed local.
