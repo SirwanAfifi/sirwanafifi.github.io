@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-1979/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-1979.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>رسم نمودار توسط Kendo Chart</title><meta name="title" content="رسم نمودار توسط Kendo Chart"><meta name="description" content="پیشتر مطالبی در سایت، درباره KenoUI و همچنین ویجت‌های وب آن منتشر گردید. در این مطلب نگاهی خواهیم داشت بر تعدادی از ویجت‌های Kendo UI جهت رسم نمودار. توسط Kendo UI می‌توانیم نمودار‌های زیر را ترسیم کن"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-1979/"><meta property="og:title" content="رسم نمودار توسط Kendo Chart"><meta property="og:description" content="پیشتر مطالبی در سایت، درباره KenoUI و همچنین ویجت‌های وب آن منتشر گردید. در این مطلب نگاهی خواهیم داشت بر تعدادی از ویجت‌های Kendo UI جهت رسم نمودار. توسط Kendo UI می‌توانیم نمودار‌های زیر را ترسیم کن"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-1979/"><meta property="twitter:title" content="رسم نمودار توسط Kendo Chart"><meta property="twitter:description" content="پیشتر مطالبی در سایت، درباره KenoUI و همچنین ویجت‌های وب آن منتشر گردید. در این مطلب نگاهی خواهیم داشت بر تعدادی از ویجت‌های Kendo UI جهت رسم نمودار. توسط Kendo UI می‌توانیم نمودار‌های زیر را ترسیم کن"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">رسم نمودار توسط Kendo Chart</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۹ بهمن ۱۳۹۳</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/1979">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody">پیشتر مطالبی در سایت، درباره <a href="https://vahidn.github.io/dntips.mirror/OPF/www.dntips.ir-learning-paths-toc-page-1.html">KenoUI</a>  و همچنین ویجت‌های وب آن منتشر گردید. در این مطلب نگاهی خواهیم داشت بر تعدادی از ویجت‌های Kendo UI جهت رسم نمودار. توسط Kendo UI می‌توانیم نمودار‌های زیر را ترسیم کنیم:<br/> <ul> <li>
+Bar and Column</li> <li>
+Line and Vertical Line</li> <li>
+Area and Vertical Area</li> <li>
+Bullet</li> <li>
+Pie and Donut</li> <li>
+Scatter</li> <li>
+Scatter Line</li> <li>
+Bubble</li> <li>
+Radar and Polar <br/> </li> </ul> <p>برای رسم نمودار می‌توانیم به صورت زیر عمل کنیم:</p> <p>1- ابتدا باید استایل‌های مربوط به Data Visualization را به صفحه اضافه کنیم:</p> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">&lt;link href="Content/kendo.dataviz.min.css" rel="stylesheet" /&gt;&#10;&lt;link href="Content/kendo.dataviz.default.min.css" rel="stylesheet" /&gt;</pre>
+ </div>
+2- سپس یک عنصر را بر روی صفحه جهت نمایش نمودار، تعیین می‌کنیم:
+ <div align="left" dir="ltr">
+<pre language="CSharp" name="code">&lt;div id="chart"&gt;&lt;/div&gt;</pre>
+ </div>
+برای عنصر فوق می‌توانیم درون CSS و یا به صورت inline طول و عرضی را برای چارت تعیین کنیم:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">&lt;div id="chart" style="width: 400px; height: 600px"&gt;&lt;/div&gt;</pre>
+ </div>
+با فراخوانی تابع KendoChart، چارت بر روی صفحه نمایش داده می‌شود:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">$("#chart").kendoChart();</pre>
+ </div> <br/> <p> <img src="/img/dntips/2c05d5cd6d076c09ac56.png" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p>
+همانطور که مشاهده می‌کنید هیچ داده‌ایی را هنوز برای چارت تعیین نکرده‌ایم؛ در نتیجه همانند تصویر فوق یک چارت خالی بر روی صفحه نمایش داده می‌شود. برای چارت فوق می‌توانیم خواصی از قبیل عنوان و ... را تعیین کنیم:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">$("#chart").kendoChart({&#10;    title: {&#10;         text: "چارت آزمایشی"&#10;    }&#10;});</pre>
+ </div> <b> <br/>
+نمایش داده‌ها بر روی چارت:</b> <br/>
+داده‌ها را می‌توان هم به صورت local و هم به صورت remote دریافت و بر روی چارت نمایش داد. اینکار را می‌توانیم توسط قسمت series انجام دهیم:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">$("#chart").kendoChart({&#10;    title: {&#10;         text: "عنوان چارت"&#10;    },&#10;    series: [&#10;         { name: "داده‌های چارت", data: [200, 450, 300, 125] }&#10;    ]&#10;});</pre>
+ </div>
+برای تعیین برچسب برای هر یک از داده‌ها نیز می‌توانیم خاصیت category axis را مقداردهی کنیم:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">$("#chart").kendoChart({&#10;                title: {&#10;                    text: "عنوان چارت"&#10;                },&#10;                series: [&#10;                     {&#10;                         name: "داده‌های چارت",&#10;                         data: [200, 450, 300, 125]&#10;                     }&#10;                ],&#10;                categoryAxis: {&#10;                    categories: [2000, 2001, 2002, 2003]&#10;                }&#10;            });</pre>
+ </div> <img src="/img/dntips/e3e2b53a062669967c4c.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> <br/> <b>دریافت اطلاعات از سرور:</b> <br/>
+کدهای سمت سرور:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">public class ProductsController : ApiController&#10;    {&#10;        public IEnumerable&lt;ProductViewModel&gt; Get()&#10;        {&#10;            var products = _productService.GetAllProducts();&#10;            var query = products.GroupBy(p =&gt; p.Name).Select(p =&gt; new ProductViewModel&#10;            {&#10;                Value = p.Key,&#10;                Count = p.Count()&#10;            });&#10;            return query;&#10;        }&#10;    }&#10;&#10;    public class ProductViewModel&#10;    {&#10;        public string Value { get; set; }&#10;        public int Count { get; set; }&#10;    }</pre>
+ </div> <br/>
+سپس برای دریافت اطلاعات از سمت سرور باید DataSource مربوط به چارت را مقداردهی کنیم:  <br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">var productsDataSource = new kendo.data.DataSource({&#10;                transport: {&#10;                    read: {&#10;                        url: "api/products",&#10;                        dataType: "json",&#10;                        contentType: 'application/json; charset=utf-8',&#10;                        type: 'GET'&#10;                    }&#10;                },&#10;                error: function (e) {&#10;                    alert(e.errorThrown.stack);&#10;                },&#10;                pageSize: 5,&#10;                sort: { field: "Id", dir: "desc" }&#10;            });&#10;&#10;            $("#chart").kendoChart({&#10;                title: {&#10;                    text: "عنوان چارت"&#10;                },&#10;                dataSource: productsDataSource,&#10;                series: [&#10;                    {&#10;                        field: "Count",&#10;                        categoryField: "Value",&#10;                        aggregate: "sum"&#10;                    }&#10;                ]&#10;            });</pre>
+ </div>
+همانطور که مشاهده می‌کنید در این حالت باید برای سری، field و categoryField را مشخص کنیم.<br/>
+موارد فوق را می‌توانیم به صورت یک افزونه نیز کپسوله کنیم.<br/> <br/> <b>
+کدهای افزونه jquery.ChartAjax: </b> <br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">(function($) {&#10;    $.fn.ShowChart = function(options) {&#10;        var defaults = {&#10;            url: '/',&#10;            text: 'نمودار دایره ایی',&#10;            theme: 'blueOpal',&#10;            font: '13px bbc-nassim-bold',&#10;            legendPosition: 'left',&#10;            seriesField: 'Count',&#10;            seriesCategoryField: 'Value',&#10;            titlePosition: 'top',&#10;            chartWidth: 400,&#10;            chartHeight: 400&#10;        };&#10;        var options = $.extend(defaults, options);&#10;        return this.each(function() {&#10;            var chartDataSource = new kendo.data.DataSource({&#10;                transport: {&#10;                    read: {&#10;                        url: options.url,&#10;                        dataType: "json",&#10;                        contentType: 'application/json; charset=utf-8',&#10;                        type: 'GET'&#10;                    }&#10;                },&#10;                error: function (e) {&#10;                    // handle error&#10;                }&#10;            });&#10;            $(this).kendoChart({&#10;                chartArea: {&#10;                    height: options.chartHeight&#10;                },&#10;                theme: options.theme,&#10;                title: {&#10;                    text: options.text,&#10;                    font: options.font,&#10;                    position: options.titlePosition&#10;                },&#10;                legend: {&#10;                    position: options.legendPosition,&#10;                    labels: {&#10;                        font: options.font&#10;                    }&#10;                },&#10;                seriesDefaults: {&#10;                    labels: {&#10;                        visible: false,&#10;                        format: "{0}%"&#10;                    }&#10;                },&#10;                dataSource: chartDataSource,&#10;                series: [&#10;                    {&#10;                        type: "pie",&#10;                        field: options.seriesField,&#10;                        categoryField: options.seriesCategoryField,&#10;                        aggregate: "sum",&#10;                    }&#10;                ],&#10;                tooltip: {&#10;                    visible: true,&#10;                    template: "${category}: ${value}",&#10;                    font: options.font&#10;                }&#10;            });&#10;            &#10;        });&#10;    };&#10;})(jQuery);</pre>
+ </div>
+برای افزونه فوق موارد زیر در نظر گرفته شده است:<br/> <b>chartArea</b> : جهت تعیین طول و عرض چارت<br/> <b>theme</b> : جهت تعیین قالب‌های از پیش‌تعریف شده:<br/> <ul> <li>
+Black  </li> <li>
+BlueOpal  </li> <li>
+Bootstrap  </li> <li>
+Default  </li> <li>
+Flat  </li> <li>
+HighContrast  </li> <li>
+Material  </li> <li>
+MaterialBlack  </li> <li>
+Metro  </li> <li>
+MetroBlack  </li> <li>
+Moonlight  </li> <li>
+Silver  </li> <li>
+Uniform <br/> </li> </ul> <p> <b>title</b> : جهت تعیین عنوان چارت </p> <p> <b>  legend</b> : جهت تنظیم ویژگی‌های قسمت گروه‌بندی چارت </p> <p> <b>tooltip</b> : جهت تنظیم ویژگی‌های مربوط به نمایش tooltip در هنگام hover بر روی چارت.</p> <p>لازم به ذکر است در قسمت series می‌توانید نوع چارت را تعیین کنید.<br/> </p>
+<p>نحوه استفاده از افزونه فوق:<br/> <div align="left" dir="ltr"></p>
+<pre language="CSharp" name="code">$('#chart').ShowChart({&#10;                        url: "/Report/ByUnit",&#10;                        legendPosition: "bottom"&#10;});</pre>
+ </div> <br/> <p> <img src="/img/dntips/d43d76c6c7d432577f73.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p> <br/> <b>دریافت سورس مثال جاری </b>(<a href="https://www.dntips.ir/file/userfile?name=KendoChart.zip">KendoChart.zip</a>)<br/> <div align="left" dir="ltr"> <br/> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

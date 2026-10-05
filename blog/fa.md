@@ -4,12 +4,99 @@ Published posts in Farsi, newest first.
 
 - [ترندهای تکنولوژی در سال ۲۰۲۵](https://sirwan.info/blog/fa/tech-trends-2025.md) — 2025-01-18
 - [آشنایی با TypeChat](https://sirwan.info/blog/fa/typechat.md) — 2023-08-18
+- [PowerShell 7.x - قسمت سیزدهم - ساخت یک Static Site Generator ساده توسط PowerShell و GitHub Actions](https://sirwan.info/blog/fa/dntips-3477.md) — 2023-05-14
+- [PowerShell 7.x - قسمت دوازدهم - آشنایی با GitHub Actions و بررسی یک مثال](https://sirwan.info/blog/fa/dntips-3475.md) — 2023-04-13
+- [PowerShell 7.x - قسمت یازدهم - یک مثال](https://sirwan.info/blog/fa/dntips-3466.md) — 2023-04-05
+- [PowerShell 7.x - قسمت دهم - بررسی مشکلات به همراه پرچم فرمت](https://sirwan.info/blog/fa/dntips-3465.md) — 2023-04-04
+- [PowerShell 7.x - قسمت نهم - آشنایی با Crescendo](https://sirwan.info/blog/fa/dntips-3464.md) — 2023-04-02
+- [PowerShell 7.x - قسمت هشتم - ماژول‌ها](https://sirwan.info/blog/fa/dntips-3447.md) — 2023-02-04
+- [PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell](https://sirwan.info/blog/fa/dntips-3431.md) — 2022-12-09
+- [PowerShell 7.x - قسمت ششم - ایجاد Cmdletها توسط #C](https://sirwan.info/blog/fa/dntips-3424.md) — 2022-11-12
+- [PowerShell 7.x - قسمت پنجم - اسکریپت بلاک و توابع](https://sirwan.info/blog/fa/dntips-3421.md) — 2022-11-05
+- [PowerShell 7.x - قسمت چهارم - نوشتن اولین اسکریپت](https://sirwan.info/blog/fa/dntips-3420.md) — 2022-10-22
+- [PowerShell 7.x - قسمت سوم - آشنایی با Redirection](https://sirwan.info/blog/fa/dntips-3416.md) — 2022-10-16
+- [PowerShell 7.x - قسمت دوم - آشنایی با Pipelineها](https://sirwan.info/blog/fa/dntips-3414.md) — 2022-10-05
+- [PowerShell 7x - قسمت اول - معرفی و نصب](https://sirwan.info/blog/fa/dntips-3413.md) — 2022-10-02
 - [انجام یک تسک ساده با Golang](https://sirwan.info/blog/fa/web-automation.md) — 2022-06-04
 - [بررسی خطای undefined is not iterable در JavaScript](https://sirwan.info/blog/fa/undefined-is-not-iterable.md) — 2022-06-03
 - [نکات Golang](https://sirwan.info/blog/fa/golang-basics.md) — 2021-10-13
 - [تولید فایل‌های PDF توسط React](https://sirwan.info/blog/fa/generating-pdf.md) — 2021-09-25
 - [ذخیره فایل CSV در SQL Server](https://sirwan.info/blog/fa/importing-csv-file-in-sql-server.md) — 2021-09-10
 - [آشنایی با CSV Storage Engine در MySQL](https://sirwan.info/blog/fa/csv-storage-engine.md) — 2021-09-07
+- [کار با دیتاتایپ JSON در MySQL - قسمت چهارم](https://sirwan.info/blog/fa/dntips-3268.md) — 2020-11-13
+- [کار با دیتاتایپ JSON در MySQL - قسمت سوم](https://sirwan.info/blog/fa/dntips-3267.md) — 2020-11-11
+- [کار با دیتاتایپ JSON در MySQL - قسمت دوم](https://sirwan.info/blog/fa/dntips-3266.md) — 2020-11-09
+- [کار با دیتاتایپ JSON در MySQL - قسمت اول](https://sirwan.info/blog/fa/dntips-3265.md) — 2020-11-08
+- [سری بررسی SQL Smell در EF Core - استفاده از مدل Entity Attribute Value - بخش دوم](https://sirwan.info/blog/fa/dntips-3235.md) — 2020-08-04
+- [سری بررسی SQL Smell در EF Core - استفاده از مدل Entity Attribute Value - بخش اول](https://sirwan.info/blog/fa/dntips-3233.md) — 2020-08-02
+- [سری بررسی SQL Smell در EF Core - ایجاد روابط Polymorphic - بخش دوم](https://sirwan.info/blog/fa/dntips-3229.md) — 2020-07-30
+- [سری بررسی SQL Smell در EF Core - ایجاد روابط Polymorphic - بخش اول](https://sirwan.info/blog/fa/dntips-3227.md) — 2020-07-29
+- [ایجاد HTTP API توسط Feather HTTP](https://sirwan.info/blog/fa/dntips-3219.md) — 2020-07-26
+- [استفاده از قالب مخصوص Redux Toolkit جهت ایجاد پروژه‌های React/Redux](https://sirwan.info/blog/fa/dntips-3177.md) — 2020-03-03
+- [React component lifecycle](https://sirwan.info/blog/fa/dntips-3107.md) — 2019-10-07
+- [React reconciliation](https://sirwan.info/blog/fa/dntips-3104.md) — 2019-09-18
+- [نحوه‌ی استفاده از ViewComponent درون Controller](https://sirwan.info/blog/fa/dntips-3090.md) — 2019-08-18
+- [آشنایی با LibMan در پروژه‌های ASP.NET Core](https://sirwan.info/blog/fa/dntips-3089.md) — 2019-07-21
+- [Vue Lifecycle hooks](https://sirwan.info/blog/fa/dntips-2861.md) — 2018-05-29
+- [Vue CLI](https://sirwan.info/blog/fa/dntips-2857.md) — 2018-05-26
+- [کامپوننت‌ها در Vue.js](https://sirwan.info/blog/fa/dntips-2852.md) — 2018-05-20
+- [فعال‌سازی HSTS در ASP.NET Core](https://sirwan.info/blog/fa/dntips-2798.md) — 2017-12-28
+- [C# 7 - Binary literals and digit separators](https://sirwan.info/blog/fa/dntips-2612.md) — 2017-03-19
+- [C# 7 - More Expression-Bodied Members](https://sirwan.info/blog/fa/dntips-2609.md) — 2017-03-16
+- [تولید برنامه‌های متکی به خود مبتنی بر NET Core.](https://sirwan.info/blog/fa/dntips-2591.md) — 2017-02-21
+- [آشنایی با OWIN و بررسی نقش آن در ASP.NET Core](https://sirwan.info/blog/fa/dntips-2514.md) — 2016-09-20
+- [کامپوننت‌ها در AngularJS 1.5 - قسمت دوم - مسیریابی](https://sirwan.info/blog/fa/dntips-2447.md) — 2016-07-09
+- [کامپوننت‌ها در AngularJS 1.5](https://sirwan.info/blog/fa/dntips-2417.md) — 2016-05-27
+- [مبانی TypeScript؛ پیمایشگرها](https://sirwan.info/blog/fa/dntips-2362.md) — 2016-03-31
+- [مبانی TypeScript؛ فضاهای نام](https://sirwan.info/blog/fa/dntips-2359.md) — 2016-03-30
+- [مبانی TypeScript؛ کلاس‌ها](https://sirwan.info/blog/fa/dntips-2354.md) — 2016-03-28
+- [مبانی TypeScript؛ متدها](https://sirwan.info/blog/fa/dntips-2351.md) — 2016-03-26
+- [توسعه اپلیکیشن‌های Node.js در ویژوال استودیو](https://sirwan.info/blog/fa/dntips-2346.md) — 2016-03-20
+- [برنامه نویسی Async با ES 6](https://sirwan.info/blog/fa/dntips-2308.md) — 2016-01-08
+- [ساختارهای داده‌ی توکار ES 6](https://sirwan.info/blog/fa/dntips-2302.md) — 2016-01-04
+- [Reflection در ES6](https://sirwan.info/blog/fa/dntips-2296.md) — 2016-01-01
+- [رشته‌ها در ES 6](https://sirwan.info/blog/fa/dntips-2292.md) — 2015-12-29
+- [C# 6 - Expression-Bodied Members](https://sirwan.info/blog/fa/dntips-2240.md) — 2015-10-10
+- [C# 6 - The nameof Operator](https://sirwan.info/blog/fa/dntips-2232.md) — 2015-10-04
+- [خودکارسازی فرآیند نگاشت اشیاء در AutoMapper](https://sirwan.info/blog/fa/dntips-2194.md) — 2015-08-23
+- [پیاده‌سازی الگوی Transaction Per Request در EF](https://sirwan.info/blog/fa/dntips-2178.md) — 2015-08-11
+- [تزریق وابستگی‌های رایج ASP.NET MVC به برنامه](https://sirwan.info/blog/fa/dntips-2175.md) — 2015-08-08
+- [ایجاد ایندکس منحصربفرد در EF Code first به صورت Fluent API](https://sirwan.info/blog/fa/dntips-2143.md) — 2015-07-07
+- [استفاده از Razor در فایل‌های JavaScript و CSS](https://sirwan.info/blog/fa/dntips-2080.md) — 2015-05-20
+- [نکات کار با استثناءها در دات نت](https://sirwan.info/blog/fa/dntips-2044.md) — 2015-03-20
+- [رسم نمودار توسط Kendo Chart](https://sirwan.info/blog/fa/dntips-1979.md) — 2015-01-29
+- [نمایش بلادرنگ اعلامی به تمام کاربران در هنگام درج یک رکورد جدید به صورت notification](https://sirwan.info/blog/fa/dntips-1955.md) — 2015-01-02
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت ششم (قسمت آخر)](https://sirwan.info/blog/fa/dntips-1940.md) — 2014-12-21
+- [قابلیت Templated Razor Delegate](https://sirwan.info/blog/fa/dntips-1933.md) — 2014-12-14
+- [ساخت یک Form Generator ساده در MVC](https://sirwan.info/blog/fa/dntips-1922.md) — 2014-12-03
+- [استفاده از پروایدر SQLite در Entity Framework 7](https://sirwan.info/blog/fa/dntips-1915.md) — 2014-11-17
+- [فعال‌سازی Multiple Active Result Sets](https://sirwan.info/blog/fa/dntips-1892.md) — 2014-10-15
+- [استفاده از SignalR در اندروید](https://sirwan.info/blog/fa/dntips-1890.md) — 2014-10-13
+- [نمایش بلادرنگ اعلامی به تمام کاربران در هنگام درج یک رکورد جدید](https://sirwan.info/blog/fa/dntips-1885.md) — 2014-10-07
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت پنجم](https://sirwan.info/blog/fa/dntips-1863.md) — 2014-08-22
+- [فعال سازی Multicore JIT](https://sirwan.info/blog/fa/dntips-1845.md) — 2014-07-19
+- [نکات استفاده از افزونه‌ی Web Essentials جهت کار با تصاویر](https://sirwan.info/blog/fa/dntips-1833.md) — 2014-07-10
+- [نکات استفاده از افزونه‌ی Web Essentials جهت پردازش LESS](https://sirwan.info/blog/fa/dntips-1823.md) — 2014-07-03
+- [نمایش اخطارها و پیام‌های بوت استرپ به کمک TempData در ASP.NET MVC](https://sirwan.info/blog/fa/dntips-1818.md) — 2014-06-26
+- [نحوه‌ی صحیح کار کردن با بوت استرپ](https://sirwan.info/blog/fa/dntips-1815.md) — 2014-06-23
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت چهارم](https://sirwan.info/blog/fa/dntips-1785.md) — 2014-05-12
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت سوم](https://sirwan.info/blog/fa/dntips-1751.md) — 2014-04-14
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت دوم](https://sirwan.info/blog/fa/dntips-1725.md) — 2014-02-28
+- [خواندن اطلاعات از سرور و نمایش آن توسط Angular در ASP.NET MVC](https://sirwan.info/blog/fa/dntips-1705.md) — 2014-02-07
+- [زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت اول](https://sirwan.info/blog/fa/dntips-1651.md) — 2014-01-11
+- [ایجاد یک فیلتر سفارشی جهت تعیین Layout برای کنترلر و یا اکشن متد](https://sirwan.info/blog/fa/dntips-1588.md) — 2013-12-10
+- [قابلیت Attribute Routing در ASP.NET MVC 5](https://sirwan.info/blog/fa/dntips-1583.md) — 2013-12-08
+- [تنظیمات امنیتی Glimpse](https://sirwan.info/blog/fa/dntips-1547.md) — 2013-11-05
+- [ساخت منوهای چند سطحی در ASP.NET MVC](https://sirwan.info/blog/fa/dntips-1524.md) — 2013-10-11
+- [استفاده از عبارات Cron در Quartz.NET](https://sirwan.info/blog/fa/dntips-1404.md) — 2013-06-29
+- [دریافت زمانبندی شده به روز رسانی‌های آنتی ویروس Symantec به کمک کتابخانه‌های Quartz.NET و Html Agility Pack](https://sirwan.info/blog/fa/dntips-1395.md) — 2013-06-24
+- [حذف هدرهای مربوط به وب سرور از طریق برنامه نویسی](https://sirwan.info/blog/fa/dntips-1249.md) — 2013-03-09
+- [نحوه استفاده از ViewModel در ASP.NET MVC](https://sirwan.info/blog/fa/dntips-1243.md) — 2013-03-03
+- [Import و Export کردن Breakpointها در Visual Studio](https://sirwan.info/blog/fa/dntips-1151.md) — 2012-12-12
+- [نکاتی در مورد ELMAH](https://sirwan.info/blog/fa/dntips-964.md) — 2012-07-27
+- [رمزنگاری Connection String از طریق خط فرمان](https://sirwan.info/blog/fa/dntips-959.md) — 2012-07-23
+- [30Days to Learn jQuery](https://sirwan.info/blog/fa/dntips-865.md) — 2012-06-20
+- [ویدئوهای آموزشی Entity Framework با زیرنویس فارسی](https://sirwan.info/blog/fa/dntips-847.md) — 2012-06-17
 
 ## Discovery
 

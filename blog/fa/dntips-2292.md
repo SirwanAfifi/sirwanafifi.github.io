@@ -1,0 +1,46 @@
+# رشته‌ها در ES 6
+
+در بیشتر زبان‌های برنامه‌نویسی قابلیتی تحت عنوان String Interpolation وجود دارد. منظور، فرآیند جایگزین کردن مقادیر، با یکسری placeholder درون یک رشته است. در نسخه‌های قبلی جاوا اسکریپت محدودیت‌هایی در
+
+- Published: 2015-12-29
+- Language: fa
+- Tags: DNTips
+- Canonical: https://sirwan.info/blog/fa/dntips-2292
+
+---
+
+> این نوشته نخستین بار در [دات‌نت تیپس](https://www.dntips.ir/post/2292) منتشر شده است.
+
+<div class="postBody"><p>در بیشتر زبان‌های برنامه‌نویسی قابلیتی تحت عنوان <a href="https://www.dntips.ir/post/2231">String Interpolation</a>  وجود دارد. منظور، فرآیند جایگزین کردن مقادیر، با یکسری placeholder درون یک رشته است. در نسخه‌های قبلی جاوا اسکریپت محدودیت‌هایی در استفاده از رشته‌ها وجود داشت و امکان انجام این کار به صورت توکار مهیا نبود. یعنی برای پیاده‌سازی این قابلیت می‌توانستیم با تغییر prototype شیء String و یا روش‌های دیگری این‌حالت را پیاده‌سازی کنیم (<a href="http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format">+</a>):</p> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">// First, checks if it isn't implemented yet.&#10;if (!String.prototype.format) {&#10;  String.prototype.format = function() {&#10;    var args = arguments;&#10;    return this.replace(/{(\d+)}/g, function(match, number) { &#10;      return typeof args[number] != 'undefined'&#10;        ? args[number]&#10;        : match&#10;      ;&#10;    });&#10;  };&#10;}&#10;"Hello, {0}, I'm a simple {1}, Today is: {2}".format("World", "String", new Date());&#10;&#10;// Output&#10;&#10;"Hello, World, I'm a simple String, Today is: Tue Dec 29 2015 10:21:10 GMT+0330 (Iran Standard Time)"</pre>
+ </div> </div> <p>اما در <a href="https://www.dntips.ir/post/2290">ES 6</a>  با کمک قابلیتی تحت عنوان template string این محدودیت‌ها به طور قابل ملاحظه‌ایی کاهش پیدا کرده است. در واقع یک template string، یک رشته‌ی جاوا اسکریپتی است که به جای (" ") و یا (' ') درون دو کاراکتر (` `) یا به اصطلاح back-tick character محصور خواهد شد. این ویژگی در سناریوهای مختلفی کاریرد دارد. از این ویژگی می‌توانیم جهت الحاق رشته‌ها استفاده کنیم. به عنوان مثال می‌توانیم کد زیر را:<br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">let category = "music";&#10;let id = 2112;&#10;&#10;let url = "http://apiserver/" + category + "/" + id;</pre>
+ </div> <p>با کمک template string به اینصورت بازنویسی کنیم:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">let category = "music";&#10;let id = 2112;&#10;&#10;let url = `http://apiserver/${category}/${id}`;</pre>
+ </div> <p>و یا می‌توانیم مثال ابتدای مطلب را به اینصورت بازنویسی کنیم:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">console.log(`Hello, ${"World"}, I'm a simple ${"String"}, Today is: ${new Date()}`);</pre>
+ </div> <p>همانطور که عنوان شد برای استفاده از این قابلیت باید رشته‌ی موردنظر را درون دو کاراکتر (` `) قرار دهیم. سپس درون این کاراکترها می‌توانیم literal text و همچنین یکسری placeholder جهت جایگزین کردن با مقادیر و عبارات موردنظر داشته باشیم. این placeholder‌ها نیز با استفاده از سینتکس { }$ قابل تعریف هستند.  لازم به ذکر است که عبارت موردنظرمان را باید درون دو علامت { } بنویسیم. مقادیر درون این دو علامت می‌توانند هر عبارت معتبر جاوا اسکریپتی باشند: <br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">let a = 5;&#10;let b = 10;&#10;console.log(`Fifteen is ${a + b} and\nnot ${2 * a + b}.`);&#10;// "Fifteen is 15 and&#10;// not 20."</pre>
+ </div> <p>در کد فوق متغیرهای a و b درون placeholder‌های مربوطه جایگزین خواهند شد. همانطور که مشاهده می‌کنید، این سینتکس نسبت به سینتکس + که برای الحاق رشته‌ها قبلاً مورد استفاده قرار می‌گرفت خیلی بهتر و خواناتر است.</p> <p>به صورت خلاصه:</p> <ul> <li>کد درون placeholder می‌تواند هر عبارت جاوا اسکریپتی باشد.<br/> </li> <li>اگر مقدار درون placeholder یک رشته نباشد٬ توسط متد toString به رشته تبدیل خواهد شد.<br/> </li> <li>اگر بخواهید درون template string از یک کاراکتر backtick استفاده کنید٬ می‌توانید به این صورت عمل کنید: <br/> </li> </ul> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">`\``&#10;&#10;// یا&#10;&#10;"`"</pre>
+ </div> </div>
+در واقع می‌توانید توسط یک بک‌اسلش ار کارکترهای back tick و $ صرفنظر کنید.<br/> <br/> <p> <b> </b> <b>Multiline Strings  </b> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">console.log(`string text line 1&#10;string text line 2`);&#10;// "string text line 1&#10;// string text line 2"</pre>
+ </div> <p>همانطور که مشاهده می‌کنید، template string از متن‌های چندخطی نیز به خوبی پشتیبانی می‌کند. به عنوان مثال اگر رشته‌ی فوق را درون گیومه می‌نوشتیم می‌بایستی از سینتکس + برای الحاق دو خط فوق استفاده می‌کردیم:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">console.log("string text line 1\n"+&#10;"string text line 2");&#10;// "string text line 1&#10;// string text line 2"</pre>
+ </div> <b> <br/>
+محدودیت‌های template strings</b> <div> <ul> <li>به صورت خودکار کارکترهای خاص را برای شما escape نمی‌کند (جهت جلوگیری از آسیب‌پذیری‌های XSS).<br/> </li> <li>به صورت کامل از کتابخانه‌هایی جهت اعمال internationalization پشتیبانی نمی‌کند. <br/> </li> <li>جایگزینی برای کتابخانه‌هایی مانند  <a href="https://mustache.github.io">Mustache</a> و  <a href="https://mozilla.github.io/nunjucks/">Nunjucks</a> نیست.  <br/> </li> </ul> <div> <a href="https://www.dntips.ir/post/2290">ES 6</a> قابلیت دیگری تحت عنوان tagged templates جهت رفع محدودیت‌های فوق در اختیارمان قرار می‌دهد. سینتکس آن نیز خیلی ساده است. کافی است قبل از کارکتر back-tick یک tag نوشته شود. قبل از توضیح این قابلیت مثال زیر را در نظر بگیرید:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var x = 1;&#10;var y = 3;&#10;var result = upper `${x} + ${y} is ${x+y}`;&#10;&#10;console.log(result);&#10;&#10;// Output&#10;// 1 + 3 IS 4</pre>
+ </div>
+همانطور که مشاهده می‌کنید متغیرهای x و y و همچنین مجموع آنها را درون رشته‌ی فوق قرار داده‌ایم. اما نکته‌ایی که در اینجا وجود دارد این است که مقدار خروجی دقیقاً معادل template نیست؛ زیرا در خروجی، is به صورت حروف بزرگ نمایش داده شده است. دلیل آن نیز این است که قبل از شروع کاراکتر back-tick، از یک تگ با نام upper استفاده کرده‌ایم. در واقع یک تگ چیزی بیشتر از یک تابع نیست که در ادامه پیاده‌سازی آن را مشاهده خواهید کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">let upper = function(strings, ...values){&#10;  let result = "";&#10;  for(var i = 0; i &lt; strings.length; i++){&#10;    result += strings[i];&#10;    if(i &lt; values.length){&#10;      result += values[i];&#10;    }&#10;  }&#10;  return result.toUpperCase();&#10;};</pre>
+ </div>
+تابع فوق دو پارامتر را از ورودی دریافت خواهد کرد: به اولین پارامتر parsed template string گفته می‌شود و مقدار آن متن parse شده درون کاراکتر‌های back-tick است. به پارامتر دوم نیز rest parameter گفته می‌شود که در واقع یک آرایه از مقادیر placeholder هایمان است. در نتیجه مقادیر این دو پارامتر به صورت زیر خواهد بود:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">strings = ["", " + ", " is ", ""];&#10;values  = [1, 3, 4];</pre>
+ </div>
+درون تابع با مقادیر فوق می‌توانیم کارهای مختلفی را انجام دهیم. به عنوان مثال در اینجا ایجاد همان رشته؛ اما اینبار به صورت upper case.</div> <div>در نتیجه با استفاده از این قابلیت می‌توانیم تگ‌های سفارشی زیادی را ایجاد کنیم. به عنوان مثال می‌توانیم تگی را ایجاد کنیم که تمپلیتی را دریافت کرده و آن را به HTML encoded تبدیل کند و در این‌حالت به ما در جلوگیری از حملات XSS و همچنین رفع محدویت‌هایی که در template strings داشتیم کمک خواهد کرد.</div> <div> <br/> <b>یک مثال عملی</b> <br/>
+می‌خواهیم یک tag template ایجاد کنیم که به انتهای اعداد درون یک تملپت، مقدار "تومان" را اضافه کرده و خود عدد را نیز به صورت سه رقم سه رقم جدا کند. می‌خواهیم رشته‌ی زیر همراه با مقادیر آن:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var name = "سیروان عفیفی";&#10;var price = 150000;&#10;var text = withToman `${name} با تشکر از خرید شما, مبلغ قابل پرداخت: ${price}`;&#10;alert(text);</pre>
+ </div> </div> <div>در خروجی اینچنین نمایش داده شود:</div> <div> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/34b707e9c7ebcf86e22e.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p> </div> <div>کدهای تگ withToman نیز به اینصورت میباشد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">function withToman(strings, ...values) {&#10;  return strings.reduce( function (s, v, idx) {&#10;    if(idx &gt; 0) {&#10;      if(typeof values[idx - 1] == "number") {&#10;        s += `${values[idx - 1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان`&#10;      }&#10;      else {&#10;        s += values[idx -1];&#10;      }&#10;    }&#10;    return s + v;&#10;  }, "");&#10;}</pre>
+ </div> </div> <div>همچنین در حالت پیشرفته‌تری می‌توان از این قابلیت جهت ایجاد یک DSL یا (Domain Specific Languages) ایده گرفت.</div> </div></div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-3416/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-3416.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>PowerShell 7.x - قسمت سوم - آشنایی با Redirection</title><meta name="title" content="PowerShell 7.x - قسمت سوم - آشنایی با Redirection"><meta name="description" content="در PowerShell به صورت پیش‌فرض، خروجی، PowerShell Host یا همان کنسول است. PowerShell از چندین استریم پشتیبانی میکند: Success Error Warning Verbose Debug Information برای هر کدام از استریم‌های فوق یک آی"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-3416/"><meta property="og:title" content="PowerShell 7.x - قسمت سوم - آشنایی با Redirection"><meta property="og:description" content="در PowerShell به صورت پیش‌فرض، خروجی، PowerShell Host یا همان کنسول است. PowerShell از چندین استریم پشتیبانی میکند: Success Error Warning Verbose Debug Information برای هر کدام از استریم‌های فوق یک آی"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-3416/"><meta property="twitter:title" content="PowerShell 7.x - قسمت سوم - آشنایی با Redirection"><meta property="twitter:description" content="در PowerShell به صورت پیش‌فرض، خروجی، PowerShell Host یا همان کنسول است. PowerShell از چندین استریم پشتیبانی میکند: Success Error Warning Verbose Debug Information برای هر کدام از استریم‌های فوق یک آی"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">PowerShell 7.x - قسمت سوم - آشنایی با Redirection</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۲۵ مهر ۱۴۰۱</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/3416">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody"><div>در PowerShell به صورت پیش‌فرض، خروجی، PowerShell Host یا همان کنسول است. PowerShell از چندین استریم پشتیبانی میکند:<br/> </div> <div> <ul> <li>Success</li> <li>Error</li> <li>Warning</li> <li>Verbose</li> <li>Debug</li> <li>Information </li> </ul> <div>برای هر کدام از استریم‌های فوق یک آی‌دی اختصاص داده شده‌است که به ترتیب از 1 تا ۶ میباشد. همچنین برای هرکدام یک cmdlet مجزا وجود دارد:</div> </div> <div> <table> <tbody> <tr> <td> <b>cmdlet </b> </td> <td> <b>Name </b> </td> <td> <b> Id</b> </td> </tr> <tr> <td> Write-Output</td> <td> Success</td> <td> 1</td> </tr> <tr> <td> Write-Error</td> <td> Error</td> <td> 2</td> </tr> <tr> <td> Write-Warning</td> <td> Warning</td> <td> 3</td> </tr> <tr> <td> Write-Verbose</td> <td> Verbose</td> <td> 4</td> </tr> <tr> <td> Write-Debug</td> <td> Debug</td> <td> 5</td> </tr> <tr> <td> Write-Information</td> <td> Information</td> <td> 6</td> </tr> </tbody> </table> <p>به جز دو مورد اول، بقیه cmdletها خروجی را به صورت پیش‌فرض درون کنسول نمایش نمیدهند. به عنوان مثال اسکریپت زیر را در نظر بگیرید:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Write-Output 'Output'                          &#10;Write-Error 'This is an error'                 &#10;Write-Warning 'This is a warning'              &#10;&#10;Write-Verbose 'This is verbose'                &#10;Write-Debug 'This is Debug'                    &#10;Write-Information 'This is information'</pre>
+ </div> <p>با اجرای اسکریپت فوق خروجی زیر را خواهیم داشت:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Output&#10;Write-Error: This is an error&#10;WARNING: This is a warning</pre>
+ </div> <p>همانطور که مشاهده میکنید سه cmdlet فوق، خروجی را درون کنسول نمایش نداده‌اند. این رفتار توسط مفهومی تحت عنوان Action Preference قابل تنظیم است که در واقع یک Enum است با مقدار زیر:</p> <table> <tbody> <tr> <td> </td> <td>6</td> <td> Break</td> </tr> <tr> <td>رخداد به صورت عادی مدیریت شده و برنامه ادامه پیدا میکند </td> <td>2</td> <td> Continue</td> </tr> <tr> <td>به طور کلی از رخداد صرفنظر خواهد شد؛ بدون اینکه چیزی در استریم نمایش داده شود</td> <td>4</td> <td> Ignore</td> </tr> <tr> <td>سوال پرسیده خواهد شد که برنامه را ادامه دهد یا متوقف کند </td> <td>3</td> <td> Inquire</td> </tr> <tr> <td>به طور کلی از رخداد صرفنظر خواهد شد      <br/> </td> <td>0</td> <td> SilentlyContinue</td> </tr> <tr> <td> دستور را متوقف خواهد کرد</td> <td>1 </td> <td> Stop</td> </tr> <tr> <td> دستور به نوعی معلق خواهد شد</td> <td>5</td> <td> Suspend</td> </tr> </tbody> </table> <p>بنابراین با تغییر Action Preference برای هر کدام از cmdletها میتوانیم رفتار اسکریپت قبلی را تغییر دهیم:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Write-Output 'Output'                          &#10;Write-Error 'This is an error'                 &#10;Write-Warning 'This is a warning'              &#10;&#10;$VerbosePreference = 'Continue'&#10;Write-Verbose 'This is verbose'&#10;&#10;$DebugPreference = 'Continue'&#10;Write-Debug 'This is Debug'  &#10;&#10;$InformationPreference = 'Continue'&#10;Write-Information 'This is information'</pre>
+ </div> <p>اکنون اگر اسکریپت فوق را اجرا کنید، سه خروجی آخر را نیز مشاهده خواهید کرد:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Output&#10;Write-Error: This is an error&#10;WARNING: This is a warning&#10;VERBOSE: This is verbose&#10;DEBUG: This is Debug&#10;This is information</pre>
+ </div> <p>هر کدام از استریم‌های فوق قابل redirect شدن نیز هستند؛ برای اینکار میتوانیم از redirect operatorهایی که در PowerShell پشتیبانی میشود استفاده کنیم:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">&gt;&#10;&gt;&gt;&#10;&gt;&amp;1</pre>
+ </div> <p>به عنوان مثال میتوانیم تمام خطاها یا هشدارهای درون یک اسکریپت را به یک فایل منتقل کنیم:<br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">./script.ps1 2&gt;&amp;1 &gt; .\logs.txt</pre>
+ </div> <p> <b>یا میتوانیم تمام Success streamها را به یک فایل هدایت کنیم:</b> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">.\script.ps1 &gt; script.log</pre>
+ </div> <p> <b>ارسال تمام Success, Warning, Errorها به یک فایل:</b> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">&amp;{&#10;   Write-Warning "hello"&#10;   Write-Error "hello"&#10;   Write-Output "hi"&#10;} 3&gt;&amp;1 2&gt;&amp;1 &gt; C:\Temp\redirection.log</pre>
+ </div> <p> <b>ارسال تمام استریم‌ها به یک فایل:</b> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">.\script.ps1 *&gt; script.log</pre>
+ </div> <p>همچنین میتوانیم استریمی را به اصطلاح suppress کنیم که در خروجی نمایش داده نشود:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">./script.ps1 1&gt; $null 2&gt; $null&#10;&#10;./script.ps1 *&gt; $null</pre>
+ </div> <p>از تکنیک فوق برای drop کردن خروجی‌هایی که نمیخواهیم نمایش داده شوند، استفاده میشود. در کد فوق دو Idهای ۱ و ۲ را به متغیر ویژه‌ی null هدایت کرده‌ایم؛ همچنین میتوانستیم از یک رشته‌ی خالی نیز بجای null استفاده کنیم. در خط بعدی از * استفاده کرده‌ایم که به معنای تمامی استریم‌های موجود است؛ با اینکار چیزی در خروجی نمایش داده نخواهد شد. یک روش دیگر برای drop کردن، استفاده از دستور Out-Null است:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Get-ChildItem | Out-Null</pre>
+ </div> <p>لازم به ذکر است که این cmdlet تا قبل از نسخه ۶ خیلی کند بود؛ زیرا همانند دیگر cmdletهای درون pipeline میبایست یک ورودی (InputObject) را دریافت کند که باعث میشد هزینه‌ی پردازشی بالایی داشته باشد. اما در نسخه ۶ به بعد این مشکل رفع شده‌است و پارزر به محض رسیدن به این keyword به صورت کلی خروجی را discard میکند بدون اینکه Out-Null را فراخوانی کند؛ در واقع این cmdlet یک hint برای پارزر است. روش دیگر برای drop کردن خروجی، انتساب نتیجه یک دستور به متغییر null است:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">New-Item -Type Directory -Path $path | Out-Null&#10;&#10;$null = New-Item -Type Directory -Path $path</pre>
+ </div> <p>همچنین میتوانیم خروجی یک دستور را به void تبدیل کنیم؛ که نتیجه مشابه با تکنیک‌های فوق دارد:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">[void](New-Item -Name test -ItemType Directory)</pre>
+ </div> <p> <b>یک نکته در مورد Out-Null</b> </p> <p>در loopهای بزرگ ممکن است Out-Null حتی در PowerShell 7.x هم کند عمل کند:</p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS &gt; Measure-Command { for($i=0; $i -lt 1mb; $i++) { $i | Out-Null } } | Select-Object TotalSeconds&#10;&#10;TotalSeconds&#10;------------&#10;   4.3056315&#10;&#10;&#10;PS &gt; Measure-Command { for($i=0; $i -lt 1mb; $i++) { $null = $i } } | Select-Object TotalSeconds&#10;&#10;TotalSeconds&#10;------------&#10;   1.1210884&#10;&#10;PS &gt; Measure-Command { for($i=0; $i -lt 1mb; $i++) { [void]$i } } | Select-Object TotalSeconds&#10;&#10;TotalSeconds&#10;------------&#10;    1.130507&#10;&#10;PS &gt; Measure-Command { for($i=0; $i -lt 1mb; $i++) { $i &gt; $null } } | Select-Object TotalSeconds&#10;&#10;TotalSeconds&#10;------------&#10;   1.3832427</pre>
+ </div> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

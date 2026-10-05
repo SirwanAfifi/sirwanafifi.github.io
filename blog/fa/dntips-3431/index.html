@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-3431/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-3431.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell</title><meta name="title" content="PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell"><meta name="description" content="غنی‌سازی پاورشل PowerShell توسط اپلیکیشن‌های مختلفی مانند VS Code یا Console قابل میزبانی است. با کمک این اپلیکیشن‌ها، دستورات به موتور PowerShell ارسال میشوند. این موتور است که دستورات را دریافت کرده"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-3431/"><meta property="og:title" content="PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell"><meta property="og:description" content="غنی‌سازی پاورشل PowerShell توسط اپلیکیشن‌های مختلفی مانند VS Code یا Console قابل میزبانی است. با کمک این اپلیکیشن‌ها، دستورات به موتور PowerShell ارسال میشوند. این موتور است که دستورات را دریافت کرده"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-3431/"><meta property="twitter:title" content="PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell"><meta property="twitter:description" content="غنی‌سازی پاورشل PowerShell توسط اپلیکیشن‌های مختلفی مانند VS Code یا Console قابل میزبانی است. با کمک این اپلیکیشن‌ها، دستورات به موتور PowerShell ارسال میشوند. این موتور است که دستورات را دریافت کرده"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۸ آذر ۱۴۰۱</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/3431">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody"><div> <b>غنی‌سازی پاورشل</b> </div> <div>PowerShell توسط اپلیکیشن‌های مختلفی مانند VS Code یا Console قابل میزبانی است. با کمک این اپلیکیشن‌ها، دستورات به موتور PowerShell ارسال میشوند. این موتور است که دستورات را دریافت کرده و آنها را اجرا میکند و در نهایت خروجی، درون این اپلیکشن‌های میزبان، نمایش داده خواهند شد. علاوه بر آن، یک اپلیکیشن میزبان، مسئولیت بارگذاری و اجرای اسکریپت‌ها را با هربار اجرای شل، بر عهده دارد. درون این اسکریپت‌ها، فرصت این را خواهیم داشت تا ماژول‌های موردنیازمان را بارگذاری کنیم؛ دایرکتوری پیش‌فرض را تغییر دهیم، یکسری توابع را تعریف و یا فراخوانی کنیم. بنابراین این امکان را داریم تا موتور PowerShell را درون یک پراسس NET. میزبانی کنیم. در این‌حالت باید خودمان Input/Output را هندل کنیم. به عنوان مثال میتوانیم Error streams را درون یک Message Box نمایش دهیم، یا اینکه Information streams را درون یکسری RichText Box نمایش دهیم. در <a href="https://www.youtube.com/watch?v=B-uvhmbnMx4">اینجا</a> میتوانید مراحل پیاده‌سازی یک نمونه Host سفارشی را مشاهده کنید. </div> <div>برای مشاهده‌ی مشخصات اپلیکیشن میزبان میتوانید از دستور Get-Host یا از متغیر خودکار host$ نیز استفاده کنید:  <br/> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; Get-Host&#10;&#10;Name             : ConsoleHost&#10;Version          : 7.3.0&#10;InstanceId       : c3f625f0-dad8-4325-a0a1-f6499afecb8a&#10;UI               : System.Management.Automation.Internal.Host.InternalHostUserInte&#10;                   rface&#10;CurrentCulture   : en-GB&#10;CurrentUICulture : en-GB&#10;PrivateData      : Microsoft.PowerShell.ConsoleHost+ConsoleColorProxy&#10;DebuggerEnabled  : True&#10;IsRunspacePushed : False&#10;Runspace         : System.Management.Automation.Runspaces.LocalRunspace</pre>
+ </div>
+یکسری از بخش‌های Host نیز درون سشن جاری، قابل سفارشی‌سازی هستند؛ به عنوان مثال:  <br/> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Function Write-Color {&#10;    Param (&#10;        [ValidateNotNullOrEmpty()]&#10;        [string] $newColor&#10;    )&#10;    $oldColor = $host.UI.RawUI.ForegroundColor&#10;    $host.UI.RawUI.ForegroundColor = $newColor&#10;    If ($args) {&#10;        Write-Output $args&#10;    }&#10;    Else {&#10;        $input | Write-Output&#10;    }&#10;    $host.UI.RawUI.ForegroundColor = $oldColor&#10;}</pre>
+ </div> <div> <b>سفارش‌سازی Prompt</b> </div> <div>حالت پیش‌فرض نمایش prompt اینچنین است:  <br/> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code"># macOS&#10;PS /{current_dir}&gt;&#10;&#10;# Windows&#10;PS C:\&gt;</pre>
+ </div>
+این نحوه نمایش، توسط تابعِ خودکار Prompt تعیین میشود. این تابع قابل بازنویسی نیز میباشد و خروجی آن میتواند یک شیء یا یک رشته باشد. اما توصیه میشود خروجی به صورت یک رشته‌ی فرمت شده برگردانده شود:  <br/> </div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; function prompt { "Hello, World &gt; " }                 &#10;Hello, World &gt;</pre>
+ </div>
+منظور از شیء نیز این است که حتی خروجی تابع Prompt میتواند اینچنین نیز باشد:  </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; Function prompt { Get-Process Slack }</pre>
+ </div>
+در اینحالت خروجی که درون Prompt نمایش داده میشود، پیاده‌سازی پیش‌فرض متد ToString شیء استفاده شده خواهد بود:  </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">System.Diagnostics.Process (Slack)</pre>
+ </div>
+بنابراین خروجی را میتوانید به هر حالتی که بخواهید نمایش دهید. به عنوان مثال در ادامه یک رشته‌ی فرمت شده را که حاوی زمان جاری، به همراه نام کامپیوتر میزبان است، بجای Prompt نمایش داده‌ایم:  <br/> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">function prompt { &#10;$time = (Get-Date).ToShortTimeString() &#10;"$time $([net.dns]::GetHostName()):&gt; "&#10;}&#10;&#10;# eg: &#10;11:00 Sirwans-MacBook-Pro.local:&gt;</pre>
+ </div>
+یک مثال دیگر نیز نمایش اطلاعات Git، درون پوشه‌ی جاری میباشد:  <br/> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">Function Write-Branch {&#10;    If (Test-Path .git) {&#10;        $branch = git branch --show-current&#10;        $lastCommitAuthor = git log -1 --pretty=format:"%an"&#10;        If ($null -ne $lastCommitAuthor) {&#10;            Return "($branch - latest commit written by 🤦👉 $lastCommitAuthor)"&#10;        }&#10;        Return "($branch)"&#10;    }&#10;    Else {&#10;        "Not in a git repo"&#10;    }&#10;}&#10;&#10;&#10;Function Prompt {&#10;    $CurrentDirectory = Split-Path -Path $pwd -Leaf&#10;    Write-Host "`nPS " -NoNewline -ForegroundColor Cyan&#10;    Write-Host $($CurrentDirectory) -NoNewline -ForegroundColor Green&#10;    Write-Host " $(Write-Branch) " -NoNewline -ForegroundColor Yellow&#10;    Return '&gt; '&#10;}</pre>
+ </div>
+در کد فوق ابتدا یک تابع را برای استخراج متادیتای گیت تهیه کرده‌ایم. ابتدا بررسی شده‌است که درون دایرکتوری جاری گیت، initialise شده باشد. سپس توسط دستور git branch —show-current برنچ جاری را دریافت کرده و به یک متغیر انتساب داده‌ایم. در ادامه با کمک git log آخرین کامیت (با کمک 1-) را استخراج کرده‌ایم. در ادامه درون تابع Prompt، دایرکتوری جاری را دریافت کرده و در نهایت آن را با نتیجه‌ی فراخوانی تابع Write-Branch ادغام کرده‌ایم:  <br/> </div> <div> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/4b33e4681a9a4599846d.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default; height: 109px;"/> </p> <p style="margin-left: auto; margin-right: auto;"> <b> <br/> </b> </p> <p style="margin-left: auto; margin-right: auto;"> <b>ذخیره‌سازی تقییرات شل درون پروفایل</b> </p> <p style="margin-left: auto; margin-right: auto;">نکته‌ایی که باید به آن دقت داشته باشید این است که تغییرات، تنها برای سشن جاری ذخیره خواهند شد و به محض بستن سشن، این تغییرات از حافظه پاک خواهند شد. همانطور که در <a href="/blog/fa/dntips-3424/">قسمت قبل</a>  نیز اشاره شد، برای اینکه تغییرات را همیشه موقع باز کردن شل مشاهده کنیم، باید کدها را درون پروفایل ذخیره کنیم. به این معنا که هر وقت PowerShell را باز کنیم، توابع و کدهایی که درون پروفایل تعریف شده باشند، به صورت سراسری قابل استفاده خواهند بود. توسط متغیر خودکار Profile$ میتوانیم پروفایل جاری را مشاهده کنیم:   </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; $Profile&#10;&#10;{HOME_USER}/.config/powershell/Microsoft.PowerShell_profile.ps1</pre>
+ </div> <p style="margin-left: auto; margin-right: auto;">دقت داشته باشید که پرفایل فوق، برای Host جاری و همچنین کاربر جاری میباشد. به این معنا که محتویات داخل این پروفایل، تاثیری در دیگر شل‌هایی که توسط اپلیکیشن‌های دیگر میزبانی میشوند ندارد. توسط دستور زیر میتوانید لیست پروفایل‌ها را مشاهده نمائید:  <br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; $PROFILE | Get-Member -Type NoteProperty | Select-Object Name, Value&#10;&#10;Name                   Value&#10;----                   -----&#10;AllUsersAllHosts&#10;AllUsersCurrentHost&#10;CurrentUserAllHosts&#10;CurrentUserCurrentHost</pre>
+ </div> <p style="margin-left: auto; margin-right: auto;">مسیر هر کدام از پروفایل‌های فوق را میتوانید در <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3#the-profile-files">اینجا</a> مشاهده نمائید. همچنین توسط پرچم NoProfile- میتوانیم PowerShell را بدون بارگذاری هیچ پروفایلی باز کنیم:  <br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">pwsh -NoProfile</pre>
+ </div> <p style="margin-left: auto; margin-right: auto;">بنابراین برای ذخیره‌ی تغییرات قبل، میتوانیم توابع تعریف شده را درون پروفایل موردنظر قرار دهیم، تا با هربار باز شدن سشن، کدهای موردنظر قابل استفاده باشند:  <br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">PS /&gt; code $PROFILE.CurrentUserCurrentHost&#10;&#10;Function Write-Branch {&#10;    # As before&#10;}&#10;&#10;&#10;Function Prompt {&#10;    # As before&#10;}</pre>
+ </div> <p style="margin-left: auto; margin-right: auto;">اگر از ماژول <a href="https://ohmyposh.dev/">Posh</a> برای تغییر ظاهر PowerShell استفاده کرده باشید، متوجه خواهید شد که این ماژول نیز به همین روال کار میکند؛ یعنی با هربار باز شدن سشن، این دستور برای بارگذاری Prompt سفارشی فراخوانی خواهد شد:  <br/> </p> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">oh-my-posh init pwsh | Invoke-Expression</pre>
+ </div> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/3a93f6d3255459e0f4ac.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default; height: 181px;"/> </p> <p style="margin-left: auto; margin-right: auto;"> <br/> </p> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

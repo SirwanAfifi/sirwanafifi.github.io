@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-2302/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-2302.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>ساختارهای داده‌ی توکار ES 6</title><meta name="title" content="ساختارهای داده‌ی توکار ES 6"><meta name="description" content="در ES 5 تنها آرایه (Array) و آبجکت (Object) را به عنوان ساختار داده‌ایی، به صورت توکار در اختیار داریم. Array یک کالکشن مبتنی بر ایندکس است. همچنین می‌توان هر نوع مقداری را در آن ذخیره کرد: var collec"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-2302/"><meta property="og:title" content="ساختارهای داده‌ی توکار ES 6"><meta property="og:description" content="در ES 5 تنها آرایه (Array) و آبجکت (Object) را به عنوان ساختار داده‌ایی، به صورت توکار در اختیار داریم. Array یک کالکشن مبتنی بر ایندکس است. همچنین می‌توان هر نوع مقداری را در آن ذخیره کرد: var collec"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-2302/"><meta property="twitter:title" content="ساختارهای داده‌ی توکار ES 6"><meta property="twitter:description" content="در ES 5 تنها آرایه (Array) و آبجکت (Object) را به عنوان ساختار داده‌ایی، به صورت توکار در اختیار داریم. Array یک کالکشن مبتنی بر ایندکس است. همچنین می‌توان هر نوع مقداری را در آن ذخیره کرد: var collec"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">ساختارهای داده‌ی توکار ES 6</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۴ دی ۱۳۹۴</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/2302">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody">در ES 5 تنها آرایه (Array) و آبجکت (Object) را به عنوان ساختار داده‌ایی، به صورت توکار در اختیار داریم.<div>Array یک کالکشن مبتنی بر ایندکس است. همچنین می‌توان هر نوع مقداری را در آن ذخیره کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">var collection = ['a', 1, /3/, {}];</pre>
+ </div>
+یعنی هر کدام از اعضای آرایه می‌توانند جنس متفاوتی داشته باشند. همانطور که در کد فوق مشاهده می‌کنید اعضای آرایه به ترتیب از کاراکتر، عدد، عبارت با قاعده و در نهایت یک شیء خالی تشکیل شده است. همانطور که عنوان شد آرایه‌ها در جاوا اسکریپت همانند دیگر زبان‌های برنامه‌نویسی مبتنی بر ایندکس هستند، یعنی می‌توان براساس ایندکس به هر کدام از اعضای آرایه دسترسی داشت:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">collection[0];</pre>
+ </div>
+می‌توان از پراپرتی length نیز برای دریافت سایز آرایه استفاده کرد: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">collection.length</pre>
+ </div>
+همانطور که در مثال ابتدای بحث مشاهده کردید، آرایه‌ها در جاوا اسکریپت توسط سینتکس [] قابل تعریف هستند. تعدادی تابع توکار برای کار با آرایه‌ها موجود است که در <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#Array_methods">اینجا</a> می‌توانید لیست کامل آنها را مشاهد نمائید. همچنین می‌توانید از کتابخانه‌های دیگری مانند Underscore.js که در واقع هدف آن‌ها افزودن یکسری قابلیت‌ها به جاوا اسکریپت است، استفاده کنید:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var numbers = [1, 2, 3];&#10;&#10;_.each(numbers, function (num) {&#10;    write(num);&#10;});</pre>
+ </div>
+در ES 6 تعدادی تابع جدید به Array اضافه شده که کار با آرایه‌ها را ساده‌تر کرده است. در ادامه تعدادی از این توابع را بررسی خواهیم کرد.</div> <div> <b>تابع find</b> </div> <div>این تابع از ورودی، یک callback را گرفته و نتایج یافته شده را در خروجی برمی‌گرداند:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var ary = [1, 5, 10];&#10;var match = ary.find(item =&gt; item &gt; 8);</pre>
+ </div> <b>تابع findIndex</b> </div> <div>این تابع مشابه تابع find عمل می‌کند با این تفاوت که در خروجی ایندکس عنصر یافته شده را برمی‌گرداند:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var match = ary.findIndex(item =&gt; item &gt; 8);</pre>
+ </div> <b>تابع fill</b> </div> <div>از این تابع می‌توان جهت مقداردهی اعضای آرایه با پارامتر موردنظر استفاده کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">ary.find('a');&#10;// خروجی ["a", "a", "a"]</pre>
+ </div> </div>
+لازم به ذکر است، به این تابع می‌توانیم دو پارامتر دیگر را نیز پاس دهیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var ary = [1, 5, 10, 5, 6];&#10;ary.fill('a', 2, 3)</pre>
+ </div>
+در کد فوق پارامتر دوم یعنی نقطه شروع و پارامتر سوم یعنی نقطه پایان:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">// خروجی&#10;[ 1, 5, "a", 5, 6 ]</pre>
+ </div> <b>تابع copyWithin</b> </div> <div>با کمک این تابع می‌توانیم قسمتی از یک آرایه را کپی کرده و در محل دیگری از آرایه ذخیره کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">[1, 2, 3, 4, 5].copyWithin(0, 3);</pre>
+ </div>
+کد فوق از نقطه‌ی سوم شروع به کپی کردن آیتم‌ها کرده و آنها را در موقعیت صفرم آرایه به بعد قرار می‌دهد. در نتیجه خروجی آن به این صورت است:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">// [4, 5, 3, 4, 5]</pre>
+ </div>
+لازم به ذکر است که یک پارامتر سوم را نیز می‌توانیم جهت تعیین نقطه‌ی پایان به تابع فوق اضافه کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">[1, 2, 3, 4, 5].copyWithin(0, 3, 4);&#10;// خروجی &#10;// [4, 2, 3, 4, 5]</pre>
+ </div> </div>
+در ES 6 علاوه بر سینتکس literal می‌توان از سازنده‌ی کلاس Array نیز جهت تعریف آرایه‌ها، استفاده کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var ary = new Array(1, 2);</pre>
+ </div>
+کد فوق یک آرایه را با دو مقدار 1 و 2 ایجاد می‌کند. اگر بخواهیم یک آیتم جدید را به آرایه‌ی فوق اضافه کنیم، باید آن را نیز به پارامترهای فوق اضافه کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var ary = new Array(1, 2, 3);</pre>
+ </div>
+ممکن است فکر کنید توسط کد زیر آرایه‌ایی تنها با یک آیتم برای ما ایجاد خواهد شد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var ary = new Array(3);</pre>
+ </div>
+در واقع کد فوق یک آرایه با اندازه‌ی سه و محتوای undefined را برای شما ایجاد خواهد کرد. در نتیجه برای ایجاد آرایه‌ایی با یک آیتم و مقدار 3 باید از متد Of کلاس Array استفاده کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var Ofary = Array.of(3);</pre>
+ </div> </div> <div> <b> <br/> </b> </div> <div> <b>Set</b> </div> <div>Set یک ساختار داده‌ایی جدید در ES 6 است. این ساختار داده‌ایی امکان تعریف کالکشنی از مقادیر را به صورت unique، در اختیارمان قرار می‌دهد. برخلاف آرایه‌ها مقادیر درون Set نمی‌تواند یکسان باشند. در کد زیر نحوه‌ی ایجاد یک Set نشان داده شده است:</div> <div> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set();&#10;set.add(1);&#10;set.add(2);&#10;set.add(3);&#10;console.log(set.size); // logs 3</pre>
+ </div> </div>
+ Set به صورت یک مجموعه‌ی  <a href="https://www.dntips.ir/post/2297">Iterable</a> است یعنی می‌توان اعضای این مجموعه را آیتم به آیتم پیمایش کرد. همانطور که در کد فوق مشاهده می‌کنید توسط add می‌توانیم آیتم جدیدی را به مجموعه اضافه کنیم. همچنین اگر مایل بودید می‌توانید مجموعه را توسط یک آرایه به صورت زیر نیز مقداردهی کنید: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set([1, 2, 3]);&#10;console.log(set.size); // logs 3</pre>
+ </div>
+از توابع has, delete, clear نیز به ترتیب می‌توان جهت خالی کردن مجموعه، حذف یک آیتم از مجموعه و بررسی یک آیتم در مجموعه استفاده کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set();&#10;set.has(1); // false&#10;set.add(1);&#10;set.has(1); // true&#10;set.clear();&#10;set.has(1); // false&#10;set.add(1);&#10;set.add(2);&#10;set.size;   // 2&#10;set.delete(2);&#10;set.size;   // 1</pre>
+ </div>
+از تابع feorach نیز می‌توانیم برای حرکت بین آیتم‌های مجموعه استفاده کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set();&#10;set.add('Vahid');&#10;set.add('Sirwan');&#10;&#10;var i = 0;&#10;set.forEach(item =&gt; i++);&#10;console.log(i);</pre>
+ </div>
+همچنین از سینتکس for...of نیز می‌توان برای پیمایش مجموعه استفاده کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set();&#10;set.add('Vahid');&#10;set.add('Sirwan');&#10;&#10;var i = 0;&#10;for(let item of set) {&#10;    i++;&#10;}&#10;console.log(i);</pre>
+ </div>
+Set دارای یک تابع دیگر با نام entries است. با کمک این تابع یک iterator از مجموعه برگردانده خواهد شد که با کمک تابع next می‌توان به عناصر بعدی مجموعه دسترسی پیدا کرد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var set = new Set();&#10;set.add("Sirwan");&#10;set.add(1);&#10;set.add("Afifi");&#10;&#10;var setIter = set.entries();&#10;&#10;console.log(setIter.next().value); // ["Sirwan", "Sirwan"]&#10;console.log(setIter.next().value); // [1, 1]&#10;console.log(setIter.next().value); // ["Afifi", "Afifi"]</pre>
+ </div> </div> <b> <div> <b> <br/> </b> </div>
+Map</b> </div> <div>برخلاف Set که یک مجموعه از مقادیر (values) است، Map یک مجموعه از کلید/مقدار (key/value) می‌باشد. در اینجا نیز کلیدها باید unique باشند. همچنین می‌توان از هر نوعی برای کلید استفاده کرد. برای افزودن یک مقدار به این مجموعه باید از تابع set استفاه کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">var map = new Map();&#10;map.set('name', 'Sirwan');&#10;&#10;map.get('name'); // Sirwan</pre>
+ </div>
+همانطور که مشاهده می‌کنید توسط تابع get نیز می‌توانیم با استفاده از کلید، به مقدار آن دسترسی داشته باشیم. همچنین می‌توانیم آرایه‌ایی از آرایه‌ها را به عنوان کلید در یک Map ذخیره کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;"> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var map = new Map([['name', 'Sirwan'], ['age', 27]]);&#10;map.has('age'); // true&#10;map.get('age'); // 27&#10;map.get('name'); // Sirwan</pre>
+ </div> <br/> </div>
+نکته‌ایی که در استفاده از Map باید به آن دقت کنید این است که در اینجا هیچ تبدیل نوعی را بر روی کلیدها نداریم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var map = new Map();&#10;&#10;map.set(1, true);&#10;map.has("1"); // false&#10;&#10;map.set("1", true);&#10;map.has("1"); // true</pre>
+ </div>
+همانند Set برای Map نیز می‌توانیم از توابع delete و clear استفاده کنیم. برای استفاده از foreach باید برای callback دو پارامتر را ارائه دهیم. یکی برای value و دیگری برای key:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">var map = new Map([['name', 'Sirwan'], ['age', 27]]);&#10;var i = 0;&#10;map.forEach(function (value, key) {&#10;    i++;&#10;});&#10;console.log(i); // log 2</pre>
+ </div>
+برای سینتکس for...of نیز می‌توانیم به اینصورت عمل کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">for (var [key, value] of map) {&#10;    i++;&#10;}</pre>
+ </div> <div>شاید بپرسید که همین کار را می‌توان با استفاده از آرایه‌ها نیز انجام داد و چه نیازی به یک ساختار داده‌ایی جدید است؟</div> <div>اگر بخواهید Map را با استفاده از آرایه‌ها شبیه‌سازی کنید باید از Associative Arrays استفاده کنید؛ به زبان ساده در این‌حالت به جای استفاده از عدد به جای ایندکس می‌توان رشته‌ها نیز استفاده کرد. به عنوان مثال کد زیر را در نظر بگیرید:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">var newArray = new Array();&#10;newArray["name"] = "Sirwan";&#10;newArray["lastName"] = "Afifi";</pre>
+ </div>
+در اینجا ایندکس‌ها به ترتیب name و lastName هستند و به عنوان کلید مورد استفاده قرار می‌گیرند. کلیدها نیز به مقادیر "Sirwan" و "Afifi" مپ شده‌اند. حالت فوق شبیه به یک دیکشنری عمل می‌کند. اما همانطور که عنوان شد در اینجا کلید به صورت رشته‌ایی است و نمی‌توان از اشیاء به عنوان کلید استفاده کرد؛ زیرا در نهایت تبدیل به رشته خواهند شد:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">let user1 = { name: "Vahid" };&#10;let user2 = { name: "Sirwan" };&#10;&#10;let result = {};&#10;result[user1] = 10;&#10;result[user2] = 20;&#10;&#10;console.log(result[user1]); // logs 20&#10;console.log(result[user2]); // logs 20</pre>
+ </div>
+در کد فوق هر کدام از شیء‌ها را به عنوان کلید در نظر گرفته‌ایم و برای هر کدام مقادیر 10 و 20 را ست کرده‌ایم. اما خروجی هر کدام 20 است؛ در حالیکه باید به ترتیب عدد 10 و سپس عدد 20 در خروجی نمایش داده شود. دلیل آن نیز کاملاً مشخص است زیرا اگر در جاوا اسکریپت برای یک شیء تابع toString را فراخوانی کنیم، مقدار "[object object]" در خروجی نمایش داده خواهد شد. در نتیجه در کد فوق در واقع هر بار ایندکس "[object object]" را به‌روز رسانی کرده‌ایم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">result["[object object]"] = 10;&#10;result["[object object]"] = 20;&#10;&#10;console.log(result["[object object]"]); // logs 20&#10;console.log(result["[object object]"]); // logs 20</pre>
+ </div> <br/> </div> <b>WeakMap and WeakSet</b> </div> <div>فرض کنید درون DOM سه عنصر div دارید و می‌خواهید این سه div را درون یک Set ذخیره کنید:</div> <div> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/3d8822a0299cc30fae94.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p> </div> <div>در این‌حالت آیتم‌های درون Set ارجاع مستقیمی را به عناصر موجود در DOM دارند. اکنون حالتی را در نظر بگیرید که بخواهیم یکی از عناصر موجود درون DOM را حذف کنیم. در اینحالت آیتم درون Set که به این عنصر اشاره دارد هنوز حذف نشده است و همچنان ارجاعی را به آن عنصر دارد. بنابراین تا زمانیکه آیتم از Set حذف نشود Garbage Collector نمی‌تواند حافظه‌ی اختصاص داده شده را مجدداً بازیابی کند. در نتیجه استفاده از Set و یا Map در چنین سناریوهایی منجر به نشتی حافظه خواهد شد. برای حل این مشکل می‌توانیم از WeakMap و یا WeakSet استفاده کنیم. در این‌حالت WeakMap و WeakSet ارجاع مستقیمی به اشیایی که به آنها اضافه می‌شوند، ندارند. در نتیجه GC به راحتی می‌تواند حافظه‌ی اختصاص داده شده را بعد از حذف اشیاء بازیابی کند.</div> <div>صرف‌نظر از رفع مشکل حافظه، WeakMap و WeakSet شبیه به Map و Set عمل می‌کنند، اما یکسری محدودیت‌هایی در استفاده از آنها وجود دارد:</div> <div> <ul> <li> <span style="line-height: 1.5em; font-size: 9pt;">WeakMap و WeakSet فاقد پراپرتی‌های size, entries, values و متد foreach هستند.</span> <br/> </li> <li> <span style="line-height: 1.5em; font-size: 9pt;">WeakMap همچنین فاقد keys است.</span> <br/> </li> </ul> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

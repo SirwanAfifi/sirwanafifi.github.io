@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-2296/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-2296.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>Reflection در ES6</title><meta name="title" content="Reflection در ES6"><meta name="description" content="در زبان‌های برنامه‌نویسی مانند سی‌شارپ و یا جاوا می‌توانیم از Reflection جهت خواندن متادیتاها استفاده کنیم. به عنوان مثال امکان تعریف پراپرتی و یا متدها و حتی تایپ‌هایی در زمان اجرا را در اختیارمان قر"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-2296/"><meta property="og:title" content="Reflection در ES6"><meta property="og:description" content="در زبان‌های برنامه‌نویسی مانند سی‌شارپ و یا جاوا می‌توانیم از Reflection جهت خواندن متادیتاها استفاده کنیم. به عنوان مثال امکان تعریف پراپرتی و یا متدها و حتی تایپ‌هایی در زمان اجرا را در اختیارمان قر"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-2296/"><meta property="twitter:title" content="Reflection در ES6"><meta property="twitter:description" content="در زبان‌های برنامه‌نویسی مانند سی‌شارپ و یا جاوا می‌توانیم از Reflection جهت خواندن متادیتاها استفاده کنیم. به عنوان مثال امکان تعریف پراپرتی و یا متدها و حتی تایپ‌هایی در زمان اجرا را در اختیارمان قر"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">Reflection در ES6</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۱ دی ۱۳۹۴</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/2296">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody"><div>در زبان‌های برنامه‌نویسی مانند سی‌شارپ و یا جاوا می‌توانیم از <a href="https://www.dntips.ir/search?term=Reflection">Reflection</a> جهت خواندن متادیتاها استفاده کنیم. به عنوان مثال امکان تعریف پراپرتی و یا متدها و حتی تایپ‌هایی در زمان اجرا را در اختیارمان قرار می‌دهد. اما از آنجائیکه جاوا اسکریپت یک زبان داینامیک است، این قابلیت کمتر مورد توجه قرار گرفته است. در جاوا اسکریپت حین کار با کلاس‌ها و اشیاء، ممکن است نیاز داشته باشید تا از اعضای یک کلاس
+کوئری بگیرید و یا اینکه یک سری پراپرتی و متدهایی را در زمان اجرا به اشیاء‌تان اضافه کنید و یا مواردی از این دست.</div> <div>تا قبل از <a href="https://www.dntips.ir/post/2290">ES 6</a> می‌توانستیم به این صورت به اعضای یک کلاس دسترسی داشته باشیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">var person = {&#10;    name: 'Sirwan',&#10;    family: 'Afifi',&#10;    doWork: function () {&#10;        //....&#10;    }&#10;};&#10;&#10;for (var prop in person) {&#10;    console.log(prop); &#10;}</pre>
+ </div>
+همانطور که مشاهده می‌کنید، توسط سینتکس for...in می‌توانیم به اعضای person دسترسی داشته باشیم. همچنین برای دسترسی به مقادیر هر کدام از اعضای آن می‌توانستیم از bracket syntax استفاده کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">for (var prop in person) {&#10;    console.log(person[prop]); &#10;}</pre>
+ </div>
+لازم به ذکر است می‌توانستیم از متدهایی همانند Array.isArray, Object.getOwnPropertyDescriptor و حتی Object.keys نیز جهت دسترسی به اعضای پنهان یک شیء استفاده کنیم. اکنون قابلیت توکاری با نام Reflect این امکان را به <a href="https://www.dntips.ir/post/2290">ES 6</a> اضافه کرده است تا تمام اعمال فوق را به راحتی انجام داد.<br/> <br/> </div> <div> <b>Reflect</b> </div> <div>همانطور که عنوان شد توسط API جدیدی با نام Reflect، می‌توانیم به سادگی اعمال مربوط به Reflection را انجام دهیم. به عنوان مثال برای دسترسی به اعضای شیء person با استفاده از این API می‌توانیم به این صورت عمل کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var person = {&#10;    name: 'Sirwan',&#10;    family: 'Afifi',&#10;    doWork: function () {&#10;        //....&#10;    }&#10;};&#10;&#10;for (let prop of Reflect.enumerate(person)) {&#10;    console.log(`the value for ${prop} is ${person[prop]}`); &#10;  &#10;}</pre>
+ </div>
+در کد فوق از متد enumerate استفاده شده است، این متد یک پارامتر target را از ورودی می‌پذیرد. در واقع target همان شیءایی است که می‌خواهید پراپرتی‌های آن را پیمایش کنید. همچنین مقدار بازگشتی این متد یک iterator می‌باشد. مفهوم iterator نیز خیلی ساده است. به زبان ساده، امکان پیمایش درون یک کالکشن را در اختیارمان قرار می‌دهد. نکته‌ی دیگری که در کد فوق وجود دارد، استفاده از سینتکس for..of است، این سینتکس شبیه به for...in عمل می‌کند، با این تفاوت که در اینجا به جای پیمایش درون یکسری keys، درون values پیمایش می‌کنیم. در نتیجه برای پیمایش iterators باید از این سینتکس استفاده شود.<br/> <br/> </div> <div> <b>متدهای شیء Reflect</b> </div> <div>در ادامه تعدادی از متدهای شیء Reflect را مشاهده می‌کنید:</div> <div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="JScript" name="code">Reflect.get(target, name, [receiver])&#10;&#10;Reflect.set(target, name, value, [receiver])&#10;&#10;Reflect.has(target, name)&#10;&#10;Reflect.apply(target, receiver, args)&#10;&#10;Reflect.construct(target, args)&#10;&#10;Reflect.getOwnPropertyDescriptor(target, name)&#10;&#10;Reflect.defineProperty(target, name, desc)&#10;&#10;Reflect.getPrototypeOf(target)&#10;&#10;Reflect.setPrototypeOf(target, newProto)&#10;&#10;Reflect.deleteProperty(target, name)&#10;&#10;Reflect.enumerate(target)&#10;&#10;Reflect.preventExtensions(target)&#10;&#10;Reflect.isExtensible(target)&#10;&#10;Reflect.ownKeys(target)</pre>
+ </div>
+تعدادی از متدهای فوق خیلی مشابه متدهای Object هستند؛ با این تفاوت که متدهای فوق اطلاعات بهتری را بر می‌گردانند. به عنوان مثال متد Reflect.defineProperty در صورت ایجاد شدن یک پراپرتی جدید، مقدار true را برمی‌گرداند: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var yay = Reflect.defineProperty(target, 'foo', { value: 'bar' })&#10;if (yay) {&#10;  // yay!&#10;} else {&#10;  // oops.&#10;}</pre>
+ </div>
+اگر همین کار را با استفاده از متد Object.defineProperty انجام می‌دادیم می‌بایست کد را درون بلاک try/catch می‌نوشتیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">try {&#10;  Object.defineProperty(target, 'foo', { value: 'bar' })&#10;  // yay!&#10;} catch (e) {&#10;  // oops.&#10;}</pre>
+ </div>
+به عنوان یک مثال دیگر، قبلاً برای حذف یک پراپرتی از یک شیء از کلمه کلیدی delete به اینصورت استفاده می‌کردیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var target = { foo: 'bar', baz: 'wat' }&#10;delete target.foo&#10;console.log(target)&#10;// &lt;- { baz: 'wat' }</pre>
+ </div>
+اما با کمک متد Reflect.deleteProperty به راحتی می‌توانیم یک پراپرتی را حذف کنیم: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">var target = { foo: 'bar', baz: 'wat' }&#10;let isDeleted = Reflect.deleteProperty(target, 'foo')&#10;console.log(isDeleted );&#10;// true</pre>
+ </div>
+در این‌حالت همانند متد Reflect.defineProperty، در صورت موفقیت‌آمیز بودن عمل حذف، مقدار true برگردانده می‌شود. </div> <div>برای مشاهده‌ی لیست کامل متدهای فوق می‌توانید به <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect">اینجا</a> مراجعه کنید. همچنین می‌توان با مراجعه به قسمت <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect#Browser_compatibility">Browser compatibility</a> وضعیت پشتیبانی هر کدام را در مرورگرهای مختلف مشاهده کرد.<br/> <br/> </div> <div> <b>نکاتی که در حین کار کردن با Reflect باید در نظر بگیرید:</b> </div> <div> <ul> <li>این شیء فاقد متد [[Construct]] می‌باشد. یعنی نمی‌تواند همراه با کلمه‌ی کلیدی new مورد استفاده قرار گیرد. </li> <li>همچنین نمی‌توان آن را همانند یک تابع فراخوانی کرد.</li> <li>تمام متدهای آن به صورت استاتیک تعریف شده‌اند (همانند شیء Math).</li> </ul> </div> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-1583/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-1583.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>قابلیت Attribute Routing در ASP.NET MVC 5</title><meta name="title" content="قابلیت Attribute Routing در ASP.NET MVC 5"><meta name="description" content="در ASP.NET MVC 5 یک قابلیت جدید با نام Attribute Routing افزوده شده است که به ما این اجازه را می‌دهد تا Route‌های سفارشی برای کنترلرها و اکشن متدهایمان با اضافه کردن یک Attribute با نام Route تعریف کن"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-1583/"><meta property="og:title" content="قابلیت Attribute Routing در ASP.NET MVC 5"><meta property="og:description" content="در ASP.NET MVC 5 یک قابلیت جدید با نام Attribute Routing افزوده شده است که به ما این اجازه را می‌دهد تا Route‌های سفارشی برای کنترلرها و اکشن متدهایمان با اضافه کردن یک Attribute با نام Route تعریف کن"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-1583/"><meta property="twitter:title" content="قابلیت Attribute Routing در ASP.NET MVC 5"><meta property="twitter:description" content="در ASP.NET MVC 5 یک قابلیت جدید با نام Attribute Routing افزوده شده است که به ما این اجازه را می‌دهد تا Route‌های سفارشی برای کنترلرها و اکشن متدهایمان با اضافه کردن یک Attribute با نام Route تعریف کن"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">قابلیت Attribute Routing در ASP.NET MVC 5</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۷ آذر ۱۳۹۲</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/1583">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody">در ASP.NET MVC 5 یک قابلیت جدید با نام <a href="http://blogs.msdn.com/b/webdev/archive/2013/10/17/attribute-routing-in-asp-net-mvc-5.aspx">Attribute Routing</a>  افزوده شده است که به ما این اجازه را می‌دهد تا Route‌های سفارشی برای کنترلرها و اکشن متدهایمان با اضافه کردن یک Attribute با نام Route تعریف کنیم. <br/>
+همچنین می‌توانیم ویژگی RoutePrefix نیز برای کنترلرهایمان تعریف کنیم تا همه‌ی اکشن متدها نیز از آن پیروی کنند. این ویژگی را با ذکر یک مثال معرفی میکنیم :<br/> <br/>
+ابتدا لازم است این ویژگی را در کلاس RouteConfig فعال کنیم :<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">public static void RegisterRoutes(RouteCollection routes) &#10;{&#10;    routes.IgnoreRoute("{resource}.axd/{*pathInfo}");&#10;&#10;    routes.MapMvcAttributeRoutes();&#10;&#10;    // ...&#10;}</pre>
+ </div> <br/>
+قدم بعدی تنها افزودن Attribute‌های ذکر شده به کنترلر و اکشن متدهایمان می‌باشد، به طور مثال ما در اینجا یک کنترلر با نام ProductController ایجاد کرده ایم و کنترلر را با ویژگی RoutePrefix مزین کرده ایم که در این حالت به ASP.NET MVC می‌گویم که تمام اکشن متدهای داخل این کنترلر با products شروع شوند :<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">[RoutePrefix("products")]&#10;public class ProductsController : Controller &#10;{&#10;    public ProductsController() &#10;    { &#10;    }&#10;&#10;    [Route]&#10;    public ActionResult Index() &#10;    {&#10;        return View();&#10;    }&#10;}</pre>
+ </div> <br/>
+همانطور که در کد فوق ملاحظه می‌کنید اکشن متد Index را با افزودن ویژگی Route که آدرس ~/products را تطبیق می‌دهد تعیین کرده ایم.<br/> <b> <br/>
+نحوه تعیین Optional URI Parameter :</b> <br/>
+کافی است علامت سوال را به آخر پارامتر اضافه کنیم :<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">[Route("{id?}")]&#10;public ActionResult Index(int id) &#10;{&#10;   return View();&#10;}</pre>
+ </div> <b>نحوه تعیین Default Route </b> :<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">[RoutePrefix("products")]&#10;[Route("{action=index}")]&#10;public class ProductsController : Controller &#10;{&#10;    public ProductsController() &#10;    { &#10;    }&#10;    public ActionResult Index() &#10;    {&#10;        return View();&#10;    }&#10;}</pre>
+ </div> <b> نحوه تعیین Constraint برای Routeها : </b> <br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">[Route("{id:int}")]&#10;public ActionResult Delete(int id) &#10;{&#10;   return View();&#10;}</pre>
+ </div>
+در مثال فوق گفته ایم که Id باید از نوع عدد صحیح باشد در غیر اینصورت آن را تطبیق نمی‌دهد.<br/>
+همچنین می‌توانید از عبارات Regex نیز استفاده کنید به طور مثال در کد زیر پارامتر title باید یک متن و یا عبارت فارسی باشد در غیر اینصورت تطبیقی صورت نمی‌گیرد:<br/> <div align="left" dir="ltr">
+<pre language="CSharp" name="code">​[Route("{title:regex(\u0600-\u06FF)}")]&#10;public ActionResult Search(string title)&#10;{&#10;   return View();&#10;}​</pre>
+ </div>
+در لینکی که در بالا معرفی شده لیست کامل Constraint‌ها را می‌توانید مشاهده نمائید،<br/></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="fa" dir="rtl"><head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v7.0.2"><!-- Fonts: Geist Mono (display/meta/code) + Hanken Grotesk (body) + Vazirmatn (fa/ku) --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Geist+Mono:wght@400..700&family=Vazirmatn:wght@300..700&display=swap" rel="stylesheet"><!-- Agent theme: ❯ codex by default; visitors can choose another theme --><script>
+  (() => {
+    const THEMES = ["claude", "codex", "gemini"];
+    const DEFAULT_THEME = "codex";
+
+    const root = document.documentElement;
+
+    const selectedTheme = () => {
+      const stored = localStorage.getItem("agent-theme");
+      return THEMES.includes(stored) ? stored : DEFAULT_THEME;
+    };
+
+    const setTheme = (theme) => {
+      THEMES.forEach((t) => root.classList.remove(`theme-${t}`));
+      root.classList.add(`theme-${theme}`);
+      document.querySelectorAll("[data-set-theme]").forEach((btn) => {
+        btn.setAttribute("aria-pressed", String(btn.dataset.setTheme === theme));
+      });
+    };
+
+    const fade = (fn) => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+        return fn();
+      root.classList.add("theme-fade");
+      fn();
+      setTimeout(() => root.classList.remove("theme-fade"), 1000);
+    };
+
+    const sync = () => setTheme(selectedTheme());
+
+    sync();
+
+    document.addEventListener("DOMContentLoaded", sync, { once: true });
+    document.addEventListener("astro:after-swap", sync);
+    document.addEventListener("astro:page-load", sync);
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-set-theme]");
+      if (!btn) return;
+      const theme = btn.dataset.setTheme;
+      if (!THEMES.includes(theme)) return;
+      localStorage.setItem("agent-theme", theme);
+      fade(() => setTheme(theme));
+    });
+  })();
+</script><!-- Canonical URL --><link rel="canonical" href="https://sirwan.info/blog/fa/dntips-2240/"><link rel="alternate" type="text/markdown" href="/blog/fa/dntips-2240.md"><link rel="describedby" href="/llms.txt"><!-- Primary Meta Tags --><title>C# 6 - Expression-Bodied Members</title><meta name="title" content="C# 6 - Expression-Bodied Members"><meta name="description" content="در ادامه مطالب منتشر شده در رابطه با قابلیت‌های جدید سی‌شارپ 6، در این مطلب به بررسی یکی دیگر از این قابلیت‌ها، با نام Expression-Bodied Members خواهیم پرداخت. در واقع در سی‌شارپ 6، هدف، ساده‌سازی سین"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://sirwan.info/blog/fa/dntips-2240/"><meta property="og:title" content="C# 6 - Expression-Bodied Members"><meta property="og:description" content="در ادامه مطالب منتشر شده در رابطه با قابلیت‌های جدید سی‌شارپ 6، در این مطلب به بررسی یکی دیگر از این قابلیت‌ها، با نام Expression-Bodied Members خواهیم پرداخت. در واقع در سی‌شارپ 6، هدف، ساده‌سازی سین"><meta property="og:image" content="https://sirwan.info/blog-placeholder-1.jpg"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://sirwan.info/blog/fa/dntips-2240/"><meta property="twitter:title" content="C# 6 - Expression-Bodied Members"><meta property="twitter:description" content="در ادامه مطالب منتشر شده در رابطه با قابلیت‌های جدید سی‌شارپ 6، در این مطلب به بررسی یکی دیگر از این قابلیت‌ها، با نام Expression-Bodied Members خواهیم پرداخت. در واقع در سی‌شارپ 6، هدف، ساده‌سازی سین"><meta property="twitter:image" content="https://sirwan.info/blog-placeholder-1.jpg"><link href="/pagefind/pagefind-ui.css" rel="stylesheet"><script src="/pagefind/pagefind-ui.js"></script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/assets/ClientRouter.astro_astro_type_script_index_0_lang.2i1RQzKf.js"></script><link rel="stylesheet" href="/assets/Header.BtBZbs67.css"><style>.astro-route-announcer{clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;top:0;left:0;overflow:hidden}
+</style></head><body class="antialiased"><header class="pt-8"><div class="max-w-3xl mx-auto px-6"><div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-4"><a href="/" class="font-display text-xl font-bold tracking-tight text-ink hover:text-accent transition-colors">Sirwan Afifi<span class="text-accent">_</span></a><div class="flex items-baseline gap-x-5 gap-y-2 flex-wrap"><nav class="flex items-baseline gap-x-5 gap-y-2 flex-wrap font-rtl text-sm" aria-label="Primary navigation"><a href="/" class="text-muted hover:text-accent transition-colors">خانه</a><a href="/blog/fa" class="text-muted hover:text-accent transition-colors">وبلاگ</a><a href="/fitness" class="text-muted hover:text-accent transition-colors" lang="en" hreflang="en">Fitness<span class="sr-only"> (English)</span></a><a href="/about" class="text-muted hover:text-accent transition-colors">درباره</a><a href="/now" class="flex items-center gap-1.5 text-accent text-muted hover:text-accent transition-colors">
+                    <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+                    الان چیکار میکنم؟</a></nav><!-- Agent theme switcher --><div class="flex items-center gap-1 font-mono text-sm border border-line rounded-full px-1.5 py-0.5" role="group" aria-label="Agent theme" dir="ltr"><button data-set-theme="claude" title="Claude Code" aria-label="Claude Code theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#d97757]">✻</button><button data-set-theme="codex" title="Codex" aria-label="Codex theme" aria-pressed="true" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#19c37d]">❯</button><button data-set-theme="gemini" title="Gemini" aria-label="Gemini theme" aria-pressed="false" class="px-1.5 text-muted transition-colors hover:text-ink aria-pressed:text-[#699bf7]">✦</button></div></div></div><div class="rule"></div></div></header><main class="max-w-3xl mx-auto px-6 pt-12" data-pagefind-body><article><header class="mb-8 reveal rtl"><h1 class="font-rtl font-bold text-4xl md:text-[2.75rem] leading-[1.12] text-ink">C# 6 - Expression-Bodied Members</h1><div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 border-y border-line py-3 font-rtl text-xs text-muted"><span class="glyph text-accent" aria-hidden="true"></span><span>منتشر شده ۱۸ مهر ۱۳۹۴</span><span class="flex flex-wrap items-center gap-1.5"><span class="rounded-full border border-line bg-surface px-2.5 py-0.5 text-ink">DNTips</span></span></div></header><div class="prose max-w-none reveal reveal-2 rtl font-rtl"><section class="main-body">
+  <blockquote>
+<p>این نوشته نخستین بار در <a href="https://www.dntips.ir/post/2240">دات‌نت تیپس</a> منتشر شده است.</p>
+</blockquote>
+<div class="postBody"><a href="https://www.dntips.ir/search/label/c%23%206.0">در ادامه مطالب</a> منتشر شده در رابطه با قابلیت‌های جدید سی‌شارپ 6، در این مطلب به بررسی یکی دیگر از این قابلیت‌ها، با نام Expression-Bodied Members خواهیم پرداخت. در واقع در سی‌شارپ 6، هدف، ساده‌سازی سینتکس و افزایش بهره‌وری برنامه‌نویس می‌باشد. در نسخه‌های قبلی سی‌شارپ برای یکسری از اعمال روتین می‌بایستی روالی‌هایی را مدام تکرار می‌کردیم؛ به عنوان مثال در تعریف پراپرتی‌های یک کلاس در حالت get-only باید هر بار توسط return مقداری را برگردانیم: <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public class Person&#10;{&#10;   public string FirstName { get; set; }&#10;   public string LastName { get; set; }&#10;   public string FullName&#10;   {&#10;       get&#10;       {&#10;                return FirstName + " " + LastName;&#10;       }&#10;   }&#10;}</pre>
+ </div>
+نوشتن پراپرتی‌هایی همانند FullName منجر به نوشتن خطوط کد اضافه‌تری خواهد شد، هرچند می‌توان این حالت را با برداشتن خطوط اضافی بهبود بخشید:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public string FullName&#10;{&#10;       get { return FirstName + " " + LastName; }&#10;}</pre>
+ </div>
+اما در سی‌شارپ 6 میتوان آن را توسط expression body به یک خط کاهش داد!<br/> <br/> </div> <div> <b>استفاده از expression body برای پراپرتی‌های get-only (فقط خواندنی): </b> </div> <div> <b> <br/> </b> </div> <div>اگر در کلاس‌هایتان پراپرتی‌های get-only دارید، به راحتی می‌توانید بدنه‌ی پراپرتی را با استفاده از expression syntax خلاصه‌نویسی کنید. در واقع شما با استفاده از سینتکس lambda expression اقدام به نوشتن بدنه پراپرتی‌های موردنظرتان می‌کنید. یعنی به جای نوشتن کدی مانند: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">{ get { return your expression; } }</pre>
+ </div>
+به راحتی می‌توانید از سینتکس زیر استفاده نمائید:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">=&gt; your expression;</pre>
+ </div>
+به عنوان مثال، میتوان پراپرتی FullName را در کلاس Person با کمک قابلیت expression body به صورت زیر بازنویسی کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public class Person&#10;{&#10;        public string FirstName { get; set; }&#10;        public string LastName { get; set; }&#10;&#10;        public string FullName =&gt; FirstName + " " + LastName;&#10;}</pre>
+ </div>
+با کد فوق به راحتی توانستیم قسمت‌های اضافه‌ای را حذف کنیم. اکنون ممکن است بپرسید آیا این تغییر در performance برنامه تاثیری دارد؟ خیر؛ زیرا سینتکس فوق دقیقاً همان کد ILی را تولید خواهد کرد که در حالت عادی تولید می‌شود. همچنین delegateی را تولید نخواهد کرد؛ بلکه تنها از سینتکس lambda expression برای خلاصه‌نویسی بدنه پراپرتی استفاده می‌کند. در حال حاضر برای حالت setter سینتکسی ارائه نشده است.<br/> <br/> </div> <div> <b>استفاده از expression body برای Indexerها:  </b> <br/> </div> <div> <b> <br/> </b> </div> <div>همچنین از این قابلیت برای Indexerها نیز میتوان استفاده کرد، مثلاً به جای نوشتن کد زیر:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public string this[int number]&#10;{&#10;            get&#10;            {&#10;                if (number &gt;= 0 &amp;&amp; number &lt; _values.Length)&#10;                {&#10;                    return _values[number];&#10;                }&#10;                return "Error";&#10;            }&#10;}</pre>
+ </div>
+می‌توانیم کد فوق را به این صورت خلاصه‌نویسی کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public string this[int number] =&gt; (number &gt;= 0 &amp;&amp; number &lt; _values.Length) ? _values[number] : "Error";</pre>
+ </div> <b>نکته:</b> توجه داشته باشید که در هر دو حالت فوق تنها می‌توانیم برای get از expression body استفاده کنیم، هنوز سینتکسی برای حالت set ارائه نشده است.<br/> <br/> </div> <div> <b>استفاده از expression body برای متدها:   </b> <br/> </div> <div> <b> <br/> </b> </div> <div>برای متدها نیز می‌توانیم از قابلیت عنوان شده استفاده نمائیم، به عنوان مثال اگر داخل کلاس Person متد زیر را داشته باشیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public override string ToString()&#10;{&#10;      return FirstName;&#10;}</pre>
+ </div>
+می‌توانیم آن را به صورت زیر بنویسیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public override string ToString() =&gt; FirstName;</pre>
+ </div>
+همانطور که مشاهده می‌کنید به جای نوشتن curly braces یا {} از lambda arrow یا &lt;= استفاده کرده‌ایم. در اینجا عبارت سمت راست lambda arrow نمایانگر بدنه‌ی متد است. همچنین برای متدهای دارای پارامتر نیز به این صورت عمل می‌کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public int DoubleTheValue(int someValue) =&gt; someValue * 2;</pre>
+ </div>
+یک عضو از کلاس که به صورت expression body نوشته شده باشد، expression bodied member نامیده می‌شود. این عضو از کلاس در ظاهر شبیه به عبارات لامبدای ناشناس (anonymous lambda expression) است. اما یک expression bodied member باید دارای نام، مقدار بازگشتی و بدنه متد باشد. </div> <div>تقریباً تمامی access modifierها در این حالت قابلیت استفاده را دارند. تنها متدهای abstract نمی‌توانند استفاده شوند.<br/> <br/> </div> <div> <b>محدودیت‌های Expression Bodied Members  </b> </div> <div> <ul> <li>یکی از محدودیت‌های استفاده از expression body داشتن چندین خط دستور برای بدنه متدهایمان است. در اینحالت باید از روش سابق (statement body) استفاده نمائید. </li> <li>یکی دیگر از محدودیت‌ها عدم امکان استفاده از if, else, switch است. به عنوان مثال نمی‌توان کد زیر را با داشتن if و else به صورت expression body نوشت:</li> </ul> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public override string ToString()&#10;{&#10;       if (MiddleName != null)&#10;       {&#10;                return FirstName + " " + MiddleName + " " + LastName;&#10;       }&#10;       else&#10;       {&#10;                return FirstName + " " + LastName;&#10;       }&#10;}</pre>
+ </div>
+برای حالت فوق به عنوان یک روش جایگزین می‌توان از conditional operator استفاده کرد: </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public override string ToString() =&gt;&#10;                    (MiddleName != null)&#10;                    ? FirstName + " " + MiddleName + " " + LastName&#10;                    : FirstName + " " + LastName;</pre>
+ </div> <ul> <li>همچنین نمی‌توان از for, foreach, while, do در expression body استفاده کرد، به جای آن می‌توان از عبارت‌های LINQ برای بدنه تابع استفاده کرد. به عنوان مثال متد زیر:<br/> </li> </ul> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public IEnumerable&lt;int&gt; SmallNumbers()&#10;{&#10;    for (int i = 0; i &lt; 10; i++)&#10;        yield return i;&#10;}</pre>
+ </div>
+را می‌توان در حالت expression body به این صورت نوشت:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public IEnumerable&lt;int&gt; SmallNumbers() =&gt; from n in Enumerable.Range(0, 10)&#10;                                                                         select n;</pre>
+ </div>
+و یا به این صورت:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public IEnumerable&lt;int&gt; SmallNumbers() =&gt; Enumerable.Range(0, 10).Select(n =&gt; n);</pre>
+ </div> <ul> <li>همانطور که عنوان شد، استفاده از expression body در قسمت پراپرتی‌ها تنها محدود به پراپرتی‌های get-only (فقط خواندنی) میباشد.<br/> </li> <li>استفاده از این قابلیت برای متدهای سازنده</li> <li>استفاده در رخدادها</li> <li>استفاده در finalizers</li> </ul> <div>نکته: اگر می‌خواهید expression bodied member شما هم initializer داشته باشد و همچنین یک read only auto property<span> باشد، باید مقداری سینتکس آن را تغییر دهید. همانطور که می‌دانید auto propertyها نیازی به backing field<span> ندارند؛ بلکه در زمان کامپایل به صورت خودکار تولید خواهند شد. در نتیجه برای مقداردهی اولیه به backing fieldها می‌توانیم درون سازنده کلاس آنها را initialize کنیم:  </span> </span> </div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">    public class Person&#10;    {&#10;        public string FirstName { get; set; }&#10;        public string LastName { get; set; }&#10;&#10;        public Person()&#10;        {&#10;            this.FirstName = "Sirwan";&#10;            this.LastName = "Afifi";&#10;        }&#10;    }</pre>
+ </div>
+برای نوشتن پراپرتی‌های فوق به صورت expression body می‌توانیم به این صورت عمل کنیم:</div> <div> <div align="left" dir="ltr" style="direction: ltr;">
+<pre language="CSharp" name="code">public string FirstName { get; set; } = "Sirwan";&#10;public string LastName { get; set; } = "Afifi";</pre>
+ </div>
+اگر ReSharper را نصب کرده باشید، به شما پیشنهاد می‌دهد که از expression body استفاده نمائید: :<br/> </div> <div>برای حالت فوق:</div> <div> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/4b5a83266f22fd4de28b.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p> <p style="margin-left: auto; margin-right: auto;">برای پراپرتی‌ها:</p> <p style="margin-left: auto; margin-right: auto;"> <img src="/img/dntips/174a2bd13e5c1478922f.jpg" style="display: block; margin-left: auto; margin-right: auto; cursor: default;"/> </p> <p style="margin-left: auto; margin-right: auto;"> <br/> </p> <p style="margin-left: auto; margin-right: auto;"> <br/> </p> </div> </div></div>
+
+</section></div></article><div class="rule mt-14 mb-10"></div><section class="giscus prose m-auto p-0 mb-0"></section><script src="https://giscus.app/client.js" data-repo="SirwanAfifi/sirwanafifi.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnk0Nzc4MzQ5MQ==" data-category="Blog Post Comments" data-category-id="DIC_kwDOAtkeQ84Cl5DV" data-mapping="url" data-strict="0" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script></main><footer class="mt-20 pb-10"><div class="max-w-3xl mx-auto px-6"><div class="rule mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.15em] text-muted"><div class="space-y-1.5"><p>&copy; 2026 Sirwan Afifi</p><p><span class="glyph text-accent"></span> Built with Astro</p><p class="flex flex-wrap gap-x-3"><a class="hover:text-accent transition-colors" href="/contact">Contact</a><a class="hover:text-accent transition-colors" href="/privacy">Privacy</a><a class="hover:text-accent transition-colors" href="/developers">Developers</a></p></div><p class="flex items-center gap-2 shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>Writing from the UK</p></div></div></footer></body></html>

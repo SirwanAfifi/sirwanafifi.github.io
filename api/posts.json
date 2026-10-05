@@ -1,5 +1,5 @@
 {
-  "count": 92,
+  "count": 179,
   "posts": [
     {
       "title": "Teaching a Cardputer to Recognise Kurdish Numbers",
@@ -483,6 +483,58 @@
       "markdownUrl": "https://sirwan.info/blog/fa/typechat.md"
     },
     {
+      "title": "PowerShell 7.x - قسمت سیزدهم - ساخت یک Static Site Generator ساده توسط PowerShell و GitHub Actions",
+      "description": "در این مطلب میخواهیم یک مثال دیگر از PowerShell را به همراه GitHub Actions را بررسی کنیم. هدف ایجاد یک Static Site Generator و در نهایت پابلیش خروجی استاتیک بر روی GitHub Pages است. روالی که در ادامه ",
+      "slug": "dntips-3477",
+      "language": "fa",
+      "published": "2023-05-14",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3477",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3477.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت دوازدهم - آشنایی با GitHub Actions و بررسی یک مثال",
+      "description": "GitHub Actions، یک راه‌حل Continuous Integration است که توسط آن می‌توان یکسری trigger workflowهایی را حین push کردن، ارسال PR و … اجرا کرد. برای کارهایی از قبیل اجرای تست‌های خودکار، اجرای یکسری تست و",
+      "slug": "dntips-3475",
+      "language": "fa",
+      "published": "2023-04-13",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3475",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3475.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت یازدهم - یک مثال",
+      "description": "به عنوان یک تمرین میخواهیم یک پروژه گیت ساده را به صورت زیر visualise کنیم: برای تولید چنین نموداری از میتوانیم Mermaid استفاده کنیم. یکی از انواع دیاگرام‌هایی را که پشتیبانی میکند، Gitgraph میباشد. د",
+      "slug": "dntips-3466",
+      "language": "fa",
+      "published": "2023-04-05",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3466",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3466.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت دهم - بررسی مشکلات به همراه پرچم فرمت",
+      "description": "خیلی از ابزارهای command line، براساس فلسفه‌ی bash تهیه شده‌اند؛ به این معنا که امکان استفاده‌ی مستقیم از bash، درون دستورات وجود دارد. به عنوان مثال فرض کنید میخواهیم لیست branchهای یک مخزن گیت را با",
+      "slug": "dntips-3465",
+      "language": "fa",
+      "published": "2023-04-04",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3465",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3465.md"
+    },
+    {
       "title": "iPhone",
       "description": "On April 30, 2023, I was out with my friend, and we were traveling back home from London Waterloo to Guildford. We had to wait a couple of hours for the train to Guildford, so we decided to pass the time by traveling back and forth from Waterloo to the Northern line. While on the tube, both of us fell asleep, and my phone was on my lap...",
       "slug": "iphone-theft",
@@ -495,6 +547,19 @@
       ],
       "url": "https://sirwan.info/blog/en/iphone-theft",
       "markdownUrl": "https://sirwan.info/blog/en/iphone-theft.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت نهم - آشنایی با Crescendo",
+      "description": "همانطور که در ابتدای این سری نیز اشاره شد، یکی از ویژگی‌های منحصربه‌فرد PowerShell، طراحی شیءگرای آن است، به‌طوریکه خروجی cmdletهای آن، به صورت آبجکت هستند. همچنین، در PowerShell امکان اجرای کامندهای ",
+      "slug": "dntips-3464",
+      "language": "fa",
+      "published": "2023-04-02",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3464",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3464.md"
     },
     {
       "title": "Visualising Your IoT Data",
@@ -514,6 +579,32 @@
       "markdownUrl": "https://sirwan.info/blog/en/visualising-your-iot-data.md"
     },
     {
+      "title": "PowerShell 7.x - قسمت هشتم - ماژول‌ها",
+      "description": "توسط ماژول‌ها میتوانیم یک مجموعه از دستورات را گروه‌بندی کنیم و تحت عنوان یک پکیج ارائه دهیم که برای دیگران نیز قابل استفاده باشند. برای ایجاد یک ماژول کافی است اسکریپت‌های خود را درون یک فایل با پسون",
+      "slug": "dntips-3447",
+      "language": "fa",
+      "published": "2023-02-04",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3447",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3447.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت هفتم - غنی‌سازی PowerShell",
+      "description": "غنی‌سازی پاورشل PowerShell توسط اپلیکیشن‌های مختلفی مانند VS Code یا Console قابل میزبانی است. با کمک این اپلیکیشن‌ها، دستورات به موتور PowerShell ارسال میشوند. این موتور است که دستورات را دریافت کرده",
+      "slug": "dntips-3431",
+      "language": "fa",
+      "published": "2022-12-09",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3431",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3431.md"
+    },
+    {
       "title": "Different ways of adding your signature on a PDF",
       "description": "My coworker wrote some Python code to add a signature on PDFs. Since Python isn't my thing, I wrote the same code in a few of my favorite languages. Probably because I haven't used Python in production or because of its wired syntax (Maybe I only like curly-brace languages). Anyway, here's the Python code I mentioned:",
       "slug": "different-ways-of-adding-your-signature-on-a-pdf",
@@ -530,6 +621,84 @@
       ],
       "url": "https://sirwan.info/blog/en/different-ways-of-adding-your-signature-on-a-pdf",
       "markdownUrl": "https://sirwan.info/blog/en/different-ways-of-adding-your-signature-on-a-pdf.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت ششم - ایجاد Cmdletها توسط #C",
+      "description": "تا اینجا با کمک توابع توانستیم PowerShell را به اصطلاح extend کنیم. نوع دیگر دستورات، command letها هستند. این نوع دستورات را با کمک یک زبان دات‌نتی میتوانیم ایجاد کنیم. به این نوع دستورات complied cm",
+      "slug": "dntips-3424",
+      "language": "fa",
+      "published": "2022-11-12",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3424",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3424.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت پنجم - اسکریپت بلاک و توابع",
+      "description": "همانطور که در قسمت قبل اشاره شد، توابع نیز یکی از ویژگی‌های اصلی PowerShell هستند. قبل از بررسی بیشتر توابع بهتر است ابتدا با مفهوم script block آشنا شویم. script blocks به مجموعه‌ایی از دستورات گفته ",
+      "slug": "dntips-3421",
+      "language": "fa",
+      "published": "2022-11-05",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3421",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3421.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت چهارم - نوشتن اولین اسکریپت",
+      "description": "دستوراتی که درون کنسول مینویسیم، تک خطی یا one-linear هستند؛ هر چند میتوان با زدن کلیدهای Shift + Enter دستورات چندخطی هم نوشت یا حتی با گذاشتن semicolon بعد از هر دستور میتوانیم دریک خط چندین دستور ر",
+      "slug": "dntips-3420",
+      "language": "fa",
+      "published": "2022-10-22",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3420",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3420.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت سوم - آشنایی با Redirection",
+      "description": "در PowerShell به صورت پیش‌فرض، خروجی، PowerShell Host یا همان کنسول است. PowerShell از چندین استریم پشتیبانی میکند: Success Error Warning Verbose Debug Information برای هر کدام از استریم‌های فوق یک آی",
+      "slug": "dntips-3416",
+      "language": "fa",
+      "published": "2022-10-16",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3416",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3416.md"
+    },
+    {
+      "title": "PowerShell 7.x - قسمت دوم - آشنایی با Pipelineها",
+      "description": "PowerShell برای نام‌گذاری Commandها، از ساختار verb-noun استفاده میکند. به عنوان مثال Get-Command, New-Service, Get-Help نمونه‌هایی از این Commandها در PowerShell هستند. لازم به ذکر است که در PowerShe",
+      "slug": "dntips-3414",
+      "language": "fa",
+      "published": "2022-10-05",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3414",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3414.md"
+    },
+    {
+      "title": "PowerShell 7x - قسمت اول - معرفی و نصب",
+      "description": "PowerShell یک ابزار task automation است که همزمان یک command-line shell، زبان اسکریپتی و یک فریم‌ورک configuration management نیز میباشد. برخلاف دیگر shellها که مبتنی بر رشته هستند، ورودی و خروجی آن ا",
+      "slug": "dntips-3413",
+      "language": "fa",
+      "published": "2022-10-02",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3413",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3413.md"
     },
     {
       "title": "انجام یک تسک ساده با Golang",
@@ -712,6 +881,58 @@
       "markdownUrl": "https://sirwan.info/blog/en/OS-Notification.md"
     },
     {
+      "title": "کار با دیتاتایپ JSON در MySQL - قسمت چهارم",
+      "description": "MySQL قادر به ایندکس کردن ستون‌های JSON نمی‌باشد. برای حل این مشکل میتوانیم از generated columnها استفاده کنیم. منظور، ایجاد ستون‌هایی است که مقدارشان به صورت محاسبه شده و براساس ستون‌های دیگر میباشد؛",
+      "slug": "dntips-3268",
+      "language": "fa",
+      "published": "2020-11-13",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3268",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3268.md"
+    },
+    {
+      "title": "کار با دیتاتایپ JSON در MySQL - قسمت سوم",
+      "description": "در قسمت قبل توابعی را که برای تغییر دیتای JSON مورد استفاده قرار میگیرند، بررسی کردیم. در ادامه به بررسی روش‌های تبدیل یک دیتای غیر JSON به خروجی JSON و بلعکس خواهیم پرداخت. کوئری‌هایی که تا اینجا نوش",
+      "slug": "dntips-3267",
+      "language": "fa",
+      "published": "2020-11-11",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3267",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3267.md"
+    },
+    {
+      "title": "کار با دیتاتایپ JSON در MySQL - قسمت دوم",
+      "description": "توابع ایجاد محتوای JSON در قسمت قبل برای ذخیره‌سازی محتوای JSON از string literal استفاده کردیم؛ یعنی در واقع همانند یک مقدار رشته‌ای، فیلد JSON را مقداردهی کردیم: INSERT INTO tableName VALUES ( '{ \"n",
+      "slug": "dntips-3266",
+      "language": "fa",
+      "published": "2020-11-09",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3266",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3266.md"
+    },
+    {
+      "title": "کار با دیتاتایپ JSON در MySQL - قسمت اول",
+      "description": "تا قبل از اضافه شدن دیتاتایپ JSON به صورت توکار در MySQL، داده‌های JSON را تنها میتوانستیم با فرمت رشته‌ای، درون دیتابیس ذخیره کنیم: CREATE TABLE tableName ( jsonData CHAR(250) -- or VARCHAR, TEXT, BL",
+      "slug": "dntips-3265",
+      "language": "fa",
+      "published": "2020-11-08",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3265",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3265.md"
+    },
+    {
       "title": "MySQL - Transforming JSON data into relational tables",
       "description": "MySQL provides some built-in functions to work with JSON data. One of which is JSON_TABLE which maps JSON data into a temporary relational table.",
       "slug": "Transforming-JSON-data-into-relational-tables",
@@ -740,6 +961,71 @@
       "markdownUrl": "https://sirwan.info/blog/en/getting-started-with-sequelize.md"
     },
     {
+      "title": "سری بررسی SQL Smell در EF Core - استفاده از مدل Entity Attribute Value - بخش دوم",
+      "description": "در مطلب قبلی ، مدل EAV را معرفی کردیم و گفتیم که این نوع پیاده‌سازی در واقع یک SQL Smell است؛ زیرا کوئری نویسی را سخت میکند و همچنین به دلیل عدم امکان تعریف constraints، کنترلی بر روی صحت دیتاهای وارد",
+      "slug": "dntips-3235",
+      "language": "fa",
+      "published": "2020-08-04",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3235",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3235.md"
+    },
+    {
+      "title": "سری بررسی SQL Smell در EF Core - استفاده از مدل Entity Attribute Value - بخش اول",
+      "description": "یکی از چالش‌های دیتابیس‌های رابطه‌ایی، ذخیره‌سازی داده‌هایی با ساختار داینامیک است. در حالت عادی، یک جدول مجموعه‌ایی از موجودیت‌ها است. هر موجودیت نیز شامل یکسری ویژگی‌های (Attributes) مشخص می‌باشد. ا",
+      "slug": "dntips-3233",
+      "language": "fa",
+      "published": "2020-08-02",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3233",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3233.md"
+    },
+    {
+      "title": "سری بررسی SQL Smell در EF Core - ایجاد روابط Polymorphic - بخش دوم",
+      "description": "در مطلب قبل نحوه‌ی ایجاد روابط Polymorphic را بررسی کردیم و همچنین چندین راه‌حل جایگزین را نیز ارائه دادیم. همانطور که عنوان شد این نوع روابط اساساً از لحاظ طراحی دیتابیس اصولی نیستند و تا حد امکان نب",
+      "slug": "dntips-3229",
+      "language": "fa",
+      "published": "2020-07-30",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3229",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3229.md"
+    },
+    {
+      "title": "سری بررسی SQL Smell در EF Core - ایجاد روابط Polymorphic - بخش اول",
+      "description": "سناریویی را در نظر بگیرید که برای هر کدام از مدلهای Article, Video, Event می‌خواهیم قابلیت کامنت‌گذاری جداگانه‌ای را داشته باشیم. چندین روش برای پیاده‌سازی این سناریو وجود دارد که در ادامه به آنها خوا",
+      "slug": "dntips-3227",
+      "language": "fa",
+      "published": "2020-07-29",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3227",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3227.md"
+    },
+    {
+      "title": "ایجاد HTTP API توسط Feather HTTP",
+      "description": "Feather HTTP یک فریم‌ورک HTTP سبک، برای ایجاد APIهای NET Core. است، در واقع یک wrapper بر روی APIهای موجود ASP.NET Core می‌باشد که به ما امکان ایجاد HTTP API را در کمترین زمان میدهد. در این مطلب نحوه ",
+      "slug": "dntips-3219",
+      "language": "fa",
+      "published": "2020-07-26",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3219",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3219.md"
+    },
+    {
       "title": "WebSocket and React",
       "description": "WebSocket is a communication protocol. It's bidirectional in nature which means that either client or server can send data at any time. With WebSocket, we can build applications such as multiplayer games, ...",
       "slug": "WebSocket-and-React",
@@ -755,6 +1041,19 @@
       ],
       "url": "https://sirwan.info/blog/en/WebSocket-and-React",
       "markdownUrl": "https://sirwan.info/blog/en/WebSocket-and-React.md"
+    },
+    {
+      "title": "استفاده از قالب مخصوص Redux Toolkit جهت ایجاد پروژه‌های React/Redux",
+      "description": "استفاده از Redux درون پروژه‌های React، به روش‌های مختلفی قابل انجام است؛ یعنی محدودیتی از لحاظ نحوه چیدمان فایل‌ها، تغییر state و نحوه‌ی dispatch کردن action وجود ندارد. به عبارتی این آزادی عمل را خوا",
+      "slug": "dntips-3177",
+      "language": "fa",
+      "published": "2020-03-03",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3177",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3177.md"
     },
     {
       "title": "Displaying Secured Images",
@@ -893,6 +1192,19 @@
       "markdownUrl": "https://sirwan.info/blog/en/Building-Ionic-React-App.md"
     },
     {
+      "title": "React component lifecycle",
+      "description": "فرض کنید می‌خواهیم داده‌هایی را از دیتابیس بخوانیم و در نهایت درون UI نمایش دهیم. شاید فکر کنید که متد render مکان مناسبی برای اینکار باشد: render() { fetch('https://jsonplaceholder.typicode.com/users",
+      "slug": "dntips-3107",
+      "language": "fa",
+      "published": "2019-10-07",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3107",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3107.md"
+    },
+    {
       "title": "Testing React Components",
       "description": "Testing React components is a crucial part of the development process. It helps us to make sure that our components are working as expected.",
       "slug": "Testing-React-Components",
@@ -933,6 +1245,32 @@
       "markdownUrl": "https://sirwan.info/blog/en/Importing-JSON-files-into-SQL-Server.md"
     },
     {
+      "title": "React reconciliation",
+      "description": "در پروژه‌های React، نقطه‌ی آغازین فرآیند rendering، قطعه کد زیر میباشد که درون فایل index.js قرار دارد: ReactDOM.render(<App />, document.getElementById('root')); توسط متد ReactDOM.render یک وهله از ک",
+      "slug": "dntips-3104",
+      "language": "fa",
+      "published": "2019-09-18",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3104",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3104.md"
+    },
+    {
+      "title": "نحوه‌ی استفاده از ViewComponent درون Controller",
+      "description": "در ASP.NET Core یک View Component ، در نهایت خلاصه‌ایی از قابلیت‌هایی را ارائه میدهد که قرار است توسط یک کنترلر مدیریت شوند؛ زیرا پارامترهای یک View Component از طریق یک HTTP Request تامین نمی‌شوند. ی",
+      "slug": "dntips-3090",
+      "language": "fa",
+      "published": "2019-08-18",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3090",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3090.md"
+    },
+    {
       "title": "Using IHostingEnvironment in a test project",
       "description": "Assume that you have a service which accepts IHostingEnvironment as its dependency...",
       "slug": "Using-IHostingEnvironment-in-a-test-project",
@@ -961,6 +1299,19 @@
       ],
       "url": "https://sirwan.info/blog/en/Migrating-To-Gatsby",
       "markdownUrl": "https://sirwan.info/blog/en/Migrating-To-Gatsby.md"
+    },
+    {
+      "title": "آشنایی با LibMan در پروژه‌های ASP.NET Core",
+      "description": "مدیریت پکیج‌های سمت کلاینت پروژه‌های جدیدی که با استفاده از قالب پیش‌فرض ایجاد می‌شوند، شامل یک پوشه با نام lib، در شاخه‌ی wwwroot هستند که حاوی این فایل‌ها می‌باشند: اینها به عنوان حداقل‌های ایجاد یک",
+      "slug": "dntips-3089",
+      "language": "fa",
+      "published": "2019-07-21",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-3089",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-3089.md"
     },
     {
       "title": "Morse code",
@@ -1125,6 +1476,19 @@
       "markdownUrl": "https://sirwan.info/blog/en/Uploading-file-in-Vue.js.md"
     },
     {
+      "title": "Vue Lifecycle hooks",
+      "description": "هر وهله از Vue از یک‌سری مراحل یا (initialization steps) عبور خواهد کرد به عنوان مثال مراحلی از قبیل کامپایل شدن تمپلیت، mount شدن وهله به DOM و یا بروزرسانی DOM زمانیکه داده‌ها تغییر پیدا می‌کنند و .",
+      "slug": "dntips-2861",
+      "language": "fa",
+      "published": "2018-05-29",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2861",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2861.md"
+    },
+    {
       "title": "TypeScript and Vue.js",
       "description": "In this blog post I would like to show how to combine Vue.js with TypeScript inside an ASP.NET Core 2.x application.",
       "slug": "TypeScript-and-Vue.js",
@@ -1139,6 +1503,32 @@
       ],
       "url": "https://sirwan.info/blog/en/TypeScript-and-Vue.js",
       "markdownUrl": "https://sirwan.info/blog/en/TypeScript-and-Vue.js.md"
+    },
+    {
+      "title": "Vue CLI",
+      "description": "تیم Vue یک ابزار را جهت scaffold سریع یک پروژه Vue، به صورت رسمی ارائه کرده‌است. توسط این ابزار به صورت سریع می‌توانیم ساختار یک پروژه استاندارد Vue را ایجاد کنیم. چرا نیاز به Vue CLI داریم؟ زیرا نیاز",
+      "slug": "dntips-2857",
+      "language": "fa",
+      "published": "2018-05-26",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2857",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2857.md"
+    },
+    {
+      "title": "کامپوننت‌ها در Vue.js",
+      "description": "پیش‌تر در سایت مطالبی در رابطه با فریم‌ورک Vue.js منتشر شده‌است. در این مطلب می‌خواهیم نگاهی بر مفهوم کامپوننت‌ها در Vue بیندازیم و نحوه‌ی استفاده از آنها را بررسی کنیم. قبل از معرفی کامپوننت‌ها اجازه",
+      "slug": "dntips-2852",
+      "language": "fa",
+      "published": "2018-05-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2852",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2852.md"
     },
     {
       "title": "Developing Console-based UI in CSharp",
@@ -1167,6 +1557,19 @@
       ],
       "url": "https://sirwan.info/blog/en/Does-making-decision-matter",
       "markdownUrl": "https://sirwan.info/blog/en/Does-making-decision-matter.md"
+    },
+    {
+      "title": "فعال‌سازی HSTS در ASP.NET Core",
+      "description": "برای فعال‌سازی SSL در ASP.NET Core می‌توانیم از ویژگی RequireHttps برای کنترلرها و همچنین اکشن‌متدها استفاده کنیم: [RequireHttps] public class AccountController : Controller { public IActionResult Log",
+      "slug": "dntips-2798",
+      "language": "fa",
+      "published": "2017-12-28",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2798",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2798.md"
     },
     {
       "title": "Running PowerShell on macOS",
@@ -1212,6 +1615,32 @@
       "markdownUrl": "https://sirwan.info/blog/en/Working-remotely.md"
     },
     {
+      "title": "C# 7 - Binary literals and digit separators",
+      "description": "binary literals و digit separators دو ویژگی جدید در سی‌شارپ 7 هستند که باعث افزایش خوانایی کدها خواهند شد. Binary Literals از همان نسخه‌های اولیه سی‌شارپ قابلیت تعریف مقادیر عددی در مبنای 10 و 16 موجو",
+      "slug": "dntips-2612",
+      "language": "fa",
+      "published": "2017-03-19",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2612",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2612.md"
+    },
+    {
+      "title": "C# 7 - More Expression-Bodied Members",
+      "description": "یکی از امکانات جالب سی‌شارپ که در نسخه 6 معرفی شد، قابلیت Expression-Bodied Members بود. در نسخه 7 سی‌شارپ، امکانات جدیدتری اضافه شده است؛ به عنوان مثال اکنون می‌توان برای constructors, finalizers و ه",
+      "slug": "dntips-2609",
+      "language": "fa",
+      "published": "2017-03-16",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2609",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2609.md"
+    },
+    {
       "title": "My first experiences with Linux",
       "description": "Running Window 98 on my PC was my first experience with Windows. in fact, for the last 11 years or so, Windows has been the dominant operating system that I've been using. So, up until now, I have been an avid fan of Windows.",
       "slug": "My-first-experiences-with-Linux",
@@ -1224,6 +1653,19 @@
       ],
       "url": "https://sirwan.info/blog/en/My-first-experiences-with-Linux",
       "markdownUrl": "https://sirwan.info/blog/en/My-first-experiences-with-Linux.md"
+    },
+    {
+      "title": "تولید برنامه‌های متکی به خود مبتنی بر NET Core.",
+      "description": "یکی از مزایای جالب فریم‌ورک NET Core. امکان پابلیش کردن اپلیکیشن‌ها به صورت Self-contained یا متکی به خود است. به این نوع توزیع (Self-Contained Deployment (SCD گفته می‌شود. در واقع منظور این است که بر",
+      "slug": "dntips-2591",
+      "language": "fa",
+      "published": "2017-02-21",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2591",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2591.md"
     },
     {
       "title": "Environments in ASP.NET Core",
@@ -1268,6 +1710,19 @@
       "markdownUrl": "https://sirwan.info/blog/en/Designing-Fluent-Interfaces-in-C.md"
     },
     {
+      "title": "آشنایی با OWIN و بررسی نقش آن در ASP.NET Core",
+      "description": "در این مطلب می‌خواهیم نگاهی به قسمت‌های کلیدی OWIN و همچنین پروژه‌ی Katana بیندازیم و در نهایت نیز نقش OWIN را در ASP.NET Core بررسی خواهیم کرد. OWIN چیست؟ همانطور که می‌دانید OWIN یک specification اس",
+      "slug": "dntips-2514",
+      "language": "fa",
+      "published": "2016-09-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2514",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2514.md"
+    },
+    {
       "title": "Explicit Interface Implementation",
       "description": "Explicit interface implementation is a way to implement interface members that allows you to implement interface members with the same name.",
       "slug": "Explicit-Interface-Implementation",
@@ -1279,6 +1734,19 @@
       ],
       "url": "https://sirwan.info/blog/en/Explicit-Interface-Implementation",
       "markdownUrl": "https://sirwan.info/blog/en/Explicit-Interface-Implementation.md"
+    },
+    {
+      "title": "کامپوننت‌ها در AngularJS 1.5 - قسمت دوم - مسیریابی",
+      "description": "در این قسمت به معرفی سیستم مسیریاب در Angular 1.5 خواهیم پرداخت. قبل از معرفی این سیستم ابتدا سیستم مسیریاب اصلی در Angular را بررسی خواهیم کرد. مروری بر مسیریابی در AngularJS برای استفاده از مسیریاب ",
+      "slug": "dntips-2447",
+      "language": "fa",
+      "published": "2016-07-09",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2447",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2447.md"
     },
     {
       "title": "Delegates in C#",
@@ -1309,6 +1777,19 @@
       "markdownUrl": "https://sirwan.info/blog/en/Thinking-out-of-the-box-to-become-a-better-programmer.md"
     },
     {
+      "title": "کامپوننت‌ها در AngularJS 1.5",
+      "description": "در نسخه‌های AngularJS 1.x عموماً با کمک کنترلرها و دایرکتیوها، می‌توانیم ویژگی‌های جدیدی را به اپلیکیشن‌هایمان اضافه کنیم؛ از دایرکتیوها برای ایجاد عناصر سفارشی HTML می‌توانستیم (می‌توانیم) استفاده کن",
+      "slug": "dntips-2417",
+      "language": "fa",
+      "published": "2016-05-27",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2417",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2417.md"
+    },
+    {
       "title": "Why AngularJS?",
       "description": "I wanted to share a few thoughts about AngularJS",
       "slug": "Why-Angular",
@@ -1323,6 +1804,71 @@
       "markdownUrl": "https://sirwan.info/blog/en/Why-Angular.md"
     },
     {
+      "title": "مبانی TypeScript؛ پیمایشگرها",
+      "description": "همانطور که پیشتر در این مطلب نیز توضیح داده شد symbol یک primitive data type مانند number و string است. حین کار کردن با سمبل‌ها باید این نکات را در نظر بگیرید: منحصربفرد و immutable (غیرقابل تغییر) هس",
+      "slug": "dntips-2362",
+      "language": "fa",
+      "published": "2016-03-31",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2362",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2362.md"
+    },
+    {
+      "title": "مبانی TypeScript؛ فضاهای نام",
+      "description": "همانطور که عنوان شد به ماژول‌های داخلی، فضاهای نام (namespace) گفته می‌شود. بنابراین از namespaceها نیز جهت مدیریت و ساماندهی پروژه‌های بزرگ با تعداد فایل‌های زیاد استفاده می‌شود. در واقع یک namespace",
+      "slug": "dntips-2359",
+      "language": "fa",
+      "published": "2016-03-30",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2359",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2359.md"
+    },
+    {
+      "title": "مبانی TypeScript؛ کلاس‌ها",
+      "description": "تا قبل از ES 6 در جاوا اسکریپت از توابع جهت ایجاد کامپوننت‌هایی با قابلیت استفاده مجدد استفاده می‌شد. این امر برای برنامه‌نویسانی که با زبان‌های OOP آشنایی دارند، شاید چندان خوشایند نباشد. در TypeScri",
+      "slug": "dntips-2354",
+      "language": "fa",
+      "published": "2016-03-28",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2354",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2354.md"
+    },
+    {
+      "title": "مبانی TypeScript؛ متدها",
+      "description": "توابع جزو ساختارهای پایه‌ایی زبان جاوا اسکریپت هستند و از آنها جهت شبیه‌سازی کلاس‌ها، کپسوله‌سازی اطلاعات و همچنین ایجاد ماژول‌ها استفاده می‌شود. هر چند در زبان TypeScript به راحتی می‌توانیم از کلاس‌ه",
+      "slug": "dntips-2351",
+      "language": "fa",
+      "published": "2016-03-26",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2351",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2351.md"
+    },
+    {
+      "title": "توسعه اپلیکیشن‌های Node.js در ویژوال استودیو",
+      "description": "آشنایی با Node.js Node.js یک پلت‌فرم جاوا اسکریپتی سمت سرور است که ابتدا توسط Ryan Dahl در سال 2009 معرفی گردید. از Node.js جهت ساخت اپلیکیشن‌های مقیاس‌پذیر تحت شبکه و با زبان برنامه‌نویسی جاوا اسکریپ",
+      "slug": "dntips-2346",
+      "language": "fa",
+      "published": "2016-03-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2346",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2346.md"
+    },
+    {
       "title": "Asynchronous Execution in JavaScript",
       "description": "As you know browsers are typically single threaded, It means that the browser can only be doing either update the UI or executing JavaScript at any given time. It actually incapable of doing theme simultaneously.",
       "slug": "Asynchronous-Execution-in-JavaScript",
@@ -1335,6 +1881,58 @@
       ],
       "url": "https://sirwan.info/blog/en/Asynchronous-Execution-in-JavaScript",
       "markdownUrl": "https://sirwan.info/blog/en/Asynchronous-Execution-in-JavaScript.md"
+    },
+    {
+      "title": "برنامه نویسی Async با ES 6",
+      "description": "جاوا اسکریپت به صورت single-thread عمل می‌کند. به این معنا که دو اسکریپت نمی‌توانند به صورت همزمان اجرا شوند و باید یکی پس از دیگری اجرا شوند. ساده‌ترین شکل برنامه‌نویسی غیرهمزمان در جاوا اسکریپت استف",
+      "slug": "dntips-2308",
+      "language": "fa",
+      "published": "2016-01-08",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2308",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2308.md"
+    },
+    {
+      "title": "ساختارهای داده‌ی توکار ES 6",
+      "description": "در ES 5 تنها آرایه (Array) و آبجکت (Object) را به عنوان ساختار داده‌ایی، به صورت توکار در اختیار داریم. Array یک کالکشن مبتنی بر ایندکس است. همچنین می‌توان هر نوع مقداری را در آن ذخیره کرد: var collec",
+      "slug": "dntips-2302",
+      "language": "fa",
+      "published": "2016-01-04",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2302",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2302.md"
+    },
+    {
+      "title": "Reflection در ES6",
+      "description": "در زبان‌های برنامه‌نویسی مانند سی‌شارپ و یا جاوا می‌توانیم از Reflection جهت خواندن متادیتاها استفاده کنیم. به عنوان مثال امکان تعریف پراپرتی و یا متدها و حتی تایپ‌هایی در زمان اجرا را در اختیارمان قر",
+      "slug": "dntips-2296",
+      "language": "fa",
+      "published": "2016-01-01",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2296",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2296.md"
+    },
+    {
+      "title": "رشته‌ها در ES 6",
+      "description": "در بیشتر زبان‌های برنامه‌نویسی قابلیتی تحت عنوان String Interpolation وجود دارد. منظور، فرآیند جایگزین کردن مقادیر، با یکسری placeholder درون یک رشته است. در نسخه‌های قبلی جاوا اسکریپت محدودیت‌هایی در",
+      "slug": "dntips-2292",
+      "language": "fa",
+      "published": "2015-12-29",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2292",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2292.md"
     },
     {
       "title": "Object Oriented JavaScript Part 2",
@@ -1376,6 +1974,539 @@
       ],
       "url": "https://sirwan.info/blog/en/First-Blog-Post",
       "markdownUrl": "https://sirwan.info/blog/en/First-Blog-Post.md"
+    },
+    {
+      "title": "C# 6 - Expression-Bodied Members",
+      "description": "در ادامه مطالب منتشر شده در رابطه با قابلیت‌های جدید سی‌شارپ 6، در این مطلب به بررسی یکی دیگر از این قابلیت‌ها، با نام Expression-Bodied Members خواهیم پرداخت. در واقع در سی‌شارپ 6، هدف، ساده‌سازی سین",
+      "slug": "dntips-2240",
+      "language": "fa",
+      "published": "2015-10-10",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2240",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2240.md"
+    },
+    {
+      "title": "C# 6 - The nameof Operator",
+      "description": "یکی دیگر از قابلیت‌های جذاب نسخه‌ی جدید سی‌شارپ، عملگر nameof است. هدف اصلی آن ارائه کدهایی با قابلیت Refactoring بهتر است؛ زیرا به جای نوشتن نام فیلدها و یا متدها در صورت نیاز به صورت hard-coded، می‌",
+      "slug": "dntips-2232",
+      "language": "fa",
+      "published": "2015-10-04",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2232",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2232.md"
+    },
+    {
+      "title": "خودکارسازی فرآیند نگاشت اشیاء در AutoMapper",
+      "description": "قرار دادن تمامی تنظیمات نگاشت‌ها درون کلاس‌‌های پروفایل تا حدودی حجم کدهای ما را در آینده زیاد خواهد کرد. public class TestProfile1 : Profile { protected override void Configure() { // این تنظیم سراسر",
+      "slug": "dntips-2194",
+      "language": "fa",
+      "published": "2015-08-23",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2194",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2194.md"
+    },
+    {
+      "title": "پیاده‌سازی الگوی Transaction Per Request در EF",
+      "description": "قبلاً در سایت جاری در رابطه با پیاده‌سازی الگوی Context Per Request مطالبی منتشر شده است. در ادامه می‌خواهیم تمامی درخواست‌های خود را اتمیک کنیم. همانطور که قبلاً در این مطلب مطالعه کردید یکی از مزایا",
+      "slug": "dntips-2178",
+      "language": "fa",
+      "published": "2015-08-11",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2178",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2178.md"
+    },
+    {
+      "title": "تزریق وابستگی‌های رایج ASP.NET MVC به برنامه",
+      "description": "در پروژه خود می‌توانیم StructureMap را به گونه‌ایی تنظیم کنیم که کار تزریق لایه‌های انتزاعی ASP.NET را نیز انجام دهد؛ مثلاً CurrentHttpContext و یا داده‌های مربوط به مسیریابی و... به عنوان مثال در برن",
+      "slug": "dntips-2175",
+      "language": "fa",
+      "published": "2015-08-08",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2175",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2175.md"
+    },
+    {
+      "title": "ایجاد ایندکس منحصربفرد در EF Code first به صورت Fluent API",
+      "description": "پیشتر در رابطه با ایجاد ایندکس منحصر به فرد در EF Code first مطالبی در سایت منتشر شده‌اند: « ایجاد ایندکس منحصربفرد در EF Code first » « ایندکس منحصر به فرد با استفاده از Data Annotation در EF Code Fi",
+      "slug": "dntips-2143",
+      "language": "fa",
+      "published": "2015-07-07",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2143",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2143.md"
+    },
+    {
+      "title": "استفاده از Razor در فایل‌های JavaScript و CSS",
+      "description": "یکی از مشکلات سینتکس Razor سمت سرور، این است که در فایل‌های JavaScript و CSS سمت کاربر نمی‌توانیم از آن استفاده کنیم، به عنوان مثال فرض کنید در یک فایل JavaScript نیاز به مشخص سازی آدرس یک اکشن متد دا",
+      "slug": "dntips-2080",
+      "language": "fa",
+      "published": "2015-05-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2080",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2080.md"
+    },
+    {
+      "title": "نکات کار با استثناءها در دات نت",
+      "description": "استثناء چیست؟ واژه‌ی استثناء یا exception کوتاه شده‌ی عبارت exceptional event است. در واقع exception یک نوع رویداد است که در طول اجرای برنامه رخ می‌دهد و در نتیجه، جریان عادی برنامه را مختل می‌کند. زم",
+      "slug": "dntips-2044",
+      "language": "fa",
+      "published": "2015-03-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-2044",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-2044.md"
+    },
+    {
+      "title": "رسم نمودار توسط Kendo Chart",
+      "description": "پیشتر مطالبی در سایت، درباره KenoUI و همچنین ویجت‌های وب آن منتشر گردید. در این مطلب نگاهی خواهیم داشت بر تعدادی از ویجت‌های Kendo UI جهت رسم نمودار. توسط Kendo UI می‌توانیم نمودار‌های زیر را ترسیم کن",
+      "slug": "dntips-1979",
+      "language": "fa",
+      "published": "2015-01-29",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1979",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1979.md"
+    },
+    {
+      "title": "نمایش بلادرنگ اعلامی به تمام کاربران در هنگام درج یک رکورد جدید به صورت notification",
+      "description": "در ادامه می‌خواهیم مثالی را که در این مطلب مورد بررسی قرار گرفت، به صورتی تغییر دهیم که با ثبت یک آیتم جدید درون دیتابیس، یک notification، به تمامی کاربران متصل به هاب ارسال شود. همچنین با کلیک بر روی",
+      "slug": "dntips-1955",
+      "language": "fa",
+      "published": "2015-01-02",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1955",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1955.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت ششم (قسمت آخر)",
+      "description": "زیرنویس‌های فارسی قسمت ششم را می‌توانید از اینجا دانلود کنید. لیست سرفصل‌های این قسمت به شرح زیر است: 01. Introduction 02. Installing Karma 03. Karma with Webstorm 04. Testing Controllers 05. Testing ",
+      "slug": "dntips-1940",
+      "language": "fa",
+      "published": "2014-12-21",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1940",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1940.md"
+    },
+    {
+      "title": "قابلیت Templated Razor Delegate",
+      "description": "Razor دارای قابلیتی با نام Templated Razor Delegates است. همانطور که از نام آن مشخص است، یعنی Razor Template هایی که Delegate هستند. در ادامه این قابلیت را با ذکر چند مثال توضیح خواهیم داد. مثال اول: ",
+      "slug": "dntips-1933",
+      "language": "fa",
+      "published": "2014-12-14",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1933",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1933.md"
+    },
+    {
+      "title": "ساخت یک Form Generator ساده در MVC",
+      "description": "در ادامه می‌خواهیم نحوه‌ی ایجاد یک فرم‌ساز ساده را ASP.NET MVC بررسی کنیم. مدل‌های برنامه ما به صورت زیر می‌باشند: namespace SimpleFormGenerator.DomainClasses { public class Form { public int Id { get",
+      "slug": "dntips-1922",
+      "language": "fa",
+      "published": "2014-12-03",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1922",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1922.md"
+    },
+    {
+      "title": "استفاده از پروایدر SQLite در Entity Framework 7",
+      "description": "Entity Framework در نگارش 7 خود از منابع داده‌ایی جدیدی پشتیبانی میکند( + ) . یعنی از Windows Phone، Windows Store و همچنین ASP.NET 5 (اپلیکیشن‌هایی که از NET Core. استفاده می‌کنند) پشتیبانی خواهد کرد",
+      "slug": "dntips-1915",
+      "language": "fa",
+      "published": "2014-11-17",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1915",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1915.md"
+    },
+    {
+      "title": "فعال‌سازی Multiple Active Result Sets",
+      "description": "(Multiple Active Result Sets (MARS یکی از قابلیتهای SQL SERVER است. این قابلیت در واقع این امکان را برای ما فراهم می‌کند تا بر روی یک Connection همزمان چندین کوئری را به صورت موازی ارسال کنیم. در این ",
+      "slug": "dntips-1892",
+      "language": "fa",
+      "published": "2014-10-15",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1892",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1892.md"
+    },
+    {
+      "title": "استفاده از SignalR در اندروید",
+      "description": "همانطور که مطلع هستید، بخش سورس باز مایکروسافت برای برنامه‌نویس‌های جاوا نیز SDK ی جهت استفاده از SignalR ارائه کرده است. در اینجا می‌توانید مخزن کد آن را در گیت‌هاب مشاهده کنید. هنوز مستنداتی برای ای",
+      "slug": "dntips-1890",
+      "language": "fa",
+      "published": "2014-10-13",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1890",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1890.md"
+    },
+    {
+      "title": "نمایش بلادرنگ اعلامی به تمام کاربران در هنگام درج یک رکورد جدید",
+      "description": "در ادامه می‌خواهیم اعلام عمومی نمایش افزوده شدن یک پیام جدید را بعد از ثبت رکوردی جدید، به تمامی کاربران متصل به سیستم ارسال کنیم. پیش نیاز مطلب جاری موارد زیر می‌باشند: دوره \"معرفی SignalR و ارتباطات",
+      "slug": "dntips-1885",
+      "language": "fa",
+      "published": "2014-10-07",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1885",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1885.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت پنجم",
+      "description": "زیرنویس‌های فارسی قسمت پنجم را از اینجا می‌توانید دانلود کنید. لیست سرفصل‌های قسمت پنجم به شرح زیر است: 01-Introduction to Directives 02-Demo. Creating Your First Directive 03-Demo. Domain Specific La",
+      "slug": "dntips-1863",
+      "language": "fa",
+      "published": "2014-08-22",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1863",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1863.md"
+    },
+    {
+      "title": "فعال سازی Multicore JIT",
+      "description": "Multicore JIT یکی از قابلیت‌های کلیدی در دات نت 4.5 می‌باشد که در واقع راه حلی برای بهبود سرعت اجرای برنامه‌های دات نتی است. قبل از معرفی این قابلیت ابتدا اجازه دهید نحوه کامپایل یک برنامه دات نتی را ",
+      "slug": "dntips-1845",
+      "language": "fa",
+      "published": "2014-07-19",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1845",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1845.md"
+    },
+    {
+      "title": "نکات استفاده از افزونه‌ی Web Essentials جهت کار با تصاویر",
+      "description": "در این مطلب نکات کار با تصاویر را توسط افزونه‌ی Web Esstentials بررسی می‌کنیم. این افزونه قابلیت‌های زیر را در کار با تصاویر در اختیار شما قرار می‌دهد: بهینه‌سازی تصاویر یکی از موارد مهمی که باید مورد",
+      "slug": "dntips-1833",
+      "language": "fa",
+      "published": "2014-07-10",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1833",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1833.md"
+    },
+    {
+      "title": "نکات استفاده از افزونه‌ی Web Essentials جهت پردازش LESS",
+      "description": "در این مطلب، نحوه‌ی استفاده از افزونه‌ی Web Essentials جهت پردازش فایل‌های LESS را بررسی می‌کنیم. پیش‌تر مطالبی را در رابطه با CSS pre-processor ها مطالعه کرده‌اید، LESS نیز یک CSS pre-processor است، ",
+      "slug": "dntips-1823",
+      "language": "fa",
+      "published": "2014-07-03",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1823",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1823.md"
+    },
+    {
+      "title": "نمایش اخطارها و پیام‌های بوت استرپ به کمک TempData در ASP.NET MVC",
+      "description": "در بوت استرپ برای نمایش اعلانی به کاربر، از کلاس alert می‌توان استفاده کرد. برای نمایش این اعلان کافی است محتوای خود را درون یک div با کلاس alert قرار دهیم: <div class=\"alert\"> نمایش اعلانات </div> تع",
+      "slug": "dntips-1818",
+      "language": "fa",
+      "published": "2014-06-26",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1818",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1818.md"
+    },
+    {
+      "title": "نحوه‌ی صحیح کار کردن با بوت استرپ",
+      "description": "DOM در حالت عادی بسیار نامرتب است. همچنین با افزودن کلاس‌های CSS، کد HTML به مراتب نامرتب‌تر از قبل می‌شود. بوت استرپ نیز شامل تعداد زیادی از کلاس‌های CSS می‌باشد که برای انجام وظایف خاصی به HTML اضاف",
+      "slug": "dntips-1815",
+      "language": "fa",
+      "published": "2014-06-23",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1815",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1815.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت چهارم",
+      "description": "زیرنویس‌های فارسی قسمت چهارم را از اینجا می‌توانید دانلود کنید. لیست سرفصل‌های قسمت چهارم به شرح زیر است : 01. Introduction to Routing 02. Websites of Yore 03. Single Page Applications 04. Demo - Addi",
+      "slug": "dntips-1785",
+      "language": "fa",
+      "published": "2014-05-12",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1785",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1785.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت سوم",
+      "description": "زیرنویس‌های فارسی قسمت سوم را اینجا می‌توانید دریافت کنید. لیست سرفصل‌های قسمت سوم به شرح زیر است : 01. Introduction to Services 02. Demo - Creating Your First Custom Service 03. Demo - Another Custom",
+      "slug": "dntips-1751",
+      "language": "fa",
+      "published": "2014-04-14",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1751",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1751.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت دوم",
+      "description": "زیرنویس‌های فارسی قسمت دوم را اینجا می توانید دریافت کنید. لیست سرفصل‌های قسمت دوم به شرح زیر است : 01-Introduction 02-Controllers and Scope 03-Demo. Controllers 04-Demo. Displaying Repeating Informat",
+      "slug": "dntips-1725",
+      "language": "fa",
+      "published": "2014-02-28",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1725",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1725.md"
+    },
+    {
+      "title": "خواندن اطلاعات از سرور و نمایش آن توسط Angular در ASP.NET MVC",
+      "description": "می خواهیم یک مثال ساده از دریافت اطلاعات از سرور و نمایش آن در یک View را توسط AngularJS، با هم بررسی کنیم. همانطور که می‌دانید برای نمایش تعدادی از اشیاء در انگولار می‌توان به این صورت نیز عمل کرد: <",
+      "slug": "dntips-1705",
+      "language": "fa",
+      "published": "2014-02-07",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1705",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1705.md"
+    },
+    {
+      "title": "زیرنویس فارسی ویدئوهای مقدمات AngularJS - قسمت اول",
+      "description": "سایت pluralsight یک دوره آموزشی با عنوان AngularJS Fundamentals تهیه کرده است، که به آموزش مقدمات AngularJS و اینکه چگونه می‌توانیم برنامه هایی با قابلیت تست پذیری، SPA و به سبک MVC بنویسیم، می‌پردازد",
+      "slug": "dntips-1651",
+      "language": "fa",
+      "published": "2014-01-11",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1651",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1651.md"
+    },
+    {
+      "title": "ایجاد یک فیلتر سفارشی جهت تعیین Layout برای کنترلر و یا اکشن متد",
+      "description": "همانطور که می‌دانید در صورت عدم تعریف صریح layout در یک View، این تعریف از فایل Views\\_ViewStart.cshtml دریافت می‌گردد: @{ Layout = \"~/Views/Shared/_Layout.cshtml\"; } برای معرفی صریح فایل layout، تنها",
+      "slug": "dntips-1588",
+      "language": "fa",
+      "published": "2013-12-10",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1588",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1588.md"
+    },
+    {
+      "title": "قابلیت Attribute Routing در ASP.NET MVC 5",
+      "description": "در ASP.NET MVC 5 یک قابلیت جدید با نام Attribute Routing افزوده شده است که به ما این اجازه را می‌دهد تا Route‌های سفارشی برای کنترلرها و اکشن متدهایمان با اضافه کردن یک Attribute با نام Route تعریف کن",
+      "slug": "dntips-1583",
+      "language": "fa",
+      "published": "2013-12-08",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1583",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1583.md"
+    },
+    {
+      "title": "تنظیمات امنیتی Glimpse",
+      "description": "در مورد glimpse پیشتر مطالبی در سایت منتشر شده است : آشنایی و بررسی ابزار Glimpse بعد از آپلود سایت ما می‌توانیم دسترسی به تنظیمات خاص glimpse را تنها به کاربران عضو محدود کنیم: <location path=\"Glimps",
+      "slug": "dntips-1547",
+      "language": "fa",
+      "published": "2013-11-05",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1547",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1547.md"
+    },
+    {
+      "title": "ساخت منوهای چند سطحی در ASP.NET MVC",
+      "description": "پیش نیاز مطلب جاری مطالب زیر می‌باشند: 1- EF Code First #8 2- مباحث تکمیلی مدل‌های خود ارجاع دهنده در EF Code First 3- نگاهی به اجزای تعاملی Twitter Bootstrap هدف از مطلب جاری نحوه نمایش منوی‌های چند ",
+      "slug": "dntips-1524",
+      "language": "fa",
+      "published": "2013-10-11",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1524",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1524.md"
+    },
+    {
+      "title": "استفاده از عبارات Cron در Quartz.NET",
+      "description": "Cron چیست؟ قابلیتی است در سیستم عامل‌های مبتنی بر یونیکس که وظیفه اجرای وظایف در زمانبندی‌های خاص را بر عهده دارد، و به کاربران این امکان را می‌دهد که وظایف را زمانبندی کرده و در دوره‌های مشخص اجرا کن",
+      "slug": "dntips-1404",
+      "language": "fa",
+      "published": "2013-06-29",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1404",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1404.md"
+    },
+    {
+      "title": "دریافت زمانبندی شده به روز رسانی‌های آنتی ویروس Symantec به کمک کتابخانه‌های Quartz.NET و Html Agility Pack",
+      "description": "در این رابطه آقای راد در دو قسمت به صورت مختصر و مفید این کتابخانه قدرتمند رو همراه با ارائه چندین مثال کاربردی معرفی کردند: قسمت اول قسمت دوم در تکمیل قسمت‌های فوق بنده می‌خوام مثالی رو در این رابطه ",
+      "slug": "dntips-1395",
+      "language": "fa",
+      "published": "2013-06-24",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1395",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1395.md"
+    },
+    {
+      "title": "حذف هدرهای مربوط به وب سرور از طریق برنامه نویسی",
+      "description": "در تکمیل این مطلب برای حذف هدرهای مربوط به وب سرور در برنامه‌های ASP.NET MVC از روش زیر می‌توانیم استفاده کنیم. در حالت پیش فرض تمام پاسخهای که به سمت سرور ارسال میشوند به همراه خود یک سری جزئیات را ن",
+      "slug": "dntips-1249",
+      "language": "fa",
+      "published": "2013-03-09",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1249",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1249.md"
+    },
+    {
+      "title": "نحوه استفاده از ViewModel در ASP.NET MVC",
+      "description": "یک Model چیست؟ · قسمتی از Application است که Domain Logic را پیاده سازی می‌کند. · همچنین با عنوان Business Logic نیز شناخته می‌شود. · Domain Logic داده‌هایی را که بین UI و دیتابیس پاس داده می‌شود، مدی",
+      "slug": "dntips-1243",
+      "language": "fa",
+      "published": "2013-03-03",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1243",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1243.md"
+    },
+    {
+      "title": "Import و Export کردن Breakpointها در Visual Studio",
+      "description": "ویژوال استدیو Breakpointها را در یک فایل XML ذخیره میکند.برای ذخیره Breakpointها فقط کافی است بر روی دکمه Export در پنجره Breakpoint که در شکل زیر نمایش داده شده است کلیک کنید. شما می‌توانید فایل XML ",
+      "slug": "dntips-1151",
+      "language": "fa",
+      "published": "2012-12-12",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-1151",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-1151.md"
+    },
+    {
+      "title": "نکاتی در مورد ELMAH",
+      "description": "سفارشی سازی ایمیل ارسالی : در مورد ELMAH(Erro Logging Module And Handlers) آقای نصیری چندین مطلب نوشته اند ( + و + و ... ) قبل از ارسال ایمیل توسط ELMAH رخدادی به نام Mailing اجرا (Raise) می‌شود. اگر ",
+      "slug": "dntips-964",
+      "language": "fa",
+      "published": "2012-07-27",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-964",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-964.md"
+    },
+    {
+      "title": "رمزنگاری Connection String از طریق خط فرمان",
+      "description": "برای رمز نگاری Connection String ابتدا Command Prompt را از مسیر زیر باز کنید Start Menu\\Programs\\Microsoft Visual Studio 2010\\Visual Studio Tools\\Visual Studio Command Prompt و سپس دستور زیر را برای ",
+      "slug": "dntips-959",
+      "language": "fa",
+      "published": "2012-07-23",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-959",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-959.md"
+    },
+    {
+      "title": "30Days to Learn jQuery",
+      "description": "چند وقت پیش سایت معروف tutsplus.com یه دوره 30 روزه آموزش مبتدی تا حرفه ای jQuery رو به صورت رایگان برگزار کرد،در این دوره آقای Jeffrey Way (مدرس دوره) در 30 روزه jQuery رو از مبتدی تا حرفه ای و به صو",
+      "slug": "dntips-865",
+      "language": "fa",
+      "published": "2012-06-20",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-865",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-865.md"
+    },
+    {
+      "title": "ویدئوهای آموزشی Entity Framework با زیرنویس فارسی",
+      "description": "یه سری ویدئو آموزشی EF که توسط PulralSight به سفارش مایکروسافت خیلی وقت پیش تهیه شده بود رو با کمک یکی از دوستان داریم زیرنویس می کنیم (البته بیشترش رو دوست خوبم آقا حامد زحمتش رو کشیدن و من فقط تونست",
+      "slug": "dntips-847",
+      "language": "fa",
+      "published": "2012-06-17",
+      "updated": null,
+      "tags": [
+        "DNTips"
+      ],
+      "url": "https://sirwan.info/blog/fa/dntips-847",
+      "markdownUrl": "https://sirwan.info/blog/fa/dntips-847.md"
     }
   ]
 }
