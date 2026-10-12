@@ -2,24 +2,32 @@
 
 This is a concise snapshot of Sirwan's current projects, learning, reading, and personal routines.
 
+Last updated: 12 October 2026.
+
 ## Projects
 
-- [ts-faker](https://github.com/sirwana/ts-faker)
-- [MySQL Actions](https://github.com/SirwanAfifi/mysql-actions)
+Most of my side-project time is going into these:
+
+- [MindNative](https://github.com/SirwanAfifi/mindnative): An open-source mind map app for macOS. I've published the source and built its landing page.
+- [Kurdish language tools](https://sirwan.info/blog/en/teaching-a-cardputer-to-recognise-kurdish-numbers/): Collecting Ardalani speech through Telegram, exploring authentic text and OCR datasets with Kurdsoftware, and experimenting with Kurdish number recognition on a Cardputer.
 
 ## Learning
 
-Sirwan is primarily exploring large language models, agentic systems, and AI-driven developer tooling.
+Lately I've been learning how small neural networks work by training a Kurdish speech classifier and running it on an ESP32 Cardputer.
 
 ## Reading
 
 - Re-reading *Designing Data-Intensive Applications* by Martin Kleppmann.
+
+<!-- hevy-workout -->
 
 ## Training
 
 - Chest + Arms: Bench or incline pressing, a fly variation, then direct biceps work.
 - Shoulders + Triceps: Shoulder pressing, lateral and rear-delt work, followed by triceps.
 - Legs + Lats: Pulldowns and rows alongside leg press, extension, curl, and adduction work.
+
+I recently built a tool to correct the weights in my Hevy workout history. See the [Hevy weight correction tool](https://github.com/SirwanAfifi/hevy-weight-correction).
 
 ## Current supplement notes
 
