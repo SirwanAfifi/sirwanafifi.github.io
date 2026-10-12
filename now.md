@@ -45,3 +45,5 @@ I recently built a tool to correct the weights in my Hevy workout history. See t
 - HMB Powder
 
 These are personal notes, not medical advice. See the [fitness field notes](https://sirwan.info/fitness.md) for context.
+
+<!-- trakt-activity -->
